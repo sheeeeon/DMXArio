@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:weightSum="1">
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel1"
+                android:textOff="1"
+                android:textOn="1"
+                android:checked="true" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel2"
+                android:textOff="2"
+                android:textOn="2"
+                android:checked="true" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel3"
+                android:textOff="3"
+                android:textOn="3"
+                android:checked="true" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel4"
+                android:textOff="4"
+                android:textOn="4"
+                android:checked="true" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ToggleButton
+                android:text="1"
+                android:id="@+id/enableChannel5"
+                android:textOff="5"
+                android:textOn="5"
+                android:checked="false"
+                android:layout_column="0"
+                android:layout_width="50dp" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel6"
+                android:textOff="6"
+                android:textOn="6"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel7"
+                android:textOff="7"
+                android:textOn="7"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel8"
+                android:textOff="8"
+                android:textOn="8"
+                android:checked="false" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ToggleButton
+                android:text="1"
+                android:id="@+id/enableChannel9"
+                android:textOff="9"
+                android:textOn="9"
+                android:checked="false"
+                android:layout_column="0"
+                android:layout_width="50dp" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel10"
+                android:textOff="10"
+                android:textOn="10"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel11"
+                android:textOff="11"
+                android:textOn="11"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel12"
+                android:textOff="12"
+                android:textOn="12"
+                android:checked="false" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ToggleButton
+                android:text="1"
+                android:id="@+id/enableChannel13"
+                android:textOff="13"
+                android:textOn="13"
+                android:checked="false"
+                android:layout_column="0"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel14"
+                android:textOff="14"
+                android:textOn="14"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel15"
+                android:textOff="15"
+                android:textOn="15"
+                android:checked="false" />
+
+            <ToggleButton
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/enableChannel16"
+                android:textOff="16"
+                android:textOn="16"
+                android:checked="false" />
+        </TableRow>
+
+    </TableLayout>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText" />
+
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/sendButton" />
+
+</LinearLayout>

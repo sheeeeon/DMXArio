@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="27dp"
+    android:id="@+id/customActionBar"
+    android:background="#1a1d1a"
+    android:padding="3dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DMXArio"
+        android:id="@+id/textView46"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:layout_weight="1" />
+
+    <DigitalClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/digitalClock"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TX : 0B"
+        android:id="@+id/textView48"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp"
+        android:layout_weight="1"
+        android:allowUndo="false"
+        android:gravity="right" />
+
+</LinearLayout>

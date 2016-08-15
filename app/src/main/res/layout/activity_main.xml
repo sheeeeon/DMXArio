@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.icaynia.dmxario.MainActivity"
+    android:id="@+id/LinearLayout1"
+    android:background="#505050"
+    android:touchscreenBlocksFocus="false"
+    android:transitionGroup="false"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="27dp"
+        android:id="@+id/customActionBar"
+        android:background="#1a1d1a"
+        android:padding="3dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="DMXArio"
+            android:id="@+id/titleText"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:paddingLeft="5dp"
+            android:layout_weight="3" />
+
+        <DigitalClock
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/digitalClock"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:textColor="#FFFFFF"
+            android:textAlignment="center"
+            android:layout_columnWeight="1"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="TX : 0B"
+            android:id="@+id/bluetoothTxByte"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:allowUndo="true"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:layout_columnWeight="1"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="12sp"
+            android:paddingRight="12sp"
+            android:paddingTop="12sp"
+            android:background="#262e24"
+            android:layout_weight="0.15"
+            android:orientation="vertical"
+            android:id="@+id/tabLayout">
+
+
+            <TextView
+                android:id="@+id/menuText0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Main"
+                android:textSize="20dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:layout_gravity="right" />
+
+            <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/menuText1"
+                        android:text="Command"
+                        android:textSize="20dp"
+                        android:paddingTop="10dp"
+                        android:textColor="@color/colorMenuTextDisabled"
+                        android:layout_gravity="center_vertical|right"/>
+
+                    <TextView
+                        android:id="@+id/menuText2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Macro"
+                        android:textSize="20dp"
+                        android:layout_gravity="bottom|right"
+                        android:textColor="@color/colorMenuTextDisabled"
+                        android:paddingTop="10dp"/>
+
+            <TextView
+                android:id="@+id/menuText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Controller"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical|right"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:paddingTop="10dp"/>
+
+            <TextView
+                android:id="@+id/menuText4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="20dp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:layout_gravity="right"
+                android:paddingTop="10dp" />
+
+
+            <TextView
+                android:id="@+id/SequencerMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sequencer"
+                android:textSize="20dp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:layout_gravity="right"
+                android:paddingTop="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <RelativeLayout
+                android:id="@+id/BluetoothTX"
+                android:layout_height="match_parent"
+                android:paddingBottom="10dp"
+                android:layout_width="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorMenuTextDisabled"
+                    android:layout_gravity="right"
+                    android:paddingTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_fragment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.85" />
+    </LinearLayout>
+
+</LinearLayout>
