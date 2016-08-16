@@ -13,7 +13,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible">
+            android:visibility="gone">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -320,7 +320,7 @@
 
             <TextView
                 android:text="X"
-                android:id="@+id/textView24"
+                android:id="@+id/ct_val1"
                 android:layout_column="0"
                 android:layout_width="wrap_content"
                 android:paddingRight="5dp"
@@ -337,7 +337,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Y"
-                android:id="@+id/textView25"
+                android:id="@+id/ct_val2"
                 android:layout_column="1"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -352,7 +352,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="BLINK"
-                android:id="@+id/textView26"
+                android:id="@+id/ct_val3"
                 android:layout_column="2"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -367,7 +367,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView27"
+                android:id="@+id/ct_val4"
                 android:layout_column="3"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -382,7 +382,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView28"
+                android:id="@+id/ct_val5"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -396,7 +396,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RED"
-                android:id="@+id/textView29"
+                android:id="@+id/ct_val6"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -410,7 +410,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GREEN"
-                android:id="@+id/textView30"
+                android:id="@+id/ct_val7"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -424,7 +424,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="BLUE"
-                android:id="@+id/textView31"
+                android:id="@+id/ct_val8"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -438,7 +438,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView32"
+                android:id="@+id/ct_val9"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -452,7 +452,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView33"
+                android:id="@+id/ct_val10"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -466,7 +466,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView34"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -474,13 +473,13 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val11" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView35"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -488,13 +487,13 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val12" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView36"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -502,13 +501,13 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val13" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView37"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -516,13 +515,13 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val14" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView38"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -530,13 +529,13 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val15" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/textView39"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -544,16 +543,17 @@
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
                 android:textSize="6sp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/ct_val16" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <TextView
                 android:text="0"
-                android:id="@+id/ct_val1"
                 android:layout_column="0"
                 android:layout_width="60dp"
                 android:paddingRight="5dp"
@@ -563,13 +563,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/ct_val2"
                 android:layout_column="1"
                 android:paddingRight="5dp"
                 android:allowUndo="true"
@@ -577,13 +577,13 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/ct_val3"
                 android:layout_column="2"
                 android:paddingRight="5dp"
                 android:allowUndo="true"
@@ -591,13 +591,13 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/ct_val4"
                 android:layout_column="3"
                 android:paddingRight="5dp"
                 android:allowUndo="true"
@@ -605,163 +605,35 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/ct_val5"
                 android:paddingRight="5dp"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#ffffff"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/ct_val6"
                 android:paddingRight="5dp"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#ffffff"
                 android:layout_gravity="right"
                 android:layout_weight="1"
-                android:textSize="4sp" />
+                android:textSize="4sp"
+                android:visibility="gone" />
 
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val7"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val8"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val9"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val10"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val11"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val12"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val13"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val14"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val15"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/ct_val16"
-                android:paddingRight="5dp"
-                android:allowUndo="true"
-                android:autoText="false"
-                android:textColor="#ffffff"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:textSize="4sp" />
         </TableRow>
 
         <TableRow
