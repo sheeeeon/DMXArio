@@ -55,8 +55,7 @@ public class SettingFragment extends Fragment  {
             }
         });
 
-        boolean isNotificationOn = mPref.getBoolean("Notification_Visible", true);
-        NotificationSwitch.setChecked(isNotificationOn);
+        NotificationSwitch.setChecked(getPreference("Notification_Visible"));
         NotificationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -73,6 +72,12 @@ public class SettingFragment extends Fragment  {
 
         return v;
     }
+
+    public boolean getPreference(String pref) {
+        boolean preference = mPref.getBoolean(pref, true);
+        return preference;
+    }
+
 
 
     @Override

@@ -346,6 +346,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /* --- 상단바에 관한 내용 --- */
     public void setTitleText(String title) {
         TextView textView = (TextView) findViewById(R.id.titleText);
         textView.setText(title);
@@ -368,10 +369,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LinearLayout.LayoutParams.MATCH_PARENT, 0f);
         tabLayout.setLayoutParams(param4);
 
-    }
-
-    public int getDP(int val) {
-        final int ret = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 320, getResources().getDisplayMetrics());
-        return ret;
     }
 }
