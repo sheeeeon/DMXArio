@@ -203,7 +203,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
         //Log.e("d","onProgressChanged");
-
+        /*
 
         ToggleButton tb1 = (ToggleButton) getActivity().findViewById(R.id.tbChannel1);
         ToggleButton tb2 = (ToggleButton) getActivity().findViewById(R.id.tbChannel2);
@@ -231,6 +231,16 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     ((MainActivity)getActivity()).sendData("+e:"+(i+49)+":"+ progress +"#");
                     tmpStr += (i+49)+"="+ progress +";";
                 }
+            }
+        }
+        */
+
+        for (int i = 0; i < 16; i++) {
+            if (seekBar.getId() == sbIdArray[i]) {
+                txv = (TextView) getView().findViewById(ctIdArray[i]);
+                txv.setText(progress+"");
+                ((MainActivity)getActivity()).sendData("+e:"+(i+1)+":"+ progress +"#");
+                tmpStr += (i+1)+"="+ progress +";";
             }
         }
 

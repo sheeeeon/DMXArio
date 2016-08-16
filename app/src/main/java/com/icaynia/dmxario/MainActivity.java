@@ -32,6 +32,12 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    /* 설정 */
+
+    public boolean developMode = true; //개발자 모드
+
+
+
     int mPariedDeviceCount = 0;
     BluetoothAdapter mBluetoothAdapter;
     int REQUEST_ENABLE_BT = 1;
@@ -163,9 +169,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // getBytes() : String을 byte로 변환
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
             //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-            //mOutputStream.write(msg.getBytes());  // 문자열 전송.
             bluetoothOutAcc += msg.length();
             bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
+
+            if (!developMode) {
+                mOutputStream.write(msg.getBytes());  // 문자열 전송.
+            }
 
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             //Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
