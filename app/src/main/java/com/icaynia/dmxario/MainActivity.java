@@ -79,7 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //
         initSetting();
         bluetoothTxVal = (TextView) findViewById(R.id.bluetoothTxByte);
-
+        if (developMode) {
+            setTitleText("DMXArio (Develop Mode)");
+        }
         if (MainActivity.mTypeface == null)
             MainActivity.mTypeface = Typeface.createFromAsset(getAssets(), "fonts/NotoSansKR-DemiLight.otf");
 
@@ -170,10 +172,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
             //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
             bluetoothOutAcc += msg.length();
-            bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());  // 문자열 전송.
+                bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
+            } else {
+                bluetoothTxVal.setText(msg);
+
             }
 
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
