@@ -9,11 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="6dp">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:visibility="visible">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></LinearLayout>
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -24,7 +35,8 @@
                 android:textOn="1-16"
                 android:textSize="12dp"
                 android:layout_height="40dp"
-                android:enabled="true" />
+                android:enabled="true"
+                android:visibility="invisible" />
 
             <ToggleButton
                 android:layout_width="60dp"
@@ -34,7 +46,8 @@
                 android:layout_column="1"
                 android:textOff="17-32"
                 android:textOn="17-32"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
             <ToggleButton
                 android:layout_width="60dp"
@@ -44,7 +57,8 @@
                 android:layout_column="2"
                 android:textOff="33-48"
                 android:textOn="33-48"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
             <ToggleButton
                 android:layout_width="60dp"
@@ -54,7 +68,8 @@
                 android:layout_column="3"
                 android:textOff="49-64"
                 android:textOn="49-64"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
             <Button
                 android:layout_width="60dp"
@@ -63,7 +78,8 @@
                 android:layout_column="4"
                 android:text="REC"
                 android:textColor="#ff0000"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
             <Button
                 android:layout_width="60dp"
@@ -71,7 +87,8 @@
                 android:id="@+id/StopButton"
                 android:layout_column="5"
                 android:text="STOP"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
 
             <Button
                 android:layout_width="60dp"
@@ -79,7 +96,8 @@
                 android:id="@+id/LoadButton"
                 android:layout_column="6"
                 android:text="LOAD"
-                android:textSize="12dp" />
+                android:textSize="12dp"
+                android:visibility="invisible" />
         </TableRow>
 
         <TableRow
@@ -319,24 +337,23 @@
             android:layout_height="match_parent" >
 
             <TextView
-                android:text="X"
                 android:id="@+id/ct_val1"
                 android:layout_column="0"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content" />
+                android:layout_height="12dp"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Y"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val2"
                 android:layout_column="1"
                 android:paddingRight="5dp"
@@ -345,13 +362,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BLINK"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val3"
                 android:layout_column="2"
                 android:paddingRight="5dp"
@@ -360,13 +377,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val4"
                 android:layout_column="3"
                 android:paddingRight="5dp"
@@ -375,13 +392,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val5"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -389,13 +406,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RED"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val6"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -403,13 +420,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GREEN"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val7"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -417,13 +434,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BLUE"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val8"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -431,13 +448,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val9"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -445,13 +462,13 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:id="@+id/ct_val10"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -459,92 +476,93 @@
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
-                android:layout_weight="1" />
+                android:textSize="10sp"
+                android:layout_weight="1"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val11" />
+                android:id="@+id/ct_val11"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val12" />
+                android:id="@+id/ct_val12"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val13" />
+                android:id="@+id/ct_val13"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val14" />
+                android:id="@+id/ct_val14"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val15" />
+                android:id="@+id/ct_val15"
+                android:text="0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
+                android:layout_width="0dp"
+                android:layout_height="12dp"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
                 android:autoText="false"
                 android:textColor="#bababa"
                 android:paddingLeft="5dp"
-                android:textSize="6sp"
+                android:textSize="10sp"
                 android:layout_weight="1"
-                android:id="@+id/ct_val16" />
+                android:id="@+id/ct_val16"
+                android:text="0" />
         </TableRow>
 
         <TableRow
