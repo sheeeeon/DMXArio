@@ -63,4 +63,5 @@ public class ObjectFileManager {
     public void delete() {
         mContext.deleteFile(FILE_NAME);
     }
+
 }

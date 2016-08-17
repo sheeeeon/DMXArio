@@ -400,6 +400,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void makeToast(String str) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
-
     }
 }

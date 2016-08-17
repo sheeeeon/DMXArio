@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             R.id.ct_val9,R.id.ct_val10,R.id.ct_val11,R.id.ct_val12,
             R.id.ct_val13,R.id.ct_val14,R.id.ct_val15,R.id.ct_val16};
 
+    int[] scnbtIdArray = {R.id.scnbt1};
+
 
     private static Typeface mTypeface;
 
@@ -41,11 +44,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     private Timer mTimer2;
     private Handler handler;
 
-
     public String fileStr = "";
     public String tmpStr = "";
 
-
+    public int selectScn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -55,6 +57,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             SeekBar seekBar = (SeekBar) v.findViewById(sbIdArray[i]);
             seekBar.setMax(255);
             seekBar.setOnSeekBarChangeListener(this);
+        }
+
+        for (int i = 0; i < scnbtIdArray.length; i++) {
+            Button btn = (Button) v.findViewById(scnbtIdArray[i]);
+            btn.setOnClickListener(this);
         }
 
 
@@ -192,8 +199,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 break;
 
 
-
-
+        }
+        for (int i = 0; i < scnbtIdArray.length; i++) {
+            if (v.getId() == scnbtIdArray[i]) {
+                ((MainActivity)getActivity()).makeToast(v.toString());
+                selectScn = v.getId();
+            }
         }
 
     }
