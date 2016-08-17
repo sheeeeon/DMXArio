@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //
         initSetting();
         bluetoothTxVal = (TextView) findViewById(R.id.bluetoothTxByte);
-        if (developMode) {
+        if (developMode==true) {
             setTitleText("DMXArio (Develop Mode)");
         }
         if (MainActivity.mTypeface == null)
