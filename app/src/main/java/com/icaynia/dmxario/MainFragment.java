@@ -35,24 +35,22 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
 
-            case R.id.callBluetoothOn:
-                if (((MainActivity)getActivity()).developMode == true) {
-                    ((MainActivity)getActivity()).makeToast("CallBluetoothOn 이벤트 발생");
-                } else {
+        if (((MainActivity)getActivity()).developMode == true) {
+            ((MainActivity)getActivity()).makeToast(v.toString()+" 이벤트 발생");
+        } else {
+            switch (v.getId()) {
+
+                case R.id.callBluetoothOn:
                     ((MainActivity)getActivity()).BluetoothOn();
-                }
-                break;
-            case R.id.callBluetoothList:
-                if (((MainActivity)getActivity()).developMode == true) {
-                    ((MainActivity)getActivity()).makeToast("CallBluetoothList 이벤트 발생");
-                } else {
+                    break;
+                case R.id.callBluetoothList:
                     ((MainActivity)getActivity()).setupBluetooth();
-                }
-                break;
+                    break;
 
+            }
         }
+
 
     }
 

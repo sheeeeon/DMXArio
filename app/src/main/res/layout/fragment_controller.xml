@@ -9,12 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp">
+        android:layout_marginRight="6dp"
+        android:weightSum="10">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
+            android:layout_height="0dp"
+            android:visibility="visible"
+            android:layout_weight="1">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -99,7 +101,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <TextView
                 android:text="X"
@@ -113,11 +116,11 @@
                 android:paddingLeft="5dp"
                 android:textSize="10sp"
                 android:layout_weight="1"
-                android:layout_height="15dp" />
+                android:layout_height="match_parent" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="Y"
                 android:id="@+id/textView7"
                 android:paddingRight="5dp"
@@ -131,7 +134,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="BLINK"
                 android:id="@+id/textView8"
                 android:paddingRight="5dp"
@@ -145,7 +148,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView9"
                 android:paddingRight="5dp"
@@ -159,7 +162,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView11"
                 android:paddingRight="5dp"
@@ -173,7 +176,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="RED"
                 android:id="@+id/textView10"
                 android:paddingRight="5dp"
@@ -187,7 +190,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="GREEN"
                 android:id="@+id/textView12"
                 android:paddingRight="5dp"
@@ -201,7 +204,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="BLUE"
                 android:id="@+id/textView13"
                 android:paddingRight="5dp"
@@ -215,7 +218,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView14"
                 android:paddingRight="5dp"
@@ -229,7 +232,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView15"
                 android:paddingRight="5dp"
@@ -243,7 +246,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView16"
                 android:paddingRight="5dp"
@@ -257,7 +260,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView18"
                 android:paddingRight="5dp"
@@ -271,7 +274,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView19"
                 android:paddingRight="5dp"
@@ -285,7 +288,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView20"
                 android:paddingRight="5dp"
@@ -299,7 +302,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView21"
                 android:paddingRight="5dp"
@@ -313,7 +316,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="15dp"
+                android:layout_height="match_parent"
                 android:text="0"
                 android:id="@+id/textView22"
                 android:paddingRight="5dp"
@@ -328,7 +331,8 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/ct_val1"
@@ -342,12 +346,12 @@
                 android:paddingLeft="5dp"
                 android:textSize="10sp"
                 android:layout_weight="1"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:text="0" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val2"
                 android:layout_column="1"
                 android:paddingRight="5dp"
@@ -362,7 +366,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val3"
                 android:layout_column="2"
                 android:paddingRight="5dp"
@@ -377,7 +381,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val4"
                 android:layout_column="3"
                 android:paddingRight="5dp"
@@ -392,7 +396,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val5"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -406,7 +410,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val6"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -420,7 +424,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val7"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -434,7 +438,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val8"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -448,7 +452,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val9"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -462,7 +466,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:id="@+id/ct_val10"
                 android:paddingRight="5dp"
                 android:background="#484848"
@@ -476,7 +480,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -490,7 +494,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -504,7 +508,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -518,7 +522,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -532,7 +536,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -546,7 +550,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="12dp"
+                android:layout_height="fill_parent"
                 android:paddingRight="5dp"
                 android:background="#484848"
                 android:allowUndo="true"
@@ -561,8 +565,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_weight="1">
 
             <TextView
                 android:text="0"
@@ -650,8 +655,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+            android:layout_height="0dp"
+            android:visibility="gone"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/button"
@@ -768,13 +774,15 @@
                 android:layout_height="40dp"
                 android:layout_weight="1" />
         </TableRow>
-        <TableRow>
+        <TableRow android:layout_weight="6"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
 
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:background="#646464"
                 android:layout_weight="1" />
@@ -782,7 +790,7 @@
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar2"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:background="#646464"
                 android:layout_weight="1" />
@@ -790,28 +798,28 @@
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar3"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar4"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar5"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar6"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:background="#5a2e2e"
                 android:layout_weight="1" />
@@ -819,7 +827,7 @@
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar7"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:background="#426a34"
                 android:layout_weight="1" />
@@ -827,7 +835,7 @@
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar8"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:background="#262652"
                 android:layout_weight="1" />
@@ -835,56 +843,56 @@
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar9"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar10"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar11"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar12"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar13"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar14"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar15"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.VerticalSeekBar
                 android:id="@+id/seekBar16"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_weight="1" />
 
