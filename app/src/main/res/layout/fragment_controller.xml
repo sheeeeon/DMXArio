@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="visible"
-            android:layout_weight="1">
+            android:layout_weight="0.25">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -26,14 +26,14 @@
                 android:textOff="1-16"
                 android:textOn="1-16"
                 android:textSize="8dp"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
                 android:layout_weight="1" />
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel2"
                 android:layout_column="1"
@@ -45,7 +45,7 @@
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel3"
                 android:layout_column="2"
@@ -57,7 +57,7 @@
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel4"
                 android:layout_column="3"
@@ -69,7 +69,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:id="@+id/RecordButton"
                 android:layout_column="4"
                 android:text="REC"
@@ -80,7 +80,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:id="@+id/StopButton"
                 android:layout_column="5"
                 android:text="STOP"
@@ -90,7 +90,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="match_parent"
                 android:id="@+id/LoadButton"
                 android:layout_column="6"
                 android:text="LOAD"
