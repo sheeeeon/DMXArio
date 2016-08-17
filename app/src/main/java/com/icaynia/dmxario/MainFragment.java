@@ -13,16 +13,22 @@ import android.widget.Button;
  */
 public class MainFragment extends Fragment implements View.OnClickListener {
     MainActivity mHostActivity;
+
+    View v;
+
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
 
-        View v =  inflater.inflate(R.layout.fragment_main, container, false);
+        v =  inflater.inflate(R.layout.fragment_main, container, false);
 
 
         Button BluetoothRequestButton = (Button) v.findViewById(R.id.callBluetoothOn);
         Button BluetoothListButton = (Button) v.findViewById(R.id.callBluetoothList);
         BluetoothListButton.setOnClickListener(this);
         BluetoothRequestButton.setOnClickListener(this);
+
+
         return v;
     }
 
@@ -32,10 +38,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
 
             case R.id.callBluetoothOn:
-               // ((MainActivity)getActivity()).BluetoothOn();
+                if (((MainActivity)getActivity()).developMode == true) {
+                    ((MainActivity)getActivity()).makeToast("CallBluetoothOn 이벤트 발생");
+                } else {
+                    ((MainActivity)getActivity()).BluetoothOn();
+                }
                 break;
             case R.id.callBluetoothList:
-               // ((MainActivity)getActivity()).setupBluetooth();
+                if (((MainActivity)getActivity()).developMode == true) {
+                    ((MainActivity)getActivity()).makeToast("CallBluetoothList 이벤트 발생");
+                } else {
+                    ((MainActivity)getActivity()).setupBluetooth();
+                }
                 break;
 
         }

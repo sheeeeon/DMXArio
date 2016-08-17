@@ -60,11 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     final String TAG = "MainActivity";
 
-
     int mCurrentFragmentIndex;
-
-
-
 
     Handler mHandler = new Handler();
     TextView bluetoothTxVal;
@@ -74,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         //
         initSetting();
@@ -382,6 +377,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0f);
         tabLayout.setLayoutParams(param4);
+
+    }
+
+    public void makeToast(String str) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
 
     }
 }
