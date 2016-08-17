@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = false; //개발자 모드
+    public boolean developMode = true; //개발자 모드
 
 
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCurrentFragmentIndex = MAIN_FRAGMENT;
 
         fragmentReplace(mCurrentFragmentIndex);
-
+        TabOn();
 
 
         //.
@@ -376,6 +376,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout.LayoutParams param4 = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0f);
+        tabLayout.setLayoutParams(param4);
+
+    }
+    public void TabOn() {
+
+        LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
+        LinearLayout llFragment = (LinearLayout) findViewById(R.id.ll_fragment);
+
+
+        tabLayout.setVisibility(View.VISIBLE);
+
+        LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.MATCH_PARENT, 0.7f);
+        llFragment.setLayoutParams(param3);
+        LinearLayout.LayoutParams param4 = new LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.MATCH_PARENT, 0.3f);
         tabLayout.setLayoutParams(param4);
 
     }
