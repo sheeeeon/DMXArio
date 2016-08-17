@@ -937,104 +937,104 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="#2"
-                android:id="@+id/button3" />
+                android:id="@+id/scnbt2" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button12"
+                android:id="@+id/scnbt3"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button18"
+                android:id="@+id/scnbt4"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button19"
+                android:id="@+id/scnbt5"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button20"
+                android:id="@+id/scnbt6"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button21"
+                android:id="@+id/scnbt7"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button22"
+                android:id="@+id/scnbt8"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button23"
+                android:id="@+id/scnbt9"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button24"
+                android:id="@+id/scnbt10"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button25"
+                android:id="@+id/scnbt11"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button26"
+                android:id="@+id/scnbt12"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button27"
+                android:id="@+id/scnbt13"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button28"
+                android:id="@+id/scnbt14"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button29"
+                android:id="@+id/scnbt15"
                 android:text="+" />
 
             <Button
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/button30"
+                android:id="@+id/scnbt16"
                 android:text="+" />
         </TableRow>
 

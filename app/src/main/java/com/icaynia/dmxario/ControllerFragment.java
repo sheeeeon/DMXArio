@@ -32,7 +32,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             R.id.ct_val9,R.id.ct_val10,R.id.ct_val11,R.id.ct_val12,
             R.id.ct_val13,R.id.ct_val14,R.id.ct_val15,R.id.ct_val16};
 
-    int[] scnbtIdArray = {R.id.scnbt1};
+    int[] scnbtIdArray = {R.id.scnbt1,R.id.scnbt2,R.id.scnbt3,R.id.scnbt4,
+            R.id.scnbt5,R.id.scnbt6,R.id.scnbt7,R.id.scnbt8,
+            R.id.scnbt9,R.id.scnbt10,R.id.scnbt11,R.id.scnbt12,
+            R.id.scnbt13,R.id.scnbt14,R.id.scnbt15,R.id.scnbt16,
+    };
 
 
     private static Typeface mTypeface;
