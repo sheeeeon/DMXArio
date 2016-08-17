@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = true; //개발자 모드
+    public boolean developMode = false; //개발자 모드
 
 
 
