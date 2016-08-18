@@ -197,8 +197,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 FileManager mFilemanger = new FileManager();
                 String str = mFilemanger.loadFile("map.txt");
                 final String[] met = str.split("-");
-                mTimer2 = new Timer(true);
-                mTimer2.schedule(
+                mTimer = new Timer(true);
+                mTimer.schedule(
                     new TimerTask(){
                         int i = 0;
                         int t = 0;
@@ -253,8 +253,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 } else {
                     final int scnnumf = scnnum;
                     final HashMap<String, String> sceneData = loadScene(sceneFilenameArray[scnnum]);
-                    Timer mTimer3 = new Timer(true);
-                    mTimer3.schedule(
+                    mTimer = new Timer();
+                    mTimer.schedule(
                         new TimerTask(){
                             int i = 0;
                             int t = 0;
@@ -262,9 +262,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                             public void run(){
                                 handler.post(new Runnable() {
                                     public void run() {
-                                        sceneData.get("testname");
-
+                                        Log.e("timer thread", "타이머 동작 "+i);
                                         mTimer.cancel();
+                                        i++;
                                     }
                                 });
                             }
