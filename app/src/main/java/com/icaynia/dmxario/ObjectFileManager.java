@@ -1,7 +1,9 @@
 package com.icaynia.dmxario;
 
 import android.content.Context;
+import android.util.Log;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -12,6 +14,10 @@ import java.util.HashMap;
  * Created by icaynia on 16/08/18.
  */
 public class ObjectFileManager {
+
+    String dirPath = "/sdcard/DMXArio";
+    File file = new File(dirPath);
+
     private static final String FILE_NAME = "MEMO.obj";
 
     Context mContext = null;
@@ -21,22 +27,22 @@ public class ObjectFileManager {
     }
 
     public void save(HashMap<String, String> objData) {
+        if( !file.exists() ) {
+            file.mkdirs();
+        }
+
         if (objData == null || objData.isEmpty()) {
             return;
 
         }
-
-        ObjectOutputStream oos = null;
-        FileOutputStream fos = null;
-
-        try{
-            fos = mContext.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
-
-            oos = new ObjectOutputStream(fos);
+        ObjectOutputStream oos;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/test.txt"));
             oos.writeObject(objData);
             oos.close();
+        }catch (Exception e) {}
 
-        } catch (Exception e) { e.printStackTrace(); }
+        Log.e("ObjectFileManager", "완료");
 
     }
 

@@ -1,5 +1,6 @@
 package com.icaynia.dmxario;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -38,6 +40,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             R.id.scnbt13,R.id.scnbt14,R.id.scnbt15,R.id.scnbt16,
     };
 
+    ObjectFileManager mObjFileMgr = new ObjectFileManager(getActivity());
 
     private static Typeface mTypeface;
 
@@ -206,12 +209,13 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         }
         for (int i = 0; i < scnbtIdArray.length; i++) {
             if (v.getId() == scnbtIdArray[i]) {
-                ((MainActivity)getActivity()).makeToast(v.toString());
                 selectScn = v.getId();
+                saveScene();
             }
         }
 
     }
+
 
 
     @Override
@@ -267,4 +271,25 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         mTimer.cancel();
         super.onDestroy();
     }
+
+    public String loadScene() {
+        HashMap<String, String> memoData = mObjFileMgr.load();
+
+
+        return "w";
+    }
+
+    public void saveScene() {
+        String sceneName = "testname";
+        String scene1 = "+e:1:25#";
+        HashMap<String ,String > sceneMap = new HashMap<String ,String>();
+
+        sceneMap.put(sceneName, scene1);
+
+        mObjFileMgr.save(sceneMap);
+
+        Log.e("ControllerFragment", "저장완료");
+    }
+
+
 }
