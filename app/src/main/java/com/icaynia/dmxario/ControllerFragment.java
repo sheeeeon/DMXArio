@@ -1,10 +1,12 @@
 package com.icaynia.dmxario;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -246,9 +248,31 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             if (v.getId() == scnbtIdArray[i]) {
                 selectScn = v.getId();
 
+                LayoutInflater inflater2 = getActivity().getLayoutInflater();
+                final View dialogView2= inflater2.inflate(R.layout.dialog_sceneset, null);
+                //멤버의 세부내역 입력 Dialog 생성 및 보이기
+                AlertDialog.Builder buider2= new AlertDialog.Builder(getActivity()); //AlertDialog.Builder 객체 생성
+                buider2.setTitle(i+"번째 Dialog"); //Dialog 제목
+                buider2.setIcon(android.R.drawable.ic_menu_edit);
+                buider2.setView(dialogView2); //위에서 inflater가 만든 dialogView 객체 세팅 (Customize)
+                buider2.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        Toast.makeText(getActivity(), "취소", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog dialog2;
+                dialog2=buider2.create();
+                dialog2.setCanceledOnTouchOutside(false);
+                dialog2.show();
+
                 //파일이 없을 때
                 if (sceneFilenameArray[i] == "") {
                     ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
+
+
                 }
 
             }
