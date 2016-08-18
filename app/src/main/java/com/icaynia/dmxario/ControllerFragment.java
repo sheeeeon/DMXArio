@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,12 +52,16 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             "","","","",
             "","","",""
     };
-
     ObjectFileManager mObjFileMgr = new ObjectFileManager(getActivity());
 
     private static Typeface mTypeface;
 
     TextView txv;
+
+    ToggleButton tb1;
+    ToggleButton tb2;
+    ToggleButton tb3;
+    ToggleButton tb4;
 
 
     private Timer mTimer;
@@ -88,6 +95,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             TextView tv = (TextView) v.findViewById(ctIdArray[i]);
             tv.setOnClickListener(this);
         }
+
+        tb1 = (ToggleButton) v.findViewById(R.id.tbChannel1);
+        tb2 = (ToggleButton) v.findViewById(R.id.tbChannel2);
+        tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
+        tb4 = (ToggleButton) v.findViewById(R.id.tbChannel4);
 
 
         mTimer = new Timer(true);
@@ -230,12 +242,34 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 seekBar6.updateThumb();
 
 
+
         }
-        for (int i = 0; i < scnbtIdArray.length; i++) {
-            if (v.getId() == scnbtIdArray[i]) {
+        int scnnum;
+        for (scnnum = 0; scnnum < scnbtIdArray.length; scnnum++) {
+            if (v.getId() == scnbtIdArray[scnnum]) {
                 selectScn = v.getId();
-                if (sceneFilenameArray[i] == "") {
+                if (sceneFilenameArray[scnnum] == "") {
                     ((MainActivity)getActivity()).makeToast("파일 설정이 안되어 있습니다. 길게 눌러 설정하시길.");
+                } else {
+                    final int scnnumf = scnnum;
+                    final HashMap<String, String> sceneData = loadScene(sceneFilenameArray[scnnum]);
+                    Timer mTimer3 = new Timer(true);
+                    mTimer3.schedule(
+                        new TimerTask(){
+                            int i = 0;
+                            int t = 0;
+                            @Override
+                            public void run(){
+                                handler.post(new Runnable() {
+                                    public void run() {
+                                        sceneData.get("testname");
+
+                                        mTimer.cancel();
+                                    }
+                                });
+                            }
+                        }, 0, 20
+                    );
                 }
             }
         }
@@ -252,7 +286,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 final View dialogView2= inflater2.inflate(R.layout.dialog_sceneset, null);
                 //멤버의 세부내역 입력 Dialog 생성 및 보이기
                 AlertDialog.Builder buider2= new AlertDialog.Builder(getActivity()); //AlertDialog.Builder 객체 생성
-                buider2.setTitle(i+"번째 Dialog"); //Dialog 제목
+                buider2.setTitle((i+1)+"번째 Dialog"); //Dialog 제목
                 buider2.setIcon(android.R.drawable.ic_menu_edit);
                 buider2.setView(dialogView2); //위에서 inflater가 만든 dialogView 객체 세팅 (Customize)
                 buider2.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -263,18 +297,19 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     }
                 });
 
-                AlertDialog dialog2;
-                dialog2=buider2.create();
-                dialog2.setCanceledOnTouchOutside(false);
-                dialog2.show();
+                EditText sceneETView = (EditText) dialogView2.findViewById(R.id.scenefilenameview);
 
                 //파일이 없을 때
                 if (sceneFilenameArray[i] == "") {
                     ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
-
-
+                } else {
+                    sceneETView.setText(sceneFilenameArray[i]);
                 }
 
+                AlertDialog dialog2;
+                dialog2=buider2.create();
+                dialog2.setCanceledOnTouchOutside(false);
+                dialog2.show();
             }
         }
         return false;
@@ -288,10 +323,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         Log.e("d","onProgressChanged");
 
 
-        ToggleButton tb1 = (ToggleButton) getActivity().findViewById(R.id.tbChannel1);
-        ToggleButton tb2 = (ToggleButton) getActivity().findViewById(R.id.tbChannel2);
-        ToggleButton tb3 = (ToggleButton) getActivity().findViewById(R.id.tbChannel3);
-        ToggleButton tb4 = (ToggleButton) getActivity().findViewById(R.id.tbChannel4);
+
 
         for (int i = 0; i < 16; i++) {
             if (seekBar.getId() == sbIdArray[i]) {
@@ -336,17 +368,16 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         super.onDestroy();
     }
 
-    public String loadScene(String filename) {
+    public HashMap<String, String> loadScene(String filename) {
         HashMap<String, String> memoData = mObjFileMgr.load(filename);
-        //수정필요
 
-        return "w";
+        return memoData;
     }
 
     public void saveScene(String savename) {
         String sceneName = "testname";
         String scene1 = "+e:1:25#";
-        HashMap<String ,String > sceneMap = new HashMap<String ,String>();
+        HashMap<String, String> sceneMap = new HashMap<String, String>();
 
         sceneMap.put(sceneName, scene1);
 

@@ -20,13 +20,13 @@
             android:gravity="center"/>
 
         <EditText
-            android:id="@+id/projectName_edit"
+            android:id="@+id/scenefilenameview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3.5"
             android:hint="파일 이름을 입력하세요"
             android:textSize="12sp"
-            android:gravity="center"/>
+            android:gravity="center" />
 
     </LinearLayout>
 
