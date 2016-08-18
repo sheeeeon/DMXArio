@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
@@ -69,6 +71,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         for (int i = 0; i < scnbtIdArray.length; i++) {
             Button btn = (Button) v.findViewById(scnbtIdArray[i]);
             btn.setOnClickListener(this);
+        }
+
+        for (int i = 0; i < ctIdArray.length; i++) {
+            TextView tv = (TextView) v.findViewById(ctIdArray[i]);
+            tv.setOnClickListener(this);
         }
 
 
@@ -204,6 +211,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 ArrayList<FileVal> arraylist = new ArrayList<FileVal>();
 
                 break;
+
+            case R.id.ct_val6:
+                VerticalSeekBar seekBar6 = (VerticalSeekBar) getActivity().findViewById(R.id.seekBar6);
+
+                seekBar6.setProgress(255);
+                seekBar6.updateThumb();
 
 
         }

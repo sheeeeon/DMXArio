@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
-            //Toast.makeText(getApplicationContext(), "데이터 전송중 오류가 발생", Toast.LENGTH_LONG).show();
+            bluetoothTxVal.setText("전송 도중 오류가 발생했습니다.");
             //finish();  // App 종료
         }
     }

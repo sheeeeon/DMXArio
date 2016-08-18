@@ -54,7 +54,7 @@ public class ObjectFileManager {
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             HashMap<String, String> memoData = null;
-            memoData = (HashMap<String,String >)ois.readObject();
+            memoData = (HashMap<String,String>) ois.readObject();
 
             ois.close();
 
