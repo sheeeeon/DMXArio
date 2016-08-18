@@ -172,7 +172,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mOutputStream.write(msg.getBytes());  // 문자열 전송.
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
-                bluetoothTxVal.setText(msg);
+                //bluetoothTxVal.setText(msg);
+                bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
 
             }
 

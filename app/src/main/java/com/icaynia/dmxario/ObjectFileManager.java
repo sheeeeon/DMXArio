@@ -15,21 +15,15 @@ import java.util.HashMap;
  */
 public class ObjectFileManager {
 
-    String dirPath = "/sdcard/DMXArio";
-    File file = new File(dirPath);
-
-    private static final String FILE_NAME = "MEMO.obj";
-
     Context mContext = null;
 
     public ObjectFileManager(Context _context) {
         mContext = _context;
     }
 
-    public void save(HashMap<String, String> objData) {
-        if( !file.exists() ) {
-            file.mkdirs();
-        }
+    public void save(HashMap<String, String> objData, String filename) {
+        this.initsetfolder();
+
 
         if (objData == null || objData.isEmpty()) {
             return;
@@ -37,20 +31,18 @@ public class ObjectFileManager {
         }
         ObjectOutputStream oos;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/test.txt"));
+            oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/" + filename));
             oos.writeObject(objData);
             oos.close();
+            Log.e("ObjectFileManager", "save completed.");
         }catch (Exception e) {}
-
-        Log.e("ObjectFileManager", "완료");
-
     }
 
     @SuppressWarnings("unchecked")
-    public HashMap<String, String> load() {
+    public HashMap<String, String> load(String filename) {
         try
         {
-            FileInputStream fis = mContext.openFileInput(FILE_NAME);
+            FileInputStream fis = mContext.openFileInput(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             HashMap<String, String> memoData = null;
@@ -66,8 +58,24 @@ public class ObjectFileManager {
         return null;
     }
 
-    public void delete() {
-        mContext.deleteFile(FILE_NAME);
+    public void delete(String filename) {
+        mContext.deleteFile(filename);
+    }
+
+    public void initsetfolder() {
+
+        String dirPath = "/sdcard/DMXArio";   //DMXArio root
+        File file = new File(dirPath);
+        if( !file.exists() ) {
+            file.mkdirs();
+        }
+
+        dirPath = "/sdcard/DMXArio/Controller";   //DMXArio Controller
+        file = new File(dirPath);
+        if( !file.exists() ) {
+            file.mkdirs();
+        }
+
     }
 
 }

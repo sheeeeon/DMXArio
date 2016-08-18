@@ -25,7 +25,7 @@ import java.util.TimerTask;
 /**
  * Created by icaynia on 16. 6. 30..
  */
-public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener, View.OnLongClickListener {
     int[] sbIdArray = {R.id.seekBar,R.id.seekBar2,R.id.seekBar3,R.id.seekBar4,
             R.id.seekBar5,R.id.seekBar6,R.id.seekBar7,R.id.seekBar8,
             R.id.seekBar9,R.id.seekBar10,R.id.seekBar11,R.id.seekBar12,
@@ -40,6 +40,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             R.id.scnbt5,R.id.scnbt6,R.id.scnbt7,R.id.scnbt8,
             R.id.scnbt9,R.id.scnbt10,R.id.scnbt11,R.id.scnbt12,
             R.id.scnbt13,R.id.scnbt14,R.id.scnbt15,R.id.scnbt16,
+    };
+
+    String[] sceneFilenameArray = {"scene0.scn","","","",
+            "","","","",
+            "","","","",
+            "","","",""
     };
 
     ObjectFileManager mObjFileMgr = new ObjectFileManager(getActivity());
@@ -68,9 +74,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             seekBar.setOnSeekBarChangeListener(this);
         }
 
+
+        //scene controller
         for (int i = 0; i < scnbtIdArray.length; i++) {
             Button btn = (Button) v.findViewById(scnbtIdArray[i]);
             btn.setOnClickListener(this);
+            btn.setOnLongClickListener(this);
         }
 
         for (int i = 0; i < ctIdArray.length; i++) {
@@ -223,10 +232,28 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         for (int i = 0; i < scnbtIdArray.length; i++) {
             if (v.getId() == scnbtIdArray[i]) {
                 selectScn = v.getId();
-                saveScene();
+                if (sceneFilenameArray[i] == "") {
+                    ((MainActivity)getActivity()).makeToast("파일 설정이 안되어 있습니다. 길게 눌러 설정하시길.");
+                }
             }
         }
 
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        for (int i = 0; i < scnbtIdArray.length; i++) {
+            if (v.getId() == scnbtIdArray[i]) {
+                selectScn = v.getId();
+
+                //파일이 없을 때
+                if (sceneFilenameArray[i] == "") {
+                    ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
+                }
+
+            }
+        }
+        return false;
     }
 
 
@@ -285,21 +312,21 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         super.onDestroy();
     }
 
-    public String loadScene() {
-        HashMap<String, String> memoData = mObjFileMgr.load();
-
+    public String loadScene(String filename) {
+        HashMap<String, String> memoData = mObjFileMgr.load(filename);
+        //수정필요
 
         return "w";
     }
 
-    public void saveScene() {
+    public void saveScene(String savename) {
         String sceneName = "testname";
         String scene1 = "+e:1:25#";
         HashMap<String ,String > sceneMap = new HashMap<String ,String>();
 
         sceneMap.put(sceneName, scene1);
 
-        mObjFileMgr.save(sceneMap);
+        mObjFileMgr.save(sceneMap, savename);
 
         Log.e("ControllerFragment", "저장완료");
     }
