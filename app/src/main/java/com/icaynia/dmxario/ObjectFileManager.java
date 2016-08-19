@@ -35,7 +35,9 @@ public class ObjectFileManager {
             oos.writeObject(objData);
             oos.close();
             Log.e("ObjectFileManager", "save completed.");
-        }catch (Exception e) {}
+        }catch (Exception e) {
+            Log.e("ObjectFileManager", "Save Error!");
+        }
     }
 
     @SuppressWarnings("unchecked")

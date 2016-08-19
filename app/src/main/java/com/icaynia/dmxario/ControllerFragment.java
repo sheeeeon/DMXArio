@@ -66,6 +66,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     private Timer mTimer;
     private Timer mTimer2;
+    private Timer recordTimer;
     private Handler handler;
 
     public String fileStr = "";
@@ -251,25 +252,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 if (sceneFilenameArray[scnnum] == "") {
                     ((MainActivity)getActivity()).makeToast("파일 설정이 안되어 있습니다. 길게 눌러 설정하시길.");
                 } else {
-                    final int scnnumf = scnnum;
-                    final HashMap<String, String> sceneData = loadScene(sceneFilenameArray[scnnum]);
-                    mTimer = new Timer();
-                    mTimer.schedule(
-                        new TimerTask(){
-                            int i = 0;
-                            int t = 0;
-                            @Override
-                            public void run(){
-                                handler.post(new Runnable() {
-                                    public void run() {
-                                        Log.e("timer thread", "타이머 동작 "+i);
-                                        mTimer.cancel();
-                                        i++;
-                                    }
-                                });
-                            }
-                        }, 0, 20
-                    );
+                    recordSceneStart();
                 }
             }
         }
@@ -321,10 +304,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
         Log.e("d","onProgressChanged");
-
-
-
-
         for (int i = 0; i < 16; i++) {
             if (seekBar.getId() == sbIdArray[i]) {
                 txv = (TextView) getView().findViewById(ctIdArray[i]);
@@ -339,7 +318,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 }
                 if (tb3.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+33)+":"+ progress +"#");
-
                     tmpStr += (i+33)+"="+ progress +";";
                 }
                 if (tb4.isChecked()) {
@@ -374,6 +352,38 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         return memoData;
     }
 
+    public void recordSceneStart () {
+        final HashMap<String, String> hm = new HashMap<String, String>();
+        recordTimer = new Timer();
+        recordTimer.schedule(
+                new TimerTask(){
+                    int i = 0;
+                    @Override
+                    public void run(){
+
+                        handler.post(new Runnable() {
+                            public void run() {
+                                fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
+                                Log.e("Controller/rec..start()", i+"#:"+tmpStr);
+                                tmpStr = "";
+
+                                if (i == 1000) {
+                                    Log.e("Controller/rec..start()", "recordTimer stopped.");
+                                    mObjFileMgr.save(hm, "scene0.scn");
+                                    recordTimer.cancel();
+                                }
+                                i++; //
+                            }
+                        });
+                    }
+                }, 100, 20
+        );
+    }
+
+    public void recordSceneStop () {
+
+    }
+
     public void saveScene(String savename) {
         String sceneName = "testname";
         String scene1 = "+e:1:25#";
@@ -384,6 +394,34 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         mObjFileMgr.save(sceneMap, savename);
 
         Log.e("ControllerFragment", "저장완료");
+    }
+
+    public void playScene() {
+
+        HashMap<String, String> scene = loadScene("");
+        mTimer = new Timer();
+        mTimer.schedule(
+                new TimerTask(){
+                    int i = 0;
+                    int t = 0;
+                    @Override
+                    public void run(){
+                        handler.post(new Runnable() {
+                            public void run() {
+
+                                Log.e("Controller/playScene()", "타이머 동작 "+i);
+
+
+                                if (i == 10) {
+                                    Log.e("Controller/playScene()", "mTimer stopped.");
+                                    mTimer.cancel();
+                                }
+                                i++;
+                            }
+                        });
+                    }
+                }, 0, 10
+        );
     }
 
 
