@@ -362,7 +362,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void recordSceneStart (int buttonViewId) {
         final HashMap<String, String> hm = new HashMap<String, String>();
         final Button thisButton = (Button) v.findViewById(buttonViewId);
-        thisButton.setText("REC");
+        thisButton.setText("R");
         thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         recordTimer = new Timer();
         recordTimer.schedule(
@@ -414,23 +414,23 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         HashMap<String, String> scene = loadScene("");
         mTimer = new Timer();
         mTimer.schedule(
-                new TimerTask(){
-                    int i = 0;
-                    int t = 0;
-                    @Override
-                    public void run(){
-                        handler.post(new Runnable() {
-                            public void run() {
-                                Log.e("Controller/playScene()", "타이머 동작 "+i);
-                                if (i == 10) {
-                                    Log.e("Controller/playScene()", "mTimer stopped.");
-                                    mTimer.cancel();
-                                }
-                                i++;
-                            }
-                        });
-                    }
-                }, 0, 10
+            new TimerTask(){
+                int i = 0;
+                int t = 0;
+                @Override
+                public void run(){
+                    handler.post(new Runnable() {
+                        public void run() {
+                        Log.e("Controller/playScene()", "타이머 동작 "+i);
+                        if (i == 10) {
+                            Log.e("Controller/playScene()", "mTimer stopped.");
+                            mTimer.cancel();
+                        }
+                        i++;
+                        }
+                    });
+                }
+            }, 0, 10
         );
     }
 
