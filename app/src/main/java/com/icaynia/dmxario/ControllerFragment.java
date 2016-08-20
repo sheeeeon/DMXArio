@@ -259,7 +259,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     ((MainActivity)getActivity()).makeToast("파일 설정이 안되어 있습니다. 길게 눌러 설정하시길.");
                     setDisplayText("파일 설정");
                 } else {
-                    recordSceneStart(v.getId());
+                    //파일 불러와서 재생 실행
+
+                    loadScene("scene"+scnnum+".scn");
                 }
             }
         }
@@ -270,36 +272,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public boolean onLongClick(View v) {
         for (int i = 0; i < scnbtIdArray.length; i++) {
             if (v.getId() == scnbtIdArray[i]) {
-                selectScn = v.getId();
-
-                LayoutInflater inflater2 = getActivity().getLayoutInflater();
-                final View dialogView2= inflater2.inflate(R.layout.dialog_sceneset, null);
-                //멤버의 세부내역 입력 Dialog 생성 및 보이기
-                AlertDialog.Builder buider2= new AlertDialog.Builder(getActivity()); //AlertDialog.Builder 객체 생성
-                buider2.setTitle((i+1)+"번째 Dialog"); //Dialog 제목
-                buider2.setIcon(android.R.drawable.ic_menu_edit);
-                buider2.setView(dialogView2); //위에서 inflater가 만든 dialogView 객체 세팅 (Customize)
-                buider2.setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Toast.makeText(getActivity(), "취소", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                EditText sceneETView = (EditText) dialogView2.findViewById(R.id.scenefilenameview);
-
                 //파일이 없을 때
                 if (sceneFilenameArray[i] == "") {
                     ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
                 } else {
-                    sceneETView.setText(sceneFilenameArray[i]);
+                    recordSceneStart(v.getId());
                 }
-
-                AlertDialog dialog2;
-                dialog2=buider2.create();
-                dialog2.setCanceledOnTouchOutside(false);
-                dialog2.show();
             }
         }
         return false;
@@ -372,20 +350,20 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 public void run(){
                     handler.post(new Runnable() {
                         public void run() {
-                            fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
-                            Log.e("Controller/rec..start()", i+"#:"+tmpStr);
-                            setDisplayText("Frame : "+i+" / 100");
-                            hm.put(i+"#",tmpStr);
-                            tmpStr = "";
+                        fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
+                        Log.e("Controller/rec..start()", i+"#:"+tmpStr);
+                        setDisplayText("Frame : "+i+" / 100");
+                        hm.put(i+"#",tmpStr);
+                        tmpStr = "";
 
-                            if (i == 100) {
-                                Log.e("Controller/rec..start()", "recordTimer stopped.");
-                                mObjFileMgr.save(hm, "Controller/scene0.scn");
-                                thisButton.setText("+");
-                                thisButton.setTextColor(getResources().getColor(android.R.color.black));
-                                recordTimer.cancel();
-                            }
-                            i++;
+                        if (i == 100) {
+                            Log.e("Controller/rec..start()", "recordTimer stopped.");
+                            mObjFileMgr.save(hm, "Controller/scene"+i+".scn");
+                            thisButton.setText("+");
+                            thisButton.setTextColor(getResources().getColor(android.R.color.black));
+                            recordTimer.cancel();
+                        }
+                        i++;
                         }
                     });
                 }
