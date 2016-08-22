@@ -265,25 +265,30 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     //파일 불러와서 재생 실행
 
                     final HashMap<String, String> hm = mObjFileMgr.load();
-                    Log.e("s", hm.get("testn"));
+
+                    final int framelength = Integer.parseInt(hm.get("FrameLength"));
+                    Log.e("s", framelength+"");
+
                     playTimer = new Timer();
                     playTimer.schedule(
-                            new TimerTask(){
-                                int i = 0;
-                                @Override
-                                public void run(){
-                                    handler.post(new Runnable() {
-                                        public void run() {
-                                            ((MainActivity)getActivity()).sendData("i");
+                        new TimerTask(){
+                            int i = 0;
+                            @Override
+                            public void run(){
 
-                                            if (i == 50) {
-                                                playTimer.cancel();
-                                            }
-                                            i++;
+                                handler.post(new Runnable() {
+                                    public void run() {
+                                        ((MainActivity)getActivity()).sendData(hm.get(i+"#"));
+                                        //((MainActivity)getActivity()).makeToast(i+"# : " + hm.get(i+"#"));
+
+                                        if (i == framelength) {
+                                            playTimer.cancel();
                                         }
-                                    });
-                                }
-                            }, 100, 20
+                                        i++;
+                                    }
+                                });
+                            }
+                        }, 100, 20
                     );
 
                 }
@@ -369,7 +374,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         thisButton.setText("R");
         thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         recordTimer = new Timer();
-        hm.put("testn","m123m14");
         recordTimer.schedule(
             new TimerTask(){
                 int i = 0;
@@ -382,9 +386,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                         setDisplayText("Frame : "+i+" / 100");
                         hm.put(i+"#",tmpStr);
                         tmpStr = "";
-
                         if (i == 100) {
                             Log.e("Controller/rec..start()", "recordTimer stopped.");
+                            hm.put("FrameLength",i+"");
                             mObjFileMgr.save(hm, "scene0.scn");
                             thisButton.setText("+");
                             thisButton.setTextColor(getResources().getColor(android.R.color.black));

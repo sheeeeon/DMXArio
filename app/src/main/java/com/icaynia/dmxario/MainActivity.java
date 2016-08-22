@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = true; //개발자 모드
+    public boolean developMode = false; //개발자 모드
 
 
 
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Set<BluetoothDevice> mDevices;
     int bluetoothOutAcc = 0;
     private static Typeface mTypeface;
+    static String msg2;
 
     final String TAG = "MainActivity";
 
@@ -99,15 +100,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menuText5.setOnClickListener(this);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        //mDevices = mBluetoothAdapter.getBondedDevices();
+        mDevices = mBluetoothAdapter.getBondedDevices();
 
         mCurrentFragmentIndex = MAIN_FRAGMENT;
 
         fragmentReplace(mCurrentFragmentIndex);
         TabOn();
-
-
-        //.
 
 
   }
@@ -165,11 +163,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             // getBytes() : String을 byte로 변환
             // OutputStream.write : 데이터를 쓸때는 write(byte[]) 메소드를 사용함. byte[] 안에 있는 데이터를 한번에 기록해 준다.
-            //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
             bluetoothOutAcc += msg.length();
 
             if (!developMode) {
-                mOutputStream.write(msg.getBytes());  // 문자열 전송.
+                mOutputStream.write(msg.getBytes());
+                Thread.sleep(10);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 //bluetoothTxVal.setText(msg);
@@ -402,4 +400,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void makeToast(String str) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
+
 }
