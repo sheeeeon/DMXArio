@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());
-                Thread.sleep(20);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 //bluetoothTxVal.setText(msg);
