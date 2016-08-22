@@ -66,7 +66,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
 
     private Timer mTimer;
-    private Timer mTimer2;
+    private Timer playTimer;
     private Timer recordTimer;
     private Handler handler;
 
@@ -131,6 +131,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         ViewGroup root = (ViewGroup) getActivity().findViewById(android.R.id.content);
         setGlobalFont(root);
+
+
 
 
 
@@ -226,6 +228,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                                             ((MainActivity) getActivity()).sendData("+e:" + fin[0] + ":" + fin[1] + "#");
                                             Log.e("e", "+e:" + fin[0] + ":" + fin[1] + "#");
                                         }
+
                                         Log.e("e", stru[1]);
                                         tmpStr = "";
 
@@ -256,12 +259,33 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             if (v.getId() == scnbtIdArray[scnnum]) {
                 selectScn = v.getId();
                 if (sceneFilenameArray[scnnum] == "") {
-                    ((MainActivity)getActivity()).makeToast("파일 설정이 안되어 있습니다. 길게 눌러 설정하시길.");
-                    setDisplayText("파일 설정");
+                    ((MainActivity)getActivity()).makeToast("아무것도 없음");
+                    setDisplayText("아무것도 없음");
                 } else {
                     //파일 불러와서 재생 실행
 
-                    loadScene("scene"+scnnum+".scn");
+                    final HashMap<String, String> hm = mObjFileMgr.load();
+                    Log.e("s", hm.get("testn"));
+                    playTimer = new Timer();
+                    playTimer.schedule(
+                            new TimerTask(){
+                                int i = 0;
+                                @Override
+                                public void run(){
+                                    handler.post(new Runnable() {
+                                        public void run() {
+                                            ((MainActivity)getActivity()).sendData("i");
+
+                                            if (i == 50) {
+                                                playTimer.cancel();
+                                            }
+                                            i++;
+                                        }
+                                    });
+                                }
+                            }, 100, 20
+                    );
+
                 }
             }
         }
@@ -270,16 +294,18 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     @Override
     public boolean onLongClick(View v) {
+        v.setOnClickListener(null);
         for (int i = 0; i < scnbtIdArray.length; i++) {
             if (v.getId() == scnbtIdArray[i]) {
                 //파일이 없을 때
                 if (sceneFilenameArray[i] == "") {
                     ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
                 } else {
-                    recordSceneStart(v.getId());
+                    recordSceneStart(v);
                 }
             }
         }
+
         return false;
     }
 
@@ -332,17 +358,18 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     }
 
     public HashMap<String, String> loadScene(String filename) {
-        HashMap<String, String> memoData = mObjFileMgr.load(filename);
+        HashMap<String, String> memoData = mObjFileMgr.load();
 
         return memoData;
     }
 
-    public void recordSceneStart (int buttonViewId) {
+    public void recordSceneStart (final View v) {
         final HashMap<String, String> hm = new HashMap<String, String>();
-        final Button thisButton = (Button) v.findViewById(buttonViewId);
+        final Button thisButton = (Button)getView().findViewById(v.getId());
         thisButton.setText("R");
         thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         recordTimer = new Timer();
+        hm.put("testn","m123m14");
         recordTimer.schedule(
             new TimerTask(){
                 int i = 0;
@@ -358,9 +385,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                         if (i == 100) {
                             Log.e("Controller/rec..start()", "recordTimer stopped.");
-                            mObjFileMgr.save(hm, "Controller/scene"+i+".scn");
+                            mObjFileMgr.save(hm, "scene0.scn");
                             thisButton.setText("+");
                             thisButton.setTextColor(getResources().getColor(android.R.color.black));
+                            onClickListener(thisButton);
                             recordTimer.cancel();
                         }
                         i++;
@@ -387,31 +415,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         Log.e("ControllerFragment", "저장완료");
     }
 
-    public void playScene() {
+    public void onClickListener(View v) {
 
-        HashMap<String, String> scene = loadScene("");
-        mTimer = new Timer();
-        mTimer.schedule(
-            new TimerTask(){
-                int i = 0;
-                int t = 0;
-                @Override
-                public void run(){
-                    handler.post(new Runnable() {
-                        public void run() {
-                        Log.e("Controller/playScene()", "타이머 동작 "+i);
-                        if (i == 10) {
-                            Log.e("Controller/playScene()", "mTimer stopped.");
-                            mTimer.cancel();
-                        }
-                        i++;
-                        }
-                    });
-                }
-            }, 0, 10
-        );
+        v.setOnClickListener(this);
     }
-
 
     public void setDisplayText(String str) {
         scnDisplay.setText(str);
