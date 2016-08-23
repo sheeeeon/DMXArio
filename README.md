@@ -1,3 +1,3 @@
 # DMXArio
 
-dmxario
+dmxario is DMX Controller Application.
