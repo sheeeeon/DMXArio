@@ -278,12 +278,15 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                                 handler.post(new Runnable() {
                                     public void run() {
-                                        ((MainActivity)getActivity()).sendData(hm.get(i+"#"));
-                                        //((MainActivity)getActivity()).makeToast(i+"# : " + hm.get(i+"#"));
 
+                                        String cm = hm.get(i+"#");
                                         if (i == framelength) {
                                             playTimer.cancel();
+                                            cancel();
                                         }
+                                        ((MainActivity)getActivity()).sendData(cm);
+                                        Log.e("playTimer", i + "# : " + cm);
+
                                         i++;
                                     }
                                 });
@@ -318,8 +321,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-        Log.e("d","onProgressChanged");
         for (int i = 0; i < 16; i++) {
             if (seekBar.getId() == sbIdArray[i]) {
                 txv = (TextView) getView().findViewById(ctIdArray[i]);
@@ -374,6 +375,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         final Button thisButton = (Button)getView().findViewById(v.getId());
         thisButton.setText("R");
         thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+        tmpStr = "";
         recordTimer = new Timer();
         recordTimer.schedule(
             new TimerTask(){
@@ -400,7 +402,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                         }
                     });
                 }
-            }, 100, 20
+            }, 0, 20
         );
     }
 
