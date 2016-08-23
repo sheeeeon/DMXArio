@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -23,8 +24,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -48,6 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static int CONTROLLER_FRAGMENT = 3;
     public final static int SETTING_FRAGMENT = 4;
     public final static int SEQUENCER_FRAGMENT = 5;
+
+    Thread mWorkerThread = null;
+    byte[] readBuffer;
+    int readBufferPosition;
+    char mCharDelimiter =  '\n';
+    String mStrDelimiter = "\n";
 
     BluetoothDevice mRemoteDevie;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
@@ -167,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());
+                Thread.sleep(30);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 //bluetoothTxVal.setText(msg);
@@ -334,7 +344,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    void beginListenForData() {
+        final Handler handler = new Handler();
 
+        readBufferPosition = 0;                 // 버퍼 내 수신 문자 저장 위치.
+        readBuffer = new byte[1024];            // 수신 버퍼.
+
+        // 문자열 수신 쓰레드.
+        mWorkerThread = new Thread(new Runnable()
+        {
+            @Override
+            public void run() {
+                // interrupt() 메소드를 이용 스레드를 종료시키는 예제이다.
+                // interrupt() 메소드는 하던 일을 멈추는 메소드이다.
+                // isInterrupted() 메소드를 사용하여 멈추었을 경우 반복문을 나가서 스레드가 종료하게 된다.
+                while(!Thread.currentThread().isInterrupted()) {
+                    try {
+                        // InputStream.available() : 다른 스레드에서 blocking 하기 전까지 읽은 수 있는 문자열 개수를 반환함.
+                        int byteAvailable = mInputStream.available();   // 수신 데이터 확인
+                        if(byteAvailable > 0) {                        // 데이터가 수신된 경우.
+                            byte[] packetBytes = new byte[byteAvailable];
+                            // read(buf[]) : 입력스트림에서 buf[] 크기만큼 읽어서 저장 없을 경우에 -1 리턴.
+                            mInputStream.read(packetBytes);
+                            for(int i=0; i<byteAvailable; i++) {
+                                byte b = packetBytes[i];
+                                if(b == mCharDelimiter) {
+                                    byte[] encodedBytes = new byte[readBufferPosition];
+                                    //  System.arraycopy(복사할 배열, 복사시작점, 복사된 배열, 붙이기 시작점, 복사할 개수)
+                                    //  readBuffer 배열을 처음 부터 끝까지 encodedBytes 배열로 복사.
+                                    System.arraycopy(readBuffer, 0, encodedBytes, 0, encodedBytes.length);
+
+                                    final String data = new String(encodedBytes, "US-ASCII");
+                                    readBufferPosition = 0;
+
+                                    handler.post(new Runnable(){
+                                        // 수신된 문자열 데이터에 대한 처리.
+                                        @Override
+                                        public void run() {
+                                            // mStrDelimiter = '\n';
+                                            Log.e("e",data+"8");
+                                        }
+
+                                    });
+                                }
+                                else {
+                                    readBuffer[readBufferPosition++] = b;
+                                }
+                            }
+                        }
+
+                    } catch (Exception e) {    // 데이터 수신 중 오류 발생.
+                        Toast.makeText(getApplicationContext(), "데이터 수신 중 오류가 발생 했습니다.", Toast.LENGTH_LONG).show();
+                        finish();            // App 종료.
+                    }
+                }
+            }
+
+        });
+
+    }
 
     public void initSetting() {
         View BluetoothTXLayout = findViewById(R.id.BluetoothTX);

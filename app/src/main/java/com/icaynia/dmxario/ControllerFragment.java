@@ -327,6 +327,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 if (tb1.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+1)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+1)+":"+ progress +"#";
+
                 }
                 if (tb2.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+17)+":"+ progress +"#");
