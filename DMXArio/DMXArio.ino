@@ -69,7 +69,6 @@ int* getParam(String cmd) {
   int param[3] = {0,0,0};
   if (cmd[0] == '+' && cmd[2] == ':') {
     param[0] = cmd[1];
-
   }
   int i;
   int tempInt;
