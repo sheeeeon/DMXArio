@@ -67,19 +67,24 @@ void loop() {
 int* getParam(String cmd) {
   char tmp[4] = "";
   int param[3] = {0,0,0};
+  int eror = 3;
   if (cmd[0] == '+' && cmd[2] == ':') {
     param[0] = cmd[1];
+    
+  } else if (cmd[1] == ':') {
+    param[0] = cmd[0];
+    eror = 2;
   }
+  
   int i;
   int tempInt;
   
-  
-  for (i = 3; i <= 10; i++) {
-    if (cmd[i] == ':') {
-      cmd.substring(3, i+1).toCharArray(tmp, 4);
-      param[1] = atoi(tmp);
-      break;
-    }
+  for (i = eror; i <= 10; i++) {
+      if (cmd[i] == ':') {
+        cmd.substring(eror, i+1).toCharArray(tmp, 4);
+        param[1] = atoi(tmp);
+        break;
+      }
   }
   
   for (int j = i+1; j <= 11; j++) {
@@ -89,6 +94,8 @@ int* getParam(String cmd) {
       break;
     }
   }
+  
+  
   Serial.print(" -- ");
   Serial.print(param[0]);
   Serial.print("+");

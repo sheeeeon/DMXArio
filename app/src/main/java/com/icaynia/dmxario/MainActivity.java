@@ -72,12 +72,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     int mCurrentFragmentIndex;
 
-    Handler mHandler = new Handler();
+    static Handler handler;
     TextView bluetoothTxVal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
 
+                Log.e("E", msg.obj.toString());
+            }
+        };
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -114,8 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCurrentFragmentIndex = MAIN_FRAGMENT;
 
         fragmentReplace(mCurrentFragmentIndex);
-        TabOn();
-
 
   }
 
@@ -223,18 +228,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void fragmentReplace(int reqNewFragmentIndex) {
 
         Fragment newFragment = null;
-
         Log.d(TAG, "fragmentReplace " + reqNewFragmentIndex);
-
         newFragment = getFragment(reqNewFragmentIndex);
-
         // replace fragment
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
         transaction.replace(R.id.ll_fragment, newFragment);
         //transaction.addToBackStack(null);
         transaction.commit();
-
         //onPause();
 
     }
@@ -449,10 +449,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
         LinearLayout llFragment = (LinearLayout) findViewById(R.id.ll_fragment);
-
-
         tabLayout.setVisibility(View.VISIBLE);
-
         LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0.7f);
@@ -468,4 +465,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
+
+
 }
+
+
