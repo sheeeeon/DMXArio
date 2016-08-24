@@ -146,13 +146,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 ToggleButton tb = (ToggleButton) getActivity().findViewById(R.id.funcswitch3_1);
                 VerticalSeekBar seekBar3 = (VerticalSeekBar) getActivity().findViewById(R.id.seekBar3);
                 if (tb.isChecked()) {
-                    seekBar3.setMax(99);
-                    seekBar3.setProgress(99);
-                    seekBar3.updateThumb();
+                    seekBar3.setMaxValue(99);
                 } else {
-                    seekBar3.setMax(255);
-                    seekBar3.setProgress(255);
-                    seekBar3.updateThumb();
+                    seekBar3.setMaxValue(255);
                 }
                 break;
 
@@ -165,11 +161,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
 
         }
-        int scnnum;
-        for (scnnum = 0; scnnum < scnbtIdArray.length; scnnum++) {
-            if (v.getId() == scnbtIdArray[scnnum]) {
+        int sceneNum;
+        for (sceneNum = 0; sceneNum < scnbtIdArray.length; sceneNum++) {
+            if (v.getId() == scnbtIdArray[sceneNum]) {
                 selectScn = v.getId();
-                final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+scnnum+".scn");
+                final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+sceneNum+".scn");
                 if (hm == null) {
                     ((MainActivity)getActivity()).makeToast("아무것도 없음");
                     setDisplayText("아무것도 없음");

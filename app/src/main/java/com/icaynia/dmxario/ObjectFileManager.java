@@ -22,20 +22,20 @@ public class ObjectFileManager {
     }
 
     public void save(HashMap<String, String> objData, String filename) {
-        this.initsetfolder();
+        this.initSetFolder();
 
 
         if (objData == null || objData.isEmpty()) {
             return;
-
         }
+
         ObjectOutputStream oos;
         try {
             oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/"+filename));
             oos.writeObject(objData);
             oos.close();
             Log.e("ObjectFileManager", "save completed : " + filename);
-        }catch (Exception e) {
+        } catch (Exception e) {
             Log.e("ObjectFileManager", "Save Error!");
         }
     }
@@ -64,7 +64,7 @@ public class ObjectFileManager {
         mContext.deleteFile(filename);
     }
 
-    public void initsetfolder() {
+    public void initSetFolder() {
 
         String dirPath = "/sdcard/DMXArio";   //DMXArio root
         File file = new File(dirPath);
