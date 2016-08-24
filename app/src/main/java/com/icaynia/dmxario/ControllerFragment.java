@@ -102,11 +102,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
         tb4 = (ToggleButton) v.findViewById(R.id.tbChannel4);
 
-
         mTimer = new Timer(true);
         handler = new Handler();
-
-
 
         ((MainActivity)getActivity()).TabOff();
 
@@ -258,10 +255,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     ((MainActivity)getActivity()).makeToast("아무것도 없음");
                     setDisplayText("아무것도 없음");
                 } else {
-                    //파일 불러와서 재생 실행
-
-
-
                     final int framelength = Integer.parseInt(hm.get("FrameLength"));
                     Log.e("s", framelength+"");
 

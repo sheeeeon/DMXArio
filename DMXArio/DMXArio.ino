@@ -15,13 +15,14 @@ int Rx=7;
 
 int sig = 2;
 
-byte value[64];
+byte value[512];
+String command;
 
 SoftwareSerial mySerial(Tx, Rx);
 
 
 
-//int param[3] = {0,0,0}; //-> mode, sub, value.
+int param[3] = {0,0,0}; //-> mode, sub, value.
 int i = 0;
 int arrayCount=0;
 bool flag = true;
@@ -43,7 +44,6 @@ void setup() {
 }
 
 void loop() {
-  String command;
   char tmp2;
   while (mySerial.available()) {
     tmp2 = mySerial.read();
@@ -51,7 +51,6 @@ void loop() {
     if (tmp2 == '#') {
       Serial.print(command);
       execute(getParam(command));
-      //mySerial.begin(38400); 
       command = "";
       flag = true;
       Serial.println();
@@ -126,13 +125,12 @@ void dmxwrite(int chan, int val) {
 }
 
 void dmxexecute() {
-  
+  digitalWrite(sig, LOW);
+  delay(1);
   shiftDmxOut(sig, 0);
-  
-  for (int i = 1; i <= 64; i++) {
+  for (int i = 1; i <= 512; i++) {
     shiftDmxOut(sig, value[i-1]);
   }
-  Serial.print(" ------- W");
 }
 
 void shiftDmxOut(int pin, int theByte)
