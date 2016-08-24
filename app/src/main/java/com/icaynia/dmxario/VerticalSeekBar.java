@@ -66,8 +66,8 @@ public class VerticalSeekBar extends SeekBar {
     }
 
     public void setMaxValue(int maxValue) {
-        this.setMax(99);
-        this.setProgress(99);
+        this.setMax(maxValue);
+        this.setProgress(maxValue);
         this.updateThumb();
     }
 }
