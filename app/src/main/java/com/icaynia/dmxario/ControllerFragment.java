@@ -123,11 +123,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         ViewGroup root = (ViewGroup) getActivity().findViewById(android.R.id.content);
         setGlobalFont(root);
-
-
-
-
-
         return v;
 
 
@@ -159,82 +154,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     seekBar3.setProgress(255);
                     seekBar3.updateThumb();
                 }
-
-                break;
-
-            case R.id.RecordButton:
-
-                mTimer.schedule(
-                    new TimerTask(){
-                        int i = 0;
-                        int t = 0;
-                        @Override
-                        public void run(){
-
-                            handler.post(new Runnable() {
-                                public void run() {
-                                    fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
-                                    Log.e("e", i+"#"+tmpStr+"-\n");
-                                    tmpStr = "";
-                                    i++;
-                                    t+=1;
-                                }
-                            });
-                        }
-                    }, 100, 20
-                );
-                break;
-
-            case R.id.StopButton:
-                FileManager mFilemnger = new FileManager();
-                Log.e("e", fileStr+"\n");
-                mFilemnger.saveFile("map.txt", fileStr+"e#-\n");
-                fileStr = "";
-                mTimer.cancel();
-
-                break;
-
-            case R.id.LoadButton:
-                FileManager mFilemanger = new FileManager();
-                String str = mFilemanger.loadFile("map.txt");
-                final String[] met = str.split("-");
-                mTimer = new Timer(true);
-                mTimer.schedule(
-                    new TimerTask(){
-                        int i = 0;
-                        int t = 0;
-                        @Override
-                        public void run(){
-                            handler.post(new Runnable() {
-                                public void run() {
-                                    String[] stru = met[i].split("#");// 7# , 9=166;2=30;
-                                    if (i==met.length-5) mTimer.cancel();
-                                    if (stru.length == 1) {
-                                        Log.e("e", "null");
-                                        mTimer.cancel();
-                                    }
-
-                                        String[] str2 = stru[1].split(";");// 9=166 , 2=30
-                                        for (int jt = 0; jt < str2.length; jt++) {
-                                            String[] fin = str2[jt].split("=");// 9 , 166
-                                            ((MainActivity) getActivity()).sendData("+e:" + fin[0] + ":" + fin[1] + "#");
-                                            Log.e("e", "+e:" + fin[0] + ":" + fin[1] + "#");
-                                        }
-
-                                        Log.e("e", stru[1]);
-                                        tmpStr = "";
-
-                                    i++;
-                                    t+=1;
-                                }
-                            });
-                        }
-                    }, 0, 20
-                );
-
-
-                ArrayList<FileVal> arraylist = new ArrayList<FileVal>();
-
                 break;
 
             case R.id.ct_val6:
@@ -318,7 +237,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 if (tb1.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+1)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+1)+":"+ progress +"#";
-
                 }
                 if (tb2.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+17)+":"+ progress +"#");
