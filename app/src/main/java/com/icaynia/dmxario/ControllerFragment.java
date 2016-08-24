@@ -47,11 +47,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             R.id.scnbt13,R.id.scnbt14,R.id.scnbt15,R.id.scnbt16,
     };
 
-    String[] sceneFilenameArray = {"scene0.scn","","","",
-            "","","","",
-            "","","","",
-            "","","",""
-    };
     ObjectFileManager mObjFileMgr = new ObjectFileManager(getActivity());
 
     private static Typeface mTypeface;
@@ -258,13 +253,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         for (scnnum = 0; scnnum < scnbtIdArray.length; scnnum++) {
             if (v.getId() == scnbtIdArray[scnnum]) {
                 selectScn = v.getId();
-                if (sceneFilenameArray[scnnum] == "") {
+                final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+scnnum+".scn");
+                if (hm == null) {
                     ((MainActivity)getActivity()).makeToast("아무것도 없음");
                     setDisplayText("아무것도 없음");
                 } else {
                     //파일 불러와서 재생 실행
 
-                    final HashMap<String, String> hm = mObjFileMgr.load();
+
 
                     final int framelength = Integer.parseInt(hm.get("FrameLength"));
                     Log.e("s", framelength+"");
@@ -306,10 +302,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         for (int i = 0; i < scnbtIdArray.length; i++) {
             if (v.getId() == scnbtIdArray[i]) {
                 //파일이 없을 때
-                if (sceneFilenameArray[i] == "") {
-                    ((MainActivity)getActivity()).makeToast(":롱클릭: 파일설정 X");
+                final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+i+".scn");
+                if (hm == null) {
+                    recordSceneStart(v, i);
                 } else {
-                    recordSceneStart(v);
+                    recordSceneStart(v, i);
                 }
             }
         }
@@ -365,12 +362,12 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     }
 
     public HashMap<String, String> loadScene(String filename) {
-        HashMap<String, String> memoData = mObjFileMgr.load();
+        HashMap<String, String> memoData = mObjFileMgr.load(filename);
 
         return memoData;
     }
 
-    public void recordSceneStart (final View v) {
+    public void recordSceneStart (final View v, final int t) {
         final HashMap<String, String> hm = new HashMap<String, String>();
         final Button thisButton = (Button)getView().findViewById(v.getId());
         thisButton.setText("R");
@@ -392,7 +389,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                         if (i == 100) {
                             Log.e("Controller/rec..start()", "recordTimer stopped.");
                             hm.put("FrameLength",i+"");
-                            mObjFileMgr.save(hm, "scene0.scn");
+                            mObjFileMgr.save(hm, "Controller/scene"+t+".scn");
                             thisButton.setText("+");
                             thisButton.setTextColor(getResources().getColor(android.R.color.black));
                             onClickListener(thisButton);
@@ -410,17 +407,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     }
 
-    public void saveScene(String savename) {
-        String sceneName = "testname";
-        String scene1 = "+e:1:25#";
-        HashMap<String, String> sceneMap = new HashMap<String, String>();
-
-        sceneMap.put(sceneName, scene1);
-
-        mObjFileMgr.save(sceneMap, savename);
-
-        Log.e("ControllerFragment", "저장완료");
-    }
 
     public void onClickListener(View v) {
 

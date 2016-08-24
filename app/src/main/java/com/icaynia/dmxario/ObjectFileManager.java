@@ -31,20 +31,20 @@ public class ObjectFileManager {
         }
         ObjectOutputStream oos;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/"+"scene0.scn"));
+            oos = new ObjectOutputStream(new FileOutputStream("/sdcard/DMXArio/"+filename));
             oos.writeObject(objData);
             oos.close();
-            Log.e("ObjectFileManager", "save completed.");
+            Log.e("ObjectFileManager", "save completed : " + filename);
         }catch (Exception e) {
             Log.e("ObjectFileManager", "Save Error!");
         }
     }
 
     @SuppressWarnings("unchecked")
-    public HashMap<String, String> load() {
+    public HashMap<String, String> load(String filename) {
         try
         {
-            FileInputStream fis = new FileInputStream("/sdcard/DMXArio/"+"scene0.scn");
+            FileInputStream fis = new FileInputStream("/sdcard/DMXArio/"+filename);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             HashMap<String, String> memoData = null;
