@@ -61,14 +61,15 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
 
     private Timer mTimer;
-    private Timer playTimer;
-    private Timer recordTimer;
+    static boolean ismTimerRunning = false;
     private Handler handler;
 
     public String fileStr = "";
     public String tmpStr = "";
 
     public int selectScn;
+
+    static boolean stopTimer = false;
 
     View v;
 
@@ -102,7 +103,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
         tb4 = (ToggleButton) v.findViewById(R.id.tbChannel4);
 
-        mTimer = new Timer(true);
         handler = new Handler();
 
         ((MainActivity)getActivity()).TabOff();
@@ -138,7 +138,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(final View v) {
 
         switch (v.getId()) {
 
@@ -163,6 +163,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         }
         int sceneNum;
         for (sceneNum = 0; sceneNum < scnbtIdArray.length; sceneNum++) {
+
             if (v.getId() == scnbtIdArray[sceneNum]) {
                 selectScn = v.getId();
                 final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+sceneNum+".scn");
@@ -173,25 +174,26 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                     final int framelength = Integer.parseInt(hm.get("FrameLength"));
                     Log.e("s", framelength+"");
 
-                    playTimer = new Timer();
-                    playTimer.schedule(
+                    mTimer = new Timer();
+                    mTimer.schedule(
                         new TimerTask(){
                             int i = 0;
                             @Override
                             public void run(){
+                                ismTimerRunning = true;
 
                                 handler.post(new Runnable() {
                                     public void run() {
-
-                                        String cm = hm.get(i+"#");
-                                        if (i == framelength) {
-                                            playTimer.cancel();
-                                            cancel();
-                                        }
-                                        ((MainActivity)getActivity()).sendData(cm);
-                                        Log.e("playTimer", i + "# : " + cm);
-
-                                        i++;
+                                    String cm = hm.get(i+"#");
+                                    setDisplayText("Frame : "+i+" / "+framelength+"\n"+cm);
+                                    if (i == framelength || stopTimer) {
+                                        ismTimerRunning = false;
+                                        mTimer.cancel();
+                                        cancel();
+                                    }
+                                    ((MainActivity)getActivity()).sendData(cm);
+                                    Log.e("playTimer", i + "# : " + cm);
+                                    i++;
                                     }
                                 });
                             }
@@ -200,6 +202,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                 }
             }
+
         }
 
     }
@@ -280,27 +283,35 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         thisButton.setText("R");
         thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         tmpStr = "";
-        recordTimer = new Timer();
-        recordTimer.schedule(
+
+        if (ismTimerRunning) {
+            // if
+            mTimer.cancel();
+        }
+
+        mTimer = new Timer();
+        mTimer.schedule(
             new TimerTask(){
                 int i = 0;
                 @Override
                 public void run(){
                     handler.post(new Runnable() {
                         public void run() {
+                        ismTimerRunning = true;
                         fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
                         Log.e("Controller/rec..start()", i+"#:"+tmpStr);
-                        setDisplayText("Frame : "+i+" / 100");
+                        setDisplayText("Frame : "+i+" / 100\n" + tmpStr);
                         hm.put(i+"#",tmpStr);
                         tmpStr = "";
-                        if (i == 100) {
+                        if (i == 200) {
                             Log.e("Controller/rec..start()", "recordTimer stopped.");
                             hm.put("FrameLength",i+"");
                             mObjFileMgr.save(hm, "Controller/scene"+t+".scn");
                             thisButton.setText("+");
                             thisButton.setTextColor(getResources().getColor(android.R.color.black));
                             onClickListener(thisButton);
-                            recordTimer.cancel();
+                            ismTimerRunning = false;
+                            mTimer.cancel();
                         }
                         i++;
                         }
@@ -309,11 +320,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             }, 0, 20
         );
     }
-
-    public void recordSceneStop () {
-
-    }
-
 
     public void onClickListener(View v) {
 
