@@ -38,7 +38,7 @@ void loop()
         
         if (tmp == '#')
         {
-            dmx.write(command);
+            dmx.write(command+'#');
             command = "";
         }
         else

@@ -1,0 +1,144 @@
+#include "dmx.h" 
+#include "pins_arduino.h" 
+
+byte value[512] = {0, };
+int dmxPin;
+
+void dmx::setPin(int _pin)
+{
+    dmxPin = _pin;
+    pinMode(_pin, OUTPUT);
+}
+
+void dmx::write(String command)
+{
+    Serial.print(command);
+    dmx::parseCommand(command);
+}
+
+
+
+//내부함수
+void dmx::parseCommand(String command)
+{
+    int param1, param2, param3;
+    char tmp[4];
+
+    if (command[0] == '+' && command[2] == ':') 
+    {
+        param1 = command[1];
+    }
+    int i;
+    for (i = 3; i <= 6; i++) 
+    {
+        if (command[i] == ':') 
+        {
+            command.substring(3, i+1).toCharArray(tmp,4);
+            param2 = atoi(tmp);
+            break;
+        }
+        else
+        {
+            
+        }
+    }
+
+    for (int j = i+1; j <= 11; j++) 
+    {
+        if (command[j] == '#') 
+        {
+            command.substring(i+1, j+1).toCharArray(tmp,4);
+            param3 = atoi(tmp);
+            break;
+        }
+    }
+    Serial.print("-");
+    Serial.print(param2);
+    Serial.print("-");
+    Serial.print(param3);
+    Serial.println();
+
+    dmx::update(param2, param3);
+}
+
+void dmx::update(int chan, int val) 
+{
+    digitalWrite(2, LOW);
+    delay(1);
+
+    dmx::shiftOut(2, 0);
+    value[chan-1] = val;
+    for (int i = 0; i < 32; i++) 
+    {
+        dmx::shiftOut(2, value[i]);
+    }
+}
+
+void dmx::shiftOut(int pin, int theByte)
+{
+  int port_to_output[] = {
+    NOT_A_PORT,
+    NOT_A_PORT,
+    _SFR_IO_ADDR(PORTB),
+    _SFR_IO_ADDR(PORTC),
+    _SFR_IO_ADDR(PORTD)
+    };
+
+    int portNumber = port_to_output[digitalPinToPort(pin)];
+  int pinMask = digitalPinToBitMask(pin);
+
+  // the first thing we do is to write te pin to high
+  // it will be the mark between bytes. It may be also
+  // high from before
+  _SFR_BYTE(_SFR_IO8(portNumber)) |= pinMask;
+  delayMicroseconds(10);
+
+  // disable interrupts, otherwise the timer 0 overflow interrupt that
+  // tracks milliseconds will make us delay longer than we want.
+  cli();
+
+  // DMX starts with a start-bit that must always be zero
+  _SFR_BYTE(_SFR_IO8(portNumber)) &= ~pinMask;
+
+  // we need a delay of 4us (then one bit is transfered)
+  // this seems more stable then using delayMicroseconds
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+  asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+  for (int i = 0; i < 8; i++)
+  {
+    if (theByte & 01)
+    {
+      _SFR_BYTE(_SFR_IO8(portNumber)) |= pinMask;
+    }
+    else
+    {
+      _SFR_BYTE(_SFR_IO8(portNumber)) &= ~pinMask;
+    }
+
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+    asm("nop\n nop\n nop\n nop\n nop\n nop\n nop\n nop\n");
+
+    theByte >>= 1;
+  }
+
+  // the last thing we do is to write the pin to high
+  // it will be the mark between bytes. (this break is have to be between 8 us and 1 sec)
+  _SFR_BYTE(_SFR_IO8(portNumber)) |= pinMask;
+
+  // reenable interrupts.
+  sei();
+
+}
