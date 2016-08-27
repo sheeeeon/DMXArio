@@ -1,4 +1,4 @@
-I#include "dmx.h" 
+#include "dmx.h" 
 #include "pins_arduino.h" 
 
 #pragma region 상수
