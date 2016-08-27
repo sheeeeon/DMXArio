@@ -1,40 +1,57 @@
 #include "dmx.h" 
 #include "pins_arduino.h" 
 
+#pragma region 상수
+
+const char COMMAND_DELIMITER = ':';
+const char COMMAND_TOKEN = '#';
+const char COMMAND_FTOKEN = '+';
+
+#pragma endregion
+
+
+#pragma region 변수
+
 byte value[512] = {0, };
-int dmxPin;
+int DMX_PIN;
+
+#pragma endregion
+
+
+#pragma region 사용자 함수
 
 void dmx::setPin(int _pin)
 {
-    dmxPin = _pin;
+    DMX_PIN = _pin;
     pinMode(_pin, OUTPUT);
 }
 
 void dmx::write(String command)
 {
     Serial.print(command);
-    dmx::parseCommand(command);
+    int *CommandValue = dmx::parseCommand(command);
+    dmx::execute(CommandValue);
+
 }
 
+#pragma endregion
 
 
-//내부함수
-void dmx::parseCommand(String command)
+#pragma region 내부 함수
+
+int * dmx::parseCommand(String command)
 {
-    int param1, param2, param3;
+    int *param;
     char tmp[4];
 
-    if (command[0] == '+' && command[2] == ':') 
-    {
-        param1 = command[1];
-    }
+    
     int i;
     for (i = 3; i <= 6; i++) 
     {
-        if (command[i] == ':') 
+        if (command[i] == COMMAND_DELIMITER) 
         {
             command.substring(3, i+1).toCharArray(tmp,4);
-            param2 = atoi(tmp);
+            param[1] = atoi(tmp);
             break;
         }
         else
@@ -45,33 +62,54 @@ void dmx::parseCommand(String command)
 
     for (int j = i+1; j <= 11; j++) 
     {
-        if (command[j] == '#') 
+        if (command[j] == COMMAND_TOKEN) 
         {
             command.substring(i+1, j+1).toCharArray(tmp,4);
-            param3 = atoi(tmp);
+            param[2] = atoi(tmp);
             break;
         }
     }
-    Serial.print("-");
-    Serial.print(param2);
-    Serial.print("-");
-    Serial.print(param3);
+    
+    //?
+    param[0] = command[1];
+
+    Serial.print(" : ");
+    Serial.print(param[0]);
+    Serial.print(", ");
+    Serial.print(param[1]);
+    Serial.print(", ");
+    Serial.print(param[2]);
     Serial.println();
 
-    dmx::update(param2, param3);
+    return param;
+}
+
+void dmx::execute (int *CommandValue) 
+{
+    if (CommandValue[0] == 'e') 
+    {
+        dmx::update(CommandValue[1], CommandValue[2]);
+    } else if (CommandValue[0] == 'd')
+    {
+        delay(CommandValue[2]);
+    }
 }
 
 void dmx::update(int chan, int val) 
 {
-    digitalWrite(2, LOW);
+    digitalWrite(DMX_PIN, LOW);
     delay(1);
 
-    dmx::shiftOut(2, 0);
+    dmx::shiftOut(DMX_PIN, 0);
     value[chan-1] = val;
     for (int i = 0; i < 32; i++) 
     {
-        dmx::shiftOut(2, value[i]);
+        dmx::shiftOut(DMX_PIN, value[i]);
     }
+    Serial.print(" : ");
+    Serial.print(chan);
+    Serial.print(", ");
+    Serial.println(val);
 }
 
 void dmx::shiftOut(int pin, int theByte)
@@ -142,3 +180,5 @@ void dmx::shiftOut(int pin, int theByte)
   sei();
 
 }
+
+#pragma endregion
