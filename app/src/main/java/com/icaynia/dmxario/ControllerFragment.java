@@ -239,15 +239,15 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 }
                 if (tb2.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+17)+":"+ progress +"#");
-                    tmpStr += "+e:"+(i+1)+":"+ progress +"#";
+                    tmpStr += "+e:"+(i+17)+":"+ progress +"#";
                 }
                 if (tb3.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+33)+":"+ progress +"#");
-                    tmpStr += "+e:"+(i+1)+":"+ progress +"#";
+                    tmpStr += "+e:"+(i+33)+":"+ progress +"#";
                 }
                 if (tb4.isChecked()) {
                     ((MainActivity)getActivity()).sendData("+e:"+(i+49)+":"+ progress +"#");
-                    tmpStr += "+e:"+(i+1)+":"+ progress +"#";
+                    tmpStr += "+e:"+(i+49)+":"+ progress +"#";
                 }
 
             }
