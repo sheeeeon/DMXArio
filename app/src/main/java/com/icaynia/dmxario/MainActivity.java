@@ -258,9 +258,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case SETTING_FRAGMENT:
                 newFragment = new SettingFragment();
                 break;
-            case SEQUENCER_FRAGMENT:
-                newFragment = new SequencerFragment();
-
             default:
                 Log.d(TAG, "Unhandle case");
                 break;

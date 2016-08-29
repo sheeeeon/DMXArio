@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -53,7 +54,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     TextView txv;
     TextView scnDisplay;
-
+    ToggleButton fader;
     ToggleButton tb1;
     ToggleButton tb2;
     ToggleButton tb3;
@@ -98,6 +99,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             tv.setOnClickListener(this);
         }
 
+        fader = (ToggleButton) v.findViewById(R.id.fader);
+        fader.setOnClickListener(this);
         tb1 = (ToggleButton) v.findViewById(R.id.tbChannel1);
         tb2 = (ToggleButton) v.findViewById(R.id.tbChannel2);
         tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
@@ -142,6 +145,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         switch (v.getId()) {
 
+            case R.id.fader:
+                ToggleButton tn = (ToggleButton) getActivity().findViewById(R.id.fader);
+                if (tn.isChecked()) {
+                    setSeekbar(View.VISIBLE);
+                } else {
+                    setSeekbar(View.GONE);
+                }
+                break;
             case R.id.funcswitch3_1:
                 ToggleButton tb = (ToggleButton) getActivity().findViewById(R.id.funcswitch3_1);
                 VerticalSeekBar seekBar3 = (VerticalSeekBar) getActivity().findViewById(R.id.seekBar3);
@@ -181,7 +192,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                             @Override
                             public void run(){
                                 ismTimerRunning = true;
-
                                 handler.post(new Runnable() {
                                     public void run() {
                                     String cm = hm.get(i+"#");
@@ -224,8 +234,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         return false;
     }
-
-
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -285,7 +293,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         tmpStr = "";
 
         if (ismTimerRunning) {
-            // if
+            // if mTimer is running,
             mTimer.cancel();
         }
 
@@ -330,4 +338,20 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         scnDisplay.setText(str);
     }
 
+    public void setSeekbar(int visible) {
+        TableRow seekBarRow = (TableRow) v.findViewById(R.id.SeekBarRow);
+        TableRow footerRow = (TableRow) v.findViewById(R.id.footerRow);
+
+        seekBarRow.setVisibility(visible);
+        if (visible == View.GONE)
+        {
+            footerRow.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            footerRow.setVisibility(View.GONE);
+        }
+
+
+    }
 }
