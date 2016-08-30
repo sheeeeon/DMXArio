@@ -2,12 +2,14 @@ package com.icaynia.dmxario;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,10 +34,14 @@ import java.util.TimerTask;
  * Created by icaynia on 16. 6. 30..
  */
 public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener, View.OnLongClickListener {
-    int[] sbIdArray = {R.id.seekBar,R.id.seekBar2,R.id.seekBar3,R.id.seekBar4,
+
+
+    int[] sbIdArray = {
+            R.id.seekBar,R.id.seekBar2,R.id.seekBar3,R.id.seekBar4,
             R.id.seekBar5,R.id.seekBar6,R.id.seekBar7,R.id.seekBar8,
             R.id.seekBar9,R.id.seekBar10,R.id.seekBar11,R.id.seekBar12,
-            R.id.seekBar13,R.id.seekBar14,R.id.seekBar15,R.id.seekBar16};
+            R.id.seekBar13,R.id.seekBar14,R.id.seekBar15,R.id.seekBar16
+    };
 
     int[] ctIdArray = {R.id.ct_val1,R.id.ct_val2,R.id.ct_val3,R.id.ct_val4,
             R.id.ct_val5,R.id.ct_val6,R.id.ct_val7,R.id.ct_val8,
@@ -52,14 +58,13 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     private static Typeface mTypeface;
 
-    TextView txv;
-    TextView scnDisplay;
-    ToggleButton fader;
-    ToggleButton tb1;
-    ToggleButton tb2;
-    ToggleButton tb3;
-    ToggleButton tb4;
-
+    private TextView txv;
+    private TextView scnDisplay;
+    private ToggleButton fader;
+    private ToggleButton tb1;
+    private ToggleButton tb2;
+    private ToggleButton tb3;
+    private ToggleButton tb4;
 
     private Timer mTimer;
     static boolean ismTimerRunning = false;
@@ -72,18 +77,36 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     static boolean stopTimer = false;
 
-    View v;
+    VerticalSeekBar[] seekBar = new VerticalSeekBar[16];
+    public View v;
+    ViewHolder mViewHolder;
+
+    SharedPreferences Pref = null;
+
+    SharedPreferences.OnSharedPreferenceChangeListener mPrefChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener()
+    {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+        {
+            boolean isBTTXSwitchOn = sharedPreferences.getBoolean(key,true);
+            Toast.makeText(getActivity(), key+" 설정이 "+ isBTTXSwitchOn + "로 변경.", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-
-
-
+        Pref = getActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE);
+        Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
         v = inflater.inflate(R.layout.fragment_controller, container, false);
+
+        mViewHolder = new ViewHolder();
+
         for (int i = 0; i < 16; i++) {
-            SeekBar seekBar = (SeekBar) v.findViewById(sbIdArray[i]);
-            seekBar.setMax(255);
-            seekBar.setOnSeekBarChangeListener(this);
+            seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
+            seekBar[i].setMax(255);
+            seekBar[i].setProgress(244);
+            seekBar[i].updateThumb();
+            seekBar[i].setOnSeekBarChangeListener(this);
         }
 
 
@@ -98,6 +121,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             TextView tv = (TextView) v.findViewById(ctIdArray[i]);
             tv.setOnClickListener(this);
         }
+        setSeekbarProgress("+e:1:2#");
 
         fader = (ToggleButton) v.findViewById(R.id.fader);
         fader.setOnClickListener(this);
@@ -126,6 +150,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         ViewGroup root = (ViewGroup) getActivity().findViewById(android.R.id.content);
         setGlobalFont(root);
+
+        setSeekbarProgress("+e:1:2#");
         return v;
 
 
@@ -148,9 +174,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             case R.id.fader:
                 ToggleButton tn = (ToggleButton) getActivity().findViewById(R.id.fader);
                 if (tn.isChecked()) {
-                    setSeekbar(View.VISIBLE);
+                    setSeekbarVisible(View.VISIBLE);
                 } else {
-                    setSeekbar(View.GONE);
+                    setSeekbarVisible(View.GONE);
                 }
                 break;
             case R.id.funcswitch3_1:
@@ -338,7 +364,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         scnDisplay.setText(str);
     }
 
-    public void setSeekbar(int visible) {
+    public void setSeekbarVisible(int visible)
+    {
         TableRow seekBarRow = (TableRow) v.findViewById(R.id.SeekBarRow);
         TableRow footerRow = (TableRow) v.findViewById(R.id.footerRow);
 
@@ -351,7 +378,46 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         {
             footerRow.setVisibility(View.GONE);
         }
+    }
 
+    public void setSeekbarProgress(String command)
+    {
+    }
 
+    public int[] getParam(String command)
+    {
+        int[] param = {
+                0, 0, 0
+        };
+
+        if (command.charAt(0) == '+' && command.charAt(2) == ':')
+            param[0] = command.charAt(1);
+        int i;
+        for (i = 3; i <= 6; i++)
+        {
+            if (command.charAt(i) == ':')
+            {
+                String str = command.substring(3, i);
+                param[1] = Integer.parseInt(str);
+
+                Log.e("getParam1", str);
+                break;
+            }
+            else
+            {
+
+            }
+        }
+        for (int j = i+1; j <= 10; j++) {
+            if (command.charAt(j) == '#')
+            {
+                String str = command.substring(i+1, j);
+                param[2] = Integer.parseInt(str);
+                Log.e("getParam2", str);
+                break;
+            }
+        }
+
+        return param;
     }
 }

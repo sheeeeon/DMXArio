@@ -19,7 +19,6 @@ public class SettingFragment extends Fragment  {
 
     SharedPreferences mPref = null;
 
-
     SharedPreferences.OnSharedPreferenceChangeListener mPrefChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
@@ -30,7 +29,6 @@ public class SettingFragment extends Fragment  {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v =  inflater.inflate(R.layout.fragment_setting, container, false);
-
 
         final Switch BTTXSwitch = (Switch) v.findViewById(R.id.BluetoothTXVisible);
         final Switch NotificationSwitch = (Switch) v.findViewById(R.id.NotificationVisible);
@@ -77,8 +75,6 @@ public class SettingFragment extends Fragment  {
         boolean preference = mPref.getBoolean(pref, true);
         return preference;
     }
-
-
 
     @Override
     public void onDestroy() {
