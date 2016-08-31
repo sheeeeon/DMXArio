@@ -56,43 +56,49 @@ android:weightSum="1">
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView3" />
 
+        <LinearLayout
+            android:id="@+id/bluetoothButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView4"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Bluetooth On"
             android:id="@+id/callBluetoothOn"
-            android:layout_below="@+id/textView4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_weight="1"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Bluetooth List"
             android:id="@+id/callBluetoothList"
-            android:layout_alignTop="@+id/callBluetoothOn"
-            android:layout_toRightOf="@+id/callBluetoothOn"
-            android:layout_toEndOf="@+id/callBluetoothOn" />
+            android:layout_weight="1"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/callBluetoothOn"
+            android:layout_below="@+id/bluetoothButton"
             android:orientation="horizontal"
             android:layout_marginBottom="10dp">
             <Button
                 android:id="@+id/menuText0"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="Controller"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textColor="@color/colorMenuTextDisabled"
                 android:paddingTop="10dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/menuText1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="Scene"
                 android:textSize="15sp"
@@ -102,7 +108,7 @@ android:weightSum="1">
 
             <Button
                 android:id="@+id/menuText2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="Settings"
                 android:textSize="15sp"
