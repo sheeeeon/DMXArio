@@ -31,12 +31,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         v =  inflater.inflate(R.layout.fragment_main, container, false);
 
-
         Button BluetoothRequestButton = (Button) v.findViewById(R.id.callBluetoothOn);
         Button BluetoothListButton = (Button) v.findViewById(R.id.callBluetoothList);
         BluetoothListButton.setOnClickListener(this);
         BluetoothRequestButton.setOnClickListener(this);
-
 
         Button menuText0 =(Button) v.findViewById(R.id.menuText0);
         Button menuText1 =(Button) v.findViewById(R.id.menuText1);

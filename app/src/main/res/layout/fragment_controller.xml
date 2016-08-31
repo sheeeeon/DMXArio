@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp">
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -130,12 +131,17 @@
                 android:textSize="8dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:checked="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
 
-            <ToggleButton
-                android:text="f"
+            <Button
+                android:text="REC"
                 android:id="@+id/toggleButton"
                 android:layout_column="0"
                 android:layout_width="0dp"
@@ -156,9 +162,9 @@
                 android:visibility="visible"
                 android:layout_weight="1" />
 
-            <ToggleButton
-                android:text="f"
-                android:id="@+id/toggleButton3"
+            <Button
+                android:text="Main"
+                android:id="@+id/goMain1"
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
@@ -989,12 +995,20 @@
 
         </TableRow>
 
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+        </TableRow>
+
         <TableRow
             android:layout_weight="0.3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:weightSum="16"
-            android:id="@+id/SceneRow">
+            android:id="@+id/SceneRow"
+            android:visibility="gone">
 
             <Button
                 android:layout_width="0dp"

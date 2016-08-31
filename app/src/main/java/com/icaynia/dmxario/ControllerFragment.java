@@ -67,6 +67,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     private ToggleButton tb3;
     private ToggleButton tb4;
 
+
+    public final static int MAIN_FRAGMENT = 0;
+
     private Timer mTimer;
     static boolean ismTimerRunning = false;
     private Handler handler;
@@ -132,6 +135,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
         tb4 = (ToggleButton) v.findViewById(R.id.tbChannel4);
 
+        Button goMain1 = (Button) v.findViewById(R.id.goMain1);
+        goMain1.setOnClickListener(this);
+
         handler = new Handler();
 
         ((MainActivity)getActivity()).TabOff();
@@ -175,7 +181,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void onClick(final View v) {
 
         switch (v.getId()) {
-
+            case R.id.goMain1:
+                ((MainActivity)getActivity()).fragmentReplace(MAIN_FRAGMENT);
+                break;
             case R.id.fader:
                 ToggleButton tn = (ToggleButton) getActivity().findViewById(R.id.fader);
                 if (tn.isChecked()) {
@@ -199,8 +207,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                 seekBar6.setProgress(255);
                 seekBar6.updateThumb();
-
-
 
         }
         int sceneNum;
@@ -370,8 +376,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         mTimer.cancel();
         ismTimerRunning = false;
-
-
     }
 
     public void onClickListener(View v) {
