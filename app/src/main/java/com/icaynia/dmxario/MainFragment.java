@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -17,6 +18,12 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     MainActivity mHostActivity;
 
     View v;
+    public final static int MAIN_FRAGMENT = 0;
+    public final static int COMMAND_FRAGMENT = 1;
+    public final static int MACRO_FRAGMENT = 2;
+    public final static int CONTROLLER_FRAGMENT = 3;
+    public final static int SETTING_FRAGMENT = 4;
+    public final static int SEQUENCER_FRAGMENT = 5;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -29,6 +36,14 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         Button BluetoothListButton = (Button) v.findViewById(R.id.callBluetoothList);
         BluetoothListButton.setOnClickListener(this);
         BluetoothRequestButton.setOnClickListener(this);
+
+
+        Button menuText0 =(Button) v.findViewById(R.id.menuText0);
+        Button menuText1 =(Button) v.findViewById(R.id.menuText1);
+        Button menuText2 =(Button) v.findViewById(R.id.menuText2);
+        menuText0.setOnClickListener(this);
+        menuText1.setOnClickListener(this);
+        menuText2.setOnClickListener(this);
 
 
         return v;
@@ -51,6 +66,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                     break;
 
             }
+        }
+
+
+        switch (v.getId()) {
+            case R.id.menuText0:
+                ((MainActivity)getActivity()).fragmentReplace(CONTROLLER_FRAGMENT);
+                break;
+            case R.id.menuText1:
+                ((MainActivity)getActivity()).fragmentReplace(SETTING_FRAGMENT);
+                break;
+            case R.id.menuText2:
+                ((MainActivity)getActivity()).fragmentReplace(SETTING_FRAGMENT);
         }
 
 

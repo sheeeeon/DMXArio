@@ -20,6 +20,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -103,17 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Button sendButton=(Button)findViewById(R.id.sendButton);
         //sendButton.setOnClickListener(this);
 
-        TextView menuText0 =(TextView) findViewById(R.id.menuText0);
-        TextView menuText1 =(TextView) findViewById(R.id.menuText1);
-        TextView menuText3 =(TextView) findViewById(R.id.menuText3);
-        TextView menuText4 =(TextView) findViewById(R.id.menuText4);
-        TextView menuText5 =(TextView) findViewById(R.id.SequencerMenu);
-
-        menuText0.setOnClickListener(this);
-        menuText1.setOnClickListener(this);
-        menuText3.setOnClickListener(this);
-        menuText4.setOnClickListener(this);
-        menuText5.setOnClickListener(this);
 
         if (developMode) {
 
@@ -143,20 +133,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mCurrentFragmentIndex = COMMAND_FRAGMENT;
                 fragmentReplace(mCurrentFragmentIndex);
                 break;
-            /*
+
             case R.id.menuText2:
                 mCurrentFragmentIndex = MACRO_FRAGMENT;
                 fragmentReplace(mCurrentFragmentIndex);
                 break;
-                */
-            case R.id.menuText3:
-                mCurrentFragmentIndex = CONTROLLER_FRAGMENT;
-                fragmentReplace(mCurrentFragmentIndex);
-                break;
-            case R.id.menuText4:
-                mCurrentFragmentIndex = SETTING_FRAGMENT;
-                fragmentReplace(mCurrentFragmentIndex);
-                break;
+
             case R.id.SequencerMenu:
                 mCurrentFragmentIndex = SEQUENCER_FRAGMENT;
                 fragmentReplace(mCurrentFragmentIndex);

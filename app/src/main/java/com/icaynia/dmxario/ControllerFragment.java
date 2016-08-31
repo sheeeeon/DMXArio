@@ -82,7 +82,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     final HashMap<String, String> buffer = new HashMap<String, String>();
 
     public View v;
-
+    public ControllerButtonHolder scenebt = new ControllerButtonHolder(this.getContext());
     SharedPreferences Pref = null;
 
     SharedPreferences.OnSharedPreferenceChangeListener mPrefChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener()
@@ -100,6 +100,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         Pref = getActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE);
         Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
         v = inflater.inflate(R.layout.fragment_controller, container, false);
+
 
         for (int i = 0; i < 16; i++) {
             seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
@@ -121,7 +122,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             TextView tv = (TextView) v.findViewById(ctIdArray[i]);
             tv.setOnClickListener(this);
         }
-        setSeekbarProgress("+e:1:2#");
+        scenebt.setView(v);
+        scenebt.init();
 
         fader = (ToggleButton) v.findViewById(R.id.fader);
         fader.setOnClickListener(this);
@@ -150,8 +152,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         ViewGroup root = (ViewGroup) getActivity().findViewById(android.R.id.content);
         setGlobalFont(root);
-
-        setSeekbarProgress("+e:1:2#");
         return v;
 
 

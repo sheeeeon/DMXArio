@@ -74,6 +74,45 @@ android:weightSum="1">
             android:layout_toRightOf="@+id/callBluetoothOn"
             android:layout_toEndOf="@+id/callBluetoothOn" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/callBluetoothOn"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+            <Button
+                android:id="@+id/menuText0"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Controller"
+                android:textSize="15dp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:paddingTop="10dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/menuText1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Scene"
+                android:textSize="15sp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:paddingTop="10dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/menuText2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Settings"
+                android:textSize="15sp"
+                android:textColor="@color/colorMenuTextDisabled"
+                android:paddingTop="10dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+
 
     </RelativeLayout>
 </LinearLayout>
