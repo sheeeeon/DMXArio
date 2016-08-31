@@ -79,6 +79,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     static boolean stopTimer = false;
     VerticalSeekBar[] seekBar = new VerticalSeekBar[16];
 
+    final HashMap<String, String> buffer = new HashMap<String, String>();
+
     public View v;
 
     SharedPreferences Pref = null;
@@ -213,6 +215,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 } else {
                     final int framelength = Integer.parseInt(hm.get("FrameLength"));
                     Log.e("s", framelength+"");
+                    if (ismTimerRunning == true) {
+
+                    }
 
                     mTimer = new Timer();
                     mTimer.schedule(
@@ -341,18 +346,13 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                         ismTimerRunning = true;
                         fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
                         Log.e("Controller/rec..start()", i+"#:"+tmpStr);
-                        setDisplayText("Frame : "+i+" / 100\n" + tmpStr);
-                        hm.put(i+"#",tmpStr);
+                        setDisplayText("Frame : "+i+" / 2000\n" + tmpStr);
+                        buffer.put(i+"#",tmpStr);
                         tmpStr = "";
-                        if (i == 200) {
+                        if (i == 2000) {
+                            mTimerSave(buffer, i, t, thisButton);
                             Log.e("Controller/rec..start()", "recordTimer stopped.");
-                            hm.put("FrameLength",i+"");
-                            mObjFileMgr.save(hm, "Controller/scene"+t+".scn");
-                            thisButton.setText("+");
-                            thisButton.setTextColor(getResources().getColor(android.R.color.black));
                             onClickListener(thisButton);
-                            ismTimerRunning = false;
-                            mTimer.cancel();
                         }
                         i++;
                         }
@@ -360,6 +360,18 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 }
             }, 0, 20
         );
+    }
+
+    public void mTimerSave(HashMap<String, String> map, int length, int t, Button btv) {
+        map.put("FrameLength",t+"");
+        mObjFileMgr.save(map, "Controller/scene"+t+".scn");
+        btv.setText(t+"");
+        btv.setTextColor(getResources().getColor(android.R.color.black));
+
+        mTimer.cancel();
+        ismTimerRunning = false;
+
+
     }
 
     public void onClickListener(View v) {
