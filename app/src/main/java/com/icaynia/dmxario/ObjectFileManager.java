@@ -78,6 +78,12 @@ public class ObjectFileManager {
             file.mkdirs();
         }
 
+        dirPath = "/sdcard/DMXArio/Scene";   //DMXArio Controller
+        file = new File(dirPath);
+        if( !file.exists() ) {
+            file.mkdirs();
+        }
+
     }
 
 }
