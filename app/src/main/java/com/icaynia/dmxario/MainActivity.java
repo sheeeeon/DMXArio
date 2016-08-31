@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = false; //개발자 모드
+    public boolean developMode = true; //개발자 모드
 
 
 
@@ -115,8 +115,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menuText4.setOnClickListener(this);
         menuText5.setOnClickListener(this);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        mDevices = mBluetoothAdapter.getBondedDevices();
+        if (developMode) {
+
+        }
+        else {
+
+            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            mDevices = mBluetoothAdapter.getBondedDevices();
+        }
 
         mCurrentFragmentIndex = MAIN_FRAGMENT;
 
