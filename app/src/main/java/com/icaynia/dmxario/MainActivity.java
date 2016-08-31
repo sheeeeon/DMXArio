@@ -187,14 +187,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());
-                Thread.sleep(30);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 //bluetoothTxVal.setText(msg);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
 
             }
-
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
             bluetoothTxVal.setText("전송 도중 오류가 발생했습니다.");
             //finish();  // App 종료

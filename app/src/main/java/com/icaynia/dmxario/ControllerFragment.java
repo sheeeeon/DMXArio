@@ -301,7 +301,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     @Override
     public void onDestroy() {
-        mTimer.cancel();
+        if (ismTimerRunning) {
+            mTimer.cancel();
+            ismTimerRunning = false;
+        }
         super.onDestroy();
     }
 
@@ -321,6 +324,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         if (ismTimerRunning) {
             // if mTimer is running,
             mTimer.cancel();
+            ismTimerRunning = false;
         }
 
         mTimer = new Timer();
