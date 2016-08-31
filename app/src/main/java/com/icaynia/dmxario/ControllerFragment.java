@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,7 +34,7 @@ import java.util.TimerTask;
 /**
  * Created by icaynia on 16. 6. 30..
  */
-public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener, View.OnLongClickListener {
+public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarChangeListener, View.OnClickListener, View.OnLongClickListener, View.OnTouchListener  {
 
 
     int[] sbIdArray = {
@@ -76,10 +77,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public int selectScn;
 
     static boolean stopTimer = false;
-
     VerticalSeekBar[] seekBar = new VerticalSeekBar[16];
+
     public View v;
-    ViewHolder mViewHolder;
 
     SharedPreferences Pref = null;
 
@@ -99,12 +99,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
         v = inflater.inflate(R.layout.fragment_controller, container, false);
 
-        mViewHolder = new ViewHolder();
-
         for (int i = 0; i < 16; i++) {
             seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
             seekBar[i].setMax(255);
-            seekBar[i].setProgress(244);
+            seekBar[i].setProgress(0);
             seekBar[i].updateThumb();
             seekBar[i].setOnSeekBarChangeListener(this);
         }
@@ -164,6 +162,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             else if (child instanceof ViewGroup)
                 setGlobalFont((ViewGroup)child);
         }
+    }
+    @Override
+    public boolean onTouch(final View v, MotionEvent event) {
+
+        return true;
     }
 
     @Override

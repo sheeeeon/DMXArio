@@ -131,15 +131,14 @@
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:visibility="visible"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:checked="true" />
 
             <ToggleButton
                 android:text="f"
                 android:id="@+id/toggleButton"
                 android:layout_column="0"
                 android:layout_width="0dp"
-                android:textOff="f"
-                android:textOn="f"
                 android:textSize="8dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
@@ -151,8 +150,6 @@
                 android:id="@+id/toggleButton2"
                 android:layout_column="0"
                 android:layout_width="0dp"
-                android:textOff="f"
-                android:textOn="f"
                 android:textSize="8dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
@@ -164,8 +161,6 @@
                 android:id="@+id/toggleButton3"
                 android:layout_column="0"
                 android:layout_width="0dp"
-                android:textOff="f"
-                android:textOn="f"
                 android:textSize="8dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
