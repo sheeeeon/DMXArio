@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="0dp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp"
+        android:weightSum="100">
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            android:layout_weight="1">
+
+            <ToggleButton
+                android:text="New ToggleButton"
+                android:id="@+id/tbChannel1"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textOff="1-16"
+                android:textOn="1-16"
+                android:textSize="8dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New ToggleButton"
+                android:id="@+id/tbChannel2"
+                android:layout_column="1"
+                android:textOff="17-32"
+                android:textOn="17-32"
+                android:textSize="8dp"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New ToggleButton"
+                android:id="@+id/tbChannel3"
+                android:layout_column="2"
+                android:textOff="33-48"
+                android:textOn="33-48"
+                android:textSize="8dp"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New ToggleButton"
+                android:id="@+id/tbChannel4"
+                android:layout_column="3"
+                android:textOff="49-64"
+                android:textOn="49-64"
+                android:textSize="8dp"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/RecordButton"
+                android:layout_column="4"
+                android:text="REC"
+                android:textColor="#ff0000"
+                android:textSize="12dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/StopButton"
+                android:layout_column="5"
+                android:text="STOP"
+                android:textSize="12dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/LoadButton"
+                android:layout_column="6"
+                android:text="LOAD"
+                android:textSize="12dp"
+                android:visibility="gone"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/scn_disp"
+                    android:layout_weight="8"
+                    android:layout_column="7"
+                    android:gravity="right"
+                    android:textSize="15sp"
+                    android:background="#000000"
+                    android:textColor="#ffffff"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp" />
+
+            </LinearLayout>
+
+            <ToggleButton
+                android:text="f"
+                android:id="@+id/fader"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textOff="f"
+                android:textOn="f"
+                android:textSize="8dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:checked="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                />
+
+            <Button
+                android:text="REC"
+                android:id="@+id/toggleButton"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textSize="8dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:visibility="invisible"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:text="f"
+                android:id="@+id/toggleButton2"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textSize="8dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:visibility="gone"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="Main"
+                android:id="@+id/goMain1"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textSize="8dp"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:visibility="visible"
+                android:layout_weight="1" />
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
