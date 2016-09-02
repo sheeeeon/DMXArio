@@ -32,7 +32,7 @@ public class SceneFragment extends Fragment implements View.OnClickListener
 
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
         //Button s_setting = (Button) v.findViewById(R.id.s_setting);
-        goMain.setOnClickListener(this );
+        //goMain.setOnClickListener(this );
         return v;
     }
 
