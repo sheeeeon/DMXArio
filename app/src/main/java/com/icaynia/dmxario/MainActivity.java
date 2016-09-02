@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     BluetoothDevice mRemoteDevie;
     // 스마트폰과 페어링 된 디바이스간 통신 채널에 대응 하는 BluetoothSocket
     BluetoothSocket mSocket = null;
+
     OutputStream mOutputStream = null;
     InputStream mInputStream = null;
     Set<BluetoothDevice> mDevices;

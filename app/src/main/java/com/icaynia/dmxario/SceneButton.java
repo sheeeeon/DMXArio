@@ -6,18 +6,25 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.HashMap;
+
 /**
  * Created by icaynia on 16. 9. 2..
  */
 public class SceneButton extends Button
 {
     //region Properties
-    private String SCENE_FILE;
+    private String                      SCENE_PROJECT;
+    private String                      SCENE_FILE;
+    private HashMap<String, String>     SCENE_MAP;
+    private Context                     context;
 
+    ObjectFileManager mObj;
 
     //region Constructors
     public SceneButton(Context _context) {
         super(_context);
+        context = _context;
         this.setOnClickListener(new OnClickListener()
         {
             @Override
@@ -30,6 +37,7 @@ public class SceneButton extends Button
     }
     public SceneButton(Context _context, AttributeSet _atts) {
         super(_context, _atts);
+        context = _context;
         this.setOnClickListener(new OnClickListener()
         {
             @Override
@@ -43,17 +51,7 @@ public class SceneButton extends Button
     }
 
     //region Accessors
-    public void test() {
 
-    }
-    public boolean isFileAvailable() {
-        if (SCENE_FILE == null) return false;
-        else return true;
-    }
-
-    public String getFilename() {
-        return SCENE_FILE;
-    }
 
 
     //region Inner Function
