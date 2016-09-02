@@ -15,7 +15,6 @@ import android.widget.TextView;
  * Created by icaynia on 16. 6. 27..
  */
 public class MainFragment extends Fragment implements View.OnClickListener {
-    MainActivity mHostActivity;
 
     View v;
     public final static int MAIN_FRAGMENT = 0;
@@ -24,6 +23,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public final static int CONTROLLER_FRAGMENT = 3;
     public final static int SETTING_FRAGMENT = 4;
     public final static int SEQUENCER_FRAGMENT = 5;
+    public final static int SCENE_FRAGMENT = 6;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -72,7 +72,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 ((MainActivity)getActivity()).fragmentReplace(CONTROLLER_FRAGMENT);
                 break;
             case R.id.menuText1:
-                ((MainActivity)getActivity()).fragmentReplace(SETTING_FRAGMENT);
+                ((MainActivity)getActivity()).fragmentReplace(SCENE_FRAGMENT);
                 break;
             case R.id.menuText2:
                 ((MainActivity)getActivity()).fragmentReplace(SETTING_FRAGMENT);

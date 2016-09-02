@@ -10,13 +10,14 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:layout_marginBottom="6dp">
+        android:layout_marginBottom="6dp"
+        android:weightSum="20">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="visible"
-            android:layout_weight="1">
+            android:layout_weight="2.6">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -26,14 +27,14 @@
                 android:textOff="1-16"
                 android:textOn="1-16"
                 android:textSize="8dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
                 android:layout_weight="1" />
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel2"
                 android:layout_column="1"
@@ -45,7 +46,7 @@
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel3"
                 android:layout_column="2"
@@ -57,7 +58,7 @@
 
             <ToggleButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="New ToggleButton"
                 android:id="@+id/tbChannel4"
                 android:layout_column="3"
@@ -129,7 +130,7 @@
                 android:textOff="f"
                 android:textOn="f"
                 android:textSize="8dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="gone"
                 android:layout_weight="1"
@@ -137,8 +138,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 />
+
+            <Button
+                android:id="@+id/c_setting"
+                android:layout_column="0"
+                android:layout_width="0dp"
+                android:textSize="8dp"
+                android:layout_height="match_parent"
+                android:enabled="true"
+                android:visibility="visible"
+                android:layout_weight="1" />
 
             <Button
                 android:text="REC"
@@ -146,7 +157,7 @@
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
                 android:layout_weight="1" />
@@ -157,7 +168,7 @@
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="gone"
                 android:layout_weight="1" />
@@ -168,7 +179,7 @@
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
                 android:layout_weight="1" />
@@ -177,7 +188,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.6">
 
             <TextView
                 android:text="X"
@@ -407,7 +418,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:id="@+id/seekBarValue">
 
             <TextView
@@ -642,7 +653,8 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:layout_weight="3">
 
             <Button
                 android:id="@+id/button"
@@ -759,7 +771,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1" />
         </TableRow>
-        <TableRow android:layout_weight="16"
+        <TableRow android:layout_weight="13"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/SeekBarRow"
@@ -775,7 +787,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
 
             </FrameLayout>
             <FrameLayout
@@ -788,7 +802,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
 
             </FrameLayout>
             <FrameLayout
@@ -800,7 +816,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
 
             </FrameLayout>
 
@@ -813,8 +831,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal" />
-            </FrameLayout>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" /></FrameLayout>
 
             <FrameLayout
                 android:layout_width="0dp"
@@ -827,7 +846,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
 
             </FrameLayout>
 
@@ -842,7 +863,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -857,7 +880,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -872,7 +897,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -887,7 +914,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -902,7 +931,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -917,7 +948,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:thumb="@drawable/mixer_fader_thumb9_128"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -931,7 +964,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -945,7 +980,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -959,7 +996,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -973,7 +1012,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
@@ -988,19 +1029,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:thumb="@drawable/mixer_fader_thumb9_128"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true" />
             </FrameLayout>
 
 
 
         </TableRow>
 
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3">
-        </TableRow>
 
         <TableRow
             android:layout_weight="0.3"
@@ -1137,5 +1174,11 @@
                 android:visibility="invisible" />
         </TableRow>
     </TableLayout>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3">
+    </TableRow>
 
 </LinearLayout>

@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static int CONTROLLER_FRAGMENT = 3;
     public final static int SETTING_FRAGMENT = 4;
     public final static int SEQUENCER_FRAGMENT = 5;
+    public final static int SCENE_FRAGMENT = 6;
 
     Thread mWorkerThread = null;
     byte[] readBuffer;
@@ -243,6 +244,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case SETTING_FRAGMENT:
                 newFragment = new SettingFragment();
                 break;
+            case SCENE_FRAGMENT:
+                newFragment = new SceneFragment();
+                break;
+
             default:
                 Log.d(TAG, "Unhandle case");
                 break;

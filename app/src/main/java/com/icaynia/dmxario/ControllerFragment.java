@@ -151,6 +151,10 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         StopButton.setOnClickListener(this);
         Button LoadButton = (Button) v.findViewById(R.id.LoadButton);
         LoadButton.setOnClickListener(this);
+        Button c_setting = (Button) v.findViewById(R.id.c_setting);
+        c_setting.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_black_24dp, 0, 0);
+        c_setting.setOnClickListener(this);
+
         scnDisplay = (TextView) v.findViewById(R.id.scn_disp);
 
         if (ControllerFragment.mTypeface == null)
