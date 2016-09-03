@@ -86,4 +86,19 @@ public class ObjectFileManager {
 
     }
 
+    public boolean newFolder(String folderName) {
+
+        String dirPath = "/sdcard/DMXArio/"+folderName;
+        File file = new File(dirPath);
+        file = new File(dirPath);
+        if( !file.exists() ) {
+            file.mkdirs();
+        }
+        else
+        {
+            return false;
+        }
+        return true;
+    }
+
 }

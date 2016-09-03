@@ -14,17 +14,34 @@ public class ScenePackage
 {
 
     private Context                 context;
+
     private HashMap<String, String> config;
     private String                  packageName;
 
+    private ObjectFileManager       mObj;
+
+
+    // region Constructors
     public ScenePackage(Context _context)
     {
         context = _context;
+        config = new HashMap<String, String>();
+        mObj = new ObjectFileManager(context);
     }
 
+    public ScenePackage(String _packageName, Context _context)
+    {
+        context = _context;
+        config = new HashMap<String, String>();
+        mObj = new ObjectFileManager(context);
+        this.setPackageName(_packageName);
+    }
+    // endregion
+
+    // region Accessors
     public void loadPackage(String PackageName)
     {
-        ObjectFileManager mObj = new ObjectFileManager(context);
+        mObj = new ObjectFileManager(context);
         config = mObj.load(PackageName+"/config.scn");
         if (config == null)
         {
@@ -35,11 +52,30 @@ public class ScenePackage
         {
             ((MainActivity)context).makeToast(PackageName + " : Load Succeessfully.");
         }
-
     }
 
+    public void savePackage()
+    {
+        this.put("testValue", "testVal123123");
+        mObj.newFolder("scene/"+packageName);
+        mObj.save(config,  "scene/"+packageName+"/config.scn");
+    }
 
+    public void setPackageName(String _packageName) {
+        this.packageName = _packageName;
+        this.put("packageName", _packageName);
+    }
+    // endregion
 
+    // region private function
+
+    private String get(String key)
+    {
+        return config.get(key);
+    }
+    private void put(String key, String value) {
+        config.put(key, value);
+    }
 
 
 

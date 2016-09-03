@@ -1,5 +1,6 @@
 package com.icaynia.dmxario;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,14 +15,21 @@ public class SceneFragment extends Fragment
 {
     private View v;
     private int MAIN_FRAGMENT = 0;
+    private ScenePackage scenePackage;
+    private Context context;
 
-    private ScenePackage scene;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
+        //Context
+        context = getContext();
+
+        //Activity
         v = inflater.inflate(R.layout.fragment_scene, container, false);
-        scene = new ScenePackage(getContext());
-        scene.loadPackage("123");
+
+        scenePackage = new ScenePackage(getContext());
+        scenePackage.setPackageName("UntitledPackage");
+        scenePackage.savePackage();
 
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
