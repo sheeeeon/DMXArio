@@ -13,12 +13,14 @@ import java.util.HashMap;
 public class ScenePackage
 {
 
-    private Context                 context;
+    private Context                     context;
 
-    private HashMap<String, String> config;
-    private String                  packageName;
+    private HashMap<String, String>     config;
+    private Scene[]                     scene;
+    private String                      packageName;
 
-    private ObjectFileManager       mObj;
+    private ObjectFileManager           mObj;
+
 
 
     // region Constructors
@@ -36,6 +38,7 @@ public class ScenePackage
         mObj = new ObjectFileManager(context);
         this.setPackageName(_packageName);
     }
+
     // endregion
 
     // region Accessors
@@ -61,10 +64,31 @@ public class ScenePackage
         mObj.save(config,  "scene/"+packageName+"/config.scn");
     }
 
-    public void setPackageName(String _packageName) {
+    public void setPackageName(String _packageName)
+    {
         this.packageName = _packageName;
         this.put("packageName", _packageName);
     }
+
+    public void setScene(String SceneName, int id)
+    {
+
+    }
+
+    public void playScene(int id)
+    {
+        this.stopScene(id);
+        this.scene[id].play();
+    }
+
+    public void stopScene(int id)
+    {
+        if (this.scene[id].isRunning())
+        {
+            this.scene[id].stop();
+        }
+    }
+
     // endregion
 
     // region private function
@@ -76,7 +100,6 @@ public class ScenePackage
     private void put(String key, String value) {
         config.put(key, value);
     }
-
 
 
 }
