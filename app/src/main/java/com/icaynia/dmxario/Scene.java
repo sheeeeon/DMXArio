@@ -1,6 +1,7 @@
 package com.icaynia.dmxario;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class Scene {
 
 
     private Timer                   mTimer;
+    private Handler                 mHandler;
 
     private Context                 context;
     private HashMap<String, String> scn;
@@ -23,6 +25,8 @@ public class Scene {
 
     private String                  ButtonText;
     private String                  ButtonTextSize;
+
+    int maiv;
 
 
     // region Constructors
@@ -39,6 +43,7 @@ public class Scene {
     public void play()
     {
         this.run();
+        Log.e("Scene", "Play();");
     }
 
     public void stop()
@@ -55,6 +60,10 @@ public class Scene {
         return 100;
     }
 
+    public void record() {
+
+    }
+
         /*
             필요한것들 목록:
             재생
@@ -64,7 +73,7 @@ public class Scene {
          */
 
 
-    // endreion
+    // endregion
 
     // region private function
     private void run() {
@@ -86,5 +95,24 @@ public class Scene {
 
     }
 
+    private class BackThread extends Thread
+    {
+        @Override
+        public void run() {
+            super.run();
+
+
+            maiv++;
+
+            try
+            {
+                Thread.sleep(1000);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+    }
 
 }

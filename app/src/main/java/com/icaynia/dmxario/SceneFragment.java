@@ -31,6 +31,9 @@ public class SceneFragment extends Fragment
         scenePackage.setPackageName("UntitledPackage");
         scenePackage.savePackage();
 
+        scenePackage.mkScene(0);
+        scenePackage.playScene(0);
+
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
         goMain.setOnClickListener(new View.OnClickListener() {

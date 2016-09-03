@@ -101,4 +101,15 @@ public class ObjectFileManager {
         return true;
     }
 
+    public boolean isAvailable(String FileName) {
+        String dirPath = "/sdcard/DMXArio/"+FileName;
+        File file = new File(dirPath);
+        file = new File(dirPath);
+        if( file.exists() ) {
+            return true;
+        }
+        return false;
+
+    }
+
 }

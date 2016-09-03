@@ -269,9 +269,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 //파일이 없을 때
                 final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+i+".scn");
                 if (hm == null) {
-                    recordSceneStart(v, i);
+                    recordSceneStart(i);
                 } else {
-                    recordSceneStart(v, i);
+                    recordSceneStart(i);
                 }
             }
         }
@@ -332,11 +332,9 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         return memoData;
     }
 
-    public void recordSceneStart (final View v, final int t) {
+    public void recordSceneStart (final int t) {
         final HashMap<String, String> hm = new HashMap<String, String>();
         final Button thisButton = (Button)getView().findViewById(v.getId());
-        thisButton.setText("R");
-        thisButton.setTextColor(getResources().getColor(android.R.color.holo_red_light));
         tmpStr = "";
 
         if (ismTimerRunning) {

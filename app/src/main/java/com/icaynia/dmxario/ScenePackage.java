@@ -16,7 +16,7 @@ public class ScenePackage
     private Context                     context;
 
     private HashMap<String, String>     config;
-    private Scene[]                     scene;
+    private Scene[]                     scene = new Scene[56];
     private String                      packageName;
 
     private ObjectFileManager           mObj;
@@ -73,6 +73,11 @@ public class ScenePackage
     public void setScene(String SceneName, int id)
     {
 
+    }
+
+    public void mkScene(int id)
+    {
+        this.scene[id] = new Scene(context);
     }
 
     public void playScene(int id)
