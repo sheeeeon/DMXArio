@@ -146,12 +146,16 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         funcswitch3_1.setOnClickListener(this);
 
         Button RecordButton = (Button) v.findViewById(R.id.RecordButton);
-        RecordButton.setOnClickListener(this);
         Button StopButton = (Button) v.findViewById(R.id.StopButton);
-        StopButton.setOnClickListener(this);
         Button LoadButton = (Button) v.findViewById(R.id.LoadButton);
-        LoadButton.setOnClickListener(this);
         Button c_setting = (Button) v.findViewById(R.id.c_setting);
+
+        Button Rec = (Button ) v.findViewById(R.id.c_Rec);
+        Rec.setOnClickListener(this);
+
+        StopButton.setOnClickListener(this);
+        RecordButton.setOnClickListener(this);
+        LoadButton.setOnClickListener(this);
         c_setting.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_settings_black_24dp, 0, 0);
         c_setting.setOnClickListener(this);
 
@@ -182,20 +186,34 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     }
 
     @Override
-    public void onClick(final View v) {
+    public void onClick(final View v)
+    {
 
-        switch (v.getId()) {
+        switch (v.getId())
+        {
             case R.id.goMain1:
                 ((MainActivity)getActivity()).fragmentReplace(MAIN_FRAGMENT);
                 break;
+
+            case R.id.c_Rec:
+                ((MainActivity)getActivity()).makeToast("C_REC");
+                break;
+            case R.id.c_setting:
+                ((MainActivity)getActivity()).makeToast("C_SETTING");
+                break;
+
             case R.id.fader:
                 ToggleButton tn = (ToggleButton) getActivity().findViewById(R.id.fader);
-                if (tn.isChecked()) {
+                if (tn.isChecked())
+                {
                     setSeekbarVisible(View.VISIBLE);
-                } else {
+                }
+                else
+                {
                     setSeekbarVisible(View.GONE);
                 }
                 break;
+
             case R.id.funcswitch3_1:
                 ToggleButton tb = (ToggleButton) getActivity().findViewById(R.id.funcswitch3_1);
                 VerticalSeekBar seekBar3 = (VerticalSeekBar) getActivity().findViewById(R.id.seekBar3);

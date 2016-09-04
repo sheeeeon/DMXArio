@@ -153,7 +153,7 @@
 
             <Button
                 android:text="REC"
-                android:id="@+id/toggleButton"
+                android:id="@+id/c_Rec"
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
