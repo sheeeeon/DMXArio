@@ -60,8 +60,13 @@ public class Scene {
         return 100;
     }
 
-    public void record() {
+    public void putFrame(int frameno, String command)
+    {
+        scn.put(frameno+"#", command);
+    }
 
+    public int getPlayCount() {
+        return 0;
     }
 
         /*
@@ -85,22 +90,20 @@ public class Scene {
                     public void run(){
                         if (i == getSceneLength()) {
                             mTimer.cancel();
-                            Log.e("Timer", "frame : " + i);
                         }
+                        Log.e("Timer", "frame : " + i);
 
                         i++;
                     }
                 }, 0, 20
         );
-
     }
 
-    private class BackThread extends Thread
+    private class BackPlayThread extends Thread
     {
         @Override
         public void run() {
             super.run();
-
 
             maiv++;
 
@@ -108,9 +111,9 @@ public class Scene {
             {
                 Thread.sleep(1000);
             }
-            catch (Exception e)
+            catch (InterruptedException e)
             {
-
+                e.printStackTrace();
             }
         }
     }
