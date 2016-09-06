@@ -46,18 +46,13 @@ public class ScenePackage
         {
             ((MainActivity)context).makeToast(PackageName + " : Load Succeessfully.");
         }
-
-        if (config.get("slut0") != null) {
-            String slut0 = config.get("slut0");
-
-        }
     }
 
     public void savePackage()
     {
         this.put("testValue", "testVal123123");
-        mObj.newFolder("scene/"+getPackageName());
-        mObj.save(config,  "scene/"+getPackageName()+"/config.scn");
+        mObj.newFolder("Scene/"+getPackageName());
+        mObj.save(config,  "Scene/"+getPackageName()+"/config.scn");
     }
 
     public String getPackageName()
@@ -68,15 +63,14 @@ public class ScenePackage
 
     public void setPackageName(String _packageName)
     {
-
-        this.put("packageName", _packageName);
+        this.put("PackageName", _packageName);
     }
 
 
     public void putScene(Scene scn, int id)
     {
         String scnName = scn.getSceneName();
-        mObj.save(scn.getHashMap(), "scene/"+getPackageName()+scnName);
+        mObj.save(scn.getHashMap(), "Scene/"+getPackageName()+"/"+scnName);
         this.put("slut"+id, scnName);
     }
 
@@ -99,7 +93,6 @@ public class ScenePackage
             this.scene[id].stop();
         }
     }
-
 
     public void loadScene(String packageName, String fileName, int id)
     {

@@ -106,7 +106,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
         v = inflater.inflate(R.layout.fragment_controller, container, false);
 
-
         for (int i = 0; i < 16; i++) {
             seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
             seekBar[i].setMax(255);
@@ -405,9 +404,13 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void saveScene(String ScenePackageName, Scene scn)
     {
         ScenePackage scnPack = new ScenePackage(this.getContext());
-        scnPack.loadPackage(ScenePackageName);
+        SavesceneDialog saveDialog = new SavesceneDialog(this.getContext());
+        saveDialog.show();
 
-        scnPack.putScene(scn, 0);
+        scnPack.setPackageName("UntitledPackage");
+        scnPack.savePackage();
+
+        //scnPack.putScene(scn, 0);
 
         setDisplayText("Save Completed : " + scn.getSceneName());
     }
@@ -435,6 +438,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public void setSeekbarProgress(String command)
     {
     }
+
+
 
     public int[] getParam(String command)
     {
@@ -472,4 +477,8 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         return param;
     }
+
+    private void createDialog() {
+    }
+
 }
