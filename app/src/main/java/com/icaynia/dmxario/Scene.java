@@ -38,9 +38,9 @@ public class Scene {
     // endregion
 
     // region Accessors
-
-    public void setScene(Scene _scn) {
-
+    public void loadScene(String _packageName, String fileName)
+    {
+        this.PackageName = _packageName;
     }
 
     public void play()

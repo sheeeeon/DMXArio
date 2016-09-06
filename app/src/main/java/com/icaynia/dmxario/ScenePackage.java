@@ -101,10 +101,10 @@ public class ScenePackage
     }
 
 
-    public void loadScene(String scnName)
+    public void loadScene(String packageName, String fileName, int id)
     {
+        this.scene[id].loadScene(packageName, fileName);
 
-        mObj.load("Scene/"+getPackageName()+"/config.scn");
     }
 
 
