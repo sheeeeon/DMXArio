@@ -17,7 +17,6 @@ public class ScenePackage
 
     private HashMap<String, String>     config;
     private Scene[]                     scene = new Scene[56];
-    private String                      packageName;
 
     private ObjectFileManager           mObj;
 
@@ -31,21 +30,13 @@ public class ScenePackage
         mObj = new ObjectFileManager(context);
     }
 
-    public ScenePackage(String _packageName, Context _context)
-    {
-        context = _context;
-        config = new HashMap<String, String>();
-        mObj = new ObjectFileManager(context);
-        this.setPackageName(_packageName);
-    }
-
     // endregion
 
     // region Accessors
     public void loadPackage(String PackageName)
     {
         mObj = new ObjectFileManager(context);
-        config = mObj.load(PackageName+"/config.scn");
+        config = mObj.load("Scene/"+PackageName+"/config.scn");
         if (config == null)
         {
             Log.e("ScenePackage", "Package not found!");
@@ -55,28 +46,43 @@ public class ScenePackage
         {
             ((MainActivity)context).makeToast(PackageName + " : Load Succeessfully.");
         }
+
+        if (config.get("slut0") != null) {
+            String slut0 = config.get("slut0");
+
+        }
     }
 
     public void savePackage()
     {
         this.put("testValue", "testVal123123");
-        mObj.newFolder("scene/"+packageName);
-        mObj.save(config,  "scene/"+packageName+"/config.scn");
+        mObj.newFolder("scene/"+getPackageName());
+        mObj.save(config,  "scene/"+getPackageName()+"/config.scn");
+    }
+
+    public String getPackageName()
+    {
+        String packageName = this.get("PackageName");
+        return packageName;
     }
 
     public void setPackageName(String _packageName)
     {
-        this.packageName = _packageName;
+
         this.put("packageName", _packageName);
     }
 
-    public void setScene(String SceneName, int id)
-    {
 
+    public void putScene(Scene scn, int id)
+    {
+        String scnName = scn.getSceneName();
+        mObj.save(scn.getHashMap(), "scene/"+getPackageName()+scnName);
+        this.put("slut"+id, scnName);
     }
 
     public void mkScene(int id)
     {
+
         this.scene[id] = new Scene(context);
     }
 
@@ -94,6 +100,15 @@ public class ScenePackage
         }
     }
 
+
+    public void loadScene(String scnName)
+    {
+
+        mObj.load("Scene/"+getPackageName()+"/config.scn");
+    }
+
+
+
     // endregion
 
     // region private function
@@ -101,9 +116,13 @@ public class ScenePackage
     private String get(String key)
     {
         return config.get(key);
+
     }
-    private void put(String key, String value) {
+
+    private void put(String key, String value)
+    {
         config.put(key, value);
+
     }
 
 

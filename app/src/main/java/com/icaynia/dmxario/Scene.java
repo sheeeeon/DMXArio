@@ -12,7 +12,7 @@ import java.util.TimerTask;
  * Created by icaynia on 16. 9. 3..
  */
 public class Scene {
-
+    private String                  PackageName;
 
     private Timer                   mTimer;
     private Handler                 mHandler;
@@ -21,7 +21,6 @@ public class Scene {
     private HashMap<String, String> scn;
 
     private String                  SceneName;
-    private int                     SceneLength;
 
     private String                  ButtonText;
     private String                  ButtonTextSize;
@@ -40,6 +39,10 @@ public class Scene {
 
     // region Accessors
 
+    public void setScene(Scene _scn) {
+
+    }
+
     public void play()
     {
         this.run();
@@ -56,8 +59,16 @@ public class Scene {
         return true;
     }
 
-    public int getSceneLength() {
-        return 100;
+    public int getSceneLength()
+    {
+        String SceneLengthS = scn.get("SceneLength");
+        int SceneLength = Integer.parseInt(SceneLengthS);
+        return SceneLength;
+    }
+
+    public void setSceneLength(int SceneLength)
+    {
+        scn.put("SceneLength", SceneLength+"");
     }
 
     public void putFrame(int frameno, String command)
@@ -65,8 +76,24 @@ public class Scene {
         scn.put(frameno+"#", command);
     }
 
-    public int getPlayCount() {
+    public int getPlayCount()
+    {
         return 0;
+    }
+
+    public String getSceneName()
+    {
+        String Name = this.scn.get("SceneName");
+        return Name;
+    }
+    public void setSceneName(String _SceneName)
+    {
+        this.scn.put("SceneName",_SceneName);
+    }
+
+    public HashMap<String, String> getHashMap()
+    {
+        return scn;
     }
 
         /*

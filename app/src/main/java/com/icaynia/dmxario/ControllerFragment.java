@@ -385,11 +385,16 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                                 if (i == 200)
                                 {
-                                    //mTimerSave(buffer, i, t, thisButton);
+                                    tmpScene.setSceneLength(200);
+                                    tmpScene.setSceneName("scene0.scn");
+                                    //setDisplayText("");
+                                    saveScene("UntitledPackage",tmpScene);
                                     mTimer.cancel();
                                     Log.e("Controller/rec..start()", "recordTimer stopped.");
                                 }
-                            i++;
+                                else {
+                                    i++;
+                                }
                             }
                     });
                 }
@@ -397,19 +402,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         );
     }
 
-    public void mTimerSave(HashMap<String, String> map, int length, int t, Button btv) {
-        map.put("FrameLength",length+"");
-        mObjFileMgr.save(map, "Controller/scene"+t+".scn");
-        btv.setText(t+"");
-        btv.setTextColor(getResources().getColor(android.R.color.black));
-
-        mTimer.cancel();
-        ismTimerRunning = false;
-    }
-
-    public void saveScene(String ScenePackageName, String SceneName, Scene scn)
+    public void saveScene(String ScenePackageName, Scene scn)
     {
+        ScenePackage scnPack = new ScenePackage(this.getContext());
+        scnPack.loadPackage(ScenePackageName);
 
+        scnPack.putScene(scn, 0);
+
+        setDisplayText("Save Completed : " + scn.getSceneName());
     }
 
     public void setDisplayText(String str) {
