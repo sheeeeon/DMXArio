@@ -100,12 +100,13 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         }
     };
 
+    private View dialogV;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Pref = getActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE);
         Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
         v = inflater.inflate(R.layout.fragment_controller, container, false);
-
         for (int i = 0; i < 16; i++) {
             seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
             seekBar[i].setMax(255);
@@ -378,22 +379,25 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                                 ismTimerRunning = true;
                                 fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
                                 Log.e("Controller/rec..start()", i+"#:"+tmpStr);
-                                setDisplayText("Frame : "+i+" / 200\n" + tmpStr);
+                                setDisplayText("Frame : "+i+" / 10\n" + tmpStr);
                                 tmpScene.putFrame(i, tmpStr);
                                 tmpStr = "";
 
-                                if (i == 200)
+                                if (i == 10)
                                 {
                                     tmpScene.setSceneLength(200);
                                     tmpScene.setSceneName("scene0.scn");
-                                    //setDisplayText("");
+                                    //setDisplayText(""); dialog
+                                       // 알림창 객체 생성
+// 여기서 부터는 알림창의 속성 설정
+                                    showDialog();
+
+
                                     saveScene("UntitledPackage",tmpScene);
                                     mTimer.cancel();
                                     Log.e("Controller/rec..start()", "recordTimer stopped.");
                                 }
-                                else {
-                                    i++;
-                                }
+                                i++;
                             }
                     });
                 }
@@ -401,12 +405,39 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         );
     }
 
+    public void showDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+        dialogV = getLayoutInflater(null).inflate(R.layout.dialog_savescene, null);
+
+        builder.setView(dialogV);
+        builder.setTitle("종료 확인 대화 상자")
+                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ((MainActivity)getContext()).makeToast("확인");
+                        dialog.dismiss();
+                    }
+                })
+                .setCancelable(false)
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+
+                    }
+                })
+        ;
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+    }
+
     public void saveScene(String ScenePackageName, Scene scn)
     {
-        ScenePackage scnPack = new ScenePackage(this.getContext());
-        SavesceneDialog saveDialog = new SavesceneDialog(this.getContext());
-        saveDialog.show();
-
+        ScenePackage scnPack = new ScenePackage(getContext());
         scnPack.setPackageName("UntitledPackage");
         scnPack.savePackage();
 
@@ -478,7 +509,5 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         return param;
     }
 
-    private void createDialog() {
-    }
 
 }

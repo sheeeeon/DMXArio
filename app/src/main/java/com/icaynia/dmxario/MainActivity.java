@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (MainActivity.mTypeface == null)
             MainActivity.mTypeface = Typeface.createFromAsset(getAssets(), "fonts/NotoSansKR-DemiLight.otf");
 
+
+
         ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         setGlobalFont(root);
 
