@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.Button;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by icaynia on 16. 9. 2..
@@ -49,8 +51,13 @@ public class ScenePackage
     }
 
     public void printAll() {
-        Log.e("ScenePackage","PackageName : " + get("PackageName"));
-        Log.e("ScenePackage","~ : " + get("testValue"));
+
+        Iterator iterator = config.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            Log.e("ScenePackage", "key : " + entry.getKey() + "    value : "
+                    + entry.getValue());
+        }
     }
 
     public void savePackage()
