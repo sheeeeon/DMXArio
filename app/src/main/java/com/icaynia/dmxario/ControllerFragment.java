@@ -385,7 +385,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                                 if (i == 10)
                                 {
-                                    tmpScene.setSceneLength(200);
+                                    tmpScene.setSceneLength(i);
                                     tmpScene.setSceneName("scene0.scn");
                                     //setDisplayText(""); dialog
                                        // 알림창 객체 생성
@@ -433,16 +433,24 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         alert.setCanceledOnTouchOutside(false);
 
         alert.show();    // 알림창 띄우기
+
+
     }
 
     public void saveScene(String ScenePackageName, Scene scn)
     {
         //기존 코드
-        ScenePackage scnPack = new ScenePackage(getContext());
+        ScenePackage scnPack = new ScenePackage(getContext());      //new
+        if (mObjFileMgr.isAvailable("Scene/"+ScenePackageName)) {
+            Log.e("ControllerFragment", ScenePackageName +" is available!");
+            scnPack.loadPackage(ScenePackageName);
+        }
         scnPack.setPackageName(ScenePackageName);
         scnPack.savePackage();
-        scnPack.putScene(scn);
+        scnPack.mkSceneFile(scn);
 
+        scnPack.putScene(scn.getSceneName(), 1);
+        scnPack.savePackage();
         setDisplayText("Save Completed : " + scn.getSceneName());
     }
     public void setDisplayText(String str) {

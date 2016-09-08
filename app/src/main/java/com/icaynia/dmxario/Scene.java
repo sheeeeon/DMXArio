@@ -43,16 +43,16 @@ public class Scene {
     public void loadScene(String _packageName, String fileName)
     {
         this.PackageName = _packageName;
-        this.scn = mObj.load("scene/"+_packageName+"/"+fileName);
+        this.scn = mObj.load("scene/"+_packageName+"/"+fileName+".scn");
         if (scn == null)
         {
             ((MainActivity)context).makeToast("가져오기 실패");
-            Log.e("Scene", "Load Failed" + fileName);
+            Log.e("Scene", "Load Failed : " + fileName);
         }
         else
         {
             ((MainActivity)context).makeToast("가져오기 성공 : "+fileName);
-            Log.e("Scene", "Load Completed" + fileName);
+            Log.e("Scene", "Load Completed : " + fileName);
         }
     }
 
@@ -69,7 +69,7 @@ public class Scene {
 
     public boolean isRunning()
     {
-        return true;
+        return false;
     }
 
     public int getSceneLength()

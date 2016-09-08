@@ -30,6 +30,10 @@ public class ScenePackage
         context = _context;
         config = new HashMap<String, String>();
         mObj = new ObjectFileManager(context);
+
+        for (int i = 0; i < 56; i++) {
+            scene[i] = new Scene(context);
+        }
     }
 
     // endregion
@@ -48,6 +52,12 @@ public class ScenePackage
         {
             Log.e("ScenePackage", "Load Successfully.");
         }
+        loadScene(1);
+    }
+
+    public void loadScene(int id) {
+        String fileName = this.get("slut"+id);
+        scene[id].loadScene(getPackageName(), fileName);
     }
 
     public void printAll() {
@@ -69,31 +79,33 @@ public class ScenePackage
 
     public String getPackageName()
     {
-        String packageName = this.get("PackageName");
+        String packageName = this.get("_packageName");
         return packageName;
     }
 
     public void setPackageName(String _packageName)
     {
-        this.put("PackageName", _packageName);
+        this.put("_packageName", _packageName);
     }
 
 
-    public void putScene(Scene scn)
+    public void putScene(String sceneName, int id)
+    {
+        scene[id] = new Scene(context);
+        scene[id].loadScene(getPackageName(), sceneName);
+        this.put("slut"+id, sceneName+"");
+    }
+
+    public void mkSceneFile(Scene scn)
     {
         String scnName = scn.getSceneName();
         mObj.save(scn.getHashMap(), "Scene/"+getPackageName()+"/"+scnName+".scn");
     }
 
-    public void mkScene(int id)
-    {
-
-        this.scene[id] = new Scene(context);
-    }
-
     public void playScene(int id)
     {
         this.stopScene(id);
+        ((MainActivity)context).makeToast("Scene Name = "+scene[id].getSceneName());
         this.scene[id].play();
     }
 

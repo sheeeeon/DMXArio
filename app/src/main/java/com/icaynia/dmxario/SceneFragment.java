@@ -30,8 +30,7 @@ public class SceneFragment extends Fragment
         scenePackage = new ScenePackage(getContext());
         scenePackage.loadPackage("UntitledPackage");
         scenePackage.printAll();
-        //scenePackage.mkScene(0);
-        //scenePackage.playScene(0);
+        scenePackage.playScene(1);
 
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
