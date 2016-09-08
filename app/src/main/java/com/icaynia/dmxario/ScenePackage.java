@@ -67,11 +67,10 @@ public class ScenePackage
     }
 
 
-    public void putScene(Scene scn, int id)
+    public void putScene(Scene scn)
     {
         String scnName = scn.getSceneName();
-        mObj.save(scn.getHashMap(), "Scene/"+getPackageName()+"/"+scnName);
-        this.put("slut"+id, scnName);
+        mObj.save(scn.getHashMap(), "Scene/"+getPackageName()+"/"+scnName+".scn");
     }
 
     public void mkScene(int id)

@@ -390,10 +390,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                                     //setDisplayText(""); dialog
                                        // 알림창 객체 생성
 // 여기서 부터는 알림창의 속성 설정
-                                    showDialog();
-
-
-                                    saveScene("UntitledPackage",tmpScene);
+                                    showSavesceneDialog();
                                     mTimer.cancel();
                                     Log.e("Controller/rec..start()", "recordTimer stopped.");
                                 }
@@ -405,29 +402,32 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         );
     }
 
-    public void showDialog() {
-
+    public void showSavesceneDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
         dialogV = getLayoutInflater(null).inflate(R.layout.dialog_savescene, null);
 
         builder.setView(dialogV);
-        builder.setTitle("종료 확인 대화 상자")
-                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ((MainActivity)getContext()).makeToast("확인");
-                        dialog.dismiss();
-                    }
-                })
-                .setCancelable(false)
-                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
+        builder.setTitle("종료 확인 대화 상자");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
+                EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
 
-                    }
-                })
-        ;
+                tmpScene.setSceneName(sceneName.getText().toString());
+                saveScene(packageName.getText().toString(),tmpScene);
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
 
         final AlertDialog alert = builder.create();
         alert.setCanceledOnTouchOutside(false);
@@ -437,15 +437,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     public void saveScene(String ScenePackageName, Scene scn)
     {
+        //기존 코드
         ScenePackage scnPack = new ScenePackage(getContext());
-        scnPack.setPackageName("UntitledPackage");
+        scnPack.setPackageName(ScenePackageName);
         scnPack.savePackage();
-
-        //scnPack.putScene(scn, 0);
+        scnPack.putScene(scn);
 
         setDisplayText("Save Completed : " + scn.getSceneName());
     }
-
     public void setDisplayText(String str) {
         scnDisplay.setText(str);
     }
