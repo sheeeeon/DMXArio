@@ -44,8 +44,13 @@ public class ScenePackage
         }
         else
         {
-            ((MainActivity)context).makeToast(PackageName + " : Load Succeessfully.");
+            Log.e("ScenePackage", "Load Successfully.");
         }
+    }
+
+    public void printAll() {
+        Log.e("ScenePackage","PackageName : " + get("PackageName"));
+        Log.e("ScenePackage","~ : " + get("testValue"));
     }
 
     public void savePackage()

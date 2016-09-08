@@ -467,6 +467,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     public void setSeekbarProgress(String command)
     {
+
     }
 
 
