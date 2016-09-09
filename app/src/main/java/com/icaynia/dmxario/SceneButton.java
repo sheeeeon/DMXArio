@@ -25,12 +25,10 @@ public class SceneButton extends Button
     public SceneButton(Context _context) {
         super(_context);
         context = _context;
-        this.setOnClickListener(this.onClickListener1);
     }
     public SceneButton(Context _context, AttributeSet _atts) {
         super(_context, _atts);
         context = _context;
-        this.setOnClickListener(this.onClickListener1);
     }
 
     //region Accessors
@@ -42,11 +40,7 @@ public class SceneButton extends Button
 
     }
 
-    View.OnClickListener onClickListener1 = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Log.e("SceneButton", "onClick : "+ v.getId());
-        }
-    };
+
+
 
 }
