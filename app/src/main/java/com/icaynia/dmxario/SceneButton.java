@@ -18,7 +18,7 @@ public class SceneButton extends Button
     private String                      SCENE_FILE;
     private HashMap<String, String>     SCENE_MAP;
     private Context                     context;
-    private int                         id;
+    public int                          id;
 
     ObjectFileManager mObj;
 
@@ -39,16 +39,26 @@ public class SceneButton extends Button
 
     public void setid(int _id) {
         this.id = _id;
+        init();
     }
 
 
     //region Inner Function
-    private void test2() {
+    private void test2()
+    {
 
     }
 
-    private void init() {
-
+    private void init()
+    {
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (id >= 0) {
+                    Log.e("SceneButton", "OnClick() was called : "+id);
+                }
+            }
+        });
     }
 
 

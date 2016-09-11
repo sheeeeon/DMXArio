@@ -12,15 +12,17 @@ import android.widget.Button;
 /**
  * Created by icaynia on 16. 8. 31..
  */
-public class SceneFragment extends Fragment
+public class SceneFragment extends Fragment implements View.OnClickListener
 {
     private View v;
     private int MAIN_FRAGMENT = 0;
     private ScenePackage scenePackage;
     private Context context;
+    private SceneButton[] scnBt = new SceneButton[8];
+    public int i;
 
     private int[] sceneButton = {
-            R.id.Scene1
+            R.id.Scene1, R.id.Scene2, R.id.Scene3, R.id.Scene4, R.id.Scene5, R.id.Scene6, R.id.Scene7, R.id.Scene8
     };
 
 
@@ -46,18 +48,20 @@ public class SceneFragment extends Fragment
             }
         });
 
-        SceneButton scnbt = (SceneButton) v.findViewById(sceneButton[1]);
-        scnbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("SceneFragment", "onClick() was called.");
-            }
-        });
+        for (i = 0; i < sceneButton.length; i++) {
+            scnBt[i] = new SceneButton(context);
+            scnBt[i] = (SceneButton) v.findViewById(sceneButton[i]);
+            scnBt[i].setid(i);
+            scnBt[i].setOnClickListener(this);
+        }
 
         return v;
     }
 
+    @Override
+    public void onClick(View v) {
 
+    }
 
 
 }
