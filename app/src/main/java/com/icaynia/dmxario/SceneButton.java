@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Created by icaynia on 16. 9. 2..
  */
-public class SceneButton extends Button
+public class SceneButton extends Button implements View.OnClickListener
 {
     //region Properties
     private String                      SCENE_PROJECT;
@@ -19,10 +19,12 @@ public class SceneButton extends Button
     private HashMap<String, String>     SCENE_MAP;
     private Context                     context;
     public int                          id;
+    private csEventListener             mListener;
 
     ObjectFileManager mObj;
 
     //region Constructors
+
     public SceneButton(Context _context) {
         super(_context);
         context = _context;
@@ -36,6 +38,9 @@ public class SceneButton extends Button
 
 
     //region Accessors
+    public void testtest(int testtest){
+
+    }
 
     public void setid(int _id) {
         this.id = _id;
@@ -55,13 +60,22 @@ public class SceneButton extends Button
             @Override
             public void onClick(View v) {
                 if (id >= 0) {
-                    Log.e("SceneButton", "OnClick() was called : "+id);
+                    mListener.onMyEvent();
                 }
             }
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        mListener.onMyEvent();
+    }
+
+    public void setCsEventListener(csEventListener listener) {
+        mListener = listener;
+    }
 
 
 
 }
+

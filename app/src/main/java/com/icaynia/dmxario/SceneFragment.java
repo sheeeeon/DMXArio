@@ -12,7 +12,7 @@ import android.widget.Button;
 /**
  * Created by icaynia on 16. 8. 31..
  */
-public class SceneFragment extends Fragment implements View.OnClickListener
+public class SceneFragment extends Fragment implements csEventListener
 {
     private View v;
     private int MAIN_FRAGMENT = 0;
@@ -52,15 +52,16 @@ public class SceneFragment extends Fragment implements View.OnClickListener
             scnBt[i] = new SceneButton(context);
             scnBt[i] = (SceneButton) v.findViewById(sceneButton[i]);
             scnBt[i].setid(i);
-            scnBt[i].setOnClickListener(this);
+            scnBt[i].setCsEventListener(this);
+
         }
 
         return v;
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onMyEvent() {
+        Log.e("SceneFragment", "-");
     }
 
 
