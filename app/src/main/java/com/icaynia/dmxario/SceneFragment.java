@@ -3,6 +3,7 @@ package com.icaynia.dmxario;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ public class SceneFragment extends Fragment
     private int MAIN_FRAGMENT = 0;
     private ScenePackage scenePackage;
     private Context context;
+
+    private int[] sceneButton = {
+            R.id.Scene1
+    };
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -41,8 +46,18 @@ public class SceneFragment extends Fragment
             }
         });
 
+        SceneButton scnbt = (SceneButton) v.findViewById(sceneButton[1]);
+        scnbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("SceneFragment", "onClick() was called.");
+            }
+        });
+
         return v;
     }
+
+
 
 
 }

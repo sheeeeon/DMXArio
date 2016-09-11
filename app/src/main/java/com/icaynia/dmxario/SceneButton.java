@@ -18,6 +18,7 @@ public class SceneButton extends Button
     private String                      SCENE_FILE;
     private HashMap<String, String>     SCENE_MAP;
     private Context                     context;
+    private int                         id;
 
     ObjectFileManager mObj;
 
@@ -26,17 +27,27 @@ public class SceneButton extends Button
         super(_context);
         context = _context;
     }
+
     public SceneButton(Context _context, AttributeSet _atts) {
         super(_context, _atts);
         context = _context;
     }
 
+
+
     //region Accessors
 
+    public void setid(int _id) {
+        this.id = _id;
+    }
 
 
     //region Inner Function
     private void test2() {
+
+    }
+
+    private void init() {
 
     }
 

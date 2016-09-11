@@ -184,10 +184,11 @@
             android:layout_weight="12">
 
             <com.icaynia.dmxario.SceneButton
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button3"
+                android:id="@+id/Scene1"
                 android:layout_weight="1" />
 
             <com.icaynia.dmxario.SceneButton
