@@ -60,7 +60,7 @@ public class SceneButton extends Button implements View.OnClickListener
             @Override
             public void onClick(View v) {
                 if (id >= 0) {
-                    mListener.onMyEvent();
+                    mListener.onMyEvent(1);
                 }
             }
         });
@@ -68,7 +68,7 @@ public class SceneButton extends Button implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        mListener.onMyEvent();
+        mListener.onMyEvent(1);
     }
 
     public void setCsEventListener(csEventListener listener) {
