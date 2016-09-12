@@ -61,7 +61,7 @@ public class SceneFragment extends Fragment implements csEventListener
 
     @Override
     public void onMyEvent(int i) {
-        Log.e("SceneFragment", "-");
+        Log.e("SceneFragment", "-"+i);
     }
 
 
