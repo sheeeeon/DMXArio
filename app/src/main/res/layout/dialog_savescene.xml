@@ -60,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Scene\nName"
+            android:text="Scene\nSlut"
             android:textSize="12sp"
             android:gravity="center" />
 
@@ -71,12 +71,47 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Input Scene Name"
             android:text="1"
             android:textSize="12sp"
             android:ems="10"
             android:gravity="center"
             android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="5" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Scene\nBackColor"
+            android:textSize="12sp"
+            android:gravity="center" />
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+        android:layout_weight="4">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#DDDDDD"
+                android:id="@+id/radioButton"
+                android:checked="true"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FF3333"
+                android:id="@+id/radioButton2" />
+        </RadioGroup>
+
 
     </LinearLayout>
 
