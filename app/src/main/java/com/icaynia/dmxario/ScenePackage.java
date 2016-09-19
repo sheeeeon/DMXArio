@@ -16,7 +16,6 @@ public class ScenePackage
 {
 
     private Context                     context;
-
     private HashMap<String, String>     config;
     private Scene[]                     scene = new Scene[56];
 
@@ -51,6 +50,8 @@ public class ScenePackage
         else
         {
             Log.e("ScenePackage", "Load Successfully.");
+            ((MainActivity)context).makeToast(PackageName + " load Successful!");
+            ((MainActivity)context).setTitleText(PackageName);
         }
         loadScene(1);
     }

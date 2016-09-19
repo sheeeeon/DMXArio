@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:text="Scene\nPackage"
             android:textSize="12sp"
             android:gravity="center"/>
@@ -23,7 +23,7 @@
             android:id="@+id/input_scenePackage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3.5"
+            android:layout_weight="4"
             android:hint="Input Scene Package Name"
             android:text="UntitledPackage"
             android:textSize="12sp"
@@ -40,7 +40,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:text="Scene\nName"
             android:textSize="12sp"
             android:gravity="center" />
@@ -49,11 +49,35 @@
             android:id="@+id/input_sceneName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3.5"
+            android:layout_weight="2"
             android:hint="Input Scene Name"
             android:text="scene0"
             android:textSize="12sp"
             android:gravity="center" />
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Scene\nName"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+
+
+        <EditText
+            android:id="@+id/input_sceneSlut"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="Input Scene Name"
+            android:text="1"
+            android:textSize="12sp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number" />
+
     </LinearLayout>
 
 </LinearLayout>

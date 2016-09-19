@@ -52,7 +52,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
 
         if (((MainActivity)getActivity()).developMode == true) {
-            ((MainActivity)getActivity()).makeToast(v.toString()+" 이벤트 발생");
+            //((MainActivity)getActivity()).makeToast(v.toString()+" 이벤트 발생");
         } else {
             switch (v.getId()) {
 

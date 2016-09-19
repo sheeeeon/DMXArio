@@ -414,9 +414,17 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
                 EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
                 EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
+                EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
 
-                tmpScene.setSceneName(sceneName.getText().toString());
-                saveScene(packageName.getText().toString(),tmpScene);
+                if (sceneSlut.getText().toString() == "")
+                {
+                }
+                else
+                {
+                    tmpScene.setSceneName(sceneName.getText().toString());
+                    saveScene(packageName.getText().toString(),tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
+                }
+
                 dialog.dismiss();
             }
         });
@@ -424,7 +432,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });
@@ -437,7 +445,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     }
 
-    public void saveScene(String ScenePackageName, Scene scn)
+    public void saveScene(String ScenePackageName, Scene scn, int slut)
     {
         //기존 코드
         ScenePackage scnPack = new ScenePackage(getContext());      //new
@@ -449,7 +457,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         scnPack.savePackage();
         scnPack.mkSceneFile(scn);
 
-        scnPack.putScene(scn.getSceneName(), 1);
+        scnPack.putScene(scn.getSceneName(), slut);
         scnPack.savePackage();
         setDisplayText("Save Completed : " + scn.getSceneName());
     }
