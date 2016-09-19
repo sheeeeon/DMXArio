@@ -37,7 +37,8 @@ public class SceneFragment extends Fragment implements csEventListener
         scenePackage = new ScenePackage(getContext());
         scenePackage.loadPackage("UntitledPackage");
         scenePackage.printAll();
-        scenePackage.playScene(1);
+
+        /* TEST */ scenePackage.playScene(1);
 
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
@@ -56,13 +57,23 @@ public class SceneFragment extends Fragment implements csEventListener
 
         }
 
+
+        this.updateView();
+
         return v;
+    }
+
+    public void updateView() {
+        String str = scenePackage.getScene(1).getSceneName();
+        scnBt[0].setBGColor();
     }
 
     @Override
     public void onMyEvent(int i) {
         Log.e("SceneFragment", "-"+i);
     }
+
+
 
 
 }

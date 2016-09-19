@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.util.Log;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,12 +56,26 @@ public class Scene {
             ((MainActivity)context).makeToast("가져오기 성공 : "+fileName);
             Log.e("Scene", "Load Completed : " + fileName);
         }
+
+    }
+
+    public void printAll() {
+
+        Iterator iterator = scn.entrySet().iterator();
+        Log.e("ScenePackage", "--\n");
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            Log.e("ScenePackage", "key : " + entry.getKey() + "    value : "
+                    + entry.getValue());
+        }
+        Log.e("ScenePackage", "\n--");
     }
 
     public void play()
     {
         this.run();
         Log.e("Scene", "Play();");
+        printAll();
     }
 
     public void stop()
@@ -122,6 +138,7 @@ public class Scene {
 
     // region private function
     private void run() {
+
         mTimer = new Timer();
         mTimer.schedule(
                 new TimerTask(){

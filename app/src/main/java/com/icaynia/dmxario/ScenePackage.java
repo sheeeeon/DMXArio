@@ -103,6 +103,10 @@ public class ScenePackage
         mObj.save(scn.getHashMap(), "Scene/"+getPackageName()+"/"+scnName+".scn");
     }
 
+    public Scene getScene(int slut) {
+        return scene[slut];
+    }
+
     public void playScene(int id)
     {
         this.stopScene(id);

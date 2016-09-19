@@ -137,6 +137,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         tb3 = (ToggleButton) v.findViewById(R.id.tbChannel3);
         tb4 = (ToggleButton) v.findViewById(R.id.tbChannel4);
 
+
         Button goMain1 = (Button) v.findViewById(R.id.goMain1);
         goMain1.setOnClickListener(this);
 
@@ -196,15 +197,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
             case R.id.goMain1:
                 ((MainActivity)getActivity()).fragmentReplace(MAIN_FRAGMENT);
                 break;
-
             case R.id.c_Rec:
                 ((MainActivity)getActivity()).makeToast("C_REC");
                 recordSceneStart();
                 break;
             case R.id.c_setting:
                 ((MainActivity)getActivity()).makeToast("C_SETTING");
+                onSetting();
                 break;
-
             case R.id.fader:
                 ToggleButton tn = (ToggleButton) getActivity().findViewById(R.id.fader);
                 if (tn.isChecked())
@@ -486,7 +486,33 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
     }
 
+    public void onSetting() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+        dialogV = getLayoutInflater(null).inflate(R.layout.dialog_controllersetting, null);
 
+        builder.setView(dialogV);
+        builder.setTitle("종료 확인 대화 상자");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+    }
 
     public int[] getParam(String command)
     {

@@ -13,6 +13,7 @@ import java.util.HashMap;
  */
 public class SceneButton extends Button implements View.OnClickListener
 {
+    private View v;
     //region Properties
     private String                      SCENE_PROJECT;
     private String                      SCENE_FILE;
@@ -75,7 +76,9 @@ public class SceneButton extends Button implements View.OnClickListener
         mListener = listener;
     }
 
-
+    public void setBGColor() {
+        this.setBackgroundColor(0xFFFFFF);
+    }
 
 }
 
