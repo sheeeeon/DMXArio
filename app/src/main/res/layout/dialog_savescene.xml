@@ -93,23 +93,25 @@
             android:textSize="12sp"
             android:gravity="center" />
         <RadioGroup
-            android:id="@+id/radioGroup1"
+            android:id="@+id/backgroundColorSelect"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-        android:layout_weight="4">
+            android:layout_weight="4">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#DDDDDD"
                 android:id="@+id/radioButton"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="standard" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#FF3333"
-                android:id="@+id/radioButton2" />
+                android:id="@+id/radioButton2"
+                android:text="red" />
         </RadioGroup>
 
 

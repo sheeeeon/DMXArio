@@ -15,7 +15,6 @@ public class SceneButton extends Button implements View.OnClickListener
 {
     private View v;
     //region Properties
-    private HashMap<String, String>     SCENE_MAP;
 
     private String                      SCENE_PROJECT;
     private String                      SCENE_FILE;
@@ -77,9 +76,14 @@ public class SceneButton extends Button implements View.OnClickListener
         mListener = listener;
     }
 
-    public void setBGColor(int color)
-     {
-        this.setBackgroundColor(color);
+    public void setBGColor(String color)
+    {
+        if (color != null) {
+            Log.e("-----", color + " -");
+            if (color.equals("red") == true)
+                this.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+        }
+
     }
 
 }

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -18,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -415,6 +418,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
                 EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
                 EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
+                RadioGroup rg = (RadioGroup)dialogV.findViewById(R.id.backgroundColorSelect);
+                int checkedRadiobuttonId = rg.getCheckedRadioButtonId();
+
+                RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
+
 
                 if (sceneSlut.getText().toString() == "")
                 {
@@ -422,6 +430,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 else
                 {
                     tmpScene.setSceneName(sceneName.getText().toString());
+                    tmpScene.setSceneBGColor(rb.getText().toString());
                     saveScene(packageName.getText().toString(),tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
                 }
 

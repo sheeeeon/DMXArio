@@ -74,7 +74,9 @@ public class SceneFragment extends Fragment implements csEventListener
         for (int i = 0; i < 56; i++)
         {
             String str = scenePackage.getScene(i).getSceneName();
+            String BGColor = scenePackage.getScene(i).getSceneBGColor();
             scnBt[i].setText(str);
+            scnBt[i].setBGColor(BGColor);
         }
     }
 

@@ -100,6 +100,18 @@ public class Scene {
         scn.put("SceneLength", SceneLength+"");
     }
 
+    public String getSceneBGColor() {
+        return scn.get("BGColor");
+    }
+
+    public void setSceneBGColor(String color) {
+        scn.put("BGColor", color);
+    }
+
+    public void setSceneTextColor(String color) {
+        scn.put("TextColor", color);
+    }
+
     public void putFrame(int frameno, String command)
     {
         scn.put(frameno+"#", command);
