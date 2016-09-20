@@ -246,123 +246,60 @@
             android:weightSum="8"
             android:layout_weight="12">
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button24"
+                android:id="@+id/Scene9"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button25"
+                android:id="@+id/Scene10"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button26"
+                android:id="@+id/Scene11"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button27"
+                android:id="@+id/Scene12"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button28"
+                android:id="@+id/Scene13"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button29"
+                android:id="@+id/Scene14"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button30"
+                android:id="@+id/Scene15"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button31"
-                android:layout_weight="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:weightSum="8"
-            android:layout_weight="12">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button32"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button33"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button34"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button35"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button36"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button37"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button38"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button39"
+                android:id="@+id/Scene16"
                 android:layout_weight="1" />
         </TableRow>
 
@@ -372,123 +309,60 @@
             android:weightSum="8"
             android:layout_weight="12">
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button40"
+                android:id="@+id/Scene17"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button41"
+                android:id="@+id/Scene18"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button42"
+                android:id="@+id/Scene19"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button43"
+                android:id="@+id/Scene20"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button44"
+                android:id="@+id/Scene21"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button45"
+                android:id="@+id/Scene22"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button46"
+                android:id="@+id/Scene23"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button47"
-                android:layout_weight="1" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:weightSum="8"
-            android:layout_weight="12">
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button48"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button49"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button50"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button51"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button52"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button53"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button54"
-                android:layout_weight="1" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="+"
-                android:id="@+id/button55"
+                android:id="@+id/Scene24"
                 android:layout_weight="1" />
         </TableRow>
 
@@ -498,60 +372,60 @@
             android:weightSum="8"
             android:layout_weight="12">
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button56"
+                android:id="@+id/Scene25"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button57"
+                android:id="@+id/Scene26"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button58"
+                android:id="@+id/Scene27"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button59"
+                android:id="@+id/Scene28"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button60"
+                android:id="@+id/Scene29"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button61"
+                android:id="@+id/Scene30"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button62"
+                android:id="@+id/Scene31"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button63"
+                android:id="@+id/Scene32"
                 android:layout_weight="1" />
         </TableRow>
 
@@ -561,60 +435,186 @@
             android:weightSum="8"
             android:layout_weight="12">
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button64"
+                android:id="@+id/Scene33"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button65"
+                android:id="@+id/Scene34"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button66"
+                android:id="@+id/Scene35"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button67"
+                android:id="@+id/Scene36"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button68"
+                android:id="@+id/Scene37"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button69"
+                android:id="@+id/Scene38"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button70"
+                android:id="@+id/Scene39"
                 android:layout_weight="1" />
 
-            <Button
+            <com.icaynia.dmxario.SceneButton
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="+"
-                android:id="@+id/button71"
+                android:id="@+id/Scene40"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="8"
+            android:layout_weight="12">
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene41"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene42"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene43"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene44"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene45"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene46"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene47"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene48"
+                android:layout_weight="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="8"
+            android:layout_weight="12">
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene49"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene50"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene51"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene52"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene53"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene54"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene55"
+                android:layout_weight="1" />
+
+            <com.icaynia.dmxario.SceneButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:id="@+id/Scene56"
                 android:layout_weight="1" />
         </TableRow>
 

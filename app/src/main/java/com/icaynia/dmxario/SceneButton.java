@@ -19,7 +19,7 @@ public class SceneButton extends Button implements View.OnClickListener
     private String                      SCENE_FILE;
     private HashMap<String, String>     SCENE_MAP;
     private Context                     context;
-    public int                          id;
+    public  int                         SCENE_ID;
     private csEventListener             mListener;
 
     ObjectFileManager mObj;
@@ -43,8 +43,8 @@ public class SceneButton extends Button implements View.OnClickListener
 
     }
 
-    public void setid(int _id) {
-        this.id = _id;
+    public void setSceneId(int _id) {
+        this.SCENE_ID = _id;
         init();
     }
 
@@ -60,8 +60,8 @@ public class SceneButton extends Button implements View.OnClickListener
         this.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (id >= 0) {
-                    mListener.onMyEvent(1);
+                if (SCENE_ID >= 0) {
+                    mListener.onMyEvent(SCENE_ID);
                 }
             }
         });
@@ -76,8 +76,9 @@ public class SceneButton extends Button implements View.OnClickListener
         mListener = listener;
     }
 
-    public void setBGColor() {
-        this.setBackgroundColor(0xFFFFFF);
+    public void setBGColor(int color)
+     {
+        this.setBackgroundColor(color);
     }
 
 }
