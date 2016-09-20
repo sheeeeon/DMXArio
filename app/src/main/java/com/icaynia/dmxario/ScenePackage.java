@@ -50,15 +50,20 @@ public class ScenePackage
         else
         {
             Log.e("ScenePackage", "Load Successfully.");
-            ((MainActivity)context).makeToast(PackageName + " load Successful!");
+            //((MainActivity)context).makeToast(PackageName + " load Successful!");
             ((MainActivity)context).setTitleText(PackageName);
         }
-        loadScene(1);
+
+        for (int i = 0; i < 56; i++) {
+            loadScene(i);
+        }
     }
 
     public void loadScene(int id) {
         String fileName = this.get("slut"+id);
-        scene[id].loadScene(getPackageName(), fileName);
+        if (fileName != null) {
+            scene[id].loadScene(getPackageName(), fileName);
+        }
     }
 
     public void printAll() {
@@ -110,7 +115,7 @@ public class ScenePackage
     public void playScene(int id)
     {
         this.stopScene(id);
-        ((MainActivity)context).makeToast("Scene Name = "+scene[id].getSceneName());
+        //((MainActivity)context).makeToast("Scene Name = "+scene[id].getSceneName());
         this.scene[id].play();
     }
 

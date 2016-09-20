@@ -15,9 +15,10 @@ public class SceneButton extends Button implements View.OnClickListener
 {
     private View v;
     //region Properties
+    private HashMap<String, String>     SCENE_MAP;
+
     private String                      SCENE_PROJECT;
     private String                      SCENE_FILE;
-    private HashMap<String, String>     SCENE_MAP;
     private Context                     context;
     public  int                         SCENE_ID;
     private csEventListener             mListener;

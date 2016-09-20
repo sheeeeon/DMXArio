@@ -69,8 +69,9 @@ public class SceneFragment extends Fragment implements csEventListener
         return v;
     }
 
-    public void updateView() {
-        for (int i = 0; i <= 7; i++)
+    public void updateView()
+    {
+        for (int i = 0; i < 56; i++)
         {
             String str = scenePackage.getScene(i).getSceneName();
             scnBt[i].setText(str);
@@ -78,7 +79,8 @@ public class SceneFragment extends Fragment implements csEventListener
     }
 
     @Override
-    public void onMyEvent(int i) {
+    public void onMyEvent(int i)
+    {
         Log.e("SceneFragment", "id = "+i);
     }
 
