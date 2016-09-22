@@ -1,13 +1,17 @@
 package com.icaynia.dmxario;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 
 /**
  * Created by icaynia on 16. 8. 31..
@@ -20,6 +24,7 @@ public class SceneFragment extends Fragment implements csEventListener
     private Context context;
     private SceneButton[] scnBt = new SceneButton[56];
     public int i;
+    private View dialogV;
 
     private int[] sceneButton = {
             R.id.Scene1, R.id.Scene2, R.id.Scene3, R.id.Scene4, R.id.Scene5, R.id.Scene6, R.id.Scene7, R.id.Scene8,
@@ -90,6 +95,43 @@ public class SceneFragment extends Fragment implements csEventListener
     @Override
     public void onMyLongEvent(int i) {
         Log.e("SceneFragment", "LongClick, id = " +i);
+        this.showScnEditDialog(i);
+    }
+
+    public void showScnEditDialog(int id) {
+        Scene tmpScn = scenePackage.getScene(id);
+
+        //View 관련
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+        dialogV = getLayoutInflater(null).inflate(R.layout.dialog_scnedit, null);
+
+
+        //데이터 관련
+
+        builder.setView(dialogV);
+        builder.setTitle(tmpScn.getSceneName());
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+
+
     }
 
 
