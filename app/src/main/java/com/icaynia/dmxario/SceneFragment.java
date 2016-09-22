@@ -113,7 +113,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                ((MainActivity)getContext()).makeToast("확인한 부분");
                 dialog.dismiss();
             }
         });
