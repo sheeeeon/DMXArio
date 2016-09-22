@@ -58,6 +58,7 @@ public class SceneButton extends Button implements View.OnClickListener
         mListener = listener;
     }
 
+
     public void setBGColor(String color)
     {
         if (color != null) {
@@ -89,6 +90,15 @@ public class SceneButton extends Button implements View.OnClickListener
                 if (SCENE_ID >= 0) {
                     mListener.onMyEvent(SCENE_ID);
                 }
+            }
+        });
+        this.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (SCENE_ID >= 0) {
+                    mListener.onMyLongEvent(SCENE_ID);
+                }
+                return false;
             }
         });
     }

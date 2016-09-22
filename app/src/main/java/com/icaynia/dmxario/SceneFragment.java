@@ -87,6 +87,11 @@ public class SceneFragment extends Fragment implements csEventListener
         scenePackage.playScene(i);
     }
 
+    @Override
+    public void onMyLongEvent(int i) {
+        Log.e("SceneFragment", "LongClick, id = " +i);
+    }
+
 
 
 
