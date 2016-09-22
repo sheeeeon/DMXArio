@@ -422,7 +422,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
                 //RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
 
-                String rbBGcolor = "";
+                String rbBGcolor = rg.getSelectColor();
 
                 if (sceneSlut.getText().toString() == "")
                 {

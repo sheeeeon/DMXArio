@@ -156,12 +156,14 @@ public class Scene {
                     int i = 0;
                     @Override
                     public void run(){
+                        String tmpS = scn.get(i+"#");
                         if (i == getSceneLength() || i == 1000) {
                             Log.e("Timer", "------finished-----");
+
                             mTimer.cancel();
                         }
-                        Log.e("Timer", "frame : " + i);
-                        sendData(scn.get(i+"#"));
+                        Log.e("Timer", "frame : " + i + " : " + tmpS);
+                        sendData(tmpS);
                         i++;
                     }
                 }, 0, 20

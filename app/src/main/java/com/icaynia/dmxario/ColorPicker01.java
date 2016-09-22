@@ -34,7 +34,7 @@ public class ColorPicker01 extends LinearLayout
 
     }
 
-    private String getSelectColor()
+    public String getSelectColor()
     {
         RadioGroup rg = (RadioGroup) v.findViewById(R.id.vu_colorRadioGroup);
         int checkedRadiobuttonId = rg.getCheckedRadioButtonId();
@@ -43,7 +43,8 @@ public class ColorPicker01 extends LinearLayout
         if(checkedRadiobuttonId == R.id.rb_red) rbBGcolor = "red";
         else if (checkedRadiobuttonId == R.id.rb_blue) rbBGcolor = "blue";
         else if (checkedRadiobuttonId == R.id.rb_green) rbBGcolor = "green";
-        else if (checkedRadiobuttonId == R.id.rb_orange ) rbBGcolor = "orange";
+        else if (checkedRadiobuttonId == R.id.rb_orange) rbBGcolor = "orange";
         return rbBGcolor;
     }
+
 }
