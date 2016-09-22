@@ -92,47 +92,14 @@
             android:text="Scene\nBackColor"
             android:textSize="12sp"
             android:gravity="center" />
-        <RadioGroup
-            android:id="@+id/backgroundColorSelect"
+
+        <com.icaynia.dmxario.ColorPicker01
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="4">
+            android:layout_height="wrap_content"
+            android:layout_weight="3.5"
+            android:id="@+id/scn_colorpick">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#DDDDDD"
-                android:id="@+id/rb_standard"
-                android:checked="true"
-                android:textSize="0px" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#FF3333"
-                android:id="@+id/rb_red"
-                android:textSize="0sp" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#3333ff"
-                android:id="@+id/rb_blue"
-                android:textSize="0sp" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#33FF33"
-                android:id="@+id/rb_green"
-                android:textSize="0sp" />
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="#fff133"
-                android:id="@+id/rb_orange"
-                android:textSize="0sp"
-                android:textColor="#00ffffff" />
-        </RadioGroup>
-
+        </com.icaynia.dmxario.ColorPicker01>
 
     </LinearLayout>
 

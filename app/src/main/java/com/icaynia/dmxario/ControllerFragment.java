@@ -418,18 +418,11 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
                 EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
                 EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
-                RadioGroup rg = (RadioGroup)dialogV.findViewById(R.id.backgroundColorSelect);
-                int checkedRadiobuttonId = rg.getCheckedRadioButtonId();
+                ColorPicker01 rg = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpick);
 
                 //RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
 
                 String rbBGcolor = "";
-
-                if(checkedRadiobuttonId == R.id.rb_red) rbBGcolor = "red";
-                else if (checkedRadiobuttonId == R.id.rb_blue) rbBGcolor = "blue";
-                else if (checkedRadiobuttonId == R.id.rb_green) rbBGcolor = "green";
-                else if (checkedRadiobuttonId == R.id.rb_orange ) rbBGcolor = "orange";
-
 
                 if (sceneSlut.getText().toString() == "")
                 {
