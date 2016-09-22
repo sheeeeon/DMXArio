@@ -44,7 +44,7 @@ public class SceneFragment extends Fragment implements csEventListener
         scenePackage.loadPackage("UntitledPackage");
         scenePackage.printAll();
 
-        /* TEST */ scenePackage.playScene(1);
+        /* TEST  scenePackage.playScene(1);*/
 
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
@@ -84,6 +84,7 @@ public class SceneFragment extends Fragment implements csEventListener
     public void onMyEvent(int i)
     {
         Log.e("SceneFragment", "id = "+i);
+        scenePackage.playScene(i);
     }
 
 

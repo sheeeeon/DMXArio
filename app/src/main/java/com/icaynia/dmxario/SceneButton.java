@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import java.util.HashMap;
 
@@ -48,25 +49,6 @@ public class SceneButton extends Button implements View.OnClickListener
         init();
     }
 
-
-    //region Inner Function
-    private void test2()
-    {
-
-    }
-
-    private void init()
-    {
-        this.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (SCENE_ID >= 0) {
-                    mListener.onMyEvent(SCENE_ID);
-                }
-            }
-        });
-    }
-
     @Override
     public void onClick(View v) {
         mListener.onMyEvent(1);
@@ -80,11 +62,37 @@ public class SceneButton extends Button implements View.OnClickListener
     {
         if (color != null) {
             Log.e("-----", color + " -");
-            if (color.equals("red") == true)
-                this.setTextColor(getResources().getColor(android.R.color.holo_red_light));
+            if (color.equals("red"))
+                this.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
+            else if (color.equals("blue"))
+                this.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_light));
+            else if (color.equals("green"))
+                this.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+            else if (color.equals("orange"))
+                this.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+
         }
 
     }
+
+    //region Inner Function
+
+    private void init()
+    {
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT);
+        this.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+        this.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SCENE_ID >= 0) {
+                    mListener.onMyEvent(SCENE_ID);
+                }
+            }
+        });
+    }
+
 
 }
 

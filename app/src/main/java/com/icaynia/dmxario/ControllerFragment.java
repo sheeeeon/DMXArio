@@ -386,7 +386,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                                 tmpScene.putFrame(i, tmpStr);
                                 tmpStr = "";
 
-                                if (i == 10)
+                                if (i == 200)
                                 {
                                     tmpScene.setSceneLength(i);
                                     tmpScene.setSceneName("scene0.scn");
@@ -421,7 +421,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 RadioGroup rg = (RadioGroup)dialogV.findViewById(R.id.backgroundColorSelect);
                 int checkedRadiobuttonId = rg.getCheckedRadioButtonId();
 
-                RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
+                //RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
+
+                String rbBGcolor = "";
+
+                if(checkedRadiobuttonId == R.id.rb_red) rbBGcolor = "red";
+                else if (checkedRadiobuttonId == R.id.rb_blue) rbBGcolor = "blue";
+                else if (checkedRadiobuttonId == R.id.rb_green) rbBGcolor = "green";
+                else if (checkedRadiobuttonId == R.id.rb_orange ) rbBGcolor = "orange";
 
 
                 if (sceneSlut.getText().toString() == "")
@@ -430,7 +437,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 else
                 {
                     tmpScene.setSceneName(sceneName.getText().toString());
-                    tmpScene.setSceneBGColor(rb.getText().toString());
+                    tmpScene.setSceneBGColor(rbBGcolor);
                     saveScene(packageName.getText().toString(),tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
                 }
 

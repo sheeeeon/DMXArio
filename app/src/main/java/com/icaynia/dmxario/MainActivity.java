@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = true; //개발자 모드
+    public boolean developMode = false; //개발자 모드
 
 
 
@@ -173,13 +173,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());
+                Thread.sleep(20);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
 
             }
         } catch (Exception e) {  // 문자열 전송 도중 오류가 발생한 경우
-            bluetoothTxVal.setText("전송 도중 오류가 발생했습니다.");
+            //bluetoothTxVal.setText("전송 도중 오류가 발생했습니다.");
             //finish();  // App 종료
         }
     }

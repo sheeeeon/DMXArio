@@ -98,11 +98,11 @@ void dmx::execute (int *CommandValue)
 void dmx::update(int chan, int val) 
 {
     digitalWrite(DMX_PIN, LOW);
-    delay(1);
+    delayMicroseconds(999980);
 
     dmx::shiftOut(DMX_PIN, 0);
     value[chan-1] = val;
-    for (int i = 0; i < 32; i++) 
+    for (int i = 0; i < 16; i++) 
     {
         dmx::shiftOut(DMX_PIN, value[i]);
     }

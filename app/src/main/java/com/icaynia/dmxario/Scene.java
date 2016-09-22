@@ -53,7 +53,7 @@ public class Scene {
         }
         else
         {
-            ((MainActivity)context).makeToast("가져오기 성공 : "+fileName);
+            //((MainActivity)context).makeToast("가져오기 성공 : "+fileName);
             Log.e("Scene", "Load Completed : " + fileName);
         }
 
@@ -80,7 +80,6 @@ public class Scene {
 
     public void stop()
     {
-
     }
 
     public boolean isRunning()
@@ -157,16 +156,22 @@ public class Scene {
                     int i = 0;
                     @Override
                     public void run(){
-                        if (i == getSceneLength()) {
+                        if (i == getSceneLength() || i == 1000) {
+                            Log.e("Timer", "------finished-----");
                             mTimer.cancel();
                         }
                         Log.e("Timer", "frame : " + i);
-
+                        sendData(scn.get(i+"#"));
                         i++;
                     }
                 }, 0, 20
         );
     }
+
+    private void sendData(String str) {
+        ((MainActivity)context).sendData(str);
+    }
+
 
     private class BackPlayThread extends Thread
     {
