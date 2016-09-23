@@ -102,6 +102,18 @@ public class ScenePackage
         this.put("slut"+id, sceneName+"");
     }
 
+    public void delScene(int id)
+    {
+        scene[id] = new Scene(context);
+        this.remove("slut"+id);
+    }
+
+    public void mvScene(int originalId, int newId)
+    {
+        this.putScene(scene[originalId].getSceneName(), newId);
+        delScene(originalId);
+    }
+
     public void mkSceneFile(Scene scn)
     {
         String scnName = scn.getSceneName();
@@ -167,5 +179,10 @@ public class ScenePackage
 
     }
 
+    private void remove(String key)
+    {
+        config.remove(key);
+
+    }
 
 }

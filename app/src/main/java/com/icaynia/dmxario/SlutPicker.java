@@ -34,7 +34,7 @@ public class SlutPicker extends LinearLayout {
         v = li.inflate(R.layout.view_slutpicker, this, false);
         addView(v);
 
-        et =(EditText) v.findViewById(R.id.vu_slutEditText);
+        et = (EditText) v.findViewById(R.id.vu_slutEditText);
 
 
     }

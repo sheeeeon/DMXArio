@@ -111,7 +111,7 @@ public class SceneFragment extends Fragment implements csEventListener
         }
 
         copic.setSelectColor(tmpScn.getSceneBGColor());
-        slpic.setvText("ww");
+        slpic.setvText(id+"");
 
         builder.setTitle(tmpScn.getSceneName());
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -125,11 +125,19 @@ public class SceneFragment extends Fragment implements csEventListener
                 tmpScn.setSceneBGColor(color);
 
                 /* 슬룻 */
+                int newId = Integer.parseInt(slpic.getvText());
+                int orgId = id;
+
+
+
+                /* 저장 */
+                scenePackage.mvScene(orgId, newId);  //move scene that has orginal id to newId slut.
+                scenePackage.saveScene(tmpScn, id);
+                scenePackage.savePackage();
 
 
                 //-------
                 updateView();
-                scenePackage.saveScene(tmpScn, id);
                 dialog.dismiss();
             }
         });

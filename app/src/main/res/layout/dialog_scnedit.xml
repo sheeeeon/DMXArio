@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:text="Button Color"
             android:textSize="12sp"
             android:gravity="center" />
@@ -22,10 +22,26 @@
         <com.icaynia.dmxario.ColorPicker01
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="3.5"
+            android:layout_weight="2"
             android:id="@+id/scn_colorpickedit">
 
         </com.icaynia.dmxario.ColorPicker01>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Scene Slut"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <com.icaynia.dmxario.SlutPicker
+            android:id="@+id/scn_slutpickedit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </com.icaynia.dmxario.SlutPicker>
     </LinearLayout>
 
 
@@ -36,21 +52,7 @@
         android:orientation="horizontal"
         android:weightSum="5" >
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"
-            android:text="3"
-            android:textSize="12sp"
-            android:gravity="center" />
 
-        <com.icaynia.dmxario.SlutPicker
-            android:id="@+id/scn_slutpickedit"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3.5">
-
-        </com.icaynia.dmxario.SlutPicker>
     </LinearLayout>
 
 </LinearLayout>
