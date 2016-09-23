@@ -2,6 +2,7 @@ package com.icaynia.dmxario;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -105,10 +106,6 @@ public class SceneFragment extends Fragment implements csEventListener
         final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
         dialogV = getLayoutInflater(null).inflate(R.layout.dialog_scnedit, null);
 
-
-        //데이터 관련
-
-        builder.setView(dialogV);
         builder.setTitle(tmpScn.getSceneName());
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
@@ -126,12 +123,17 @@ public class SceneFragment extends Fragment implements csEventListener
             }
         });
 
+        builder.setView(dialogV);
+        //데이터 관련
+
+        ColorPicker01 copic = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+        if (copic == null) {
+            Log.e("e", "null");
+        }
+        copic.setSelectColor(tmpScn.getSceneBGColor());
         final AlertDialog alert = builder.create();
         alert.setCanceledOnTouchOutside(false);
-
         alert.show();    // 알림창 띄우기
-
-
     }
 
 

@@ -3,9 +3,11 @@ package com.icaynia.dmxario;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 /**
@@ -14,6 +16,24 @@ import android.widget.RadioGroup;
 public class ColorPicker01 extends LinearLayout
 {
     View v;
+
+    String[] colorNameArray = {
+            "red",
+            "blue",
+            "green",
+            "orange"
+    };
+
+    int[] colorpickbtID = {
+            R.id.rb_standard,
+            R.id.rb_red,
+            R.id.rb_blue,
+            R.id.rb_green,
+            R.id.rb_orange
+
+    };
+    RadioButton[] colorpick = new RadioButton[4];
+
     public ColorPicker01(Context context)
     {
         super(context);
@@ -32,6 +52,10 @@ public class ColorPicker01 extends LinearLayout
         v = li.inflate(R.layout.view_colorpicker, this, false);
         addView(v);
 
+        for (int index = 0; index < colorpick.length; index++) {
+            colorpick[index] = (RadioButton)v.findViewById(colorpickbtID[index]);
+
+        }
     }
 
     public String getSelectColor()
@@ -47,4 +71,17 @@ public class ColorPicker01 extends LinearLayout
         return rbBGcolor;
     }
 
+    public void setSelectColor(String color)
+    {
+
+        RadioGroup rg = (RadioGroup) v.findViewById(R.id.vu_colorRadioGroup);
+        int rbId = colorpickbtID[0];
+
+        if(color.equals("red")) rbId = colorpickbtID[1];
+        else if (color.equals("blue")) rbId = colorpickbtID[2];
+        else if (color.equals("green")) rbId = colorpickbtID[3];
+        else if (color.equals("orange")) rbId = colorpickbtID[4];
+        rg.check(rbId);
+
+    }
 }

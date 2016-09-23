@@ -411,6 +411,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         builder.setView(dialogV);
         builder.setTitle("종료 확인 대화 상자");
+
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
