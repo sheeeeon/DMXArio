@@ -452,7 +452,6 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         alert.show();    // 알림창 띄우기
 
-
     }
 
     public void saveScene(String ScenePackageName, Scene scn, int slut)
@@ -471,6 +470,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         scnPack.savePackage();
         setDisplayText("Save Completed : " + scn.getSceneName());
     }
+
     public void setDisplayText(String str) {
         scnDisplay.setText(str);
     }

@@ -99,18 +99,32 @@ public class SceneFragment extends Fragment implements csEventListener
         this.showScnEditDialog(i);
     }
 
-    public void showScnEditDialog(int id) {
-        Scene tmpScn = scenePackage.getScene(id);
-
-        //View 관련
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+    public void showScnEditDialog(final int id) {
         dialogV = getLayoutInflater(null).inflate(R.layout.dialog_scnedit, null);
+
+        final Scene                 tmpScn      = scenePackage.getScene(id);
+        final AlertDialog.Builder   builder     = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+        final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+        if (copic == null) {
+            Log.e("e", "null");
+        }
+        copic.setSelectColor(tmpScn.getSceneBGColor());
 
         builder.setTitle(tmpScn.getSceneName());
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 ((MainActivity)getContext()).makeToast("확인한 부분");
+                //------- 데이터 부분
+
+                /* 백그라운드 컬러 */
+                String color = copic.getSelectColor();
+                tmpScn.setSceneBGColor(color);
+
+
+                //-------
+                updateView();
+                scenePackage.saveScene(tmpScn, id);
                 dialog.dismiss();
             }
         });
@@ -126,11 +140,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setView(dialogV);
         //데이터 관련
 
-        ColorPicker01 copic = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
-        if (copic == null) {
-            Log.e("e", "null");
-        }
-        copic.setSelectColor(tmpScn.getSceneBGColor());
+
         final AlertDialog alert = builder.create();
         alert.setCanceledOnTouchOutside(false);
         alert.show();    // 알림창 띄우기

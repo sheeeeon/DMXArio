@@ -133,6 +133,22 @@ public class ScenePackage
 
     }
 
+    public void saveScene(Scene scn, int slut)
+    {
+        //기존 코드
+        ScenePackage scnPack = new ScenePackage(context);      //new
+        if (mObj.isAvailable("Scene/"+getPackageName())) {
+            Log.e("ControllerFragment", getPackageName() +" is available!");
+            scnPack.loadPackage(getPackageName());
+        }
+        scnPack.setPackageName(getPackageName());
+        scnPack.savePackage();
+        scnPack.mkSceneFile(scn);
+
+        scnPack.putScene(scn.getSceneName(), slut);
+        scnPack.savePackage();
+    }
+
 
 
     // endregion
