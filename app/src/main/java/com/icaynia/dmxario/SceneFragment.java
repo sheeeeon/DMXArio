@@ -105,6 +105,7 @@ public class SceneFragment extends Fragment implements csEventListener
         final Scene                 tmpScn      = scenePackage.getScene(id);
         final AlertDialog.Builder   builder     = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
         final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+        final SlutPicker            slpic       = (SlutPicker) dialogV.findViewById(R.id.scn_slutpickedit);
         if (copic == null) {
             Log.e("e", "null");
         }

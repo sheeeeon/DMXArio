@@ -44,16 +44,18 @@
             android:textSize="12sp"
             android:gravity="center" />
 
-        <EditText
+        <com.icaynia.dmxario.SlutPicker
+            android:id="@+id/scn_slutpickedit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/trackCount_edit"
             android:layout_weight="3.5"
-            android:hint="트랙 개수를 입력하세요"
+            android:text="0"
             android:textSize="12sp"
-            android:gravity="center" />
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number">
+
+        </com.icaynia.dmxario.SlutPicker>
     </LinearLayout>
 
 </LinearLayout>
