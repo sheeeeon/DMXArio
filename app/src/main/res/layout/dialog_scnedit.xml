@@ -48,12 +48,7 @@
             android:id="@+id/scn_slutpickedit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3.5"
-            android:text="0"
-            android:textSize="12sp"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="number">
+            android:layout_weight="3.5">
 
         </com.icaynia.dmxario.SlutPicker>
     </LinearLayout>

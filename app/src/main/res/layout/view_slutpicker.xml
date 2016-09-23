@@ -6,10 +6,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/trackCount_edit"
-        android:hint="트랙 개수를 입력하세요"
+        android:id="@+id/vu_slutEditText"
+        android:hint="슬룻"
         android:textSize="12sp"
-        android:gravity="center" />
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="number"/>
 </LinearLayout>

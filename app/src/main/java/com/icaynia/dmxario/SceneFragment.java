@@ -109,7 +109,9 @@ public class SceneFragment extends Fragment implements csEventListener
         if (copic == null) {
             Log.e("e", "null");
         }
+
         copic.setSelectColor(tmpScn.getSceneBGColor());
+        slpic.setvText("ww");
 
         builder.setTitle(tmpScn.getSceneName());
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -121,6 +123,8 @@ public class SceneFragment extends Fragment implements csEventListener
                 /* 백그라운드 컬러 */
                 String color = copic.getSelectColor();
                 tmpScn.setSceneBGColor(color);
+
+                /* 슬룻 */
 
 
                 //-------
