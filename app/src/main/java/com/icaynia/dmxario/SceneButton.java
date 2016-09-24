@@ -51,7 +51,7 @@ public class SceneButton extends Button implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        mListener.onMyEvent(1);
+        mListener.onMyEvent(SCENE_ID);
     }
 
     public void setCsEventListener(csEventListener listener) {

@@ -28,6 +28,9 @@ public class Scene {
     private String                  ButtonTextSize;
 
     private ObjectFileManager       mObj;
+
+
+    private int                     nowframe = 0;
     int maiv;
 
 
@@ -37,6 +40,8 @@ public class Scene {
         this.context = _context;
         scn = new HashMap<String,String>();
         mObj = new ObjectFileManager(context);
+
+        mTimer = new Timer();
     }
 
     // endregion
@@ -84,11 +89,19 @@ public class Scene {
 
     public void stop()
     {
+        this.mTimer.cancel();
+        this.nowframe = 0;
     }
 
     public boolean isRunning()
     {
-        return false;
+        if (nowframe > 0) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public int getSceneLength()
@@ -153,22 +166,22 @@ public class Scene {
 
     // region private function
     private void run() {
-
+        if (this.isRunning()) {
+            this.stop();
+        }
         mTimer = new Timer();
         mTimer.schedule(
                 new TimerTask(){
-                    int i = 0;
                     @Override
                     public void run(){
-                        String tmpS = scn.get(i+"#");
-                        if (i == getSceneLength() || i == 1000) {
+                        String tmpS = scn.get(nowframe+"#");
+                        if (nowframe == getSceneLength() || nowframe > 1000) {
                             Log.e("Timer", "------finished-----");
-
                             mTimer.cancel();
                         }
-                        Log.e("Timer", "frame : " + i + " : " + tmpS);
+                        Log.e("Timer", "frame : " + nowframe + " : " + tmpS);
                         sendData(tmpS);
-                        i++;
+                        nowframe++;
                     }
                 }, 0, 20
         );

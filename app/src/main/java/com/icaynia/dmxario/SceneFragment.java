@@ -93,16 +93,31 @@ public class SceneFragment extends Fragment implements csEventListener
         }
     }
     @Override
-    public void onMyEvent(int i)
+    public void onMyEvent(int id)
     {
-        Log.e("SceneFragment", "id = "+i);
-        scenePackage.playScene(i);
+        Log.e("SceneFragment", "id = "+id);
+        if (scenePackage.getScene(id).getSceneName() == null)
+        {
+            Log.e("SceneFragment", "ID "+id+" is NULL!");
+        }
+        else
+        {
+            scenePackage.playScene(id);
+        }
+
     }
 
     @Override
-    public void onMyLongEvent(int i) {
-        Log.e("SceneFragment", "LongClick, id = " +i);
-        this.showScnEditDialog(i);
+    public void onMyLongEvent(int id) {
+        Log.e("SceneFragment", "LongClick, id = " +id);
+        if (scenePackage.getScene(id).getSceneName() == null)
+        {
+            Log.e("SceneFragment", "ID "+id+" is NULL!");
+        }
+        else
+        {
+            this.showScnEditDialog(id);
+        }
     }
 
     public void showScnEditDialog(final int id) {
