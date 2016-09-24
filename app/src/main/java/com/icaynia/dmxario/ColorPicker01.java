@@ -18,6 +18,7 @@ public class ColorPicker01 extends LinearLayout
     View v;
 
     String[] colorNameArray = {
+            "standard",
             "red",
             "blue",
             "green",
@@ -68,6 +69,7 @@ public class ColorPicker01 extends LinearLayout
         else if (checkedRadiobuttonId == R.id.rb_blue) rbBGcolor = "blue";
         else if (checkedRadiobuttonId == R.id.rb_green) rbBGcolor = "green";
         else if (checkedRadiobuttonId == R.id.rb_orange) rbBGcolor = "orange";
+        else if (checkedRadiobuttonId == R.id.rb_standard) rbBGcolor = "standard";
         return rbBGcolor;
     }
 
@@ -76,8 +78,8 @@ public class ColorPicker01 extends LinearLayout
 
         RadioGroup rg = (RadioGroup) v.findViewById(R.id.vu_colorRadioGroup);
         int rbId = colorpickbtID[0];
-
-        if(color.equals("red")) rbId = colorpickbtID[1];
+        if (color.equals("standard")) rbId = colorpickbtID[0];
+        else if (color.equals("red")) rbId = colorpickbtID[1];
         else if (color.equals("blue")) rbId = colorpickbtID[2];
         else if (color.equals("green")) rbId = colorpickbtID[3];
         else if (color.equals("orange")) rbId = colorpickbtID[4];

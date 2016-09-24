@@ -71,6 +71,8 @@ public class SceneButton extends Button implements View.OnClickListener
                 this.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
             else if (color.equals("orange"))
                 this.setBackgroundColor(getResources().getColor(android.R.color.holo_orange_light));
+            else if (color.equals("standard"))
+                this.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
 
         }
 

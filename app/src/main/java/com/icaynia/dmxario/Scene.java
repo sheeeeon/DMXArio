@@ -73,9 +73,11 @@ public class Scene {
 
     public void play()
     {
-        this.run();
-        Log.e("Scene", "Play();");
-        printAll();
+        if(!getSceneName().isEmpty()) {
+            this.run();
+            Log.e("Scene", "Play();");
+            printAll();
+        }
     }
 
     public void stop()

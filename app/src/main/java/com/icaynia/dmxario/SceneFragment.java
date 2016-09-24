@@ -81,11 +81,17 @@ public class SceneFragment extends Fragment implements csEventListener
         {
             String str = scenePackage.getScene(i).getSceneName();
             String BGColor = scenePackage.getScene(i).getSceneBGColor();
+            if (str == null)
+            {
+                scnBt[i].setBGColor("standard");
+            }
+            else
+            {
+                scnBt[i].setBGColor(BGColor);
+            }
             scnBt[i].setText(str);
-            scnBt[i].setBGColor(BGColor);
         }
     }
-
     @Override
     public void onMyEvent(int i)
     {
@@ -127,11 +133,13 @@ public class SceneFragment extends Fragment implements csEventListener
                 /* 슬룻 */
                 int newId = Integer.parseInt(slpic.getvText());
                 int orgId = id;
+                if (orgId != newId)
+                    scenePackage.mvScene(orgId, newId);  //move scene that has orginal id to newId slut.
+
 
 
 
                 /* 저장 */
-                scenePackage.mvScene(orgId, newId);  //move scene that has orginal id to newId slut.
                 scenePackage.saveScene(tmpScn, id);
                 scenePackage.savePackage();
 
