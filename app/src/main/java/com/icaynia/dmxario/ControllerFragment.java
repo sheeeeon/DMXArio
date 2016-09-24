@@ -146,7 +146,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
 
         handler = new Handler();
 
-        ((MainActivity)getActivity()).TabOff();
+
 
         ToggleButton funcswitch3_1 = (ToggleButton) v.findViewById(R.id.funcswitch3_1);
         funcswitch3_1.setOnClickListener(this);

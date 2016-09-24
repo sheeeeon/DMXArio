@@ -143,11 +143,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 fragmentReplace(mCurrentFragmentIndex);
                 break;
 
-            case R.id.SequencerMenu:
-                mCurrentFragmentIndex = SEQUENCER_FRAGMENT;
-                fragmentReplace(mCurrentFragmentIndex);
-                break;
-
         }
 
 
@@ -397,14 +392,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initSetting() {
-        View BluetoothTXLayout = findViewById(R.id.BluetoothTX);
+        //View BluetoothTXLayout = findViewById(R.id.BluetoothTX);
         SharedPreferences mPref = null;
         mPref = getSharedPreferences("Setting", Context.MODE_PRIVATE);
 
 
-        boolean isBTTXSwitchOn = mPref.getBoolean("BluetoothTxByte_Visible", true);
-        if (isBTTXSwitchOn == true) BluetoothTXLayout.setVisibility(View.VISIBLE);
-        else                        BluetoothTXLayout.setVisibility(View.INVISIBLE);
+        //boolean isBTTXSwitchOn = mPref.getBoolean("BluetoothTxByte_Visible", true);
+        //if (isBTTXSwitchOn == true) BluetoothTXLayout.setVisibility(View.VISIBLE);
+        //else                        BluetoothTXLayout.setVisibility(View.INVISIBLE);
 
         boolean isNotificationSwitchOn = mPref.getBoolean("Notification_Visible",true);
         if (isNotificationSwitchOn) getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -421,11 +416,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void TabOff() {
 
-        LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
+        //LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
         LinearLayout llFragment = (LinearLayout) findViewById(R.id.ll_fragment);
 
 
-        tabLayout.setVisibility(View.INVISIBLE);
+        //tabLayout.setVisibility(View.INVISIBLE);
 
         LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                 0,
@@ -434,14 +429,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout.LayoutParams param4 = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0f);
-        tabLayout.setLayoutParams(param4);
+        //tabLayout.setLayoutParams(param4);
 
     }
     public void TabOn() {
 
-        LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
+        //LinearLayout tabLayout = (LinearLayout) findViewById(R.id.tabLayout);
         LinearLayout llFragment = (LinearLayout) findViewById(R.id.ll_fragment);
-        tabLayout.setVisibility(View.VISIBLE);
+        //tabLayout.setVisibility(View.VISIBLE);
         LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0.7f);
@@ -449,7 +444,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LinearLayout.LayoutParams param4 = new LinearLayout.LayoutParams(
                 0,
                 LinearLayout.LayoutParams.MATCH_PARENT, 0.3f);
-        tabLayout.setLayoutParams(param4);
+        //tabLayout.setLayoutParams(param4);
 
     }
 
