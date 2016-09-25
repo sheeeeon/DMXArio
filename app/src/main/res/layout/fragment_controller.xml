@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:visibility="visible"
-            android:layout_weight="2.6">
+            android:layout_weight="1.4">
 
             <ToggleButton
                 android:text="New ToggleButton"
@@ -26,7 +26,7 @@
                 android:layout_width="0dp"
                 android:textOff="1-16"
                 android:textOn="1-16"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
@@ -40,7 +40,7 @@
                 android:layout_column="1"
                 android:textOff="17-32"
                 android:textOn="17-32"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:visibility="visible"
                 android:layout_weight="1" />
 
@@ -52,7 +52,7 @@
                 android:layout_column="2"
                 android:textOff="33-48"
                 android:textOn="33-48"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:visibility="visible"
                 android:layout_weight="1" />
 
@@ -64,7 +64,7 @@
                 android:layout_column="3"
                 android:textOff="49-64"
                 android:textOn="49-64"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:visibility="visible"
                 android:layout_weight="1" />
 
@@ -156,21 +156,10 @@
                 android:id="@+id/c_Rec"
                 android:layout_column="0"
                 android:layout_width="0dp"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"
-                android:layout_weight="1" />
-
-            <ToggleButton
-                android:text="f"
-                android:id="@+id/toggleButton2"
-                android:layout_column="0"
-                android:layout_width="0dp"
-                android:textSize="8dp"
-                android:layout_height="match_parent"
-                android:enabled="true"
-                android:visibility="gone"
                 android:layout_weight="1" />
 
             <Button
@@ -178,7 +167,7 @@
                 android:id="@+id/goMain1"
                 android:layout_column="0"
                 android:layout_width="0dp"
-                android:textSize="8dp"
+                android:textSize="16sp"
                 android:layout_height="match_parent"
                 android:enabled="true"
                 android:visibility="visible"

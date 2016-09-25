@@ -128,6 +128,11 @@ public class Scene {
         scn.put("TextColor", color);
     }
 
+    public int getSceneNowFrame() {
+
+        return this.nowframe;
+    }
+
     public void putFrame(int frameno, String command)
     {
         scn.put(frameno+"#", command);
