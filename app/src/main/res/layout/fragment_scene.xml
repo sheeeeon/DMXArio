@@ -141,7 +141,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 />
 
             <Button
@@ -155,15 +155,15 @@
                 android:visibility="invisible"
                 android:layout_weight="1" />
 
-            <ToggleButton
-                android:text="f"
-                android:id="@+id/toggleButton2"
+            <Button
+                android:text="Load"
+                android:id="@+id/s_loadScene"
                 android:layout_column="0"
                 android:layout_width="0dp"
                 android:textSize="8dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_weight="1" />
 
             <Button
