@@ -474,8 +474,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onPreExecute();
 
             dialog = new ProgressDialog(MainActivity.this); //ProgressDialog 객체 생성
-            dialog.setTitle("Progress");                   //ProgressDialog 제목
-            dialog.setMessage("Loading.....");             //ProgressDialog 메세지
+            dialog.setTitle("");                   //ProgressDialog 제목
+            dialog.setMessage("불러오는 중");             //ProgressDialog 메세지
             dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); //막대형태의 ProgressDialog 스타일 설정
             dialog.setCanceledOnTouchOutside(false); //ProgressDialog가 진행되는 동안 dialog의 바깥쪽을 눌러 종료하는 것을 금지
 
