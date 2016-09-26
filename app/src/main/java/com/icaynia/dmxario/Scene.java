@@ -136,15 +136,18 @@ public class Scene {
 
     public int getScenePlayCount()
     {
-        setScenePlayCount(0);
         String countstr = scn.get("PlayCount");
+        if (countstr == null || countstr.isEmpty()) {
+            setScenePlayCount(0);
+            return 0;
+        }
         return Integer.parseInt(countstr);
     }
 
     public void plusCount()
     {
         int befCnt = getScenePlayCount();
-        setScenePlayCount(befCnt++);
+        setScenePlayCount(befCnt + 1);
 
     }
     public void putFrame(int frameno, String command)
