@@ -22,10 +22,6 @@ public class Scene {
     private Context                 context;
     private HashMap<String, String> scn;
 
-    private String                  SceneName;
-
-    private String                  ButtonText;
-    private String                  ButtonTextSize;
 
     private ObjectFileManager       mObj;
 
@@ -133,14 +129,27 @@ public class Scene {
         return this.nowframe;
     }
 
+    public void setScenePlayCount(int count)
+    {
+        scn.put("PlayCount", count+"");
+    }
+
+    public int getScenePlayCount()
+    {
+        setScenePlayCount(0);
+        String countstr = scn.get("PlayCount");
+        return Integer.parseInt(countstr);
+    }
+
+    public void plusCount()
+    {
+        int befCnt = getScenePlayCount();
+        setScenePlayCount(befCnt++);
+
+    }
     public void putFrame(int frameno, String command)
     {
         scn.put(frameno+"#", command);
-    }
-
-    public int getPlayCount()
-    {
-        return 0;
     }
 
     public String getSceneName()
@@ -158,15 +167,6 @@ public class Scene {
         return scn;
     }
 
-        /*
-            필요한것들 목록:
-            재생
-            정지
-            Scene 이름 get, set
-
-         */
-
-
     // endregion
 
     // region private function
@@ -182,6 +182,7 @@ public class Scene {
                         String tmpS = scn.get(nowframe+"#");
                         if (nowframe == getSceneLength() || nowframe > 1000) {
                             Log.e("Timer", "------finished-----");
+                            plusCount();
                             mTimer.cancel();
                         }
                         Log.e("Timer", "frame : " + nowframe + " : " + tmpS);

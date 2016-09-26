@@ -432,6 +432,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 {
                     tmpScene.setSceneName(sceneName.getText().toString());
                     tmpScene.setSceneBGColor(rbBGcolor);
+                    tmpScene.setScenePlayCount(0);
                     saveScene(packageName.getText().toString(),tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
                 }
 

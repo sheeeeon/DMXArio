@@ -161,6 +161,10 @@ public class ScenePackage
         scnPack.savePackage();
     }
 
+    public void updateScene(int id) {
+        saveScene(scene[id], id);
+    }
+
 
 
     // endregion
@@ -184,5 +188,4 @@ public class ScenePackage
         config.remove(key);
 
     }
-
 }

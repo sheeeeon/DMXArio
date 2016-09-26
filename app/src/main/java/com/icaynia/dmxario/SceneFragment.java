@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 /**
  * Created by icaynia on 16. 8. 31..
@@ -49,8 +50,6 @@ public class SceneFragment extends Fragment implements csEventListener
         scenePackage = new ScenePackage(getContext());
         scenePackage.loadPackage("UntitledPackage");
         scenePackage.printAll();
-
-        /* TEST  scenePackage.playScene(1);*/
 
         //ButtonView
         Button goMain = (Button) v.findViewById(R.id.s_goMain1);
@@ -103,6 +102,7 @@ public class SceneFragment extends Fragment implements csEventListener
         else
         {
             scenePackage.playScene(id);
+            scenePackage.updateScene(id);
         }
 
     }
@@ -127,12 +127,14 @@ public class SceneFragment extends Fragment implements csEventListener
         final AlertDialog.Builder   builder     = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
         final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
         final SlutPicker            slpic       = (SlutPicker) dialogV.findViewById(R.id.scn_slutpickedit);
+        final TextView              playcount   = (TextView) dialogV.findViewById(R.id.playcountText);
         if (copic == null) {
             Log.e("e", "null");
         }
 
         copic.setSelectColor(tmpScn.getSceneBGColor());
         slpic.setvText(id+"");
+        playcount.setText(tmpScn.getScenePlayCount() + "");
 
         builder.setTitle(tmpScn.getSceneName());
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -150,8 +152,6 @@ public class SceneFragment extends Fragment implements csEventListener
                 int orgId = id;
                 if (orgId != newId)
                     scenePackage.mvScene(orgId, newId);  //move scene that has orginal id to newId slut.
-
-
 
 
                 /* 저장 */
