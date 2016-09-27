@@ -140,7 +140,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 백그라운드 컬러 */
@@ -150,13 +150,18 @@ public class SceneFragment extends Fragment implements csEventListener
                 /* 슬룻 */
                 int newId = Integer.parseInt(slpic.getvText());
                 int orgId = id;
-                if (orgId != newId && newId >= 0 && newId < 56);
+                if (orgId != newId && newId >= 0 && newId < 56) {
+
                     scenePackage.mvScene(orgId, newId);  //move scene that has original id to newId slut.
 
-
                 /* 저장 */
-                scenePackage.saveScene(tmpScn, id);
-                scenePackage.savePackage();
+
+                    scenePackage.saveScene(tmpScn, id);
+                    scenePackage.savePackage();
+
+                } else if (newId >= 56) {
+                    ((MainActivity)context).makeToast("56 이상의 값은 입력할 수 없습니다.");
+                }
 
 
                 //-------
