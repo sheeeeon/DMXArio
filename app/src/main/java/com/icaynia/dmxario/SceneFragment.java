@@ -88,7 +88,7 @@ public class SceneFragment extends Fragment implements csEventListener
             {
                 scnBt[i].setBGColor(BGColor);
             }
-            scnBt[i].setText(str);
+            scnBt[i].setSceneName(str);
         }
     }
     @Override
@@ -150,8 +150,8 @@ public class SceneFragment extends Fragment implements csEventListener
                 /* 슬룻 */
                 int newId = Integer.parseInt(slpic.getvText());
                 int orgId = id;
-                if (orgId != newId)
-                    scenePackage.mvScene(orgId, newId);  //move scene that has orginal id to newId slut.
+                if (orgId != newId && newId >= 0 && newId < 56);
+                    scenePackage.mvScene(orgId, newId);  //move scene that has original id to newId slut.
 
 
                 /* 저장 */

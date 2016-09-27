@@ -109,28 +109,56 @@ public class Scene {
 
     public void setSceneLength(int SceneLength)
     {
+
         scn.put("SceneLength", SceneLength+"");
     }
 
-    public String getSceneBGColor() {
+    public String getSceneBGColor()
+    {
+
         return scn.get("BGColor");
     }
 
-    public void setSceneBGColor(String color) {
+    public void setSceneBGColor(String color)
+    {
+
         scn.put("BGColor", color);
     }
 
-    public void setSceneTextColor(String color) {
+    public String getSceneTextColor()
+    {
+
+        return scn.get("TextColor");
+    }
+
+    public void setSceneTextColor(String color)
+    {
+
         scn.put("TextColor", color);
     }
 
-    public int getSceneNowFrame() {
+    public String getSceneRegdate()
+    {
+
+        return scn.get("Regdate");
+    }
+
+    public void setSceneRegdate(String regdate)
+    {
+        //regdate = "20160926182332"
+        scn.put("Regdate", regdate);
+
+    }
+
+    public int getSceneNowFrame()
+    {
 
         return this.nowframe;
     }
 
     public void setScenePlayCount(int count)
     {
+
         scn.put("PlayCount", count+"");
     }
 
@@ -150,8 +178,10 @@ public class Scene {
         setScenePlayCount(befCnt + 1);
 
     }
+
     public void putFrame(int frameno, String command)
     {
+
         scn.put(frameno+"#", command);
     }
 
@@ -160,9 +190,11 @@ public class Scene {
         String Name = this.scn.get("SceneName");
         return Name;
     }
+
     public void setSceneName(String _SceneName)
     {
         this.scn.put("SceneName",_SceneName);
+
     }
 
     public HashMap<String, String> getHashMap()
