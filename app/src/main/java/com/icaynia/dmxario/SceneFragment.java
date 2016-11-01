@@ -113,6 +113,7 @@ public class SceneFragment extends Fragment implements csEventListener
         if (scenePackage.getScene(id).getSceneName() == null)
         {
             Log.e("SceneFragment", "ID "+id+" is NULL!");
+            showScnManualDialog(id);
         }
         else
         {
@@ -164,6 +165,63 @@ public class SceneFragment extends Fragment implements csEventListener
                 }
 
 
+                //-------
+                updateView();
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        builder.setView(dialogV);
+        //데이터 관련
+
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+        alert.show();    // 알림창 띄우기
+    }
+
+    public void showScnManualDialog(final int id) {
+        dialogV = getLayoutInflater(null).inflate(R.layout.dialog_manualadd, null);
+
+        final Scene                 tmpScn      = new Scene(context);
+        final AlertDialog.Builder   builder     = new AlertDialog.Builder(getContext());     // 여기서 this는 Activity의 this
+        final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+        //final SlutPicker            slpic       = (SlutPicker) dialogV.findViewById(R.id.scn_slutpickedit);
+        //final TextView              playcount   = (TextView) dialogV.findViewById(R.id.playcountText);
+        if (copic == null) {
+            Log.e("e", "null");
+        }
+
+        //copic.setSelectColor("standard");
+        //slpic.setvText(id+"");
+        //playcount.setText(tmpScn.getScenePlayCount() + "");
+
+        builder.setTitle("New Scene");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                //------- 데이터 부분
+
+                /* 백그라운드 컬러 */
+                String color = copic.getSelectColor();
+                tmpScn.setSceneBGColor(color);
+
+                /* 슬룻 */
+                //int newId = Integer.parseInt(slpic.getvText());
+                int orgId = id;
+                /* 저장 */
+
+                //scenePackage.saveScene(tmpScn, id);
+                //scenePackage.savePackage();
                 //-------
                 updateView();
                 dialog.dismiss();

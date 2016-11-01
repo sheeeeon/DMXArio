@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /* 설정 */
 
-    public boolean developMode = false; //개발자 모드
+    public boolean developMode = true; //개발자 모드
 
     ProgressDialog dialog;   //ProgressDialog 참조변수
     int pos_dilaog=0;         //ProgressDialog의 진행 위치
@@ -171,7 +171,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (!developMode) {
                 mOutputStream.write(msg.getBytes());
-                Thread.sleep(20);
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");
             } else {
                 bluetoothTxVal.setText("TX : "+bluetoothOutAcc+"B");

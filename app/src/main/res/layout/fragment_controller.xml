@@ -778,7 +778,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:progressDrawable="@drawable/custom_progress"
+                    android:splitTrack="false" />
 
             </FrameLayout>
             <FrameLayout
@@ -793,7 +795,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
 
             </FrameLayout>
             <FrameLayout
@@ -807,7 +811,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
 
             </FrameLayout>
 
@@ -822,7 +828,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" /></FrameLayout>
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" /></FrameLayout>
 
             <FrameLayout
                 android:layout_width="0dp"
@@ -837,7 +845,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
 
             </FrameLayout>
 
@@ -854,7 +864,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -871,7 +883,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -888,7 +902,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -905,7 +921,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -922,7 +940,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -939,7 +959,9 @@
                 android:thumb="@drawable/mixer_fader_thumb9_128"
                 android:layout_gravity="center_horizontal"
                 android:focusable="true"
-                android:focusableInTouchMode="true" />
+                android:focusableInTouchMode="true"
+                android:splitTrack="false"
+                android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -955,7 +977,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -971,7 +995,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -987,7 +1013,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -1003,7 +1031,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 
@@ -1020,7 +1050,9 @@
                     android:thumb="@drawable/mixer_fader_thumb9_128"
                     android:layout_gravity="center_horizontal"
                     android:focusable="true"
-                    android:focusableInTouchMode="true" />
+                    android:focusableInTouchMode="true"
+                    android:splitTrack="false"
+                    android:progressDrawable="@drawable/custom_progress" />
             </FrameLayout>
 
 

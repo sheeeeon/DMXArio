@@ -9,15 +9,20 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class VerticalSeekBar extends SeekBar {
 
     public VerticalSeekBar(Context context) {
         super(context);
+        this.setProgress(0);
+        this.invalidate();
     }
 
     public VerticalSeekBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        this.setProgress(0);
+        this.invalidate();
     }
 
     public VerticalSeekBar(Context context, AttributeSet attrs) {
@@ -70,4 +75,5 @@ public class VerticalSeekBar extends SeekBar {
         this.setProgress(maxValue);
         this.updateThumb();
     }
+
 }
