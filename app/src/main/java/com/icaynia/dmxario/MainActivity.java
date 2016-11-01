@@ -413,7 +413,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //else                        BluetoothTXLayout.setVisibility(View.INVISIBLE);
 
         boolean isNotificationSwitchOn = mPref.getBoolean("Notification_Visible",true);
-        if (isNotificationSwitchOn) getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (isNotificationSwitchOn) //getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         else                        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
