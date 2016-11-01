@@ -32,6 +32,11 @@ import java.util.Set;
 import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    /* 메인 뷰 */
+    private TextView menu_1;
+    private TextView menu_2;
+    private TextView menu_3;
+
 
     /* 설정 */
 
@@ -49,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public final static int MACRO_FRAGMENT = 2;
     public final static int CONTROLLER_FRAGMENT = 3;
     public final static int SETTING_FRAGMENT = 4;
-    public final static int SEQUENCER_FRAGMENT = 5;
     public final static int SCENE_FRAGMENT = 6;
 
     BluetoothDevice mRemoteDevie;
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewInitialize();
 
         //
         initSetting();
@@ -101,22 +106,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         else {
-
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             mDevices = mBluetoothAdapter.getBondedDevices();
         }
-
         mCurrentFragmentIndex = MAIN_FRAGMENT;
-
         fragmentReplace(mCurrentFragmentIndex);
-
   }
+    private void viewInitialize()
+    {
+        menu_1 = (TextView) findViewById(R.id.main_menu_1);
+        menu_2 = (TextView) findViewById(R.id.main_menu_2);
+        menu_3 = (TextView) findViewById(R.id.main_menu_3);
+
+        menu_1.setOnClickListener(this);
+        menu_2.setOnClickListener(this);
+        menu_3.setOnClickListener(this);
+    }
 
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
+            case R.id.main_menu_1:
+                Intent intent = new Intent(MainActivity.this, ControllerActivity.class);
+                startActivity(intent);
+                break;
 
+            case R.id.main_menu_2:
+                Intent intent2 = new Intent(MainActivity.this, ScenePlayActivity.class);
+                startActivity(intent2);
+                break;
+
+            case R.id.main_menu_3:
+                Intent intent3 = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent3);
+                break;
             case R.id.menuText0:
                 mCurrentFragmentIndex = MAIN_FRAGMENT;
                 fragmentReplace(mCurrentFragmentIndex);

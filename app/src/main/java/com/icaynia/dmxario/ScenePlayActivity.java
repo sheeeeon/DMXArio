@@ -1,6 +1,5 @@
 package com.icaynia.dmxario;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,14 +8,12 @@ import android.widget.LinearLayout;
 /**
  * Created by icaynia on 2016. 11. 1..
  */
-public class ControllerActivity extends AppCompatActivity implements View.OnClickListener{
+public class ScenePlayActivity extends AppCompatActivity implements View.OnClickListener{
     private LinearLayout backbutton;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_controller);
+        setContentView(R.layout.activity_sceneplay);
         viewInitialize();
     }
 
@@ -33,6 +30,8 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
+
 
 
 }
