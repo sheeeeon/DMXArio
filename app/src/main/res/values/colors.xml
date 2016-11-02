@@ -7,7 +7,7 @@
     <color name="colorMenuTextDisabled">#aaaaaa</color>
 
     <!--Sequencer-->
-    <color name="sequencer_progress_backgroundcolor">#2d2d2d</color>
+    <color name="sequencer_progress_backgroundcolor">#3F606E</color>
     <color name="sequencer_progress_textcolor">#FFFFFF</color>
 
     <!--CommandBox-->

@@ -7,7 +7,8 @@
         android:layout_width="match_parent"
         android:layout_height="21sp"
         android:background="#888888"
-        android:id="@+id/scn_titleView">
+        android:id="@+id/scn_titleView"
+        android:visibility="gone">
 
 
         <TextView
