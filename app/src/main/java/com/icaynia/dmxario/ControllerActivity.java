@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 /**
  * Created by icaynia on 2016. 11. 1..
@@ -15,6 +17,18 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private LinearLayout bluetoothButton;
     private customActionBar actionBar;
 
+    private VerticalSeekBar[] seekbars = new VerticalSeekBar[8];
+    private int[] seekbarsID = {
+            R.id.ct_seekbar, R.id.ct_seekbar_2, R.id.ct_seekbar_3, R.id.ct_seekbar_4,
+            R.id.ct_seekbar_5, R.id.ct_seekbar_6, R.id.ct_seekbar_7, R.id.ct_seekbar_8
+    };
+
+    public TextView[] seekbarValue = new TextView[8];
+    private int[] seekbarValueID = {
+            R.id.ct_val1, R.id.ct_val2, R.id.ct_val3, R.id.ct_val4,
+            R.id.ct_val5, R.id.ct_val6, R.id.ct_val7, R.id.ct_val8
+    };
+    public int seekbarNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +46,32 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
         actionBar = (customActionBar) findViewById(R.id.actionbar);
         actionBar.setTitle("컨트롤러");
+
+        for (seekbarNum = 0; seekbarNum < 8; seekbarNum++) {
+            seekbarValue[seekbarNum] = (TextView) findViewById(seekbarValueID[seekbarNum]);
+            seekbars[seekbarNum] = (VerticalSeekBar) findViewById(seekbarsID[seekbarNum]);
+            seekbars[seekbarNum].setMaxValue(255);
+            seekbars[seekbarNum].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    for (int i = 0; i < 8; i++) {
+                        if (seekBar.getId() == seekbarsID[i]) {
+                            seekbarValue[i].setText(progress+"");
+                        }
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }
     }
 
     @Override

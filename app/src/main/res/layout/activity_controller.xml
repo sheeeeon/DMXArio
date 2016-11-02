@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="20"
     android:background="#3F606E">
-
     <com.icaynia.dmxario.customActionBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,6 +11,7 @@
         >
 
     </com.icaynia.dmxario.customActionBar>
+
 
     <LinearLayout
         android:orientation="vertical"

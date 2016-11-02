@@ -33,7 +33,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         actionBar = (customActionBar) findViewById(R.id.actionbar);
         actionBar.setTitle("설정");
         actionBar.setBluetoothButton(false);
-
     }
 
     @Override
