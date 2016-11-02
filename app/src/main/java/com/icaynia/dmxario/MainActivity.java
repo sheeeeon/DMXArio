@@ -89,10 +89,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //
         initSetting();
-        bluetoothTxVal = (TextView) findViewById(R.id.bluetoothTxByte);
-        if (developMode==true) {
-            setTitleText("DMXArio (Develop Mode)");
-        }
         if (MainActivity.mTypeface == null)
             MainActivity.mTypeface = Typeface.createFromAsset(getAssets(), "fonts/NotoSansKR-DemiLight.otf");
 
@@ -100,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
         setGlobalFont(root);
-
 
         if (developMode) {
 
