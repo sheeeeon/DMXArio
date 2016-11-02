@@ -31,6 +31,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         actionBar = (customActionBar) findViewById(R.id.actionbar);
         actionBar.setTitle("씬 플레이");
 
+
     }
 
 

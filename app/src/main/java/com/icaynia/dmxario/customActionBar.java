@@ -39,8 +39,6 @@ public class customActionBar extends LinearLayout implements View.OnClickListene
         backButton = (LinearLayout) findViewById(R.id.backbutton);
         backButton.setOnClickListener(this);
         bluetoothButton = (LinearLayout) findViewById(R.id.bluetoothButton);
-
-
         actionbarTitle = (TextView) findViewById(R.id.actionbar_title);
 
     }

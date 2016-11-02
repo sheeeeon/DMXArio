@@ -15,7 +15,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     BluetoothService btService;
 
     private LinearLayout backbutton;
-    private LinearLayout bluetoothButton;
+    private customActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private void viewInitialize() {
         backbutton = (LinearLayout) findViewById(R.id.backbutton);
         backbutton.setOnClickListener(this);
+        actionBar = (customActionBar) findViewById(R.id.actionbar);
+        actionBar.setTitle("설정");
+        actionBar.setBluetoothButton(false);
+
     }
 
     @Override
