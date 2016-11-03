@@ -51,6 +51,8 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             seekbarValue[seekbarNum] = (TextView) findViewById(seekbarValueID[seekbarNum]);
             seekbars[seekbarNum] = (VerticalSeekBar) findViewById(seekbarsID[seekbarNum]);
             seekbars[seekbarNum].setMaxValue(255);
+            //seekbars[seekbarNum].setProgress(0);
+            //seekbars[seekbarNum].updateThumb();
             seekbars[seekbarNum].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
