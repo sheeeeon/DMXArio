@@ -10,9 +10,8 @@ import android.widget.LinearLayout;
  * Created by icaynia on 2016. 11. 1..
  */
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener {
-
-    /* Bluetooth */
-    BluetoothService btService;
+    /* menu */
+    private LinearLayout bluetoothSettingMenu;
 
     private LinearLayout backbutton;
     private customActionBar actionBar;
@@ -21,8 +20,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        btService = new BluetoothService(this);
         viewInitialize();
     }
 
@@ -33,6 +30,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         actionBar = (customActionBar) findViewById(R.id.actionbar);
         actionBar.setTitle("설정");
         actionBar.setBluetoothButton(false);
+
+        bluetoothSettingMenu = (LinearLayout) findViewById(R.id.setting_bluetoothmenu);
+        bluetoothSettingMenu.setOnClickListener(this);
+
     }
 
     @Override
@@ -40,6 +41,10 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
         switch(v.getId()) {
             case R.id.backbutton:
                 this.finish();
+                break;
+            case R.id.setting_bluetoothmenu:
+                Intent intent = new Intent(SettingActivity.this, BluetoothSettingActivity.class);
+                startActivity(intent);
                 break;
         }
     }

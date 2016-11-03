@@ -8,7 +8,84 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/actionbar"
-        >
+        android:orientation="horizontal">
 
     </com.icaynia.dmxario.customActionBar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="블루투스 설정"
+                android:textSize="13dp"
+                android:textColor="#1A3440"
+                android:gravity="center_horizontal"
+                android:paddingTop="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                android:background="#4c7383"
+                android:layout_marginTop="2dp"
+                android:id="@+id/setting_bluetoothmenu">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bluetooth"
+                    android:id="@+id/textView12" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="블루투스 설정"
+                    android:textSize="16dp"
+                    android:textColor="#92AA9D"
+                    android:paddingLeft="20dp"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:gravity="center_vertical"
+                android:background="#4c7383"
+                android:layout_marginTop="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_bluetooth"
+                    android:id="@+id/textView13" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="16dp"
+                    android:textColor="#92AA9D"
+                    android:paddingLeft="20dp"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </LinearLayout>

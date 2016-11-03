@@ -30,8 +30,6 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
 
         actionBar = (customActionBar) findViewById(R.id.actionbar);
         actionBar.setTitle("씬 플레이");
-
-
     }
 
 
@@ -42,7 +40,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
                 this.finish();
                 break;
             case R.id.bluetoothButton:
-                Intent intent = new Intent(ScenePlayActivity.this, SettingActivity.class);
+                Intent intent = new Intent(ScenePlayActivity.this, BluetoothSettingActivity.class);
                 startActivity(intent);
                 break;
         }
