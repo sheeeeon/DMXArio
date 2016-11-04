@@ -40,6 +40,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     ClientThread mCThread = null; // 클라이언트 소켓 접속 스레드
     ServerThread mSThread = null; // 서버 소켓 접속 스레드
     SocketThread mSocketThread = null; // 데이터 송수신 스레드
+    GlobalVar global;
 
     /* Action Bar */
     private customActionBar actionBar;
@@ -48,17 +49,21 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_bluetooth);
 
         viewInitialize();
         initListView();
 
+        global = (GlobalVar) getApplicationContext();
+
         // 블루투스 사용 가능상태 판단
         boolean isBlue = canUseBluetooth();
         if( isBlue )
             // 페어링된 원격 디바이스 목록 구하기
             getParedDevice();
+
 
     }
 
@@ -185,11 +190,15 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
         showMessage("Socket connected");
 
         // 데이터 송수신 스레드가 생성되어 있다면 삭제한다
-        if( mSocketThread != null )
-            mSocketThread = null;
+        if( global.mSocketThread != null )
+            global.mSocketThread = null;
         // 데이터 송수신 스레드를 시작
-        mSocketThread = new SocketThread(socket);
-        mSocketThread.start();
+        //mSocketThread = new SocketThread(socket);
+        //mSocketThread.start();
+
+        global.mSocketThread = new SocketThread(socket);
+        global.mSocketThread.start();
+        global.mSocketThread.write("this is global");
     }
 
     private class ClientThread extends Thread {
@@ -235,7 +244,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     }
 
     // 데이터 송수신 스레드
-    private class SocketThread extends Thread {
+    public class SocketThread extends Thread {
         private final BluetoothSocket mmSocket; // 클라이언트 소켓
         private InputStream mmInStream; // 입력 스트림
         private OutputStream mmOutStream; // 출력 스트림

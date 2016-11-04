@@ -3,6 +3,7 @@ package com.icaynia.dmxario;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private LinearLayout backbutton;
     private LinearLayout bluetoothButton;
     private customActionBar actionBar;
+    private GlobalVar global;
 
     private VerticalSeekBar[] seekbars = new VerticalSeekBar[8];
     private int[] seekbarsID = {
@@ -34,6 +36,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
+        globalInitialize();
         viewInitialize();
     }
 
@@ -56,6 +59,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     for (int i = 0; i < 8; i++) {
                         if (seekBar.getId() == seekbarsID[i]) {
+                            global.mSocketThread.write("+e:"+(i+1)+":"+progress+"#\n");
                             seekbarValue[i].setText(progress+"");
                         }
                     }
@@ -73,6 +77,12 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             });
         }
     }
+
+    private void globalInitialize() {
+        global = (GlobalVar) getApplicationContext();
+
+    }
+
 
     @Override
     public void onClick(View v) {
