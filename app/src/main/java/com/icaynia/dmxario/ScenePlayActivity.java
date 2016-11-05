@@ -48,12 +48,8 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
     private void sceneButtonInitialize() {
         for (int button = 0; button < 20; button++) {
             scnBt[button] = (SceneButton) findViewById(sceneBtId[button]);
-            scnBt[button].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            scnBt[button].setSceneId(button);
+            scnBt[button].setCsEventListener(this);
         }
     }
 
