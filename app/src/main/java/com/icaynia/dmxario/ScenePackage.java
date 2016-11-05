@@ -4,6 +4,7 @@ package com.icaynia.dmxario;
 import android.content.Context;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,14 +46,12 @@ public class ScenePackage
         if (config == null)
         {
             Log.e("ScenePackage", "Package not found!");
-            
-            ((MainActivity)context).makeToast(PackageName + " : Package not found!");
+            Toast.makeText(context, PackageName + " : Package not found!", Toast.LENGTH_SHORT);
         }
         else
         {
             Log.e("ScenePackage", "Load Successfully.");
-            //((MainActivity)context).makeToast(PackageName + " load Successful!");
-            ((MainActivity)context).setTitleText(PackageName);
+            Toast.makeText(context, PackageName + " : Package Load Success.!", Toast.LENGTH_SHORT);
         }
 
         for (int i = 0; i < 56; i++) {
