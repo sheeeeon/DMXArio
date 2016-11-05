@@ -45,6 +45,7 @@ public class ScenePackage
         if (config == null)
         {
             Log.e("ScenePackage", "Package not found!");
+            
             ((MainActivity)context).makeToast(PackageName + " : Package not found!");
         }
         else

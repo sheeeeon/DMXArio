@@ -15,6 +15,8 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout bluetoothButton;
     private customActionBar actionBar;
 
+    private ScenePackage PACKAGE;
+
     private int[] sceneBtId = {
             R.id.sceneplay_1, R.id.sceneplay_2, R.id.sceneplay_3, R.id.sceneplay_4,
             R.id.sceneplay_5, R.id.sceneplay_6, R.id.sceneplay_7, R.id.sceneplay_8,
@@ -29,6 +31,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sceneplay);
         viewInitialize();
+        packageInitialize();
     }
 
     private void viewInitialize() {
@@ -42,7 +45,6 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         actionBar.setTitle("씬 플레이");
 
         sceneButtonInitialize();
-
     }
 
     private void sceneButtonInitialize() {
@@ -51,6 +53,12 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
             scnBt[button].setSceneId(button);
             scnBt[button].setCsEventListener(this);
         }
+    }
+
+    private void packageInitialize() {
+        PACKAGE = new ScenePackage(this);
+        PACKAGE.loadPackage("UntitledPackage");
+        PACKAGE.printAll();
     }
 
 
