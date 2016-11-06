@@ -14,6 +14,8 @@ import java.util.TimerTask;
  * Created by icaynia on 16. 9. 3..
  */
 public class Scene {
+    private GlobalVar global;
+
     private String                  PackageName;
 
     private Timer                   mTimer;
@@ -38,6 +40,9 @@ public class Scene {
         mObj = new ObjectFileManager(context);
 
         mTimer = new Timer();
+
+        global = (GlobalVar) _context.getApplicationContext();
+
     }
 
     // endregion
@@ -69,7 +74,7 @@ public class Scene {
         while (iterator.hasNext()) {
             Map.Entry entry = (Map.Entry) iterator.next();
             Log.e("ScenePackage", "key : " + entry.getKey() + "    value : "
-                    + entry.getValue());
+                    + entry.getValue() + "  BGColor : ");
         }
         Log.e("ScenePackage", "\n--");
     }
@@ -229,7 +234,8 @@ public class Scene {
     }
 
     private void sendData(String str) {
-        ((MainActivity)context).sendData(str);
+        if (!str.isEmpty())
+        global.mSocketThread.write(str);
     }
 
 

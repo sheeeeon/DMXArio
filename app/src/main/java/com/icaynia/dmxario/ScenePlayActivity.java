@@ -31,7 +31,9 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sceneplay);
         viewInitialize();
+
         packageInitialize();
+        updatePackageView();
     }
 
     private void viewInitialize() {
@@ -52,6 +54,8 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
             scnBt[button] = (SceneButton) findViewById(sceneBtId[button]);
             scnBt[button].setSceneId(button);
             scnBt[button].setCsEventListener(this);
+
+
         }
     }
 
@@ -61,6 +65,17 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         PACKAGE.printAll();
     }
 
+    private void updatePackageView() {
+        for (int i = 0; i < 20; i++) {
+            if (PACKAGE.getScene(i).getSceneName() == null) {
+                scnBt[i].setBGColor("standard");
+            }
+            else
+            {
+                scnBt[i].setBGColor(PACKAGE.getScene(i).getSceneBGColor());
+            }
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -79,7 +94,12 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
     public void onMyEvent(int id)
     {
         Log.e("SceneFragment", "id = "+id);
-
+        if (PACKAGE.getScene(id) != null)
+            PACKAGE.playScene(id);
+        else
+        {
+            Log.e("PACKAGE", "package was not loaded.");
+        }
     }
 
     @Override
