@@ -48,6 +48,17 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             1, 2, 3, 4, 5, 6, 7, 8
     };
 
+    private String[] favoriteChannelName = {
+            "x",
+            "y",
+            "blink",
+            "0",
+            "0",
+            "RED",
+            "GREEN",
+            "Blue"
+    };
+
     private VerticalSeekBar[] seekbars = new VerticalSeekBar[8];
     private int[] seekbarsID = {
             R.id.ct_seekbar, R.id.ct_seekbar_2, R.id.ct_seekbar_3, R.id.ct_seekbar_4,
@@ -59,6 +70,15 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             R.id.ct_val1, R.id.ct_val2, R.id.ct_val3, R.id.ct_val4,
             R.id.ct_val5, R.id.ct_val6, R.id.ct_val7, R.id.ct_val8
     };
+
+    private TextView[] seekbarName = new TextView[8];
+    private int[] seekbarNameId = {
+            R.id.favorite_channelName1, R.id.favorite_channelName2,
+            R.id.favorite_channelName3, R.id.favorite_channelName4,
+            R.id.favorite_channelName5, R.id.favorite_channelName6,
+            R.id.favorite_channelName7, R.id.favorite_channelName8
+    };
+
     public int seekbarNum;
 
     @Override
@@ -81,8 +101,21 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             if (chan == 0) {
                 PrefEdit.putInt("fv_channel_"+(i+1), favoriteChannel[i]);
                 PrefEdit.apply();
+                preferenceInitialize();
             } else {
                 favoriteChannel[i] = chan;
+            }
+
+            String name = Pref.getString("fv_channelName_"+(i+1), "null");
+            if (name.equals("null")) {
+                PrefEdit.putString("fv_channelName_"+(i+1), favoriteChannelName[i]);
+                PrefEdit.apply();
+                preferenceInitialize();
+            }
+            else
+            {
+                seekbarName[i].setText(name);
+
             }
         }
 
@@ -129,6 +162,9 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
                 }
             });
+
+            seekbarName[seekbarNum] = (TextView) findViewById(seekbarNameId[seekbarNum]);
+
         }
 
         favoritesInfo = (TableLayout) findViewById(R.id.favoritesInfo);
@@ -188,8 +224,9 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
         for (int i = 0; i < 8; i++) {
             editName[i] = (EditText) dialogV.findViewById(editNameId[i]);
-            editChannel[i] = (EditText) dialogV.findViewById(editChannelId[i]);
+            editName[i].setText(favoriteChannelName[i]+"");
 
+            editChannel[i] = (EditText) dialogV.findViewById(editChannelId[i]);
             editChannel[i].setText(favoriteChannel[i]+"");
         }
 
@@ -202,7 +239,11 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             public void onClick(DialogInterface dialog, int which) {
                 for (int i = 0; i < 8; i++) {
                     int n = Integer.parseInt(editChannel[i].getText().toString());
+                    String editNameText = editName[i].getText().toString();
+                    seekbarName[i].setText(editNameText);
+
                     PrefEdit.putInt("fv_channel_"+(i+1), n);
+                    PrefEdit.putString("fv_channelName_"+(i+1), editNameText);
                     PrefEdit.apply();
                     favoriteChannel[i] = n;
                 }
