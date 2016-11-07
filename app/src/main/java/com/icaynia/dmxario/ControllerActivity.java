@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by icaynia on 2016. 11. 1..
@@ -58,8 +60,13 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     for (int i = 0; i < 8; i++) {
+                        String data = "+e:"+(i+1)+":"+progress+"#\n";
                         if (seekBar.getId() == seekbarsID[i]) {
-                            global.mSocketThread.write("+e:"+(i+1)+":"+progress+"#\n");
+                            if (global.mSocketThread != null)
+                                global.mSocketThread.write(data);
+                            else {
+                                Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
+                            }
                             seekbarValue[i].setText(progress+"");
                         }
                     }
