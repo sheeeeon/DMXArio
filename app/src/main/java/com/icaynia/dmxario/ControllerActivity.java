@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,9 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by icaynia on 2016. 11. 1..
  */
@@ -28,6 +32,16 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private customActionBar actionBar;
     private GlobalVar global;
 
+    /* Scene */
+    private Scene tmpScene;
+    private String tmpStr;
+    private Handler handler;
+    private Timer mTimer;
+    private boolean ismTimerRunning;
+
+
+
+    /* Loops */
     private int i;
 
 
@@ -104,8 +118,10 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_controller);
         globalInitialize();
         viewInitialize();
-
         preferenceInitialize();
+
+
+        handler = new Handler();
     }
 
     public void preferenceInitialize() {
@@ -227,6 +243,17 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             });
 
         }
+
+        Button recordButton = (Button) findViewById(R.id.controller_recordButton);
+        Button stopButton = (Button) findViewById(R.id.controller_stopButton);
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recordSceneStart();
+            }
+        });
+
+
     }
 
     private void globalInitialize() {
@@ -366,4 +393,53 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
         }
     }
+
+
+
+    public void recordSceneStart()
+    {
+        tmpScene = new Scene(this);
+        tmpStr = ""; // 비우고 시작
+
+        if (ismTimerRunning)
+        {
+            mTimer.cancel();
+            ismTimerRunning = false;
+        }
+
+        mTimer = new Timer();
+        mTimer.schedule(
+            new TimerTask(){
+                int i = 0;
+                @Override
+                public void run()
+                {
+                    handler.post(
+                        new Runnable()
+                        {
+                            public void run()
+                            {
+                                ismTimerRunning = true;
+                                //fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
+                                Log.e("Controller/rec..start()", i+"#:"+tmpStr);
+                                tmpScene.putFrame(i, tmpStr);
+                                tmpStr = "";
+
+                                if (i == 200)
+                                {
+                                    tmpScene.setSceneLength(i);
+                                    tmpScene.setSceneName("scene0.scn");
+                                    //setDisplayText(""); dialog
+                                    // 알림창 객체 생성
+                                    mTimer.cancel();
+                                    Log.e("Controller/rec..start()", "recordTimer stopped.");
+                                }
+                                i++;
+                            }
+                        });
+                }
+            }, 0, 20
+        );
+    }
+
 }

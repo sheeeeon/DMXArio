@@ -34,13 +34,13 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="REC"
-                    android:id="@+id/button3" />
+                    android:id="@+id/controller_recordButton" />
 
                 <Button
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="STOP"
-                    android:id="@+id/button12" />
+                    android:id="@+id/controller_stopButton" />
             </LinearLayout>
 
 
