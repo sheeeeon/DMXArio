@@ -82,7 +82,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             R.id.favorite_channelName7, R.id.favorite_channelName8
     };
 
-    private Button[] launcher = new Button[20];
+    private LauncherButton[] launcher = new LauncherButton[20];
     private int[] launcherId = {
             R.id.launcher_button_1, R.id.launcher_button_2, R.id.launcher_button_3,
             R.id.launcher_button_4, R.id.launcher_button_5, R.id.launcher_button_6,
@@ -94,6 +94,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     };
 
     private String[] launcherString = new String[20];
+    private String[] launcherName = new String[20];
 
     public int seekbarNum;
 
@@ -136,16 +137,18 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
         }
 
         for (int i = 0; i < 20; i++) {
-            String launcherName = Pref.getString("launcher_name_"+(i+1), "null");
+            String launcherNamev = Pref.getString("launcher_name_"+(i+1), "null");
             String launcherStringv = Pref.getString("launcher_script_"+(i+1), "null");
-            if (launcherName.equals(null)) {
+            if (launcherName.equals("null")) {
                 PrefEdit.putString("launcher_name_"+(i+1), "");
                 PrefEdit.putString("launcher_script_"+(i+1), "");
                 PrefEdit.apply();
+                launcher[i].setText("+");
             }
             else {
-                launcher[i].setText(launcherName);
+                launcher[i].setText(launcherNamev);
                 launcherString[i] = launcherStringv;
+                launcherName[i] = launcherNamev;
             }
 
         }
@@ -203,17 +206,22 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
         });
 
         for (i = 0; i < 20; i++) {
-            launcher[i] = (Button) findViewById(launcherId[i]);
+            launcher[i] = (LauncherButton) findViewById(launcherId[i]);
+            launcher[i].setTag(i+"");
+
             launcher[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sendData(launcherString[i]);
+                    int id = Integer.parseInt(v.getTag().toString());
+                    sendData(launcherString[id]);
                 }
             });
             launcher[i].setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    showLauncherEditDialog(i);
+
+                    int id = Integer.parseInt(v.getTag().toString());
+                    showLauncherEditDialog(id);
                     return false;
                 }
             });
@@ -316,6 +324,8 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
         final EditText nameVu = (EditText) dialogV.findViewById(R.id.launcher_name);
         final EditText scriptVu = (EditText) dialogV.findViewById(R.id.launcher_script);
+        nameVu.setText(launcherName[launcherid]);
+        scriptVu.setText(launcherString[launcherid]);
 
         builder.setView(dialogV);
         builder.setTitle("런처 편집 : "+ launcherid);
@@ -328,6 +338,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
                 launcher[launcherid].setText(name);
                 launcherString[launcherid] = script;
+                launcherName[launcherid] = name;
 
                 PrefEdit.putString("launcher_name_"+(launcherid+1), name);
                 PrefEdit.putString("launcher_script_"+(launcherid+1), script);
@@ -341,6 +352,11 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 dialog.dismiss();
             }
         });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
     }
 
     public void sendData(String data) {
