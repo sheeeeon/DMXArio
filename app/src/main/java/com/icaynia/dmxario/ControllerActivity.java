@@ -28,6 +28,8 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private customActionBar actionBar;
     private GlobalVar global;
 
+    private int i;
+
 
     /* dialog */
     private View dialogV;
@@ -91,6 +93,8 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             R.id.launcher_button_19, R.id.launcher_button_20
     };
 
+    private String[] launcherString = new String[20];
+
     public int seekbarNum;
 
     @Override
@@ -133,15 +137,18 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
         for (int i = 0; i < 20; i++) {
             String launcherName = Pref.getString("launcher_name_"+(i+1), "null");
+            String launcherStringv = Pref.getString("launcher_script_"+(i+1), "null");
             if (launcherName.equals(null)) {
                 PrefEdit.putString("launcher_name_"+(i+1), "");
+                PrefEdit.putString("launcher_script_"+(i+1), "");
+                PrefEdit.apply();
             }
             else {
                 launcher[i].setText(launcherName);
+                launcherString[i] = launcherStringv;
             }
 
         }
-
 
     }
 
@@ -164,12 +171,9 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     for (int i = 0; i < 8; i++) {
                         String data = "+e:"+favoriteChannel[i]+":"+progress+"#\n";
+
                         if (seekBar.getId() == seekbarsID[i]) {
-                            if (global.mSocketThread != null)
-                                global.mSocketThread.write(data);
-                            else {
-                                Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
-                            }
+                            sendData(data);
                             seekbarValue[i].setText(progress+"");
                         }
                     }
@@ -198,19 +202,18 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-
-
-        for (int i = 0; i < 20; i++) {
+        for (i = 0; i < 20; i++) {
             launcher[i] = (Button) findViewById(launcherId[i]);
             launcher[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    sendData(launcherString[i]);
                 }
             });
             launcher[i].setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
+                    showLauncherEditDialog(i);
                     return false;
                 }
             });
@@ -307,4 +310,44 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+    public void showLauncherEditDialog(final int launcherid) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_launcherset, null);
+
+        final EditText nameVu = (EditText) dialogV.findViewById(R.id.launcher_name);
+        final EditText scriptVu = (EditText) dialogV.findViewById(R.id.launcher_script);
+
+        builder.setView(dialogV);
+        builder.setTitle("런처 편집 : "+ launcherid);
+
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String name = nameVu.getText().toString();
+                String script = scriptVu.getText().toString();
+
+                launcher[launcherid].setText(name);
+                launcherString[launcherid] = script;
+
+                PrefEdit.putString("launcher_name_"+(launcherid+1), name);
+                PrefEdit.putString("launcher_script_"+(launcherid+1), script);
+                PrefEdit.apply();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void sendData(String data) {
+        if (global.mSocketThread != null)
+            global.mSocketThread.write(data);
+        else {
+            Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
+        }
+    }
 }
