@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -79,6 +80,17 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
             R.id.favorite_channelName7, R.id.favorite_channelName8
     };
 
+    private Button[] launcher = new Button[20];
+    private int[] launcherId = {
+            R.id.launcher_button_1, R.id.launcher_button_2, R.id.launcher_button_3,
+            R.id.launcher_button_4, R.id.launcher_button_5, R.id.launcher_button_6,
+            R.id.launcher_button_7, R.id.launcher_button_8, R.id.launcher_button_9,
+            R.id.launcher_button_10, R.id.launcher_button_11, R.id.launcher_button_12,
+            R.id.launcher_button_13, R.id.launcher_button_14, R.id.launcher_button_15,
+            R.id.launcher_button_16, R.id.launcher_button_17, R.id.launcher_button_18,
+            R.id.launcher_button_19, R.id.launcher_button_20
+    };
+
     public int seekbarNum;
 
     @Override
@@ -117,6 +129,17 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 seekbarName[i].setText(name);
 
             }
+        }
+
+        for (int i = 0; i < 20; i++) {
+            String launcherName = Pref.getString("launcher_name_"+(i+1), "null");
+            if (launcherName.equals(null)) {
+                PrefEdit.putString("launcher_name_"+(i+1), "");
+            }
+            else {
+                launcher[i].setText(launcherName);
+            }
+
         }
 
 
@@ -174,6 +197,25 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 showFavoriteSettingDialog();
             }
         });
+
+
+
+        for (int i = 0; i < 20; i++) {
+            launcher[i] = (Button) findViewById(launcherId[i]);
+            launcher[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            launcher[i].setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return false;
+                }
+            });
+
+        }
     }
 
     private void globalInitialize() {
