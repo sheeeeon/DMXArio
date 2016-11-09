@@ -38,6 +38,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private Handler handler;
     private Timer mTimer;
     private boolean ismTimerRunning;
+    public ObjectFileManager mObjFileMgr = new ObjectFileManager(this);
 
 
 
@@ -386,12 +387,64 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
         alert.show();    // 알림창 띄우기
     }
 
+    public void showSavesceneDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);     // 여기서 this는 Activity의 this
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_savescene, null);
+
+        builder.setView(dialogV);
+        builder.setTitle("종료 확인 대화 상자");
+
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "scene이 추가되었습니다.", Toast.LENGTH_SHORT);
+
+                EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
+                EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
+                EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
+                ColorPicker01 rg = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpick);
+
+                //RadioButton rb = (RadioButton) dialogV.findViewById(checkedRadiobuttonId);
+
+                String rbBGcolor = rg.getSelectColor();
+
+                if (sceneSlut.getText().toString() == "")
+                {
+                }
+                else
+                {
+                    tmpScene.setSceneName(sceneName.getText().toString());
+                    tmpScene.setSceneBGColor(rbBGcolor);
+                    tmpScene.setScenePlayCount(0);
+                    saveScene(packageName.getText().toString(),tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
+                }
+
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+
+    }
+
     public void sendData(String data) {
         if (global.mSocketThread != null)
             global.mSocketThread.write(data);
         else {
             Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
         }
+        tmpStr += data;
     }
 
 
@@ -433,6 +486,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                                     // 알림창 객체 생성
                                     mTimer.cancel();
                                     Log.e("Controller/rec..start()", "recordTimer stopped.");
+                                    showSavesceneDialog();
                                 }
                                 i++;
                             }
@@ -440,6 +494,22 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
                 }
             }, 0, 20
         );
+    }
+
+    public void saveScene(String ScenePackageName, Scene scn, int slut)
+    {
+        //기존 코드
+        ScenePackage scnPack = new ScenePackage(this);      //new
+        if (mObjFileMgr.isAvailable("Scene/"+ScenePackageName)) {
+            Log.e("ControllerFragment", ScenePackageName +" is available!");
+            scnPack.loadPackage(ScenePackageName);
+        }
+        scnPack.setPackageName(ScenePackageName);
+        scnPack.savePackage();
+        scnPack.mkSceneFile(scn);
+
+        scnPack.putScene(scn.getSceneName(), slut);
+        scnPack.savePackage();
     }
 
 }
