@@ -29,8 +29,8 @@ void dmx::setPin(int _pin)
 void dmx::write(String command)
 {
     Serial.print(command);
-    int *CommandValue = dmx::parseCommand(command);
-    dmx::execute(CommandValue);
+    int * CommandValue = dmx::parseCommand(command);
+    //dmx::update(CommandValue[0], CommandValue[1]);
 
 }
 
@@ -41,72 +41,48 @@ void dmx::write(String command)
 
 int * dmx::parseCommand(String command)
 {
-    int *param;
+    int param[2];
     char tmp[4];
-
-    
     int i;
-    for (i = 3; i <= 6; i++) 
-    {
-        if (command[i] == COMMAND_DELIMITER) 
-        {
-            command.substring(3, i+1).toCharArray(tmp,4);
-            param[1] = atoi(tmp);
-            break;
-        }
-        else
-        {
-            
-        }
-    }
-
-    for (int j = i+1; j <= 11; j++) 
-    {
-        if (command[j] == COMMAND_TOKEN) 
-        {
-            command.substring(i+1, j+1).toCharArray(tmp,4);
-            param[2] = atoi(tmp);
-            break;
-        }
+    for (i = 4; i <= 7; i++) {
+      if (command[i] == COMMAND_DELIMITER) {
+        command.substring(4, i).toCharArray(tmp,4);
+        param[0] = atoi(tmp);
+        Serial.print(param[0]);
+        break;
+      }
     }
     
-    //?
-    param[0] = command[1];
-
-    Serial.print(" : ");
-    Serial.print(param[0]);
-    Serial.print(", ");
-    Serial.print(param[1]);
-    Serial.print(", ");
-    Serial.print(param[2]);
-    Serial.println();
-
+    for (int j = i+1; j <= 11; j++) {
+      if (command[j] == COMMAND_TOKEN) {
+        Serial.print("-");
+        Serial.print(command.substring(i+1, j));
+        
+        Serial.print(" | ");
+        command.substring(i+1, j).toCharArray(tmp,4);
+        param[1] = atoi(tmp);
+        break;
+      }
+    }
+    dmx::update(param[0], param[1]);
     return param;
 }
 
-void dmx::execute (int *CommandValue) 
-{
-    if (CommandValue[0] == 'e') 
-    {
-        dmx::update(CommandValue[1], CommandValue[2]);
-    } else if (CommandValue[0] == 'd')
-    {
-        delay(CommandValue[2]);
-    }
-}
 
 void dmx::update(int chan, int val) 
 {
+  
     digitalWrite(DMX_PIN, LOW);
     delayMicroseconds(999980);
 
     dmx::shiftOut(DMX_PIN, 0);
     value[chan-1] = val;
-    for (int i = 0; i < 16; i++) 
+    for (int i = 0; i < 64; i++) 
     {
         dmx::shiftOut(DMX_PIN, value[i]);
     }
-    Serial.print(" : ");
+    
+    Serial.print("OUT : ");
     Serial.print(chan);
     Serial.print(", ");
     Serial.println(val);

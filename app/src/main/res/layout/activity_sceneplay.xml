@@ -36,9 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_2"
@@ -46,9 +46,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_3"
@@ -56,9 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_4"
@@ -66,9 +66,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
         </LinearLayout>
 
@@ -84,9 +84,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_6"
@@ -94,9 +94,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_7"
@@ -104,9 +104,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_8"
@@ -114,9 +114,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,9 +131,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_10"
@@ -141,9 +141,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_11"
@@ -151,9 +151,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_12"
@@ -161,9 +161,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,9 +177,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_14"
@@ -187,9 +187,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_15"
@@ -197,9 +197,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_16"
@@ -207,9 +207,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -224,9 +224,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_18"
@@ -234,9 +234,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_19"
@@ -244,9 +244,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
 
             <com.icaynia.dmxario.SceneButton
                 android:id="@+id/sceneplay_20"
@@ -254,9 +254,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/scene_button_1"
+                android:background="#92aa9d"
                 android:padding="0dp"
-                android:layout_margin="5dp" />
+                android:layout_margin="2dp" />
         </LinearLayout>
 
         <LinearLayout

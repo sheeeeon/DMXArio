@@ -7,13 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="21sp"
         android:background="#888888"
-        android:id="@+id/scn_titleView"
-        android:visibility="gone">
+        android:id="@+id/scn_titleView">
 
 
         <TextView
             android:id="@+id/scn_name"
-            android:text=""
+            android:textSize="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#DDDDDD"

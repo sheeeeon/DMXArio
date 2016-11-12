@@ -1,9 +1,5 @@
 //dmxario arduino ver.
 /*
- * 
- * 
- * 
- * 
  */
  
 #define BLUETOOTH_TX_PIN 6
@@ -43,7 +39,7 @@ void loop()
         }
         else
         {
-            command += tmp;
+            command += tmp; 
         }
     }
 }

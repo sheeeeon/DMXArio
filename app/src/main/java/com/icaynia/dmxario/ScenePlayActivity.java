@@ -1,11 +1,15 @@
 package com.icaynia.dmxario;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by icaynia on 2016. 11. 1..
@@ -14,6 +18,9 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
     private LinearLayout backbutton;
     private LinearLayout bluetoothButton;
     private customActionBar actionBar;
+
+    /* Scene Edit */
+    private View dialogV;
 
     private ScenePackage PACKAGE;
 
@@ -33,7 +40,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         viewInitialize();
 
         packageInitialize();
-        updatePackageView();
+        updateView();
     }
 
     private void viewInitialize() {
@@ -54,8 +61,6 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
             scnBt[button] = (SceneButton) findViewById(sceneBtId[button]);
             scnBt[button].setSceneId(button);
             scnBt[button].setCsEventListener(this);
-
-
         }
     }
 
@@ -65,7 +70,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         PACKAGE.printAll();
     }
 
-    private void updatePackageView() {
+    private void updateView() {
         for (int i = 0; i < 20; i++) {
             if (PACKAGE.getScene(i).getSceneName() == null) {
                 scnBt[i].setBGColor("standard");
@@ -73,6 +78,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
             else
             {
                 scnBt[i].setBGColor(PACKAGE.getScene(i).getSceneBGColor());
+                scnBt[i].setSceneName(PACKAGE.getScene(i).getSceneName());
             }
         }
     }
@@ -105,8 +111,131 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onMyLongEvent(int id) {
         Log.e("SceneFragment", "LongClick, id = " +id);
+        showScnEditDialog(id);
     }
 
+    public void showScnEditDialog(final int id) {
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_scnedit, null);
+
+        final Scene                 tmpScn      = PACKAGE.getScene(id);
+        final AlertDialog.Builder   builder     = new AlertDialog.Builder(this);     // 여기서 this는 Activity의 this
+        final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+        final SlutPicker            slpic       = (SlutPicker) dialogV.findViewById(R.id.scn_slutpickedit);
+        final TextView playcount   = (TextView) dialogV.findViewById(R.id.playcountText);
+        if (copic == null) {
+            Log.e("e", "null");
+        }
+
+        copic.setSelectColor(tmpScn.getSceneBGColor());
+        slpic.setvText(id+"");
+        playcount.setText(tmpScn.getScenePlayCount() + "");
+
+        builder.setTitle(tmpScn.getSceneName());
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                //------- 데이터 부분
+
+                /* 백그라운드 컬러 */
+                String color = copic.getSelectColor();
+                tmpScn.setSceneBGColor(color);
+
+                /* 슬룻 */
+                int newId = Integer.parseInt(slpic.getvText());
+                int orgId = id;
+                if (orgId != newId && newId >= 0 && newId < 56) {
+
+                    PACKAGE.mvScene(orgId, newId);  //move scene that has original id to newId slut.
+                    PACKAGE.saveScene(tmpScn, id);
+                    PACKAGE.savePackage();
+
+                } else if (newId >= 20) {
+                    Toast.makeText(getApplicationContext(), "20 이상의 값은 입력할 수 없습니다.", Toast.LENGTH_SHORT);
+                }
+
+
+                //-------
+                updateView();
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        builder.setView(dialogV);
+        //데이터 관련
+
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+        alert.show();    // 알림창 띄우기
+    }
+
+    public void showScnManualDialog(final int id) {
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_manualadd, null);
+
+        final Scene                 tmpScn      = new Scene(this);
+        final AlertDialog.Builder   builder     = new AlertDialog.Builder(this);     // 여기서 this는 Activity의 this
+        final ColorPicker01         copic       = (ColorPicker01) dialogV.findViewById(R.id.scn_colorpickedit);
+
+
+        //final SlutPicker            slpic       = (SlutPicker) dialogV.findViewById(R.id.scn_slutpickedit);
+        //final TextView              playcount   = (TextView) dialogV.findViewById(R.id.playcountText);
+        if (copic == null) {
+            Log.e("e", "null");
+        }
+
+        //copic.setSelectColor("standard");
+        //slpic.setvText(id+"");
+        //playcount.setText(tmpScn.getScenePlayCount() + "");
+
+        builder.setTitle("New Scene");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                //------- 데이터 부분
+
+                /* 백그라운드 컬러 */
+                String color = copic.getSelectColor();
+                tmpScn.setSceneBGColor(color);
+
+                /* 슬룻 */
+                //int newId = Integer.parseInt(slpic.getvText());
+                int orgId = id;
+                /* 저장 */
+
+                //scenePackage.saveScene(tmpScn, id);
+                //scenePackage.savePackage();
+                //-------
+                updateView();
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        builder.setView(dialogV);
+        //데이터 관련
+
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+        alert.show();    // 알림창 띄우기
+    }
 
 
 
