@@ -16,12 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.icaynia.dmxario.GlobalVar">
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".Splash"
+                  android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".TestActivity"
+                  android:screenOrientation="landscape" >
+        </activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ControllerActivity"
             android:screenOrientation="portrait">
