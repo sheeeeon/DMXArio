@@ -26,6 +26,16 @@
         <activity android:name=".TestActivity"
                   android:screenOrientation="landscape" >
         </activity>
+        <activity android:name=".Activity.ControllerActivity"
+                  android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".Activity.SceneActivity"
+                  android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".Activity.SettingActivity"
+                  android:screenOrientation="landscape">
+        </activity>
+        <!-- test -->
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>

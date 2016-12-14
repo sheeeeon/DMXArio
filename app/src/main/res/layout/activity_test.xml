@@ -37,6 +37,7 @@
         android:layout_margin="15dp">
 
         <Button
+            android:id="@+id/button_controller"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:background="@drawable/button_green"
@@ -44,6 +45,7 @@
             android:textColor="#0f0"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,6 +53,7 @@
         android:layout_margin="15dp">
 
         <Button
+            android:id="@+id/button_scene"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:background="@drawable/button_green"
@@ -66,6 +69,7 @@
         android:layout_margin="15dp">
 
         <Button
+            android:id="@+id/button_setting"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:background="@drawable/button_green"

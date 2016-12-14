@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_margin="1dp"
+            android:background="@drawable/button_green"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/title_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Seekbar"
+                    android:textSize="24dp"
+                    android:textColor="#0f0"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <com.icaynia.dmxario.VerticalSeekBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:thumb="@drawable/mixer_fader_thumb9_128"
+                        android:splitTrack="false"
+                        android:progressDrawable="@drawable/custom_progress"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="1dp"
+            android:background="@drawable/button_green"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/title_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Display"
+                    android:textSize="24dp"
+                    android:textColor="#0f0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="1dp"
+        android:background="@drawable/button_green">
+
+        <LinearLayout
+            android:id="@+id/title_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Scene"
+                android:textSize="24dp"
+                android:textColor="#0f0"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

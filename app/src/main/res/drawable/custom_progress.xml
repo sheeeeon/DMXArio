@@ -16,7 +16,7 @@
                 android:shape="line">
                 <stroke
                     android:width="3dip"
-                    android:color="#FF0000FF"
+                    android:color="#00ff00"
                     android:dashWidth="1dp"
                     android:dashGap="2dp" />
             </shape>
@@ -28,7 +28,7 @@
                 android:shape="line">
                 <stroke
                     android:width="3dip"
-                    android:color="#FF0000FF"
+                    android:color="#00ff00"
                     android:dashWidth="1dp"
                     android:dashGap="2dp" />
             </shape>
