@@ -235,7 +235,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Scene"
+                android:text="Position"
                 android:textSize="24dp"
                 android:textColor="#0f0"/>
 
@@ -257,97 +257,121 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
 
             </LinearLayout>
             <LinearLayout
@@ -361,97 +385,121 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
 
             </LinearLayout>
             <LinearLayout
@@ -465,97 +513,121 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
 
             </LinearLayout>
             <LinearLayout
@@ -569,97 +641,121 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_margin="2dp"
-                    android:background="@drawable/button_green"
-                    android:text="123"
+                    android:background="@drawable/selector_button_green"
+                    android:text="Text"
+                    android:textSize="20dp"
                     android:textColor="#0f0"/>
+
 
             </LinearLayout>
 
