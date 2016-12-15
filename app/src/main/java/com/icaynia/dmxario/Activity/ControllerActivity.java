@@ -72,7 +72,7 @@ public class ControllerActivity extends AppCompatActivity {
         recordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (EDIT_MODE) {
+                if (RECORD_MODE) {
                     recordMode(false);
                 } else {
                     recordMode(true);
@@ -84,7 +84,7 @@ public class ControllerActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (RECORD_MODE) {
+                if (EDIT_MODE) {
                     editMode(false);
                 } else {
                     editMode(true);
