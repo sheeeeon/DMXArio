@@ -7,7 +7,7 @@ import com.icaynia.dmxario.R;
  */
 
 public class ViewID {
-    public Controller controller;
+    public Controller controller = new Controller();
     public ViewID () {
 
     }

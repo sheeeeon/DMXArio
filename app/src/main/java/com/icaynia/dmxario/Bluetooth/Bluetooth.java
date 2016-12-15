@@ -59,10 +59,6 @@ public class Bluetooth {
         return false;
     }
 
-    public void getDevice() {
-
-    }
-
     public void startBluetoothThread(BluetoothSocket btSocket) {
         if (mSocketThread != null) {
             mSocketThread = null;

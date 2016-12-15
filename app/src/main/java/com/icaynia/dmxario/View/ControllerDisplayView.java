@@ -3,8 +3,10 @@ package com.icaynia.dmxario.View;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.icaynia.dmxario.R;
 
@@ -14,6 +16,8 @@ import com.icaynia.dmxario.R;
 
 public class ControllerDisplayView extends LinearLayout {
     private View contentView;
+
+    private TextView frameTv;
 
     public ControllerDisplayView (Context context) {
         super(context);
@@ -32,7 +36,10 @@ public class ControllerDisplayView extends LinearLayout {
     public void viewInitialize() {
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         contentView = li.inflate(R.layout.view_display, this, false);
-
         addView(contentView);
+    }
+
+    public void setFrameNumber(int i) {
+        frameTv.setText(i+"");
     }
 }

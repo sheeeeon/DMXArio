@@ -3,6 +3,7 @@ package com.icaynia.dmxario.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
 import com.icaynia.dmxario.Data.ViewID;
@@ -43,6 +44,11 @@ public class ControllerActivity extends AppCompatActivity {
         }
         prevFrame = (PositionButton) findViewById(viewID.controller.prevFrameButton);
         prevFrame.setText("<");
+        prevFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
         nextFrame = (PositionButton) findViewById(viewID.controller.nextFrameButton);
         nextFrame.setText(">");
         recordButton = (PositionButton) findViewById(viewID.controller.recordButton);

@@ -28,7 +28,7 @@ public class Scene {
     private ObjectFileManager       mObj;
 
 
-    private int                     nowframe = 0;
+    private int                     nowframe = 1;
     int maiv;
 
 

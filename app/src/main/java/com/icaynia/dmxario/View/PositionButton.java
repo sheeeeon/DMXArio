@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.icaynia.dmxario.R;
 
@@ -16,6 +17,7 @@ import com.icaynia.dmxario.R;
 
 public class PositionButton extends LinearLayout {
     public View v;
+    public TextView textView;
 
     public PositionButton (Context context) {
         super(context);
@@ -39,12 +41,12 @@ public class PositionButton extends LinearLayout {
 
             }
         });
+
+        textView = (TextView) findViewById(R.id.button_title);
     }
 
     public void setText(String str) {
-
+        textView.setText(str);
     }
-
-
 
 }
