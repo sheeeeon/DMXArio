@@ -1,6 +1,7 @@
 package com.icaynia.dmxario.View;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -54,4 +55,8 @@ public class PositionButton extends LinearLayout {
         textView.setText(str);
     }
 
+
+    public void setBackgroundDrawable(Drawable drawable) {
+        bt.setBackgroundDrawable(drawable);
+    }
 }

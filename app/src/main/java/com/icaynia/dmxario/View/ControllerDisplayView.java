@@ -1,6 +1,7 @@
 package com.icaynia.dmxario.View;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -69,6 +70,8 @@ public class ControllerDisplayView extends LinearLayout {
     public void setFrameSeekBarChangeListener(SeekBar.OnSeekBarChangeListener s) {
         frameSeekBar.setOnSeekBarChangeListener(s);
     }
+
+
 
 
 

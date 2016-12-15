@@ -33,6 +33,9 @@ public class ControllerActivity extends AppCompatActivity {
 
     private Scene mainScene = new Scene(this);
 
+    private boolean EDIT_MODE = false;
+    private boolean RECORD_MODE = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +71,16 @@ public class ControllerActivity extends AppCompatActivity {
         recordButton.setText("REC");
         editButton = (PositionButton) findViewById(viewID.controller.editButton);
         editButton.setText("EDIT");
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (EDIT_MODE) {
+                    editMode(false);
+                } else {
+                    editMode(true);
+                }
+            }
+        });
 
         controllerDisplayView = (ControllerDisplayView) findViewById(R.id.content_display);
         controllerDisplayView.setFrameNumber(mainScene.getSceneNowFrame(), false);
@@ -122,6 +135,26 @@ public class ControllerActivity extends AppCompatActivity {
             mainScene.setSceneNowFrame(frame);
         /* View */
             controllerDisplayView.setFrameNumber(frame, progressMoving);
+        }
+    }
+
+    private void editMode(boolean SWITCH) {
+        EDIT_MODE = SWITCH;
+        if (SWITCH) {
+            editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+        } else {
+            editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+
+        }
+    }
+
+    private void recordMode(boolean SWITCH) {
+        RECORD_MODE = SWITCH;
+        if (SWITCH) {
+            recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+        } else {
+            recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+
         }
     }
 
