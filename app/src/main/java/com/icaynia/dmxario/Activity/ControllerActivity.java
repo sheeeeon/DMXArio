@@ -69,6 +69,16 @@ public class ControllerActivity extends AppCompatActivity {
         });
         recordButton = (PositionButton) findViewById(viewID.controller.recordButton);
         recordButton.setText("REC");
+        recordButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (EDIT_MODE) {
+                    recordMode(false);
+                } else {
+                    recordMode(true);
+                }
+            }
+        });
         editButton = (PositionButton) findViewById(viewID.controller.editButton);
         editButton.setText("EDIT");
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -142,9 +152,10 @@ public class ControllerActivity extends AppCompatActivity {
         EDIT_MODE = SWITCH;
         if (SWITCH) {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+            controllerDisplayView.setEditPositionVisiblie(View.VISIBLE);
         } else {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
-
+            controllerDisplayView.setEditPositionVisiblie(View.GONE);
         }
     }
 
