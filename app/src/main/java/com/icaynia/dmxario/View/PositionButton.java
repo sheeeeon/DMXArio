@@ -18,6 +18,7 @@ import com.icaynia.dmxario.R;
 public class PositionButton extends LinearLayout {
     public View v;
     public TextView textView;
+    private LinearLayout bt;
 
     public PositionButton (Context context) {
         super(context);
@@ -34,7 +35,7 @@ public class PositionButton extends LinearLayout {
         v = inflater.inflate(R.layout.view_position, this, false);
         addView(v);
 
-        LinearLayout bt = (LinearLayout) findViewById(R.id.button);
+        bt = (LinearLayout) findViewById(R.id.button);
         bt.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +44,10 @@ public class PositionButton extends LinearLayout {
         });
 
         textView = (TextView) findViewById(R.id.button_title);
+    }
+
+    public void setOnClickListener(OnClickListener n) {
+        bt.setOnClickListener(n);
     }
 
     public void setText(String str) {

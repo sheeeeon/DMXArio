@@ -22,7 +22,8 @@
                 android:layout_height="wrap_content"
                 android:text="New Scene"
                 android:textSize="24dp"
-                android:textColor="#0f0"/>
+                android:textColor="#0f0"
+                android:id="@+id/sceneName"/>
 
         </LinearLayout>
 
@@ -40,6 +41,7 @@
                 android:id="@+id/textView17"/>
 
             <TextView
+                android:id="@+id/frameno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="14"
@@ -51,13 +53,13 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp">
 
         <SeekBar
+            android:id="@+id/frameSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:progressDrawable="@drawable/custom_progress"/>

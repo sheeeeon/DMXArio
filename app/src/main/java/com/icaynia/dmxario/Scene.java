@@ -24,7 +24,6 @@ public class Scene {
     private Context                 context;
     private HashMap<String, String> scn;
 
-
     private ObjectFileManager       mObj;
 
 
@@ -38,11 +37,8 @@ public class Scene {
         this.context = _context;
         scn = new HashMap<String,String>();
         mObj = new ObjectFileManager(context);
-
         mTimer = new Timer();
-
-        global = (GlobalVar) _context.getApplicationContext();
-
+        //global = (GlobalVar) _context.getApplicationContext();
     }
 
     // endregion
@@ -54,12 +50,10 @@ public class Scene {
         this.scn = mObj.load("scene/"+_packageName+"/"+fileName+".scn");
         if (scn == null)
         {
-            ((MainActivity)context).makeToast("가져오기 실패");
             Log.e("Scene", "Load Failed : " + fileName);
         }
         else
         {
-            //((MainActivity)context).makeToast("가져오기 성공 : "+fileName);
             Log.e("Scene", "Load Completed : " + fileName);
         }
 
@@ -114,7 +108,6 @@ public class Scene {
 
     public void setSceneLength(int SceneLength)
     {
-
         scn.put("SceneLength", SceneLength+"");
     }
 
@@ -159,6 +152,10 @@ public class Scene {
     {
 
         return this.nowframe;
+    }
+
+    public void setSceneNowFrame(int frame) {
+        this.nowframe = frame;
     }
 
     public void setScenePlayCount(int count)

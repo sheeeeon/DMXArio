@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.SeekBar;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
 import com.icaynia.dmxario.Data.ViewID;
 import com.icaynia.dmxario.GlobalVar;
 import com.icaynia.dmxario.R;
+import com.icaynia.dmxario.Scene;
+import com.icaynia.dmxario.View.ControllerDisplayView;
 import com.icaynia.dmxario.View.PositionButton;
 
 import java.util.ArrayList;
@@ -26,6 +29,10 @@ public class ControllerActivity extends AppCompatActivity {
     private PositionButton recordButton;
     private PositionButton editButton;
 
+    public ControllerDisplayView controllerDisplayView;
+
+    private Scene mainScene = new Scene(this);
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +40,6 @@ public class ControllerActivity extends AppCompatActivity {
 
         viewInitialize();
         dataInitialize();
-
     }
 
     private void viewInitialize() {
@@ -47,19 +53,51 @@ public class ControllerActivity extends AppCompatActivity {
         prevFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                goToFrame(mainScene.getSceneNowFrame()-1, true);
             }
         });
         nextFrame = (PositionButton) findViewById(viewID.controller.nextFrameButton);
         nextFrame.setText(">");
+        nextFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToFrame(mainScene.getSceneNowFrame()+1, true);
+            }
+        });
         recordButton = (PositionButton) findViewById(viewID.controller.recordButton);
         recordButton.setText("REC");
         editButton = (PositionButton) findViewById(viewID.controller.editButton);
         editButton.setText("EDIT");
+
+        controllerDisplayView = (ControllerDisplayView) findViewById(R.id.content_display);
+        controllerDisplayView.setFrameNumber(mainScene.getSceneNowFrame(), false);
+        controllerDisplayView.setMaxFrame(1);
+
+        controllerDisplayView.setFrameSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.e("seekBar", progress+"");
+                goToFrame(progress+1, false);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     private void dataInitialize() {
         global = (GlobalVar) getApplicationContext();
         global.bluetooth = new Bluetooth(this);
+        /* new scene */
+        mainScene.setSceneLength(1);
+        mainScene.setSceneName("New Scene");
     }
 
     private void loadPreference() {
@@ -71,6 +109,19 @@ public class ControllerActivity extends AppCompatActivity {
             global.mSocketThread.write(data);
         else {
             Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
+        }
+    }
+
+    private void goToFrame(int frame, boolean progressMoving) {
+        if (frame > mainScene.getSceneLength()) {
+            mainScene.setSceneLength(frame);
+            controllerDisplayView.setMaxFrame(frame);
+        }
+        /* Data */
+        if (frame > 0) {
+            mainScene.setSceneNowFrame(frame);
+        /* View */
+            controllerDisplayView.setFrameNumber(frame, progressMoving);
         }
     }
 
