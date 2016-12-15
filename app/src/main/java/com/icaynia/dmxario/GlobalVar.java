@@ -3,11 +3,14 @@ package com.icaynia.dmxario;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.icaynia.dmxario.Bluetooth.Bluetooth;
+
 /**
  * Created by icaynia on 2016. 11. 5..
  */
 public class GlobalVar extends Application {
     public BluetoothSettingActivity.SocketThread mSocketThread;
+    public Bluetooth bluetooth;
 
     @Override
     public void onCreate() {
