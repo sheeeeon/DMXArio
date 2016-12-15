@@ -84,7 +84,7 @@ public class ControllerActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (EDIT_MODE) {
+                if (RECORD_MODE) {
                     editMode(false);
                 } else {
                     editMode(true);
