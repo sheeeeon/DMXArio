@@ -1,6 +1,7 @@
 package com.icaynia.dmxario.Activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.icaynia.dmxario.View.ControllerDisplayView;
 import com.icaynia.dmxario.View.PositionButton;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by icaynia on 2016. 12. 14..
@@ -34,7 +37,15 @@ public class ControllerActivity extends AppCompatActivity {
     private Scene mainScene = new Scene(this);
 
     private boolean EDIT_MODE = false;
+    private boolean EDIT_MODE_SELECTED_POSITION;
+
+    /* FOR RECORD MODE */
     private boolean RECORD_MODE = false;
+    private Scene tmpScene;
+    private Timer mTimer;
+    private boolean ismTimerRunning;
+    private String tmpStr;
+    private Handler handler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +87,7 @@ public class ControllerActivity extends AppCompatActivity {
                     recordMode(false);
                 } else {
                     recordMode(true);
+                    editMode(false);
                 }
             }
         });
@@ -88,6 +100,7 @@ public class ControllerActivity extends AppCompatActivity {
                     editMode(false);
                 } else {
                     editMode(true);
+                    recordMode(false);
                 }
             }
         });
@@ -153,6 +166,7 @@ public class ControllerActivity extends AppCompatActivity {
         if (SWITCH) {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
             controllerDisplayView.setEditPositionVisiblie(View.VISIBLE);
+
         } else {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
             controllerDisplayView.setEditPositionVisiblie(View.GONE);
@@ -163,10 +177,59 @@ public class ControllerActivity extends AppCompatActivity {
         RECORD_MODE = SWITCH;
         if (SWITCH) {
             recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+            recordSceneStart();
         } else {
             recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
-
         }
+    }
+
+    public void recordSceneStart()
+    {
+        handler = new Handler();
+        tmpScene = new Scene(this);
+        tmpStr = ""; // 비우고 시작
+
+        if (ismTimerRunning)
+        {
+            mTimer.cancel();
+            ismTimerRunning = false;
+        }
+
+        mTimer = new Timer();
+        mTimer.schedule(
+                new TimerTask(){
+                    int i = 1;
+                    @Override
+                    public void run()
+                    {
+                        handler.post(
+                                new Runnable()
+                                {
+                                    public void run()
+                                    {
+                                        ismTimerRunning = true;
+                                        //fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
+                                        Log.e("Controller/rec..start()", i+"#:"+tmpStr);
+                                        tmpScene.putFrame(i, tmpStr);
+                                        tmpStr = "";
+
+                                        if (i == 200)
+                                        {
+                                            tmpScene.setSceneLength(i);
+                                            tmpScene.setSceneName("scene0.scn");
+                                            //setDisplayText(""); dialog
+                                            // 알림창 객체 생성
+                                            mTimer.cancel();
+                                            Log.e("Controller/rec..start()", "recordTimer stopped.");
+                                            //showSavesceneDialog();
+                                        }
+                                        i++;
+                                        goToFrame(i, true);
+                                    }
+                                });
+                    }
+                }, 0, 20
+        );
     }
 
 }
