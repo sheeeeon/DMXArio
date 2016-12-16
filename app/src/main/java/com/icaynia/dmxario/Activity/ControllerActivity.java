@@ -1,10 +1,13 @@
 package com.icaynia.dmxario.Activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.SeekBar;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
@@ -54,21 +57,25 @@ public class ControllerActivity extends AppCompatActivity {
 
     /* FOR POSITION */
     private ArrayList<Position> position = new ArrayList<Position>();
+    private PositionManager positionManager;
+
+    /* FOR POSITION : DIALOG */
+    private View dialogV;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller_new);
 
-        dataInitialize();
         viewInitialize();
+        dataInitialize();
     }
 
     private void viewInitialize() {
         viewID = new ViewID();
         for (int row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
-            arrayButtons.get(row).setText(position.get(row).name);
+
             arrayButtons.get(row).v.setTag(row+"");
             arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -141,6 +148,12 @@ public class ControllerActivity extends AppCompatActivity {
 
             }
         });
+
+        controllerDisplayView.setEditPositionOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 
     private void dataInitialize() {
@@ -149,11 +162,15 @@ public class ControllerActivity extends AppCompatActivity {
         /* new scene */
         mainScene.setSceneLength(1);
         mainScene.setSceneName("New Scene");
+        positionInitialize();
+    }
 
+    private void positionInitialize() {
         /* position */
-        PositionManager positionManager = new PositionManager(this);
+        positionManager = new PositionManager(this);
         for (int i = 0; i < 48; i++) {
             position.add(i, positionManager.getPosition(i));
+            arrayButtons.get(i).setText(position.get(i).name);
         }
     }
 
@@ -277,16 +294,52 @@ public class ControllerActivity extends AppCompatActivity {
         viewInitialize();
     }
 
-    private void setSelectPosition(int id) {
+    private void setSelectPosition(final int id) {
         /* before */
         arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
-
 
         arrayButtons.get(id).setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
         EDIT_MODE_SELECTED_POSITION = id;
         Log.e("SELECTED_POSITION", EDIT_MODE_SELECTED_POSITION+"");
 
         /* display setting */
+        controllerDisplayView.setEditPositionOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPositionEditNameDialog(id);
+            }
+        });
     }
+    public void showPositionEditNameDialog(final int id) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_position_editname, null);
 
+        final EditText position_name = (EditText) dialogV.findViewById(R.id.launcher_name);
+
+
+        builder.setView(dialogV);
+        builder.setTitle("Edit position : "+ id);
+
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String name = position_name.getText().toString();
+                position.get(id).name = name;
+                positionManager.setPosition(id, position.get(id));
+                positionInitialize();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+    }
 }

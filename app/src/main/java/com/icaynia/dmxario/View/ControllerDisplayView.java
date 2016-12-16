@@ -25,6 +25,7 @@ public class ControllerDisplayView extends LinearLayout {
     private TextView sceneName;
     private SeekBar frameSeekBar;
     private LinearLayout editPosition;
+    private TextView positionName;
 
     private int maxFrame = 1;
 
@@ -51,6 +52,7 @@ public class ControllerDisplayView extends LinearLayout {
         sceneName = (TextView) findViewById(R.id.sceneName);
         frameSeekBar = (SeekBar) findViewById(R.id.frameSeekBar);
         editPosition = (LinearLayout) findViewById(R.id.edit_position);
+        positionName = (TextView) findViewById(R.id.position_name);
     }
 
     public void setFrameNumber(int frameNumber, boolean progressMoving) {
@@ -62,6 +64,10 @@ public class ControllerDisplayView extends LinearLayout {
 
     public void setSceneName(String str) {
         sceneName.setText(str);
+    }
+
+    public void setPositionName(String str) {
+        positionName.setText(str);
     }
 
     public void setMaxFrame(int maxFrame) {
@@ -77,4 +83,7 @@ public class ControllerDisplayView extends LinearLayout {
         editPosition.setVisibility(VISIBILITY);
     }
 
+    public void setEditPositionOnClickListener(OnClickListener n) {
+        editPosition.setOnClickListener(n);
+    }
 }
