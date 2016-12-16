@@ -69,6 +69,13 @@ public class ControllerActivity extends AppCompatActivity {
         for (int row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
             arrayButtons.get(row).setText(position.get(row).name);
+            arrayButtons.get(row).v.setTag(row+"");
+            arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
         prevFrame = (PositionButton) findViewById(viewID.controller.prevFrameButton);
         prevFrame.setText("<");
@@ -163,6 +170,7 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     private void goToFrame(int frame, boolean progressMoving) {
+        controllerDisplayView.setMaxFrame(mainScene.getSceneLength());
         if (frame > mainScene.getSceneLength()) {
             mainScene.setSceneLength(frame);
             controllerDisplayView.setMaxFrame(frame);
@@ -184,6 +192,7 @@ public class ControllerActivity extends AppCompatActivity {
         } else {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
             controllerDisplayView.setEditPositionVisiblie(View.GONE);
+            deactiveEditMode();
         }
     }
 
@@ -251,14 +260,33 @@ public class ControllerActivity extends AppCompatActivity {
 
     private void activeEditMode() {
         for (row = 0; row < viewID.controller.position.length; row++) {
+            arrayButtons.get(row).v.setTag(row+"");
             arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    EDIT_MODE_SELECTED_POSITION = row;
-                    Log.e("SELECTED_POSITION", row+"");
+                    /* before */
+                    setSelectPosition(Integer.parseInt(v.getTag().toString()));
                 }
             });
         }
+        setSelectPosition(EDIT_MODE_SELECTED_POSITION);
+    }
+
+    private void deactiveEditMode() {
+        arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+        viewInitialize();
+    }
+
+    private void setSelectPosition(int id) {
+        /* before */
+        arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+
+
+        arrayButtons.get(id).setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+        EDIT_MODE_SELECTED_POSITION = id;
+        Log.e("SELECTED_POSITION", EDIT_MODE_SELECTED_POSITION+"");
+
+        /* display setting */
     }
 
 }
