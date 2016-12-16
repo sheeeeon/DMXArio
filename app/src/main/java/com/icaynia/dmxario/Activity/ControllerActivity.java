@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
+import com.icaynia.dmxario.Data.PositionManager;
 import com.icaynia.dmxario.Data.ViewID;
 import com.icaynia.dmxario.GlobalVar;
+import com.icaynia.dmxario.Model.Position;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Scene;
 import com.icaynia.dmxario.View.ControllerDisplayView;
@@ -36,8 +38,10 @@ public class ControllerActivity extends AppCompatActivity {
 
     private Scene mainScene = new Scene(this);
 
+    /* FOR EDIT MODE */
     private boolean EDIT_MODE = false;
-    private boolean EDIT_MODE_SELECTED_POSITION;
+    private int EDIT_MODE_SELECTED_POSITION = 0;
+    private int row;
 
     /* FOR RECORD MODE */
     private boolean RECORD_MODE = false;
@@ -46,21 +50,25 @@ public class ControllerActivity extends AppCompatActivity {
     private boolean ismTimerRunning;
     private String tmpStr;
     private Handler handler;
+    private ViewID viewID;
+
+    /* FOR POSITION */
+    private ArrayList<Position> position = new ArrayList<Position>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller_new);
 
-        viewInitialize();
         dataInitialize();
+        viewInitialize();
     }
 
     private void viewInitialize() {
-        ViewID viewID = new ViewID();
+        viewID = new ViewID();
         for (int row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
-            arrayButtons.get(row).setText("ed");
+            arrayButtons.get(row).setText(position.get(row).name);
         }
         prevFrame = (PositionButton) findViewById(viewID.controller.prevFrameButton);
         prevFrame.setText("<");
@@ -134,6 +142,12 @@ public class ControllerActivity extends AppCompatActivity {
         /* new scene */
         mainScene.setSceneLength(1);
         mainScene.setSceneName("New Scene");
+
+        /* position */
+        PositionManager positionManager = new PositionManager(this);
+        for (int i = 0; i < 48; i++) {
+            position.add(i, positionManager.getPosition(i));
+        }
     }
 
     private void loadPreference() {
@@ -166,7 +180,7 @@ public class ControllerActivity extends AppCompatActivity {
         if (SWITCH) {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
             controllerDisplayView.setEditPositionVisiblie(View.VISIBLE);
-
+            activeEditMode();
         } else {
             editButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
             controllerDisplayView.setEditPositionVisiblie(View.GONE);
@@ -180,6 +194,10 @@ public class ControllerActivity extends AppCompatActivity {
             recordSceneStart();
         } else {
             recordButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+            if (ismTimerRunning) {
+                mTimer.cancel();
+                ismTimerRunning = false;
+            }
         }
     }
 
@@ -188,13 +206,10 @@ public class ControllerActivity extends AppCompatActivity {
         handler = new Handler();
         tmpScene = new Scene(this);
         tmpStr = ""; // 비우고 시작
-
-        if (ismTimerRunning)
-        {
+        if (ismTimerRunning) {
             mTimer.cancel();
             ismTimerRunning = false;
         }
-
         mTimer = new Timer();
         mTimer.schedule(
                 new TimerTask(){
@@ -222,6 +237,8 @@ public class ControllerActivity extends AppCompatActivity {
                                             mTimer.cancel();
                                             Log.e("Controller/rec..start()", "recordTimer stopped.");
                                             //showSavesceneDialog();
+
+                                            recordMode(false);
                                         }
                                         i++;
                                         goToFrame(i, true);
@@ -230,6 +247,18 @@ public class ControllerActivity extends AppCompatActivity {
                     }
                 }, 0, 20
         );
+    }
+
+    private void activeEditMode() {
+        for (row = 0; row < viewID.controller.position.length; row++) {
+            arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EDIT_MODE_SELECTED_POSITION = row;
+                    Log.e("SELECTED_POSITION", row+"");
+                }
+            });
+        }
     }
 
 }
