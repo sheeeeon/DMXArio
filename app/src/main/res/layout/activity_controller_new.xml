@@ -94,6 +94,26 @@
                     android:layout_margin="2dp"
                     android:gravity="right"
                     android:weightSum="4">
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:layout_margin="2dp"/>
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:layout_margin="2dp"/>
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:layout_margin="2dp"/>
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:layout_margin="2dp"/>
 
 
                     <com.icaynia.dmxario.View.PositionButton
@@ -126,7 +146,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar1"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -143,7 +164,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar2"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -160,7 +182,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar3"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -177,7 +200,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar4"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -194,7 +218,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar5"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -211,7 +236,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar6"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,7 +254,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar7"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -245,7 +272,8 @@
                         android:layout_height="match_parent"
                         android:thumb="@drawable/mixer_fader_thumb9_128"
                         android:splitTrack="false"
-                        android:progressDrawable="@drawable/custom_progress"/>
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:id="@+id/seekbar8"/>
 
 
                 </LinearLayout>
