@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,9 @@ public class PositionButton extends LinearLayout {
     public View v;
     public TextView textView;
     private LinearLayout bt;
+
+    private boolean switchMode = false;
+    private boolean switchOn = true;
 
     public PositionButton (Context context) {
         super(context);
@@ -58,5 +62,42 @@ public class PositionButton extends LinearLayout {
 
     public void setBackgroundDrawable(Drawable drawable) {
         bt.setBackgroundDrawable(drawable);
+    }
+
+    public void setSwitchMode(boolean mode) {
+        switchMode = mode;
+        if (mode) {
+            bt.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (switchOn == true) {
+                        Log.e("r", "true");
+                        switchOn = false;
+                        bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+                    } else {
+                        Log.e("r", "false");
+                        switchOn = true;
+                        bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+                    }
+
+                }
+            });
+        } else {
+            bt.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+
+    }
+
+    public boolean isSwitchMode() {
+        return switchMode;
+    }
+
+    public boolean isSwitchOn() {
+        return switchOn;
     }
 }

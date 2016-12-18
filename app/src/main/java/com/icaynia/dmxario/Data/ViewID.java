@@ -19,10 +19,20 @@ public class ViewID {
                 R.id.pos_37, R.id.pos_38, R.id.pos_39, R.id.pos_40, R.id.pos_41, R.id.pos_42, R.id.pos_43, R.id.pos_44, R.id.pos_45, R.id.pos_46, R.id.pos_47, R.id.pos_48,
         };
 
+        public int[] seekbar = {
+                R.id.seekbar1, R.id.seekbar2, R.id.seekbar3, R.id.seekbar4, R.id.seekbar5, R.id.seekbar6, R.id.seekbar7, R.id.seekbar8
+        };
+
+        public int[] seekbarSelectChannelButton = {
+            R.id.channel_select1, R.id.channel_select2, R.id.channel_select3, R.id.channel_select4
+        };
+
         public int recordButton = R.id.recBt;
         public int editButton = R.id.editBt;
         public int prevFrameButton = R.id.prev_frame;
         public int nextFrameButton = R.id.next_frame;
+
+        public int seekbar_customizing = R.id.seekbar_customize;
     }
 
 }

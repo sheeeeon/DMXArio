@@ -94,22 +94,27 @@
                     android:layout_margin="2dp"
                     android:gravity="right"
                     android:weightSum="4">
+
                     <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/channel_select1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.6"
                         android:layout_margin="2dp"/>
                     <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/channel_select2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.6"
                         android:layout_margin="2dp"/>
                     <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/channel_select3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.6"
                         android:layout_margin="2dp"/>
                     <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/channel_select4"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.6"
@@ -120,7 +125,8 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_margin="2dp"/>
+                        android:layout_margin="2dp"
+                        android:id="@+id/seekbar_customize"/>
 
                 </LinearLayout>
 

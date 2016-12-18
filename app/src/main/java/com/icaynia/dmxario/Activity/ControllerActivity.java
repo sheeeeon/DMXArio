@@ -17,6 +17,7 @@ import com.icaynia.dmxario.GlobalVar;
 import com.icaynia.dmxario.Model.Position;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Scene;
+import com.icaynia.dmxario.VerticalSeekBar;
 import com.icaynia.dmxario.View.ControllerDisplayView;
 import com.icaynia.dmxario.View.PositionButton;
 
@@ -32,6 +33,7 @@ public class ControllerActivity extends AppCompatActivity {
     GlobalVar global;
 
     private ArrayList<PositionButton> arrayButtons = new ArrayList<PositionButton>();
+    private ArrayList<VerticalSeekBar> arraySeekbar = new ArrayList<VerticalSeekBar>();
     private PositionButton prevFrame;
     private PositionButton nextFrame;
     private PositionButton recordButton;
@@ -55,6 +57,10 @@ public class ControllerActivity extends AppCompatActivity {
     private Handler handler;
     private ViewID viewID;
 
+    /* FOR SEEKBAR */
+    private PositionButton seekbarCustomizing;
+    private ArrayList<PositionButton> selChannelButtons = new ArrayList<PositionButton>();
+
     /* FOR POSITION */
     private ArrayList<Position> position = new ArrayList<Position>();
     private PositionManager positionManager;
@@ -73,6 +79,41 @@ public class ControllerActivity extends AppCompatActivity {
 
     private void viewInitialize() {
         viewID = new ViewID();
+
+        /* seekbar initialize */
+        for (int row = 0; row < viewID.controller.seekbar.length; row++) {
+            arraySeekbar.add(row, (VerticalSeekBar) findViewById(viewID.controller.seekbar[row]));
+
+            arraySeekbar.get(row).setTag(row+"");
+            arraySeekbar.get(row).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    /* key */
+                    int key = Integer.parseInt(seekBar.getTag().toString());
+                    sendData("+e:"+(key+1)+":"+ progress+"#");
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }
+
+        for (int row = 0; row < viewID.controller.seekbarSelectChannelButton.length; row++) {
+            selChannelButtons.add(row, (PositionButton) findViewById(viewID.controller.seekbarSelectChannelButton[row]));
+            selChannelButtons.get(row).setSwitchMode(true);
+            selChannelButtons.get(row).setText((row+1)+"");
+        }
+        seekbarCustomizing = (PositionButton) findViewById(viewID.controller.seekbar_customizing);
+        seekbarCustomizing.setText("Custom");
+
+        /* position initialize */
         for (int row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
 
@@ -84,6 +125,7 @@ public class ControllerActivity extends AppCompatActivity {
                 }
             });
         }
+
         prevFrame = (PositionButton) findViewById(viewID.controller.prevFrameButton);
         prevFrame.setText("<");
         prevFrame.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +169,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
+        /* controller initialize */
         controllerDisplayView = (ControllerDisplayView) findViewById(R.id.content_display);
         controllerDisplayView.setFrameNumber(mainScene.getSceneNowFrame(), false);
         controllerDisplayView.setMaxFrame(1);
@@ -174,16 +217,18 @@ public class ControllerActivity extends AppCompatActivity {
         }
     }
 
+    private void seekbarInitialize() {
+        /* seekbar */
+
+
+    }
+
     private void loadPreference() {
 
     }
 
     private void sendData(String data) {
-        if (global.mSocketThread != null)
-            global.mSocketThread.write(data);
-        else {
-            Log.e("ControllerActivity", data + " : Bluetooth is not connected!");
-        }
+        Log.e("sendToBluetooth", data);
     }
 
     private void goToFrame(int frame, boolean progressMoving) {
@@ -293,6 +338,11 @@ public class ControllerActivity extends AppCompatActivity {
         arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
         viewInitialize();
     }
+
+    private void setSelectSeekbarChannel(final int id) {
+
+    }
+
 
     private void setSelectPosition(final int id) {
         /* before */
