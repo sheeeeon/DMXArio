@@ -90,7 +90,9 @@ public class ControllerActivity extends AppCompatActivity {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     /* key */
                     int key = Integer.parseInt(seekBar.getTag().toString());
-                    sendData("+e:"+(key+1)+":"+ progress+"#");
+                    if (selChannelButtons.get(0).isSwitchOn()) {
+                        sendData("+e:"+(key+1)+":"+ progress+"#");
+                    }
                 }
 
                 @Override

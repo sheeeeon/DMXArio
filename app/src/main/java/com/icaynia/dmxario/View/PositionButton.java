@@ -23,7 +23,7 @@ public class PositionButton extends LinearLayout {
     private LinearLayout bt;
 
     private boolean switchMode = false;
-    private boolean switchOn = true;
+    private boolean switchOn = false;
 
     public PositionButton (Context context) {
         super(context);
@@ -70,14 +70,14 @@ public class PositionButton extends LinearLayout {
             bt.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (switchOn == true) {
-                        Log.e("r", "true");
-                        switchOn = false;
-                        bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
-                    } else {
+                    if (switchOn) {
                         Log.e("r", "false");
-                        switchOn = true;
+                        switchOn = false;
                         bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+                    } else {
+                        Log.e("r", "true");
+                        switchOn = true;
+                        bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
                     }
 
                 }
