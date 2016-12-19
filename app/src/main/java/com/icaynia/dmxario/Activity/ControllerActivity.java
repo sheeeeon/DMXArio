@@ -10,14 +10,18 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
+import com.icaynia.dmxario.ColorPicker01;
 import com.icaynia.dmxario.Data.PositionManager;
 import com.icaynia.dmxario.Data.ViewID;
 import com.icaynia.dmxario.GlobalVar;
 import com.icaynia.dmxario.Model.Position;
+import com.icaynia.dmxario.ObjectFileManager;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Scene;
+import com.icaynia.dmxario.ScenePackage;
 import com.icaynia.dmxario.VerticalSeekBar;
 import com.icaynia.dmxario.View.ControllerDisplayView;
 import com.icaynia.dmxario.View.PositionButton;
@@ -236,6 +240,13 @@ public class ControllerActivity extends AppCompatActivity {
             public void onClick(View v) {
             }
         });
+
+        controllerDisplayView.setEditSceneNameOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void seekBarDataInitialize() {
@@ -351,7 +362,7 @@ public class ControllerActivity extends AppCompatActivity {
                                             // 알림창 객체 생성
                                             mTimer.cancel();
                                             Log.e("Controller/rec..start()", "recordTimer stopped.");
-                                            //showSavesceneDialog();
+                                            showSavesceneDialog();
 
                                             recordMode(false);
                                         }
@@ -456,5 +467,63 @@ public class ControllerActivity extends AppCompatActivity {
         alert.show();    // 알림창 띄우기
     }
 
+    public void showSavesceneDialog() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);     // 여기서 this는 Activity의 this
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_savescene, null);
+
+        builder.setView(dialogV);
+        builder.setTitle("Save Scene");
+
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Added Scene", Toast.LENGTH_SHORT);
+
+                //EditText packageName = (EditText)dialogV.findViewById(R.id.input_scenePackage);
+                EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
+                EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
+
+                if (!sceneSlut.getText().toString().equals(""))
+                {
+                    tmpScene.setSceneName(sceneName.getText().toString());
+                    tmpScene.setScenePlayCount(0);
+                    saveScene("Untitled Package", tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
+                }
+
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+
+    }
+
+    public void saveScene(String ScenePackageName, Scene scn, int slut)
+    {
+        //기존 코드
+        ObjectFileManager mObjFileMgr = new ObjectFileManager(this);
+        ScenePackage scnPack = new ScenePackage(this);      //new
+        if (mObjFileMgr.isAvailable("Scene/"+ScenePackageName)) {
+            Log.e("ControllerFragment", ScenePackageName +" is available!");
+            scnPack.loadPackage(ScenePackageName);
+        }
+        scnPack.setPackageName(ScenePackageName);
+        scnPack.savePackage();
+        scnPack.mkSceneFile(scn);
+
+        scnPack.putScene(scn.getSceneName(), slut);
+        scnPack.savePackage();
+    }
 
 }

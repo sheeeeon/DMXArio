@@ -28,6 +28,8 @@ public class ControllerDisplayView extends LinearLayout {
     private TextView positionName;
     private TextView positionScript;
 
+
+
     private int maxFrame = 1;
 
     public ControllerDisplayView (Context context) {
@@ -91,5 +93,9 @@ public class ControllerDisplayView extends LinearLayout {
 
     public void setEditPositionOnClickListener(OnClickListener n) {
         editPosition.setOnClickListener(n);
+    }
+
+    public void setEditSceneNameOnClickListener(OnClickListener n) {
+        sceneName.setOnClickListener(n);
     }
 }

@@ -41,9 +41,30 @@
                     android:layout_margin="2dp"
                     android:gravity="right"
                     android:weightSum="4">
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/button_framereset"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"/>
 
 
                     <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/button_allreset"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"/>
+
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/button_save"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_margin="2dp"/>
+
+                    <com.icaynia.dmxario.View.PositionButton
+                        android:id="@+id/button_load"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

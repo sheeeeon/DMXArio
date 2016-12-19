@@ -33,6 +33,11 @@ public class ViewID {
         public int nextFrameButton = R.id.next_frame;
 
         public int seekbar_customizing = R.id.seekbar_customize;
+
+        public int button_framereset = R.id.button_framereset;
+        public int button_allreset = R.id.button_allreset;
+        public int button_save = R.id.button_save;
+        public int button_load = R.id.button_load;
     }
 
 }
