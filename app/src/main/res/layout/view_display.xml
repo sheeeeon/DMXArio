@@ -5,29 +5,53 @@
               android:layout_height="match_parent"
               android:background="#000"
               android:gravity="bottom">
-    
+
     <LinearLayout
         android:id="@+id/edit_position"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        android:visibility="gone">
+        android:orientation="horizontal"
+        android:layout_margin="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Position"
-            android:textSize="24dp"
-            android:textColor="#0f0"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/position_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name : ed"
-            android:textSize="20dp"
-            android:textColor="#0f0"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Position"
+                android:textSize="24dp"
+                android:textColor="#0f0"/>
+
+            <TextView
+                android:id="@+id/position_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name : ed"
+                android:textSize="20dp"
+                android:textColor="#0f0"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/position_script"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20dp"
+                android:textColor="#0f0"
+                android:textAlignment="textEnd"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout

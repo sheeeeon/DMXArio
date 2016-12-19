@@ -83,7 +83,7 @@ public class ControllerActivity extends AppCompatActivity {
         /* seekbar initialize */
         for (int row = 0; row < viewID.controller.seekbar.length; row++) {
             arraySeekbar.add(row, (VerticalSeekBar) findViewById(viewID.controller.seekbar[row]));
-
+            arraySeekbar.get(row).setMax(255);
             arraySeekbar.get(row).setTag(row+"");
             arraySeekbar.get(row).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -93,6 +93,16 @@ public class ControllerActivity extends AppCompatActivity {
                     if (selChannelButtons.get(0).isSwitchOn()) {
                         sendData("+e:"+(key+1)+":"+ progress+"#");
                     }
+                    if (selChannelButtons.get(1).isSwitchOn()) {
+                        sendData("+e:"+(key+17)+":"+ progress+"#");
+                    }
+                    if (selChannelButtons.get(2).isSwitchOn()) {
+                        sendData("+e:"+(key+33)+":"+ progress+"#");
+                    }
+                    if (selChannelButtons.get(3).isSwitchOn()) {
+                        sendData("+e:"+(key+49)+":"+ progress+"#");
+                    }
+
                 }
 
                 @Override
@@ -323,6 +333,7 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     private void activeEditMode() {
+        positionInitialize();
         for (row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.get(row).v.setTag(row+"");
             arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
@@ -330,6 +341,7 @@ public class ControllerActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     /* before */
                     setSelectPosition(Integer.parseInt(v.getTag().toString()));
+                    controllerDisplayView.setPositionName(position.get(Integer.parseInt(v.getTag().toString())).name);
                 }
             });
         }
@@ -366,7 +378,7 @@ public class ControllerActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         dialogV = getLayoutInflater().inflate(R.layout.dialog_position_editname, null);
 
-        final EditText position_name = (EditText) dialogV.findViewById(R.id.launcher_name);
+        final EditText position_name = (EditText) dialogV.findViewById(R.id.position_name);
 
 
         builder.setView(dialogV);
@@ -375,7 +387,7 @@ public class ControllerActivity extends AppCompatActivity {
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String name = position_name.getText().toString();
+                String name = position_name.getEditableText().toString();
                 position.get(id).name = name;
                 positionManager.setPosition(id, position.get(id));
                 positionInitialize();
