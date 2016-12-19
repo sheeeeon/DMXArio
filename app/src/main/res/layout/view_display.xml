@@ -12,7 +12,10 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="horizontal"
-        android:layout_margin="20dp">
+        android:layout_margin="5dp"
+        android:padding="15dp"
+        android:background="@drawable/button_green"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -66,49 +69,71 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:layout_marginLeft="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Scene"
-                android:textSize="24dp"
-                android:textColor="#0f0"
-                android:id="@+id/sceneName"/>
-
-        </LinearLayout>
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        android:background="@drawable/button_green">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:layout_marginRight="20dp">
+            android:orientation="horizontal">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="frame : "
-                android:textColor="#0f0"
-                android:id="@+id/textView17"/>
+                android:gravity="left">
 
-            <TextView
-                android:id="@+id/frameno"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Scene"
+                    android:textSize="24dp"
+                    android:textColor="#0f0"
+                    android:id="@+id/sceneName"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="14"
-                android:textSize="24dp"
-                android:textColor="#0f0"/>
+                android:gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="frame : "
+                    android:textColor="#0f0"
+                    android:id="@+id/textView17"/>
+
+                <TextView
+                    android:id="@+id/frameno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14"
+                    android:textSize="24dp"
+                    android:textColor="#0f0"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-    </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/scene_script"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:textColor="#0f0"
+                android:textAlignment="textEnd"/>
+
+        </ScrollView>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -121,7 +146,5 @@
             android:layout_height="wrap_content"
             android:progressDrawable="@drawable/custom_progress"/>
     </LinearLayout>
-
-
 
 </LinearLayout>
