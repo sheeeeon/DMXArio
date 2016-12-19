@@ -93,6 +93,17 @@ public class PositionButton extends LinearLayout {
 
     }
 
+    public void setSwitchOn(boolean toggle) {
+        switchOn = toggle;
+
+        if (toggle) {
+            bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+        } else {
+            bt.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+
+        }
+    }
+
     public boolean isSwitchMode() {
         return switchMode;
     }

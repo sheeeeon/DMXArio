@@ -61,6 +61,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     /* FOR SEEKBAR */
     private PositionButton seekbarCustomizing;
+    private int seekbarMode = 0; // value 0 using channel 1~8 * n, value 8 using 9~16 * n
     private ArrayList<PositionButton> selChannelButtons = new ArrayList<PositionButton>();
 
     /* FOR POSITION */
@@ -94,20 +95,20 @@ public class ControllerActivity extends AppCompatActivity {
                     int key = Integer.parseInt(seekBar.getTag().toString());
 
                     if (selChannelButtons.get(0).isSwitchOn()) {
-                        sendData("+e:"+(key+1)+":"+ progress+"#");
-                        seekBarData.set(key, progress+"");
+                        sendData("+e:"+(key+1+seekbarMode)+":"+ progress+"#");
+                        seekBarData.set(key+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(1).isSwitchOn()) {
-                        sendData("+e:"+(key+17)+":"+ progress+"#");
-                        seekBarData.set(key+16, progress+"");
+                        sendData("+e:"+(key+17+seekbarMode)+":"+ progress+"#");
+                        seekBarData.set(key+16+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(2).isSwitchOn()) {
-                        sendData("+e:"+(key+33)+":"+ progress+"#");
-                        seekBarData.set(key+32, progress+"");
+                        sendData("+e:"+(key+33+seekbarMode)+":"+ progress+"#");
+                        seekBarData.set(key+32+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(3).isSwitchOn()) {
-                        sendData("+e:"+(key+49)+":"+ progress+"#");
-                        seekBarData.set(key+48, progress+"");
+                        sendData("+e:"+(key+49+seekbarMode)+":"+ progress+"#");
+                        seekBarData.set(key+48+seekbarMode, progress+"");
                     }
                     if (EDIT_MODE) {
                         controllerDisplayView.setPositionScript(getPositionScript());
@@ -132,7 +133,22 @@ public class ControllerActivity extends AppCompatActivity {
             selChannelButtons.get(row).setText((row+1)+"");
         }
         seekbarCustomizing = (PositionButton) findViewById(viewID.controller.seekbar_customizing);
-        seekbarCustomizing.setText("Custom");
+        seekbarCustomizing.setText("A");
+        seekbarCustomizing.setSwitchMode(true);
+        seekbarCustomizing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (seekbarCustomizing.isSwitchOn()) {
+                    seekbarCustomizing.setSwitchOn(false);
+                    seekbarMode = 0;
+                    seekbarCustomizing.setText("A");
+                } else {
+                    seekbarCustomizing.setSwitchOn(true);
+                    seekbarMode = 8;
+                    seekbarCustomizing.setText("B");
+                }
+            }
+        });
 
         seekBarDataInitialize();
 
@@ -439,4 +455,6 @@ public class ControllerActivity extends AppCompatActivity {
 
         alert.show();    // 알림창 띄우기
     }
+
+
 }
