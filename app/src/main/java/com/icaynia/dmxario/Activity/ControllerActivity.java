@@ -214,7 +214,7 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        /* controller initialize */
+        /* display initialize */
         controllerDisplayView = (ControllerDisplayView) findViewById(R.id.content_display);
         controllerDisplayView.setFrameNumber(mainScene.getSceneNowFrame(), false);
         controllerDisplayView.setMaxFrame(1);
@@ -248,6 +248,16 @@ public class ControllerActivity extends AppCompatActivity {
 
             }
         });
+
+        arrayDisplayButtons.add(0, (PositionButton) findViewById(viewID.controller.button_framereset));
+        arrayDisplayButtons.add(1, (PositionButton) findViewById(viewID.controller.button_allreset));
+        arrayDisplayButtons.add(2, (PositionButton) findViewById(viewID.controller.button_save));
+        arrayDisplayButtons.add(3, (PositionButton) findViewById(viewID.controller.button_load));
+        arrayDisplayButtons.get(0).setText("Delete");
+        arrayDisplayButtons.get(1).setText("Delete All");
+        arrayDisplayButtons.get(2).setText("Save");
+        arrayDisplayButtons.get(3).setText("Load");
+
     }
 
     private void seekBarDataInitialize() {
@@ -432,15 +442,14 @@ public class ControllerActivity extends AppCompatActivity {
                 showPositionEditNameDialog(id);
             }
         });
-
         seekBarDataInitialize();
     }
+
     public void showPositionEditNameDialog(final int id) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         dialogV = getLayoutInflater().inflate(R.layout.dialog_position_editname, null);
 
         final EditText position_name = (EditText) dialogV.findViewById(R.id.position_name);
-
 
         builder.setView(dialogV);
         builder.setTitle("Edit position : "+ id);
