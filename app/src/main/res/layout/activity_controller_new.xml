@@ -48,7 +48,6 @@
                         android:layout_weight="1"
                         android:layout_margin="2dp"/>
 
-
                     <com.icaynia.dmxario.View.PositionButton
                         android:id="@+id/button_allreset"
                         android:layout_width="0dp"

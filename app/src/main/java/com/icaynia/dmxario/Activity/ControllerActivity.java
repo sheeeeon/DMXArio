@@ -37,14 +37,16 @@ import java.util.TimerTask;
 public class ControllerActivity extends AppCompatActivity {
     GlobalVar global;
 
-    private ArrayList<PositionButton> arrayButtons = new ArrayList<PositionButton>();
+    private ArrayList<PositionButton> arrayPositionButtons = new ArrayList<PositionButton>();
     private ArrayList<VerticalSeekBar> arraySeekbar = new ArrayList<VerticalSeekBar>();
     private PositionButton prevFrame;
     private PositionButton nextFrame;
     private PositionButton recordButton;
     private PositionButton editButton;
 
+    /* FOR DISPLAY */
     public ControllerDisplayView controllerDisplayView;
+    public ArrayList<PositionButton> arrayDisplayButtons = new ArrayList<PositionButton>();
 
     private Scene mainScene = new Scene(this);
 
@@ -158,10 +160,10 @@ public class ControllerActivity extends AppCompatActivity {
 
         /* position initialize */
         for (int row = 0; row < viewID.controller.position.length; row++) {
-            arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
+            arrayPositionButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
 
-            arrayButtons.get(row).v.setTag(row+"");
-            arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
+            arrayPositionButtons.get(row).v.setTag(row+"");
+            arrayPositionButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
@@ -216,7 +218,6 @@ public class ControllerActivity extends AppCompatActivity {
         controllerDisplayView = (ControllerDisplayView) findViewById(R.id.content_display);
         controllerDisplayView.setFrameNumber(mainScene.getSceneNowFrame(), false);
         controllerDisplayView.setMaxFrame(1);
-
         controllerDisplayView.setFrameSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -270,7 +271,7 @@ public class ControllerActivity extends AppCompatActivity {
         positionManager = new PositionManager(this);
         for (int i = 0; i < 48; i++) {
             position.add(i, positionManager.getPosition(i));
-            arrayButtons.get(i).setText(position.get(i).name);
+            arrayPositionButtons.get(i).setText(position.get(i).name);
         }
     }
 
@@ -378,8 +379,8 @@ public class ControllerActivity extends AppCompatActivity {
     private void activeEditMode() {
         positionInitialize();
         for (row = 0; row < viewID.controller.position.length; row++) {
-            arrayButtons.get(row).v.setTag(row+"");
-            arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
+            arrayPositionButtons.get(row).v.setTag(row+"");
+            arrayPositionButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     savePositionScript();
@@ -393,7 +394,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     private void deactiveEditMode() {
         savePositionScript();
-        arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+        arrayPositionButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
         viewInitialize();
     }
 
@@ -415,9 +416,9 @@ public class ControllerActivity extends AppCompatActivity {
         return str;
     }
     private void setSelectPosition(final int id) {
-        arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
+        arrayPositionButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
 
-        arrayButtons.get(id).setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
+        arrayPositionButtons.get(id).setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
         EDIT_MODE_SELECTED_POSITION = id;
         Log.e("SELECTED_POSITION", EDIT_MODE_SELECTED_POSITION+"");
 
