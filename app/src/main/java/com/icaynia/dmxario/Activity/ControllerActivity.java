@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
@@ -47,6 +48,7 @@ public class ControllerActivity extends AppCompatActivity {
     private boolean EDIT_MODE = false;
     private int EDIT_MODE_SELECTED_POSITION = 0;
     private int row;
+    private ArrayList<String> seekBarData = new ArrayList<String>();
 
     /* FOR RECORD MODE */
     private boolean RECORD_MODE = false;
@@ -90,19 +92,26 @@ public class ControllerActivity extends AppCompatActivity {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     /* key */
                     int key = Integer.parseInt(seekBar.getTag().toString());
+
                     if (selChannelButtons.get(0).isSwitchOn()) {
                         sendData("+e:"+(key+1)+":"+ progress+"#");
+                        seekBarData.set(key, progress+"");
                     }
                     if (selChannelButtons.get(1).isSwitchOn()) {
                         sendData("+e:"+(key+17)+":"+ progress+"#");
+                        seekBarData.set(key+16, progress+"");
                     }
                     if (selChannelButtons.get(2).isSwitchOn()) {
                         sendData("+e:"+(key+33)+":"+ progress+"#");
+                        seekBarData.set(key+32, progress+"");
                     }
                     if (selChannelButtons.get(3).isSwitchOn()) {
                         sendData("+e:"+(key+49)+":"+ progress+"#");
+                        seekBarData.set(key+48, progress+"");
                     }
-
+                    if (EDIT_MODE) {
+                        controllerDisplayView.setPositionScript(getPositionScript());
+                    }
                 }
 
                 @Override
@@ -125,6 +134,8 @@ public class ControllerActivity extends AppCompatActivity {
         seekbarCustomizing = (PositionButton) findViewById(viewID.controller.seekbar_customizing);
         seekbarCustomizing.setText("Custom");
 
+        seekBarDataInitialize();
+
         /* position initialize */
         for (int row = 0; row < viewID.controller.position.length; row++) {
             arrayButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
@@ -133,7 +144,7 @@ public class ControllerActivity extends AppCompatActivity {
             arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
                 }
             });
         }
@@ -211,6 +222,13 @@ public class ControllerActivity extends AppCompatActivity {
         });
     }
 
+    private void seekBarDataInitialize() {
+        seekBarData = new ArrayList<String>();
+        for (int row = 0; row < 64; row++) {
+            seekBarData.add(row, "");
+        }
+    }
+
     private void dataInitialize() {
         global = (GlobalVar) getApplicationContext();
         global.bluetooth = new Bluetooth(this);
@@ -229,17 +247,8 @@ public class ControllerActivity extends AppCompatActivity {
         }
     }
 
-    private void seekbarInitialize() {
-        /* seekbar */
-
-
-    }
-
-    private void loadPreference() {
-
-    }
-
     private void sendData(String data) {
+        tmpStr += data;
         Log.e("sendToBluetooth", data);
     }
 
@@ -282,6 +291,13 @@ public class ControllerActivity extends AppCompatActivity {
                 ismTimerRunning = false;
             }
         }
+    }
+
+    private void setPositionScript(int id, String str) {
+
+        position.get(id).action_press= str;
+        positionManager.setPosition(id, position.get(id));
+        positionInitialize();
     }
 
     public void recordSceneStart()
@@ -339,16 +355,17 @@ public class ControllerActivity extends AppCompatActivity {
             arrayButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    savePositionScript();
                     /* before */
                     setSelectPosition(Integer.parseInt(v.getTag().toString()));
-                    controllerDisplayView.setPositionName(position.get(Integer.parseInt(v.getTag().toString())).name);
-                }
+                    }
             });
         }
         setSelectPosition(EDIT_MODE_SELECTED_POSITION);
     }
 
     private void deactiveEditMode() {
+        savePositionScript();
         arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
         viewInitialize();
     }
@@ -357,9 +374,20 @@ public class ControllerActivity extends AppCompatActivity {
 
     }
 
+    private void savePositionScript() {
+        if (!getPositionScript().isEmpty())
+        setPositionScript(EDIT_MODE_SELECTED_POSITION, getPositionScript());
+    }
 
+    private String getPositionScript() {
+        String str = "";
+        for (int i = 0; i < seekBarData.size(); i++) {
+            if (!seekBarData.get(i).isEmpty())
+                str += "+e:"+(i + 1)+":"+ seekBarData.get(i) +"#\n";
+        }
+        return str;
+    }
     private void setSelectPosition(final int id) {
-        /* before */
         arrayButtons.get(EDIT_MODE_SELECTED_POSITION).setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_button_green));
 
         arrayButtons.get(id).setBackgroundDrawable(getResources().getDrawable(R.drawable.button_orange));
@@ -367,12 +395,17 @@ public class ControllerActivity extends AppCompatActivity {
         Log.e("SELECTED_POSITION", EDIT_MODE_SELECTED_POSITION+"");
 
         /* display setting */
+        controllerDisplayView.setPositionName(position.get(id).name);
+        controllerDisplayView.setPositionScript(position.get(id).action_press);
+
         controllerDisplayView.setEditPositionOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPositionEditNameDialog(id);
             }
         });
+
+        seekBarDataInitialize();
     }
     public void showPositionEditNameDialog(final int id) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
