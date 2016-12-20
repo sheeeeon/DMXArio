@@ -1,9 +1,11 @@
 //dmxario arduino ver.
 /*
  */
- 
-#define BLUETOOTH_TX_PIN 6
-#define BLUETOOTH_RX_PIN 7
+
+#define BLUETOOTH_VCC 8
+#define BLUETOOTH_GND 9
+#define BLUETOOTH_TX_PIN 11
+#define BLUETOOTH_RX_PIN 10
 #define DMX_TX_PIN 2
 
 #include <SoftwareSerial.h> 
@@ -21,6 +23,10 @@ static String command = "";
 
 void setup() 
 {
+    pinMode(13, OUTPUT);
+    digitalWrite(13, HIGH);
+    pinMode(12, OUTPUT);
+    digitalWrite(12, LOW);
     dmx.setPin(DMX_TX_PIN);
     Serial.begin(38400);
     Bluetooth.begin(38400);
@@ -28,18 +34,15 @@ void setup()
 
 void loop() 
 {
-    while (Bluetooth.available()) 
+    char tmp;
+    if (Bluetooth.available()) 
     {
-        char tmp = Bluetooth.read();
-        
-        if (tmp == '#')
-        {
-            dmx.write(command+'#');
-            command = "";
-        }
-        else
-        {
-            command += tmp; 
-        }
+        tmp = Bluetooth.read();
+        if (tmp != "\n" && tmp != ' ')
+            command += tmp;
+    }
+    if (tmp == '#' && command.length() >= 7) {
+        dmx.write(command);
+        command = "";
     }
 }

@@ -31,7 +31,6 @@ public class Bluetooth {
 
     public Bluetooth(Context context) {
         this.context = context;
-
         canUseBluetooth();
     }
 
@@ -122,7 +121,9 @@ public class Bluetooth {
             try {
                 byte[] buffer = strBuf.getBytes();
                 mmOutStream.write(buffer);
-                Log.e("SocketThread","Send: " + strBuf);
+                Log.e("SocketThread","Send: " + strBuf + ", b: "+
+                        buffer.length);
+                SystemClock.sleep(1);
             } catch (IOException e) {
                 Log.e("SocketThread","Socket write error");
             }

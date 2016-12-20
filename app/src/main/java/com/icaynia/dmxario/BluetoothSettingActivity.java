@@ -23,6 +23,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.UUID;
 
 /**
@@ -198,7 +199,6 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
 
         global.mSocketThread = new SocketThread(socket);
         global.mSocketThread.start();
-        global.mSocketThread.write("this is global");
     }
 
     private class ClientThread extends Thread {
@@ -284,9 +284,20 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
         public void write(String strBuf) {
             try {
                 // 출력 스트림에 데이터를 저장한다
-                byte[] buffer = strBuf.getBytes();
-                mmOutStream.write(buffer);
-                showMessage("Send: " + strBuf);
+
+                StringTokenizer st = new StringTokenizer(strBuf,"#");
+                while(st.hasMoreTokens()) {
+                    String str = st.nextToken()+"#";
+                    byte[] buffer = str.getBytes();
+                    mmOutStream.write(buffer);
+                    showMessage("Send: " + str + ", Buffer: "+buffer.length);
+                    try {
+                        this.sleep(50);
+                    } catch (Exception e) {
+
+                    }
+                }
+
             } catch (IOException e) {
                 showMessage("Socket write error");
             }

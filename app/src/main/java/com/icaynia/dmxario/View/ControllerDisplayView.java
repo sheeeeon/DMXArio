@@ -27,6 +27,7 @@ public class ControllerDisplayView extends LinearLayout {
     private LinearLayout editPosition;
     private TextView positionName;
     private TextView positionScript;
+    private TextView frameScript;
 
 
 
@@ -52,6 +53,7 @@ public class ControllerDisplayView extends LinearLayout {
         addView(contentView);
 
         frameTv = (TextView) findViewById(R.id.frameno);
+        frameScript = (TextView) findViewById(R.id.scene_script);
         sceneName = (TextView) findViewById(R.id.sceneName);
         frameSeekBar = (SeekBar) findViewById(R.id.frameSeekBar);
         editPosition = (LinearLayout) findViewById(R.id.edit_position);
@@ -97,5 +99,9 @@ public class ControllerDisplayView extends LinearLayout {
 
     public void setEditSceneNameOnClickListener(OnClickListener n) {
         sceneName.setOnClickListener(n);
+    }
+
+    public void setSceneScript(String str) {
+        frameScript.setText(str);
     }
 }

@@ -44,20 +44,16 @@ int * dmx::parseCommand(String command)
     int param[2];
     char tmp[4];
     int i;
-    for (i = 4; i <= 7; i++) {
+    for (i = 3; i <= 7; i++) {
       if (command[i] == COMMAND_DELIMITER) {
-        command.substring(4, i).toCharArray(tmp,4);
+        command.substring(3, i).toCharArray(tmp,4);
         param[0] = atoi(tmp);
-        Serial.print(param[0]);
         break;
       }
     }
     
     for (int j = i+1; j <= 11; j++) {
       if (command[j] == COMMAND_TOKEN) {
-        Serial.print("-");
-        Serial.print(command.substring(i+1, j));
-        
         Serial.print(" | ");
         command.substring(i+1, j).toCharArray(tmp,4);
         param[1] = atoi(tmp);
@@ -81,8 +77,6 @@ void dmx::update(int chan, int val)
     {
         dmx::shiftOut(DMX_PIN, value[i]);
     }
-    
-    Serial.print("OUT : ");
     Serial.print(chan);
     Serial.print(", ");
     Serial.println(val);

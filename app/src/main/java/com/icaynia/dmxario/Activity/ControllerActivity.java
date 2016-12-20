@@ -13,6 +13,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
+import com.icaynia.dmxario.BluetoothSettingActivity;
 import com.icaynia.dmxario.ColorPicker01;
 import com.icaynia.dmxario.Data.PositionManager;
 import com.icaynia.dmxario.Data.ViewID;
@@ -58,7 +59,6 @@ public class ControllerActivity extends AppCompatActivity {
 
     /* FOR RECORD MODE */
     private boolean RECORD_MODE = false;
-    private Scene tmpScene;
     private Timer mTimer;
     private boolean ismTimerRunning;
     private String tmpStr;
@@ -77,6 +77,8 @@ public class ControllerActivity extends AppCompatActivity {
     /* FOR POSITION : DIALOG */
     private View dialogV;
 
+    private int nowFrame;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,7 @@ public class ControllerActivity extends AppCompatActivity {
 
         viewInitialize();
         dataInitialize();
+        bluetoothInitialize();
     }
 
     private void viewInitialize() {
@@ -99,26 +102,28 @@ public class ControllerActivity extends AppCompatActivity {
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     /* key */
                     int key = Integer.parseInt(seekBar.getTag().toString());
-
+                    String st = "";
                     if (selChannelButtons.get(0).isSwitchOn()) {
-                        sendData("+e:"+(key+1+seekbarMode)+":"+ progress+"#");
+                        st += "+e:"+(key+1+seekbarMode)+":"+ progress+"#";
                         seekBarData.set(key+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(1).isSwitchOn()) {
-                        sendData("+e:"+(key+17+seekbarMode)+":"+ progress+"#");
+                        st += "+e:"+(key+17+seekbarMode)+":"+ progress+"#";
                         seekBarData.set(key+16+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(2).isSwitchOn()) {
-                        sendData("+e:"+(key+33+seekbarMode)+":"+ progress+"#");
+                        st += "+e:"+(key+33+seekbarMode)+":"+ progress+"#";
                         seekBarData.set(key+32+seekbarMode, progress+"");
                     }
                     if (selChannelButtons.get(3).isSwitchOn()) {
-                        sendData("+e:"+(key+49+seekbarMode)+":"+ progress+"#");
+                        st += "+e:"+(key+49+seekbarMode)+":"+ progress+"#";
                         seekBarData.set(key+48+seekbarMode, progress+"");
                     }
                     if (EDIT_MODE) {
-                        controllerDisplayView.setPositionScript(getPositionScript());
+                        controllerDisplayView.setPositionScript(getSeekbarScript());
                     }
+                    controllerDisplayView.setSceneScript(getSeekbarScript());
+                    sendData(st);
                 }
 
                 @Override
@@ -167,6 +172,8 @@ public class ControllerActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                    mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                    goToFrame(nowFrame, false);
                 }
             });
         }
@@ -260,6 +267,11 @@ public class ControllerActivity extends AppCompatActivity {
 
     }
 
+    private void bluetoothInitialize() {
+
+    }
+
+
     private void seekBarDataInitialize() {
         seekBarData = new ArrayList<String>();
         for (int row = 0; row < 64; row++) {
@@ -286,11 +298,16 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     private void sendData(String data) {
-        tmpStr += data;
-        Log.e("sendToBluetooth", data);
+        tmpStr = data;
+        if (data != null && data != " ") {
+            Log.e("sendToBluetooth", data);
+            global.mSocketThread.write(data);
+        }
     }
 
     private void goToFrame(int frame, boolean progressMoving) {
+        nowFrame = frame;
+        seekBarDataInitialize();
         controllerDisplayView.setMaxFrame(mainScene.getSceneLength());
         if (frame > mainScene.getSceneLength()) {
             mainScene.setSceneLength(frame);
@@ -301,7 +318,9 @@ public class ControllerActivity extends AppCompatActivity {
             mainScene.setSceneNowFrame(frame);
         /* View */
             controllerDisplayView.setFrameNumber(frame, progressMoving);
-            controllerDisplayView.setSceneScript(mainScene.);
+            controllerDisplayView.setSceneScript(mainScene.getFrameData(frame));
+
+            sendData(mainScene.getFrameData(frame));
         }
     }
 
@@ -342,7 +361,6 @@ public class ControllerActivity extends AppCompatActivity {
     public void recordSceneStart()
     {
         handler = new Handler();
-        tmpScene = new Scene(this);
         tmpStr = ""; // 비우고 시작
         if (ismTimerRunning) {
             mTimer.cancel();
@@ -363,13 +381,13 @@ public class ControllerActivity extends AppCompatActivity {
                                         ismTimerRunning = true;
                                         //fileStr += i+"#"+"0=0;"+tmpStr+"-\n";
                                         Log.e("Controller/rec..start()", i+"#:"+tmpStr);
-                                        tmpScene.putFrame(i, tmpStr);
+                                        mainScene.putFrame(i, tmpStr);
                                         tmpStr = "";
 
                                         if (i == 200)
                                         {
-                                            tmpScene.setSceneLength(i);
-                                            tmpScene.setSceneName("scene0.scn");
+                                            mainScene.setSceneLength(i);
+                                            mainScene.setSceneName("scene0.scn");
                                             //setDisplayText(""); dialog
                                             // 알림창 객체 생성
                                             mTimer.cancel();
@@ -414,15 +432,15 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     private void savePositionScript() {
-        if (!getPositionScript().isEmpty())
-        setPositionScript(EDIT_MODE_SELECTED_POSITION, getPositionScript());
+        if (!getSeekbarScript().isEmpty())
+        setPositionScript(EDIT_MODE_SELECTED_POSITION, getSeekbarScript());
     }
 
-    private String getPositionScript() {
+    private String getSeekbarScript() {
         String str = "";
         for (int i = 0; i < seekBarData.size(); i++) {
             if (!seekBarData.get(i).isEmpty())
-                str += "+e:"+(i + 1)+":"+ seekBarData.get(i) +"#\n";
+                str += "+e:"+(i + 1)+":"+ seekBarData.get(i) +"#";
         }
         return str;
     }
@@ -496,9 +514,9 @@ public class ControllerActivity extends AppCompatActivity {
 
                 if (!sceneSlut.getText().toString().equals(""))
                 {
-                    tmpScene.setSceneName(sceneName.getText().toString());
-                    tmpScene.setScenePlayCount(0);
-                    saveScene("Untitled Package", tmpScene, Integer.parseInt(sceneSlut.getText().toString()));
+                    mainScene.setSceneName(sceneName.getText().toString());
+                    mainScene.setScenePlayCount(0);
+                    saveScene("Untitled Package", mainScene, Integer.parseInt(sceneSlut.getText().toString()));
                 }
 
                 dialog.dismiss();

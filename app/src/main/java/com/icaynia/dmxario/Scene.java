@@ -196,7 +196,7 @@ public class Scene {
 
     }
 
-    public String getFrame(int index) {
+    public String getFrameData(int index) {
         return scn.get(index+"#");
     }
 
