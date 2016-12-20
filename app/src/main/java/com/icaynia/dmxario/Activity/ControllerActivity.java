@@ -301,6 +301,7 @@ public class ControllerActivity extends AppCompatActivity {
             mainScene.setSceneNowFrame(frame);
         /* View */
             controllerDisplayView.setFrameNumber(frame, progressMoving);
+            controllerDisplayView.setSceneScript(mainScene.);
         }
     }
 

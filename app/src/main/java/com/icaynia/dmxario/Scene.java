@@ -196,6 +196,10 @@ public class Scene {
 
     }
 
+    public String getFrame(int index) {
+        return scn.get(index+"#");
+    }
+
     public HashMap<String, String> getHashMap()
     {
         return scn;
