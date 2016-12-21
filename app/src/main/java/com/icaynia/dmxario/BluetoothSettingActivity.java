@@ -292,13 +292,13 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
                     mmOutStream.write(buffer);
                     showMessage("Send: " + str + ", Buffer: "+buffer.length);
                     try {
-                        buffer = "+d:0:0#".getBytes();
-                        mmOutStream.write(buffer);
                         this.sleep(5);
                     } catch (Exception e) {
 
                     }
                 }
+                byte[] buffer = "+d:0:0#".getBytes();
+                mmOutStream.write(buffer);
 
             } catch (IOException e) {
                 showMessage("Socket write error");
