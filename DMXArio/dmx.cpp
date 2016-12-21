@@ -50,6 +50,9 @@ int * dmx::parseCommand(String command)
     char tmp[4];
     int i;
     param[0] = command[1];
+    if (command[1] == 'd') {
+        return param;
+    }
     for (i = 3; i <= 7; i++) {
       if (command[i] == COMMAND_DELIMITER) {
         command.substring(3, i).toCharArray(tmp,4);
@@ -71,9 +74,7 @@ int * dmx::parseCommand(String command)
 
 void dmx::valueUpdate(int chan, int val) {
     value[chan-1] = val;
-    Serial.print(chan);
-    Serial.print(", ");
-    Serial.println(val);
+    Serial.println();
 }
 
 void dmx::update() 

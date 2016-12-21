@@ -189,14 +189,8 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     /* when Bluetooth connected to DMX */
     public void onConnected(BluetoothSocket socket) {
         showMessage("Socket connected");
-
-        // 데이터 송수신 스레드가 생성되어 있다면 삭제한다
         if( global.mSocketThread != null )
             global.mSocketThread = null;
-        // 데이터 송수신 스레드를 시작
-        //mSocketThread = new SocketThread(socket);
-        //mSocketThread.start();
-
         global.mSocketThread = new SocketThread(socket);
         global.mSocketThread.start();
     }
@@ -204,7 +198,6 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     private class ClientThread extends Thread {
         private BluetoothSocket mmCSocket;
 
-        // 원격 디바이스와 접속을 위한 클라이언트 소켓 생성
         public ClientThread(BluetoothDevice device) {
             try {
                 mmCSocket = device.createInsecureRfcommSocketToServiceRecord(BLUE_UUID);
@@ -215,12 +208,10 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
         }
 
         public void run() {
-            // 원격 디바이스와 접속 시도
             try {
                 mmCSocket.connect();
             } catch(IOException e) {
                 showMessage("Connect to server error");
-                // 접속이 실패했으면 소켓을 닫는다
                 try {
                     mmCSocket.close();
                 } catch (IOException e2) {
@@ -228,12 +219,9 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
                 }
                 return;
             }
-
-            // 원격 디바이스와 접속되었으면 데이터 송수신 스레드를 시작
             onConnected(mmCSocket);
         }
 
-        // 클라이언트 소켓 중지
         public void cancel() {
             try {
                 mmCSocket.close();
@@ -243,7 +231,6 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
         }
     }
 
-    // 데이터 송수신 스레드
     public class SocketThread extends Thread {
         private final BluetoothSocket mmSocket; // 클라이언트 소켓
         private InputStream mmInStream; // 입력 스트림
@@ -292,7 +279,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
                     mmOutStream.write(buffer);
                     showMessage("Send: " + str + ", Buffer: "+buffer.length);
                     try {
-                        this.sleep(5);
+
                     } catch (Exception e) {
 
                     }
@@ -307,20 +294,10 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     }
 
     public void showMessage(String strMsg) {
-        // 메시지 텍스트를 핸들러에 전달
-        Message msg = Message.obtain(mHandler, 0, strMsg);
-        mHandler.sendMessage(msg);
         Log.d("tag1", strMsg);
     }
 
-    Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                String strMsg = (String)msg.obj;
-                Log.e("message", strMsg);
-            }
-        }
-    };
+
 
     // 서버 소켓을 생성해서 접속이 들어오면 클라이언트 소켓을 생성하는 스레드
     private class ServerThread extends Thread {
