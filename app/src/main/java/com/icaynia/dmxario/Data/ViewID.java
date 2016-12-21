@@ -8,6 +8,7 @@ import com.icaynia.dmxario.R;
 
 public class ViewID {
     public Controller controller = new Controller();
+    public SceneID sceneId = new SceneID();
     public ViewID () {
 
     }
@@ -40,7 +41,7 @@ public class ViewID {
         public int button_load = R.id.button_load;
     }
 
-    public class Scene {
+    public class SceneID {
         public int[] scene = {
                 R.id.r1, R.id.r2, R.id.r3, R.id.r4, R.id.r5, R.id.r6, R.id.r7, R.id.r8, R.id.r9, R.id.r10, R.id.r11, R.id.r12,
 

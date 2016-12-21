@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.icaynia.dmxario.Model.Position;
 import com.icaynia.dmxario.R;
 
 /**
@@ -53,6 +54,10 @@ public class PositionButton extends LinearLayout {
 
     public void setOnClickListener(OnClickListener n) {
         bt.setOnClickListener(n);
+    }
+
+    public void setOnLongClickListener(OnLongClickListener n) {
+        bt.setOnLongClickListener(n);
     }
 
     public void setText(String str) {
