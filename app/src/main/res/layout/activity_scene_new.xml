@@ -28,62 +28,81 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r5"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r6"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r7"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r8"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r9"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r10"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r11"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r12"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -98,131 +117,73 @@
         android:orientation="horizontal">
 
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r13"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r14"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r15"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r16"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r17"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r18"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r19"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r20"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r21"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r22"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r23"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r24"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -237,200 +198,73 @@
         android:orientation="horizontal">
 
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r25"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r26"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r27"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r28"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r29"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r30"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r31"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r32"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r33"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r34"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r35"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="2dp"/>
-        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r36"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -445,61 +279,73 @@
         android:orientation="horizontal">
 
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r37"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r38"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r39"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r40"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r41"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r42"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r43"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r44"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r45"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r46"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r47"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r48"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -514,61 +360,154 @@
         android:orientation="horizontal">
 
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r49"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r50"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r51"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r52"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r53"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r54"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r55"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r56"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r57"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r58"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r59"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="2dp"/>
         <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r60"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r61"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r62"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r63"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r64"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r65"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r66"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r67"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r68"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r69"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r70"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r71"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp"/>
+        <com.icaynia.dmxario.View.PositionButton
+            android:id="@+id/r72"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

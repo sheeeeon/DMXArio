@@ -40,4 +40,19 @@ public class ViewID {
         public int button_load = R.id.button_load;
     }
 
+    public class Scene {
+        public int[] scene = {
+                R.id.r1, R.id.r2, R.id.r3, R.id.r4, R.id.r5, R.id.r6, R.id.r7, R.id.r8, R.id.r9, R.id.r10, R.id.r11, R.id.r12,
+
+                R.id.r13, R.id.r14, R.id.r15, R.id.r16, R.id.r17, R.id.r18, R.id.r19, R.id.r20, R.id.r21, R.id.r22, R.id.r23, R.id.r24,
+
+                R.id.r25, R.id.r26, R.id.r27, R.id.r28, R.id.r29, R.id.r30, R.id.r31, R.id.r32, R.id.r33, R.id.r34, R.id.r35, R.id.r36,
+
+                R.id.r37, R.id.r38, R.id.r39, R.id.r40, R.id.r41, R.id.r42, R.id.r43, R.id.r44, R.id.r45, R.id.r46, R.id.r47, R.id.r48,
+
+                R.id.r49, R.id.r50, R.id.r51, R.id.r52, R.id.r53, R.id.r54, R.id.r55, R.id.r56, R.id.r57, R.id.r58, R.id.r59, R.id.r60,
+
+                R.id.r61, R.id.r62, R.id.r63, R.id.r64, R.id.r65, R.id.r66, R.id.r67, R.id.r68, R.id.r69, R.id.r70, R.id.r71, R.id.r72
+        };
+    }
 }
