@@ -30,8 +30,13 @@ void dmx::write(String command)
 {
     Serial.print(command);
     int * CommandValue = dmx::parseCommand(command);
-    //dmx::update(CommandValue[0], CommandValue[1]);
-
+    if (CommandValue[0] == 'e') 
+    {
+        dmx::valueUpdate(CommandValue[1], CommandValue[2]);
+    } if (CommandValue[0] == 'd')
+    {
+        dmx::update();
+    }
 }
 
 #pragma endregion
@@ -41,45 +46,48 @@ void dmx::write(String command)
 
 int * dmx::parseCommand(String command)
 {
-    int param[2];
+    int param[3];
     char tmp[4];
     int i;
+    param[0] = command[1];
     for (i = 3; i <= 7; i++) {
       if (command[i] == COMMAND_DELIMITER) {
         command.substring(3, i).toCharArray(tmp,4);
-        param[0] = atoi(tmp);
+        param[1] = atoi(tmp);
         break;
       }
     }
     
     for (int j = i+1; j <= 11; j++) {
       if (command[j] == COMMAND_TOKEN) {
-        Serial.print(" | ");
         command.substring(i+1, j).toCharArray(tmp,4);
-        param[1] = atoi(tmp);
+        param[2] = atoi(tmp);
+        Serial.print("|");
         break;
       }
     }
-    dmx::update(param[0], param[1]);
     return param;
 }
 
+void dmx::valueUpdate(int chan, int val) {
+    value[chan-1] = val;
+    Serial.print(chan);
+    Serial.print(", ");
+    Serial.println(val);
+}
 
-void dmx::update(int chan, int val) 
+void dmx::update() 
 {
   
     digitalWrite(DMX_PIN, LOW);
-    delayMicroseconds(999980);
+    delayMicroseconds(999979);
 
     dmx::shiftOut(DMX_PIN, 0);
-    value[chan-1] = val;
     for (int i = 0; i < 64; i++) 
     {
         dmx::shiftOut(DMX_PIN, value[i]);
     }
-    Serial.print(chan);
-    Serial.print(", ");
-    Serial.println(val);
+    Serial.println("OUT");
 }
 
 void dmx::shiftOut(int pin, int theByte)
