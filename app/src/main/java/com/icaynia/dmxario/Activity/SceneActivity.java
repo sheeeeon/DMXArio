@@ -90,7 +90,7 @@ public class SceneActivity extends AppCompatActivity {
                 /* 슬룻 */
                 int newId = Integer.parseInt(slpic.getvText());
                 int orgId = id;
-                if (orgId != newId && newId >= 0 && newId < 56) {
+                if (orgId != newId && newId >= 0 && newId < 72) {
 
                     PACKAGE.mvScene(orgId, newId);  //move scene that has original id to newId slut.
                     PACKAGE.saveScene(tmpScn, id);

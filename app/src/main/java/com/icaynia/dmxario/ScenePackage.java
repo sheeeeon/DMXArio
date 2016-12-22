@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,7 +19,7 @@ public class ScenePackage
 
     private Context                     context;
     private HashMap<String, String>     config;
-    private Scene[]                     scene = new Scene[56];
+    private ArrayList<Scene>            scene;
 
     private ObjectFileManager           mObj;
 
@@ -32,7 +33,7 @@ public class ScenePackage
         mObj = new ObjectFileManager(context);
 
         for (int i = 0; i < 56; i++) {
-            scene[i] = new Scene(context);
+            scene.add(new Scene(context));
         }
     }
 
@@ -62,7 +63,7 @@ public class ScenePackage
     public void loadScene(int id) {
         String fileName = this.get("slut"+id);
         if (fileName != null) {
-            scene[id].loadScene(getPackageName(), fileName);
+            scene.get(id).loadScene(getPackageName(), fileName);
         }
     }
 
@@ -97,20 +98,20 @@ public class ScenePackage
 
     public void putScene(String sceneName, int id)
     {
-        scene[id] = new Scene(context);
-        scene[id].loadScene(getPackageName(), sceneName);
+        scene.set(id, new Scene(context));
+        scene.get(id).loadScene(getPackageName(), sceneName);
         this.put("slut"+id, sceneName+"");
     }
 
     public void delScene(int id)
     {
-        scene[id] = new Scene(context);
+        scene.set(id, new Scene(context));
         this.remove("slut"+id);
     }
 
     public void mvScene(int originalId, int newId)
     {
-        this.putScene(scene[originalId].getSceneName(), newId);
+        this.putScene(scene.get(originalId).getSceneName(), newId);
         delScene(originalId);
     }
 
@@ -121,27 +122,27 @@ public class ScenePackage
     }
 
     public Scene getScene(int slut) {
-        return scene[slut];
+        return scene.get(slut);
     }
 
     public void playScene(int id)
     {
         this.stopScene(id);
         //((MainActivity)context).makeToast("Scene Name = "+scene[id].getSceneName());
-        this.scene[id].play();
+        this.scene.get(id).play();
     }
 
     public void stopScene(int id)
     {
-        if (this.scene[id].isRunning())
+        if (this.scene.get(id).isRunning())
         {
-            this.scene[id].stop();
+            this.scene.get(id).stop();
         }
     }
 
     public void loadScene(String packageName, String fileName, int id)
     {
-        this.scene[id].loadScene(packageName, fileName);
+        this.scene.get(id).loadScene(packageName, fileName);
 
     }
 
@@ -162,7 +163,7 @@ public class ScenePackage
     }
 
     public void updateScene(int id) {
-        saveScene(scene[id], id);
+        saveScene(scene.get(id), id);
     }
 
 
