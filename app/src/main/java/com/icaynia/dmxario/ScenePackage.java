@@ -2,6 +2,7 @@ package com.icaynia.dmxario;
 
 
 import android.content.Context;
+import android.provider.Settings;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,14 +17,12 @@ import java.util.Map;
  */
 public class ScenePackage
 {
-
+    public  GlobalVar                   global;
     private Context                     context;
     private HashMap<String, String>     config;
-    private ArrayList<Scene>            scene;
+    private ArrayList<Scene>            scene = new ArrayList<Scene>();
 
     private ObjectFileManager           mObj;
-
-
 
     // region Constructors
     public ScenePackage(Context _context)
@@ -32,9 +31,13 @@ public class ScenePackage
         config = new HashMap<String, String>();
         mObj = new ObjectFileManager(context);
 
-        for (int i = 0; i < 56; i++) {
-            scene.add(new Scene(context));
+        global = (GlobalVar) _context.getApplicationContext();
+
+        for (int i = 0; i < 72; i++) {
+            scene.add(i, new Scene(context));
+            scene.get(i).setGlobal(global);
         }
+
     }
 
     // endregion
@@ -55,7 +58,7 @@ public class ScenePackage
             Toast.makeText(context, PackageName + " : Package Load Success.!", Toast.LENGTH_SHORT);
         }
 
-        for (int i = 0; i < 56; i++) {
+        for (int i = 0; i < 72; i++) {
             loadScene(i);
         }
     }

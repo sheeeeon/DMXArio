@@ -259,7 +259,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
                     bytes = mmInStream.read(buffer);
                     String strBuf = new String(buffer, 0, bytes);
                     showMessage("Receive: " + strBuf);
-                    SystemClock.sleep(1);
+                    SystemClock.sleep(5);
                 } catch (IOException e) {
                     showMessage("Socket disconneted");
                     break;
@@ -279,7 +279,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
                     mmOutStream.write(buffer);
                     showMessage("Send: " + str + ", Buffer: "+buffer.length);
                     try {
-
+                        mSocketThread.sleep(10);
                     } catch (Exception e) {
 
                     }

@@ -28,6 +28,7 @@ public class SceneActivity extends AppCompatActivity {
     public ArrayList<PositionButton> scene = new ArrayList<PositionButton>();
     private View dialogV;
     private ScenePackage PACKAGE;
+    ViewID viewID = new ViewID();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,17 +37,25 @@ public class SceneActivity extends AppCompatActivity {
 
         viewInitialize();
         dataInitialize();
+
     }
 
     private void viewInitialize() {
-        ViewID viewID = new ViewID();
         for (int row = 0; row < viewID.sceneId.scene.length; row++) {
             scene.add(row, (PositionButton) findViewById(viewID.sceneId.scene[row]));
-            scene.get(row).setText("");
             scene.get(row).v.setTag(row+"");
+        }
+    }
+
+    private void dataInitialize() {
+        packageInitialize();
+
+        for (int row = 0; row < viewID.sceneId.scene.length; row++) {
+            scene.get(row).setText(PACKAGE.getScene(row).getSceneName());
             scene.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    PACKAGE.playScene(Integer.parseInt(v.getTag().toString()));
                     Log.e("scene", "SHORT");
                 }
             });
@@ -59,10 +68,7 @@ public class SceneActivity extends AppCompatActivity {
                 }
             });
         }
-    }
 
-    private void dataInitialize() {
-        packageInitialize();
     }
 
     private void packageInitialize() {

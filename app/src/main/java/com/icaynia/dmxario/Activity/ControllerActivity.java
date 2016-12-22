@@ -173,7 +173,7 @@ public class ControllerActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
                     mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
-                    goToFrame(nowFrame, false);
+                    //goToFrame(nowFrame, false);
                 }
             });
         }
@@ -263,6 +263,12 @@ public class ControllerActivity extends AppCompatActivity {
         arrayDisplayButtons.get(0).setText("Delete");
         arrayDisplayButtons.get(1).setText("Delete All");
         arrayDisplayButtons.get(2).setText("Save");
+        arrayDisplayButtons.get(2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSavesceneDialog();
+            }
+        });
         arrayDisplayButtons.get(3).setText("Load");
 
     }
@@ -392,7 +398,7 @@ public class ControllerActivity extends AppCompatActivity {
                                             // 알림창 객체 생성
                                             mTimer.cancel();
                                             Log.e("Controller/rec..start()", "recordTimer stopped.");
-                                            showSavesceneDialog();
+                                            //showSavesceneDialog();
 
                                             recordMode(false);
                                         }
@@ -401,7 +407,7 @@ public class ControllerActivity extends AppCompatActivity {
                                     }
                                 });
                     }
-                }, 0, 20
+                }, 0, 40
         );
     }
 
@@ -516,7 +522,7 @@ public class ControllerActivity extends AppCompatActivity {
                 {
                     mainScene.setSceneName(sceneName.getText().toString());
                     mainScene.setScenePlayCount(0);
-                    saveScene("Untitled Package", mainScene, Integer.parseInt(sceneSlut.getText().toString()));
+                    saveScene("UntitledPackage", mainScene, Integer.parseInt(sceneSlut.getText().toString()));
                 }
 
                 dialog.dismiss();
@@ -540,7 +546,6 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void saveScene(String ScenePackageName, Scene scn, int slut)
     {
-        //기존 코드
         ObjectFileManager mObjFileMgr = new ObjectFileManager(this);
         ScenePackage scnPack = new ScenePackage(this);      //new
         if (mObjFileMgr.isAvailable("Scene/"+ScenePackageName)) {
@@ -553,6 +558,8 @@ public class ControllerActivity extends AppCompatActivity {
 
         scnPack.putScene(scn.getSceneName(), slut);
         scnPack.savePackage();
+
+        controllerDisplayView.setSceneName(scn.getSceneName());
     }
 
 }

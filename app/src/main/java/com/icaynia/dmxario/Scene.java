@@ -32,16 +32,19 @@ public class Scene {
 
 
     // region Constructors
-    public Scene(Context _context)
+    public Scene(Context context)
     {
-        this.context = _context;
+        this.context = context;
         scn = new HashMap<String,String>();
         mObj = new ObjectFileManager(context);
         mTimer = new Timer();
-        //global = (GlobalVar) _context.getApplicationContext();
     }
 
     // endregion
+    public void setGlobal(GlobalVar global) {
+
+        this.global = global;
+    }
 
     // region Accessors
     public void loadScene(String _packageName, String fileName)
@@ -227,7 +230,7 @@ public class Scene {
                         sendData(tmpS);
                         nowframe++;
                     }
-                }, 0, 20
+                }, 0, 40
         );
     }
 
