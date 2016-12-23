@@ -235,7 +235,7 @@ public class Scene {
     }
 
     private void sendData(String str) {
-        if (!str.isEmpty())
+        if (str != null)
             if (global.mSocketThread != null)
                 global.mSocketThread.write(str);
     }

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -78,6 +79,7 @@ public class ControllerActivity extends AppCompatActivity {
     private View dialogV;
 
     private int nowFrame;
+    private ScenePackage PACKAGE;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -168,12 +170,17 @@ public class ControllerActivity extends AppCompatActivity {
             arrayPositionButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
 
             arrayPositionButtons.get(row).v.setTag(row+"");
-            arrayPositionButtons.get(row).setOnClickListener(new View.OnClickListener() {
+            
+            arrayPositionButtons.get(row).setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public void onClick(View v) {
-                    sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
-                    mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
-                    //goToFrame(nowFrame, false);
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_BUTTON_PRESS:
+                            sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                            mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                            break;
+                    }
+                    return false;
                 }
             });
         }
@@ -270,6 +277,12 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
         arrayDisplayButtons.get(3).setText("Load");
+        arrayDisplayButtons.get(3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoadScenePosition();
+            }
+        });
 
     }
 
@@ -292,6 +305,7 @@ public class ControllerActivity extends AppCompatActivity {
         mainScene.setSceneLength(1);
         mainScene.setSceneName("New Scene");
         positionInitialize();
+        packageInitialize();
     }
 
     private void positionInitialize() {
@@ -303,11 +317,19 @@ public class ControllerActivity extends AppCompatActivity {
         }
     }
 
+    private void packageInitialize() {
+        PACKAGE = new ScenePackage(this);
+        PACKAGE.loadPackage("UntitledPackage");
+        PACKAGE.printAll();
+    }
+
     private void sendData(String data) {
         tmpStr = data;
         if (data != null && data != " ") {
             Log.e("sendToBluetooth", data);
-            global.mSocketThread.write(data);
+            if (global.mSocketThread != null)
+                global.mSocketThread.write(data);
+            mainScene.putFrame(nowFrame, tmpStr);
         }
     }
 
@@ -357,6 +379,12 @@ public class ControllerActivity extends AppCompatActivity {
         }
     }
 
+    private void loadScene(int id) {
+        mainScene = PACKAGE.getScene(id);
+        controllerDisplayView.setSceneName(mainScene.getSceneName());
+        controllerDisplayView.setMaxFrame(mainScene.getSceneLength());
+    }
+
     private void setPositionScript(int id, String str) {
 
         position.get(id).action_press= str;
@@ -390,7 +418,7 @@ public class ControllerActivity extends AppCompatActivity {
                                         mainScene.putFrame(i, tmpStr);
                                         tmpStr = "";
 
-                                        if (i == 200)
+                                        if (i == 2000)
                                         {
                                             mainScene.setSceneLength(i);
                                             mainScene.setSceneName("scene0.scn");
@@ -486,6 +514,36 @@ public class ControllerActivity extends AppCompatActivity {
                 position.get(id).name = name;
                 positionManager.setPosition(id, position.get(id));
                 positionInitialize();
+            }
+        });
+
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false);
+
+        alert.show();    // 알림창 띄우기
+    }
+
+    public void showLoadScenePosition() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        dialogV = getLayoutInflater().inflate(R.layout.dialog_position_editname, null);
+
+        final EditText position_name = (EditText) dialogV.findViewById(R.id.position_name);
+
+        builder.setView(dialogV);
+        builder.setTitle("Load Scene");
+
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String name = position_name.getEditableText().toString();
+                loadScene(Integer.parseInt(name));
             }
         });
 
