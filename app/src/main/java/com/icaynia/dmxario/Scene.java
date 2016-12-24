@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
+import com.icaynia.dmxario.Activity.SceneActivity;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -28,7 +30,10 @@ public class Scene {
 
 
     private int                     nowframe = 1;
-    int maiv;
+    public Handler handler;
+    public boolean ismTimerRunning = false;
+    public int nowFrame;
+        int maiv;
 
 
     // region Constructors
@@ -207,28 +212,44 @@ public class Scene {
     {
         return scn;
     }
-
     // endregion
 
     // region private function
-    private void run() {
-        if (this.isRunning()) {
-            this.stop();
+
+    public void run()
+    {
+        handler = new Handler();
+        if (ismTimerRunning) {
+            mTimer.cancel();
+            ismTimerRunning = false;
         }
         mTimer = new Timer();
         mTimer.schedule(
                 new TimerTask(){
+                    int i = 1;
                     @Override
-                    public void run(){
-                        String tmpS = scn.get(nowframe+"#");
-                        if (nowframe == getSceneLength() || nowframe > 1000) {
-                            Log.e("Timer", "------finished-----");
-                            plusCount();
-                            mTimer.cancel();
-                        }
-                        Log.e("Timer", "frame : " + nowframe + " : " + tmpS);
-                        sendData(tmpS);
-                        nowframe++;
+                    public void run()
+                    {
+                        handler.post(
+                                new Runnable()
+                                {
+                                    public void run()
+                                    {
+                                        ismTimerRunning = true;
+                                        String tmpStr = getFrameData(i);
+                                        Log.e("scene", i+"#:"+tmpStr);
+                                        sendData(tmpStr);
+                                        ((SceneActivity)context).setScript(tmpStr);
+
+                                        if (i > getSceneLength())
+                                        {
+                                            mTimer.cancel();
+                                            Log.e("Controller/rec..start()", "recordTimer stopped.");
+                                        }
+                                        i++;
+                                        setSceneNowFrame(i);
+                                    }
+                                });
                     }
                 }, 0, 40
         );

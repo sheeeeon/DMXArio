@@ -2,6 +2,7 @@ package com.icaynia.dmxario.Activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -19,6 +20,8 @@ import com.icaynia.dmxario.SlutPicker;
 import com.icaynia.dmxario.View.PositionButton;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by icaynia on 2016. 12. 14..
@@ -30,6 +33,9 @@ public class SceneActivity extends AppCompatActivity {
     private ScenePackage PACKAGE;
     ViewID viewID = new ViewID();
 
+    /*View*/
+    private TextView scriptView;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +46,16 @@ public class SceneActivity extends AppCompatActivity {
 
     }
 
+    public void setScript(String str) {
+        scriptView.setText(str);
+    }
+
     private void viewInitialize() {
         for (int row = 0; row < viewID.sceneId.scene.length; row++) {
             scene.add(row, (PositionButton) findViewById(viewID.sceneId.scene[row]));
             scene.get(row).v.setTag(row+"");
         }
+        scriptView = (TextView) findViewById(R.id.script);
     }
 
     private void dataInitialize() {
@@ -59,6 +70,8 @@ public class SceneActivity extends AppCompatActivity {
                     Log.e("scene", "SHORT");
                 }
             });
+
+            /*
             scene.get(row).setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -67,9 +80,19 @@ public class SceneActivity extends AppCompatActivity {
                     return false;
                 }
             });
+            */
         }
 
+        PositionButton allstopButton = (PositionButton) findViewById(R.id.stop);
+        allstopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                allStop();
+            }
+        });
     }
+
+
 
     private void packageInitialize() {
         PACKAGE = new ScenePackage(this);
@@ -129,4 +152,12 @@ public class SceneActivity extends AppCompatActivity {
         alert.setCanceledOnTouchOutside(false);
         alert.show();    // 알림창 띄우기
     }
+
+    public void allStop() {
+        for (int i = 0; i < 72; i++) {
+            PACKAGE.stopScene(i);
+        }
+
+    }
+
 }

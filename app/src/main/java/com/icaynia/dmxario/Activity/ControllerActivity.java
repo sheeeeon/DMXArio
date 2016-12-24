@@ -170,17 +170,12 @@ public class ControllerActivity extends AppCompatActivity {
             arrayPositionButtons.add(row, (PositionButton) findViewById(viewID.controller.position[row]));
 
             arrayPositionButtons.get(row).v.setTag(row+"");
-            
-            arrayPositionButtons.get(row).setOnTouchListener(new View.OnTouchListener() {
+            arrayPositionButtons.get(row).setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_BUTTON_PRESS:
-                            sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
-                            mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
-                            break;
-                    }
-                    return false;
+                public void onClick(View v) {
+                    sendData(position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                    mainScene.putFrame(nowFrame, position.get(Integer.parseInt(v.getTag().toString())).action_press);
+                    //goToFrame(nowFrame, false);
                 }
             });
         }
