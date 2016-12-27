@@ -84,6 +84,7 @@ public class SceneActivity extends AppCompatActivity {
         }
 
         PositionButton allstopButton = (PositionButton) findViewById(R.id.stop);
+        allstopButton.setText("ALLSTOP");
         allstopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
