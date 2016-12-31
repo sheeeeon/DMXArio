@@ -82,7 +82,7 @@ public class SceneActivity extends AppCompatActivity {
             });
             */
         }
-
+ㅅ
         PositionButton allstopButton = (PositionButton) findViewById(R.id.stop);
         allstopButton.setText("ALLSTOP");
         allstopButton.setOnClickListener(new View.OnClickListener() {
