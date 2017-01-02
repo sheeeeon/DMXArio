@@ -12,6 +12,6 @@ input
 1. DMXArio Application
 2. Bluetooth(HC-06)
 3. Arduino(Process)
-4. DMX transmit(MAX485)
-
+4. DMX transmit(MAX485) 
+4-1. or DMX shield 
 dmx device works.
