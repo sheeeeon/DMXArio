@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.icaynia.dmxario.GlobalVar">
-        <activity android:name=".Splash"
+        <activity android:name=".Activity.Splash"
                   android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

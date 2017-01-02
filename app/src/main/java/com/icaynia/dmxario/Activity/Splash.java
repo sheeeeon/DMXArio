@@ -1,9 +1,12 @@
-package com.icaynia.dmxario;
+package com.icaynia.dmxario.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.icaynia.dmxario.R;
+import com.icaynia.dmxario.TestActivity;
 
 /**
  * Created by icaynia on 2016. 12. 14..
