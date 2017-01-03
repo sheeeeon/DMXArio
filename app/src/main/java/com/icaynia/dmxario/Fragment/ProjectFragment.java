@@ -10,7 +10,7 @@ import com.icaynia.dmxario.R;
 
 /**
  * Created by icaynia on 2017. 1. 3..
- */
+*/
 
 public class ProjectFragment extends Fragment {
     private View v;

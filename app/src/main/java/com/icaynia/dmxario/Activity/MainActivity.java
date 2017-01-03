@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.icaynia.dmxario.Fragment.DmxprofileFragment;
 import com.icaynia.dmxario.Fragment.ProjectFragment;
 import com.icaynia.dmxario.R;
 
@@ -77,14 +78,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_project) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_dmxprofile) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_message) {
 
         } else if (id == R.id.nav_manage) {
 
+        }
+
+        switch (item.getItemId()) {
+            case R.id.nav_project:
+                switchFragment(new ProjectFragment());
+                break;
+            case R.id.nav_dmxprofile:
+                switchFragment(new DmxprofileFragment());
+                break;
+            case R.id.nav_message:
+                break;
+            case R.id.nav_forum:
+                break;
+            case R.id.nav_friends:
+                break;
+            case R.id.nav_connect:
+                break;
+            case R.id.nav_manage:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

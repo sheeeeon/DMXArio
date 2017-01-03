@@ -3,27 +3,27 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_project"
             android:icon="@drawable/ic_menu_project"
             android:title="프로젝트"/>
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_dmxprofile"
             android:icon="@drawable/ic_menu_dmxprofile"
             android:title="DMX 프로필"/>
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_message"
             android:icon="@drawable/ic_menu_message"
             android:title="메시지"/>
         <item
-            android:id="@+id/nav_manage2"
+            android:id="@+id/nav_forum"
             android:icon="@drawable/ic_menu_forum"
             android:title="포럼"/>
         <item
-            android:id="@+id/nav_manage3"
+            android:id="@+id/nav_friends"
             android:icon="@drawable/ic_menu_friends"
             android:title="친구"/>
         <item
-            android:id="@+id/nav_manage4"
+            android:id="@+id/nav_connect"
             android:icon="@drawable/ic_menu_connect"
             android:title="연결"/>
         <item

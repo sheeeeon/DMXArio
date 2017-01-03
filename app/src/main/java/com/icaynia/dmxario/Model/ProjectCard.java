@@ -13,7 +13,7 @@ public class ProjectCard extends LinearLayout {
     public ProjectCard(Context context) {
         super(context);
     }
-    
+
     public ProjectCard(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
