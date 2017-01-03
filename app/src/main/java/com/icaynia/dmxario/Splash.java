@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.icaynia.dmxario.Activity.MainActivity;
+
 /**
  * Created by icaynia on 2016. 12. 14..
  */
@@ -34,7 +36,7 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void onMainActivity() {
-        Intent intent = new Intent(this, TestActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

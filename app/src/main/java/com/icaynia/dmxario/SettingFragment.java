@@ -43,7 +43,8 @@ public class SettingFragment extends Fragment  {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 boolean isBTTXSwitchOn = BTTXSwitch.isChecked();
-                View BluetoothTXLayout = getActivity().findViewById(R.id.bluetoothTxByte);
+                View BluetoothTXLayout = null;
+                //getActivity().findViewById(R.id.bluetoothTxByte);
                 if (isBTTXSwitchOn == true) BluetoothTXLayout.setVisibility(View.VISIBLE);
                 else                        BluetoothTXLayout.setVisibility(View.INVISIBLE);
 

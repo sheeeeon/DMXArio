@@ -84,7 +84,7 @@ public class MainActivity_no extends AppCompatActivity implements View.OnClickLi
             }
         };
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scene_new);
         viewInitialize();
 
         //
@@ -109,9 +109,6 @@ public class MainActivity_no extends AppCompatActivity implements View.OnClickLi
   }
     private void viewInitialize()
     {
-        menu_1 = (TextView) findViewById(R.id.main_menu_1);
-        menu_2 = (TextView) findViewById(R.id.main_menu_2);
-        menu_3 = (TextView) findViewById(R.id.main_menu_3);
 
         menu_1.setOnClickListener(this);
         menu_2.setOnClickListener(this);
@@ -122,20 +119,6 @@ public class MainActivity_no extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.main_menu_1:
-                Intent intent = new Intent(MainActivity_no.this, ControllerActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.main_menu_2:
-                Intent intent2 = new Intent(MainActivity_no.this, ScenePlayActivity.class);
-                startActivity(intent2);
-                break;
-
-            case R.id.main_menu_3:
-                Intent intent3 = new Intent(MainActivity_no.this, SettingActivity.class);
-                startActivity(intent3);
-                break;
             case R.id.menuText0:
                 mCurrentFragmentIndex = MAIN_FRAGMENT;
                 fragmentReplace(mCurrentFragmentIndex);
@@ -221,7 +204,7 @@ public class MainActivity_no extends AppCompatActivity implements View.OnClickLi
         newFragment = getFragment(reqNewFragmentIndex);
         // replace fragment
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.ll_fragment, newFragment);
+        //transaction.replace(R.id.ll_fragment, newFragment);
         //transaction.addToBackStack(null);
         transaction.commit();
         //onPause();
@@ -357,7 +340,7 @@ public class MainActivity_no extends AppCompatActivity implements View.OnClickLi
 
     /* --- 상단바에 관한 내용 --- */
     public void setTitleText(String title) {
-        TextView textView = (TextView) findViewById(R.id.titleText);
+        TextView textView = null;
         textView.setText(title);
     }
 

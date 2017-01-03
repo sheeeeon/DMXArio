@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_project"
+            android:title="프로젝트"/>
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_dmxprofile"
+            android:title="DMX 프로필"/>
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_message"
+            android:title="메시지"/>
+        <item
+            android:id="@+id/nav_manage2"
+            android:icon="@drawable/ic_menu_forum"
+            android:title="포럼"/>
+        <item
+            android:id="@+id/nav_manage3"
+            android:icon="@drawable/ic_menu_friends"
+            android:title="친구"/>
+        <item
+            android:id="@+id/nav_manage4"
+            android:icon="@drawable/ic_menu_connect"
+            android:title="연결"/>
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="설정"/>
+    </group>
+
+
+    <!--
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share"/>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send"/>
+        </menu>
+    </item>
+    -->
+
+
+</menu>
