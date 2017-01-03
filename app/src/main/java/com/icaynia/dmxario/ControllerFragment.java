@@ -6,11 +6,8 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,18 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -198,14 +189,14 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         switch (v.getId())
         {
             case R.id.goMain1:
-                ((MainActivity)getActivity()).fragmentReplace(MAIN_FRAGMENT);
+                ((MainActivity_no)getActivity()).fragmentReplace(MAIN_FRAGMENT);
                 break;
             case R.id.c_Rec:
-                ((MainActivity)getActivity()).makeToast("C_REC");
+                ((MainActivity_no)getActivity()).makeToast("C_REC");
                 recordSceneStart();
                 break;
             case R.id.c_setting:
-                ((MainActivity)getActivity()).makeToast("C_SETTING");
+                ((MainActivity_no)getActivity()).makeToast("C_SETTING");
                 onSetting();
                 break;
             case R.id.fader:
@@ -244,7 +235,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 selectScn = v.getId();
                 final HashMap<String, String> hm = mObjFileMgr.load("Controller/scene"+sceneNum+".scn");
                 if (hm == null) {
-                    ((MainActivity)getActivity()).makeToast("아무것도 없음");
+                    ((MainActivity_no)getActivity()).makeToast("아무것도 없음");
                     setDisplayText("아무것도 없음");
                 } else {
                     final int framelength = Integer.parseInt(hm.get("FrameLength"));
@@ -269,7 +260,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                                         mTimer.cancel();
                                         cancel();
                                     }
-                                    ((MainActivity)getActivity()).sendData(cm);
+                                    ((MainActivity_no)getActivity()).sendData(cm);
                                     Log.e("playTimer", i + "# : " + cm);
                                     i++;
                                     }
@@ -310,19 +301,19 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
                 txv = (TextView) getView().findViewById(ctIdArray[i]);
                 txv.setText(progress+"");
                 if (tb1.isChecked()) {
-                    ((MainActivity)getActivity()).sendData("+e:"+(i+1)+":"+ progress +"#");
+                    ((MainActivity_no)getActivity()).sendData("+e:"+(i+1)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+1)+":"+ progress +"#";
                 }
                 if (tb2.isChecked()) {
-                    ((MainActivity)getActivity()).sendData("+e:"+(i+17)+":"+ progress +"#");
+                    ((MainActivity_no)getActivity()).sendData("+e:"+(i+17)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+17)+":"+ progress +"#";
                 }
                 if (tb3.isChecked()) {
-                    ((MainActivity)getActivity()).sendData("+e:"+(i+33)+":"+ progress +"#");
+                    ((MainActivity_no)getActivity()).sendData("+e:"+(i+33)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+33)+":"+ progress +"#";
                 }
                 if (tb4.isChecked()) {
-                    ((MainActivity)getActivity()).sendData("+e:"+(i+49)+":"+ progress +"#");
+                    ((MainActivity_no)getActivity()).sendData("+e:"+(i+49)+":"+ progress +"#");
                     tmpStr += "+e:"+(i+49)+":"+ progress +"#";
                 }
 
@@ -416,7 +407,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                ((MainActivity_no)getContext()).makeToast("Scene이 추가되었습니다.");
                 EditText packageName = (EditText) dialogV.findViewById(R.id.input_scenePackage);
                 EditText sceneName = (EditText)dialogV.findViewById(R.id.input_sceneName);
                 EditText sceneSlut = (EditText)dialogV.findViewById(R.id.input_sceneSlut);
@@ -444,7 +435,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });
@@ -507,7 +498,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ((MainActivity)getContext()).makeToast("Scene이 추가되었습니다.");
+                ((MainActivity_no)getContext()).makeToast("Scene이 추가되었습니다.");
                 dialog.dismiss();
             }
         });
@@ -515,7 +506,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });

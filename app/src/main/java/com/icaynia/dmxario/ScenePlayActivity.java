@@ -134,7 +134,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity_no)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 백그라운드 컬러 */
@@ -164,7 +164,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });
@@ -200,7 +200,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity_no)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 백그라운드 컬러 */
@@ -223,7 +223,7 @@ public class ScenePlayActivity extends AppCompatActivity implements View.OnClick
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });

@@ -16,15 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.icaynia.dmxario.GlobalVar">
-        <activity android:name=".Activity.Splash"
-                  android:screenOrientation="landscape" >
+        <activity android:name=".Splash"
+                  android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestActivity"
-                  android:screenOrientation="landscape" >
+        <activity android:name=".TestActivity" >
         </activity>
         <activity android:name=".Activity.ControllerActivity">
         </activity>
@@ -35,7 +34,7 @@
                   android:screenOrientation="landscape">
         </activity>
         <!-- test -->
-        <activity android:name=".MainActivity"
+        <activity android:name=".MainActivity_no"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".ControllerActivity"

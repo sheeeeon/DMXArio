@@ -1,14 +1,11 @@
 package com.icaynia.dmxario;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.WorkerThread;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 
 /**
@@ -51,16 +48,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
 
 
-        if (((MainActivity)getActivity()).developMode == true) {
-            //((MainActivity)getActivity()).makeToast(v.toString()+" 이벤트 발생");
+        if (((MainActivity_no)getActivity()).developMode == true) {
+            //((MainActivity_no)getActivity()).makeToast(v.toString()+" 이벤트 발생");
         } else {
             switch (v.getId()) {
 
                 case R.id.callBluetoothOn:
-                    ((MainActivity)getActivity()).BluetoothOn();
+                    ((MainActivity_no)getActivity()).BluetoothOn();
                     break;
                 case R.id.callBluetoothList:
-                    ((MainActivity)getActivity()).setupBluetooth();
+                    ((MainActivity_no)getActivity()).setupBluetooth();
                     break;
 
             }
@@ -69,13 +66,13 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.menuText0:
-                ((MainActivity)getActivity()).fragmentReplace(CONTROLLER_FRAGMENT);
+                ((MainActivity_no)getActivity()).fragmentReplace(CONTROLLER_FRAGMENT);
                 break;
             case R.id.menuText1:
-                ((MainActivity)getActivity()).fragmentReplace(SCENE_FRAGMENT);
+                ((MainActivity_no)getActivity()).fragmentReplace(SCENE_FRAGMENT);
                 break;
             case R.id.menuText2:
-                ((MainActivity)getActivity()).fragmentReplace(SETTING_FRAGMENT);
+                ((MainActivity_no)getActivity()).fragmentReplace(SETTING_FRAGMENT);
         }
 
 

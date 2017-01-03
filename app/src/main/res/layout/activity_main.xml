@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.icaynia.dmxario.MainActivity"
+    tools:context="com.icaynia.dmxario.MainActivity_no"
     android:id="@+id/LinearLayout1"
     android:background="#505050"
     android:touchscreenBlocksFocus="false"
@@ -123,7 +123,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_1"
                     android:text="컨트롤러"
                     android:gravity="center|center_horizontal"
                     android:id="@+id/main_menu_1"/>
@@ -137,7 +136,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_1"
                     android:text="씬 플레이"
                     android:gravity="center|center_horizontal"
                     android:id="@+id/main_menu_2"/>
@@ -151,7 +149,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_1"
                     android:gravity="center|center_horizontal"
                     android:text="설정"
                     android:id="@+id/main_menu_3"/>

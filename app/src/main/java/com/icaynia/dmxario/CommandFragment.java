@@ -67,7 +67,7 @@ public class CommandFragment extends Fragment implements View.OnClickListener{
                     if (channeltb.isChecked()) {
                         EditText editText = (EditText) getActivity().findViewById(R.id.editText);
                         command = "+e:" + (i + 1) + ":" + editText.getText().toString() + "#";
-                        ((MainActivity)getActivity()).sendData(command);
+                        ((MainActivity_no)getActivity()).sendData(command);
                     }
 
                 }

@@ -114,7 +114,7 @@ public class SceneActivity extends AppCompatActivity {
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity_no)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 슬룻 */
@@ -140,7 +140,7 @@ public class SceneActivity extends AppCompatActivity {
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });

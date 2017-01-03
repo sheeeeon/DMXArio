@@ -2,7 +2,6 @@ package com.icaynia.dmxario;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -11,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
@@ -56,7 +53,7 @@ public class SceneFragment extends Fragment implements csEventListener
         goMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).fragmentReplace(MAIN_FRAGMENT);
+                ((MainActivity_no)getActivity()).fragmentReplace(MAIN_FRAGMENT);
             }
         });
 
@@ -141,7 +138,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity_no)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 백그라운드 컬러 */
@@ -161,7 +158,7 @@ public class SceneFragment extends Fragment implements csEventListener
                     scenePackage.savePackage();
 
                 } else if (newId >= 56) {
-                    ((MainActivity)context).makeToast("56 이상의 값은 입력할 수 없습니다.");
+                    ((MainActivity_no)context).makeToast("56 이상의 값은 입력할 수 없습니다.");
                 }
 
 
@@ -174,7 +171,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });
@@ -208,7 +205,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // 테스트 부분 ((MainActivity)getContext()).makeToast("확인한 부분");
+                // 테스트 부분 ((MainActivity_no)getContext()).makeToast("확인한 부분");
                 //------- 데이터 부분
 
                 /* 백그라운드 컬러 */
@@ -231,7 +228,7 @@ public class SceneFragment extends Fragment implements csEventListener
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //((MainActivity)getContext()).makeToast("Scene 작성을 취소하였습니다.");
+                //((MainActivity_no)getContext()).makeToast("Scene 작성을 취소하였습니다.");
                 dialog.dismiss();
             }
         });

@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity_no extends AppCompatActivity implements View.OnClickListener {
     /* 메인 뷰 */
     private TextView menu_1;
     private TextView menu_2;
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static Typeface mTypeface;
     static String msg2;
 
-    final String TAG = "MainActivity";
+    final String TAG = "MainActivity_no";
 
     int mCurrentFragmentIndex;
 
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //
         initSetting();
-        if (MainActivity.mTypeface == null)
-            MainActivity.mTypeface = Typeface.createFromAsset(getAssets(), "fonts/NotoSansKR-DemiLight.otf");
+        if (MainActivity_no.mTypeface == null)
+            MainActivity_no.mTypeface = Typeface.createFromAsset(getAssets(), "fonts/NotoSansKR-DemiLight.otf");
 
 
 
@@ -123,17 +123,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
             case R.id.main_menu_1:
-                Intent intent = new Intent(MainActivity.this, ControllerActivity.class);
+                Intent intent = new Intent(MainActivity_no.this, ControllerActivity.class);
                 startActivity(intent);
                 break;
 
             case R.id.main_menu_2:
-                Intent intent2 = new Intent(MainActivity.this, ScenePlayActivity.class);
+                Intent intent2 = new Intent(MainActivity_no.this, ScenePlayActivity.class);
                 startActivity(intent2);
                 break;
 
             case R.id.main_menu_3:
-                Intent intent3 = new Intent(MainActivity.this, SettingActivity.class);
+                Intent intent3 = new Intent(MainActivity_no.this, SettingActivity.class);
                 startActivity(intent3);
                 break;
             case R.id.menuText0:
@@ -374,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // TODO Auto-generated method stub
             super.onPreExecute();
 
-            dialog = new ProgressDialog(MainActivity.this); //ProgressDialog 객체 생성
+            dialog = new ProgressDialog(MainActivity_no.this); //ProgressDialog 객체 생성
             dialog.setTitle("");                   //ProgressDialog 제목
             dialog.setMessage("불러오는 중");             //ProgressDialog 메세지
             dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL); //막대형태의 ProgressDialog 스타일 설정
@@ -433,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dialog=null;      //참조변수 초기화
 
             //doInBackground() 메소드로부터 리턴된 결과 "Complete Load" string Toast로 화면에 표시
-            Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity_no.this, result, Toast.LENGTH_SHORT).show();
         }
 
     }//AsyncProgressDailog class..

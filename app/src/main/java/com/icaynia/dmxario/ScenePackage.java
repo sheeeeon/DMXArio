@@ -131,7 +131,7 @@ public class ScenePackage
     public void playScene(int id)
     {
         this.stopScene(id);
-        //((MainActivity)context).makeToast("Scene Name = "+scene[id].getSceneName());
+        //((MainActivity_no)context).makeToast("Scene Name = "+scene[id].getSceneName());
         this.scene.get(id).play();
     }
 
