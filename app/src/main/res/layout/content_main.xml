@@ -14,4 +14,10 @@
     tools:context="com.icaynia.dmxario.Activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/layout_fragment" />
+
 </RelativeLayout>
