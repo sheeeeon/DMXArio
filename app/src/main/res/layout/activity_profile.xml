@@ -44,13 +44,23 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp">
+                android:layout_height="60dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
 
                 <TextView
-                    android:text="name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:text="유시온"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"/>
+
+                <TextView
+                    android:text="icaynia@icaynia.com"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"/>
+
 
             </LinearLayout>
 
@@ -63,6 +73,10 @@
                     android:text="follower information"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"/>
+                
+                <LinearLayout
+                    android:layout_width=""
+                    android:layout_height=""></LinearLayout>
 
             </LinearLayout>
 
