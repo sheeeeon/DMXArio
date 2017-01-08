@@ -66,15 +66,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:orientation="vertical">
 
-
-                <TextView
-                    android:text="follower information"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"/>
-                
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"

@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
     }
 }
 allprojects {
@@ -16,4 +16,5 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 dependencies {
+
 }
