@@ -19,6 +19,7 @@ import com.icaynia.dmxario.R;
  */
 
 public class PositionButton extends LinearLayout {
+    /* 사용하지 않는 클래스 */
     public View v;
     public TextView textView;
     private LinearLayout bt;

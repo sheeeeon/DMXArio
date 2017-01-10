@@ -7,6 +7,7 @@ import android.content.Context;
  */
 
 public class Position {
+    /* 사용하지 않는 클래스 */
     public String name;
     public String action_press;
     public String action_release;

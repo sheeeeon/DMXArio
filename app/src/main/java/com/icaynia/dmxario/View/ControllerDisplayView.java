@@ -19,6 +19,7 @@ import org.w3c.dom.Text;
  */
 
 public class ControllerDisplayView extends LinearLayout {
+    /* 사용하지 않는 클래스 */
     private View contentView;
 
     private TextView frameTv;

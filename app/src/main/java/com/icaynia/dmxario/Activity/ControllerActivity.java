@@ -37,6 +37,7 @@ import java.util.TimerTask;
  */
 
 public class ControllerActivity extends AppCompatActivity {
+    /* 사용하지 않는 클래스 */
     GlobalVar global;
 
     private ArrayList<PositionButton> arrayPositionButtons = new ArrayList<PositionButton>();

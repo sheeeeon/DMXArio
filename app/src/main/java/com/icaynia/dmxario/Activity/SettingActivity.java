@@ -14,6 +14,7 @@ import com.icaynia.dmxario.R;
  */
 
 public class SettingActivity extends AppCompatActivity implements View.OnClickListener{
+    /* 사용하지 않는 클래스 */
     private int[] menu_id = {
         R.id.menu_bluetooth
     };

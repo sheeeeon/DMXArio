@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * Created by icaynia on 16. 6. 29..
  */
 public class BlankFragment extends Fragment implements View.OnClickListener {
-
+    /* 사용하지 않는 클래스 */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
