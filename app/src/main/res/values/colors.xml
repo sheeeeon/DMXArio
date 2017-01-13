@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4C4C4C</color>
+    <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorMenuText">#aa0000</color>
@@ -8,7 +8,7 @@
 
     <!--Sequencer-->
     <color name="sequencer_progress_backgroundcolor">#3F606E</color>
-    <color name="sequencer_progress_textcolor">#FFFFFF</color>
+    <color name="sequencer_progress_textcolor">#000000</color>
 
     <!--CommandBox-->
     <color name="sequencer_commandbox_backgroundcolor">#00402f</color>
@@ -17,4 +17,5 @@
     <!--TrackBox-->
     <color name="sequencer_trackbox_backgroundcolor">#93ff7e</color>
 
+    <color name="text_title">#000000</color>
 </resources>
