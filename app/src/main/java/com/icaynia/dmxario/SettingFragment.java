@@ -30,8 +30,10 @@ public class SettingFragment extends Fragment  {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v =  inflater.inflate(R.layout.fragment_setting, container, false);
 
-        final Switch BTTXSwitch = (Switch) v.findViewById(R.id.BluetoothTXVisible);
-        final Switch NotificationSwitch = (Switch) v.findViewById(R.id.NotificationVisible);
+        final Switch BTTXSwitch = null;
+                //(Switch) v.findViewById(R.id.BluetoothTXVisible);
+        final Switch NotificationSwitch = null;
+        // = (Switch) v.findViewById(R.id.NotificationVisible);
 
         mPref = getActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE);
         mPref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);

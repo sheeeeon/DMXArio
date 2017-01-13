@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import com.icaynia.dmxario.R;
 
 /**
- * Created by icaynia on 2017. 1. 3..
+ * Created by icaynia on 2017. 1. 13..
  */
 
-public class SettingFragment extends Fragment {
+public class FriendsFragment extends Fragment {
     private View v;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_setting, container, false);
+        v = inflater.inflate(R.layout.fragment_friends, container, false);
         return v;
     }
 }

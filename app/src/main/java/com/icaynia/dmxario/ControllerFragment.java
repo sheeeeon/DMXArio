@@ -100,7 +100,7 @@ public class ControllerFragment extends Fragment implements SeekBar.OnSeekBarCha
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         Pref = getActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE);
         Pref.registerOnSharedPreferenceChangeListener(mPrefChangeListener);
-        v = inflater.inflate(R.layout.fragment_controller, container, false);
+        v = inflater.inflate(R.layout.t_fragment_controller, container, false);
         for (int i = 0; i < 16; i++) {
             seekBar[i] = (VerticalSeekBar) v.findViewById(sbIdArray[i]);
             seekBar[i].setMax(255);

@@ -19,8 +19,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import com.icaynia.dmxario.Fragment.ConnectFragment;
 import com.icaynia.dmxario.Fragment.DmxprofileFragment;
+import com.icaynia.dmxario.Fragment.ForumFragment;
+import com.icaynia.dmxario.Fragment.FriendsFragment;
+import com.icaynia.dmxario.Fragment.MessageFragment;
 import com.icaynia.dmxario.Fragment.ProjectFragment;
+import com.icaynia.dmxario.Fragment.SettingFragment;
 import com.icaynia.dmxario.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -100,18 +105,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 switchFragment(new DmxprofileFragment());
                 break;
             case R.id.nav_message:
+                switchFragment(new MessageFragment());
                 break;
             case R.id.nav_forum:
+                switchFragment(new ForumFragment());
                 break;
             case R.id.nav_friends:
+                switchFragment(new FriendsFragment());
                 break;
             case R.id.nav_connect:
+                switchFragment(new ConnectFragment());
                 break;
-            case R.id.nav_manage:
+            case R.id.nav_manage: // 설정
+                switchFragment(new SettingFragment());
                 break;
             case R.id.nav_view:
                 onProfileActivity();
                 break;
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

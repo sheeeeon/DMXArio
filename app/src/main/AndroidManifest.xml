@@ -15,68 +15,71 @@
         android:supportsRtl="true">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
-        <activity
-            android:name=".Splash"
+        <activity android:name=".Splash"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+
+        <activity android:name=".TestActivity">
+        </activity>
+
+        <activity android:name=".Activity.ControllerActivity">
+        </activity>
+
+        <activity android:name=".Activity.SceneActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <activity android:name=".Activity.SettingActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+        <!-- test -->
+
+        <activity android:name=".MainActivity_no"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".ControllerActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ScenePlayActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SettingActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".BluetoothSettingActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Activity.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".TestActivity">
-        </activity>
-        <activity android:name=".Activity.ControllerActivity">
-        </activity>
-        <activity
-            android:name=".Activity.SceneActivity"
-            android:screenOrientation="landscape">
-        </activity>
-        <activity
-            android:name=".Activity.SettingActivity"
-            android:screenOrientation="landscape">
-        </activity>
-        <!-- test -->
-        <activity
-            android:name=".MainActivity_no"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity
-            android:name=".ControllerActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ScenePlayActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".SettingActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".BluetoothSettingActivity"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Activity.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme">
-        </activity>
 
-
+        </activity>
 
         <!-- -->
 

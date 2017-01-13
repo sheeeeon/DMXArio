@@ -47,7 +47,7 @@ public class CommandFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         //Button sendButton = (Button) mHostActivity.findViewById(R.id.sendButton);
         //sendButton.setText("eee");
-        View v = inflater.inflate(R.layout.fragment_command, container, false);
+        View v = inflater.inflate(R.layout.t_fragment_command, container, false);
 
         Button sendButton = (Button) v.findViewById(R.id.sendButton);
         sendButton.setOnClickListener(this);
