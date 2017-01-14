@@ -27,12 +27,14 @@ public class ProjectFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_project, container, false);
         LinearLayout parent = (LinearLayout)v.findViewById(R.id.parentBox);
         /* cardview example */
-        CardView cardView = new CardView(getActivity());
-        cardView.setTitleText("Title 1 change");
-        cardView.setSubtitleText("this is subtitle.");
-        cardView.setNegativeButtonText("Cancel");
-        cardView.setPositiveButtonText("OK");
-        parent.addView(cardView);
+        for (int count = 0; count <= 3; count++) {
+            CardView cardView = new CardView(getActivity());
+            cardView.setTitleText("Title "+count+" change");
+            cardView.setSubtitleText("this is subtitle.");
+            cardView.setNegativeButtonText("Action 1");
+            cardView.setPositiveButtonText("Action 2");
+            parent.addView(cardView);
+        }
         return v;
     }
 }
