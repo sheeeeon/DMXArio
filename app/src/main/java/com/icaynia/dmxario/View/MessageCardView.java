@@ -10,19 +10,19 @@ import android.widget.TextView;
 import com.icaynia.dmxario.R;
 
 /**
- * Created by icaynia on 2017. 1. 10..
+ * Created by icaynia on 18/01/2017.
  */
 
-public class ProjectCardView extends LinearLayout {
+public class MessageCardView extends LinearLayout {
     private View mainView;
 
-    private int viewId = R.layout.view_card_project;
-    public ProjectCardView(Context context) {
+    private int viewId = R.layout.view_card_messagelist;
+    public MessageCardView(Context context) {
         super(context);
         viewInitialize();
     }
 
-    public ProjectCardView(Context context, AttributeSet attrs) {
+    public MessageCardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         viewInitialize();
     }
