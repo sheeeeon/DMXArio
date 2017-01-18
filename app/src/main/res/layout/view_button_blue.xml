@@ -2,6 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"
+                android:background="#4285F4"
+                android:id="@+id/button_box">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_text"
+        android:text="Button"
+        android:textSize="18dp"
+        android:textColor="#FFF"/>
 
 </LinearLayout>

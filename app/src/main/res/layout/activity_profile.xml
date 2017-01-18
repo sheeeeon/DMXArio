@@ -158,14 +158,10 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp">
 
-                <TextView
+                <com.icaynia.dmxario.View.BlueButton
+                    android:id="@+id/button_follow"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="#4285F4"
-                    android:text="팔로우"
-                    android:textColor="#FFF"
-                    android:textSize="18dp"
-                    android:gravity="center_horizontal|center_vertical"/>
+                    android:layout_height="45dp" />
 
             </LinearLayout>
 

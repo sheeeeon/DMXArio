@@ -18,4 +18,7 @@
     <color name="sequencer_trackbox_backgroundcolor">#93ff7e</color>
 
     <color name="text_title">#000000</color>
+
+    <!-- BlueButton -->
+    <color name="BlueButton_notfollowing">#4285F4</color>
 </resources>

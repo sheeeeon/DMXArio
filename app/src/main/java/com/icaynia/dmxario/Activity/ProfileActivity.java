@@ -1,5 +1,6 @@
 package com.icaynia.dmxario.Activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.R;
+import com.icaynia.dmxario.View.BlueButton;
 
 /**
  * Created by icaynia on 2017. 1. 3..
@@ -22,6 +24,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ProfileManager pm;
 
+    /* view */
+    private BlueButton btnFollow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +38,28 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void viewInitialize() {
-
+        btnFollow = (BlueButton) findViewById(R.id.button_follow);
     }
 
     private void dataInitialize() {
         pm = new ProfileManager(this);
         profile = pm.getProfile(PROFILE_NUMBER);
+
+        /* follow check */
+
+        if (getFollowState()) {
+            btnFollow.setMode(BlueButton.Theme.FOLLOWED);
+            btnFollow.setText("팔로우 중");
+        } else {
+            btnFollow.setMode(BlueButton.Theme.FOLLOW);
+            btnFollow.setText("팔로우");
+        }
     }
 
 
+
+    private boolean getFollowState() {
+
+        return true; // followed
+    }
 }
