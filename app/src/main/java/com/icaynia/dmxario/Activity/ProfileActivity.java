@@ -59,7 +59,12 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private boolean getFollowState() {
-
         return true; // followed
     }
+
+    private void getProfile() {
+        // [Needs] Connect to Profile Manager, and It will get the Profile that required id.
+
+    }
+
 }

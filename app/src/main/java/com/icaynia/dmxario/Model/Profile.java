@@ -8,11 +8,12 @@ public class Profile {
     private int id;
     private int id_facebook;
 
-    private int nickname;
-    private int email;
+    private String name;
+    private String email;
 
     public Profile() {
-
+        this.name = "No name";
+        this.email = "";
     }
 
     public int getId() {
