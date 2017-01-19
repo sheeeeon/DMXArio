@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void run() {
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(220);
                     switch (id) {
                         case R.id.nav_project:
                             switchFragment(new ProjectFragment());

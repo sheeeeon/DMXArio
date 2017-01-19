@@ -5,24 +5,6 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:gravity="right">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_menu"
-            android:layout_margin="16dp"/>
-
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,17 +22,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    >
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="사진 띄울 공간"/>
+                    <View
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:background="@drawable/shape_circle">
+
+                    </View>
                 </LinearLayout>
 
             </RelativeLayout>
@@ -180,5 +165,35 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/button_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_menu"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/menu_trigger"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
