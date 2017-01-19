@@ -39,6 +39,7 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
     public void onMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void onLoginActivity() {
@@ -70,6 +71,5 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
                 onLoginActivity();
                 break;
         }
-        finish();
     }
 }
