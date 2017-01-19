@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
 
 /**
@@ -40,6 +41,12 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
         startActivity(intent);
     }
 
+    public void onLoginActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+
     public void onLoginButton() {
         LinearLayout loginBox = (LinearLayout) findViewById(R.id.login);
         loginBox.setVisibility(View.VISIBLE);
@@ -60,7 +67,9 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
                 onMainActivity();
                 break;
             case R.id.login_email:
+                onLoginActivity();
                 break;
         }
+        finish();
     }
 }
