@@ -93,6 +93,9 @@
         <activity android:name=".Activity.LoginActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                   android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.SignupActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                  android:screenOrientation="portrait"/>
 
     </application>
 
