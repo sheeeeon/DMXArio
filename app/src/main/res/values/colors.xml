@@ -20,5 +20,6 @@
     <color name="text_title">#000000</color>
 
     <!-- BlueButton -->
-    <color name="BlueButton_notfollowing">#4285F4</color>
+    <color name="BlueButton_on">#4285F4</color>
+
 </resources>

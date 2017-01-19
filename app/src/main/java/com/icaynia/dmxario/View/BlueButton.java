@@ -51,7 +51,7 @@ public class BlueButton extends LinearLayout {
     public void setMode(BlueButton.Theme mode) {
         if (mode == Theme.FOLLOW) {
             this.setTextColor(Color.WHITE);
-            this.setBackgroundColor(getResources().getColor(R.color.BlueButton_notfollowing));
+            this.setBackgroundColor(getResources().getColor(R.color.BlueButton_on));
         } else if (mode == Theme.FOLLOWED) {
             this.setTextColor(Color.BLACK);
             this.setBackgroundColor(Color.WHITE);
