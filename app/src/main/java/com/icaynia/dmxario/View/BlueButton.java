@@ -24,6 +24,7 @@ public class BlueButton extends LinearLayout {
     private LinearLayout contentBox;
     private TextView textView;
 
+
     public BlueButton(Context context) {
         super(context);
         onCreate();

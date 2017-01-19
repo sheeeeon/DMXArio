@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
+import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.ProjectCardView;
 
@@ -26,6 +27,7 @@ public class ProjectFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_project, container, false);
         LinearLayout parent = (LinearLayout)v.findViewById(R.id.parentBox);
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("프로젝트");
         /* cardview example */
         for (int count = 0; count <= 4; count++) {
             ProjectCardView projectCardView = new ProjectCardView(getActivity());

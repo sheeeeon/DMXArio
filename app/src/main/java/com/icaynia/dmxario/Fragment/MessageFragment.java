@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.MessageCardView;
 
@@ -27,6 +28,7 @@ public class MessageFragment extends Fragment {
     }
 
     private void viewInitialize() {
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle("메시지");
         LinearLayout parent = (LinearLayout) v.findViewById(R.id.parentBox);
 
         for (int count = 0; count <= 5; count++) {

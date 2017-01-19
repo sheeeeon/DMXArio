@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.Gravity;
@@ -95,38 +96,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        switch (item.getItemId()) {
-            case R.id.nav_project:
-                switchFragment(new ProjectFragment());
-                break;
-            case R.id.nav_dmxprofile:
-                switchFragment(new DmxprofileFragment());
-                break;
-            case R.id.nav_message:
-                switchFragment(new MessageFragment());
-                break;
-            case R.id.nav_forum:
-                switchFragment(new ForumFragment());
-                break;
-            case R.id.nav_friends:
-                switchFragment(new FriendsFragment());
-                break;
-            case R.id.nav_connect:
-                switchFragment(new ConnectFragment());
-                break;
-            case R.id.nav_manage: // 설정
-                switchFragment(new SettingFragment());
-                break;
-            case R.id.nav_view:
-                onProfileActivity();
-                break;
-
-        }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+        final int id = item.getItemId();
+
+        Thread drawerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(200);
+                    switch (id) {
+                        case R.id.nav_project:
+                            switchFragment(new ProjectFragment());
+                            break;
+                        case R.id.nav_dmxprofile:
+                            switchFragment(new DmxprofileFragment());
+                            break;
+                        case R.id.nav_message:
+                            switchFragment(new MessageFragment());
+                            break;
+                        case R.id.nav_forum:
+                            switchFragment(new ForumFragment());
+                            break;
+                        case R.id.nav_friends:
+                            switchFragment(new FriendsFragment());
+                            break;
+                        case R.id.nav_connect:
+                            switchFragment(new ConnectFragment());
+                            break;
+                        case R.id.nav_manage: // 설정
+                            switchFragment(new SettingFragment());
+                            break;
+                        case R.id.nav_view:
+                            onProfileActivity();
+                            break;
+
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        drawerThread.start();
         return true;
     }
 

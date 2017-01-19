@@ -21,9 +21,10 @@
             android:id="@+id/card_box">
 
             <LinearLayout
+                android:id="@+id/card_imageBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ccc">
+                android:background="@drawable/ripple_effect">
 
                 <TextView
                     android:layout_width="wrap_content"

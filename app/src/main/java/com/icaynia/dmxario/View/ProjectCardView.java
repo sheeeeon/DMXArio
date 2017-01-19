@@ -15,6 +15,7 @@ import com.icaynia.dmxario.R;
 
 public class ProjectCardView extends LinearLayout {
     private View mainView;
+    private LinearLayout imageBox;
 
     private int viewId = R.layout.view_card_project;
     public ProjectCardView(Context context) {
@@ -57,6 +58,13 @@ public class ProjectCardView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //require code change.
         mainView = inflater.inflate(viewId, this, false);
+        imageBox = (LinearLayout) mainView.findViewById(R.id.card_imageBox);
+        imageBox.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         addView(mainView);
     }
 
