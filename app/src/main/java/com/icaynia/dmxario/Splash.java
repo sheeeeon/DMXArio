@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
-
 /**
  * Created by icaynia on 2016. 12. 14..
  */

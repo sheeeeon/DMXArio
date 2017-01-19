@@ -13,24 +13,29 @@
         android:padding="32dp">
 
         <EditText
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="사용할 이메일을 입력"
             />
 
         <EditText
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호 입력"
             android:paddingTop="20dp"
-            android:paddingBottom="20dp"/>
+            android:paddingBottom="20dp"
+            android:password="true"/>
 
         <EditText
+            android:id="@+id/input_password_again"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="비밀번호 재확인"
             android:paddingTop="20dp"
-            android:paddingBottom="20dp"/>
+            android:paddingBottom="20dp"
+            android:password="true"/>
 
     </LinearLayout>
 

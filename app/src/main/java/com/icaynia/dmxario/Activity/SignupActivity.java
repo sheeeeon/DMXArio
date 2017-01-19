@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,11 +31,29 @@ public class SignupActivity extends AppCompatActivity {
         signupText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onMainActivity();
+                EditText email, pw1, pw2;
+                email = (EditText) findViewById(R.id.input_email);
+                pw1 = (EditText)findViewById(R.id.input_password);
+                pw2 = (EditText)findViewById(R.id.input_password_again);
+
+                if (pw1.getText().toString().equals(pw2.getText().toString())) {
+                    addUser(email.getText().toString(), pw1.getText().toString());
+                    onMainActivity();
+                }
             }
         });
+
+
+    }
+
+    private void onMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void addUser(String id, String pw) {
         mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword("test@icaynia.com", "testpasswd")
+        mAuth.createUserWithEmailAndPassword(id, pw)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -51,11 +70,5 @@ public class SignupActivity extends AppCompatActivity {
                         // ...
                     }
                 });
-
-    }
-
-    private void onMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 }
