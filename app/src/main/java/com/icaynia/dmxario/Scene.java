@@ -16,7 +16,7 @@ import java.util.TimerTask;
  * Created by icaynia on 16. 9. 3..
  */
 public class Scene {
-    private GlobalVar global;
+    private Global global;
 
     private String                  PackageName;
 
@@ -46,7 +46,7 @@ public class Scene {
     }
 
     // endregion
-    public void setGlobal(GlobalVar global) {
+    public void setGlobal(Global global) {
 
         this.global = global;
     }

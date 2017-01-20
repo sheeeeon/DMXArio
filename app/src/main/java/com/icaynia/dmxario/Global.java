@@ -3,6 +3,7 @@ package com.icaynia.dmxario;
 import android.app.Application;
 import android.content.res.Configuration;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
 
 /**
@@ -12,9 +13,13 @@ public class Global extends Application {
     public BluetoothSettingActivity.SocketThread mSocketThread;
     public Bluetooth bluetooth;
 
+
+    private FirebaseAuth mAuth;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        firebaseInit();
     }
 
     @Override
@@ -31,4 +36,14 @@ public class Global extends Application {
     public void onTerminate() {
         super.onTerminate();
     }
+
+
+    public FirebaseAuth getAuth() {
+        return mAuth;
+    }
+
+    private void firebaseInit() {
+        mAuth = FirebaseAuth.getInstance();
+    }
+
 }

@@ -6,8 +6,6 @@ import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,7 +39,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
     ClientThread mCThread = null; // 클라이언트 소켓 접속 스레드
     ServerThread mSThread = null; // 서버 소켓 접속 스레드
     SocketThread mSocketThread = null; // 데이터 송수신 스레드
-    GlobalVar global;
+    Global global;
 
     /* Action Bar */
     private customActionBar actionBar;
@@ -57,7 +55,7 @@ public class BluetoothSettingActivity extends AppCompatActivity implements View.
         viewInitialize();
         initListView();
 
-        global = (GlobalVar) getApplicationContext();
+        global = (Global) getApplicationContext();
 
         // 블루투스 사용 가능상태 판단
         boolean isBlue = canUseBluetooth();

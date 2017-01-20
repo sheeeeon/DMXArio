@@ -6,19 +6,15 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
-import com.icaynia.dmxario.BluetoothSettingActivity;
-import com.icaynia.dmxario.ColorPicker01;
 import com.icaynia.dmxario.Data.PositionManager;
 import com.icaynia.dmxario.Data.ViewID;
-import com.icaynia.dmxario.GlobalVar;
+import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.Model.Position;
 import com.icaynia.dmxario.ObjectFileManager;
 import com.icaynia.dmxario.R;
@@ -38,7 +34,7 @@ import java.util.TimerTask;
 
 public class ControllerActivity extends AppCompatActivity {
     /* 사용하지 않는 클래스 */
-    GlobalVar global;
+    Global global;
 
     private ArrayList<PositionButton> arrayPositionButtons = new ArrayList<PositionButton>();
     private ArrayList<VerticalSeekBar> arraySeekbar = new ArrayList<VerticalSeekBar>();
@@ -295,7 +291,7 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     private void dataInitialize() {
-        global = (GlobalVar) getApplicationContext();
+        global = (Global) getApplicationContext();
         global.bluetooth = new Bluetooth(this);
         /* new scene */
         mainScene.setSceneLength(1);

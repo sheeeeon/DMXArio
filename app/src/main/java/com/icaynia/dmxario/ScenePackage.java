@@ -2,9 +2,7 @@ package com.icaynia.dmxario;
 
 
 import android.content.Context;
-import android.provider.Settings;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ import java.util.Map;
  */
 public class ScenePackage
 {
-    public  GlobalVar                   global;
+    public Global global;
     private Context                     context;
     private HashMap<String, String>     config;
     private ArrayList<Scene>            scene = new ArrayList<Scene>();
@@ -31,7 +29,7 @@ public class ScenePackage
         config = new HashMap<String, String>();
         mObj = new ObjectFileManager(context);
 
-        global = (GlobalVar) _context.getApplicationContext();
+        global = (Global) _context.getApplicationContext();
 
         for (int i = 0; i < 72; i++) {
             scene.add(i, new Scene(context));

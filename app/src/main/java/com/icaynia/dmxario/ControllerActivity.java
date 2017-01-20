@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,7 +29,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     private LinearLayout bluetoothButton;
     private TableLayout favoritesInfo;
     private customActionBar actionBar;
-    private GlobalVar global;
+    private Global global;
 
     /* Scene */
     private Scene tmpScene;
@@ -258,7 +257,7 @@ public class ControllerActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void globalInitialize() {
-        global = (GlobalVar) getApplicationContext();
+        global = (Global) getApplicationContext();
     }
 
     @Override
