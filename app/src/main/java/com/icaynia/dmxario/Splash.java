@@ -73,6 +73,7 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
                     onLoginActivity();
                     break;
             }
+            finish();
         } else {
             Toast.makeText(this, "인터넷에 연결되어 있지 않습니다. \n 확인후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
         }
