@@ -1,11 +1,13 @@
 package com.icaynia.dmxario;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
@@ -62,13 +64,23 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.login_facebook:
-                onMainActivity();
-                break;
-            case R.id.login_email:
-                onLoginActivity();
-                break;
+        if (isNetworkConnected()) {
+            switch (v.getId()) {
+                case R.id.login_facebook:
+                    onMainActivity();
+                    break;
+                case R.id.login_email:
+                    onLoginActivity();
+                    break;
+            }
+        } else {
+            Toast.makeText(this, "인터넷에 연결되어 있지 않습니다. \n 확인후 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private boolean isNetworkConnected()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService( this.CONNECTIVITY_SERVICE );
+        return cm.getActiveNetworkInfo() != null;
     }
 }
