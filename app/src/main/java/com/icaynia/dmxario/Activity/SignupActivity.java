@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 
 /**
@@ -21,12 +22,14 @@ import com.icaynia.dmxario.R;
  */
 
 public class SignupActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
+    Global global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        global = (Global) getApplicationContext();
         TextView signupText = (TextView) findViewById(R.id.signupText);
         signupText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,8 +38,13 @@ public class SignupActivity extends AppCompatActivity {
                 email = (EditText) findViewById(R.id.input_email);
                 pw1 = (EditText)findViewById(R.id.input_password);
                 pw2 = (EditText)findViewById(R.id.input_password_again);
-
-                if (pw1.getText().toString().equals(pw2.getText().toString())) {
+                if (email.getText().toString().isEmpty())
+                    onToast("이메일을 입력하세요.");
+                else if (pw1.getText().toString().isEmpty())
+                    onToast("비밀번호를 입력하세요.");
+                else if (!pw1.getText().toString().equals(pw2.getText().toString())) {
+                    onToast("비밀번호가 일치하지 않습니다.");
+                } else {
                     addUser(email.getText().toString(), pw1.getText().toString());
                     onMainActivity();
                 }
@@ -52,8 +60,7 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void addUser(String id, String pw) {
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(id, pw)
+        global.getAuth().createUserWithEmailAndPassword(id, pw)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -70,5 +77,10 @@ public class SignupActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
+        }
+    private void onToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
+

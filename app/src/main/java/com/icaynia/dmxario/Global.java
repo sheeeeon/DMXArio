@@ -8,7 +8,7 @@ import com.icaynia.dmxario.Bluetooth.Bluetooth;
 /**
  * Created by icaynia on 2016. 11. 5..
  */
-public class GlobalVar extends Application {
+public class Global extends Application {
     public BluetoothSettingActivity.SocketThread mSocketThread;
     public Bluetooth bluetooth;
 
