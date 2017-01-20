@@ -87,6 +87,8 @@ public class LoginActivity extends AppCompatActivity {
                             onToast("Login failed");
                         } else {
                             onToast("Login successfully.");
+                            onMainActivity();
+                            finish();
                         }
 
                         // ...
@@ -97,5 +99,10 @@ public class LoginActivity extends AppCompatActivity {
                 onToast("Login failed");
             }
         });
+    }
+
+    private void onMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
