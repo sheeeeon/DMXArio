@@ -1,5 +1,6 @@
 package com.icaynia.dmxario;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
+import com.icaynia.dmxario.Data.AccountManager;
+
 /**
  * Created by icaynia on 2016. 12. 14..
  */
@@ -26,12 +29,14 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                boolean islogin = false;
-                if (!islogin) {
+                AccountManager accountManager = new AccountManager(getBaseContext());
+                accountManager.logout();
+                if (accountManager.user == null) {
                     onLoginButton();
+                } else {
+                    onMainActivity();
+                    finish();
                 }
-                //onMainActivity();
-                //finish();
             }
         }, 3000);
 

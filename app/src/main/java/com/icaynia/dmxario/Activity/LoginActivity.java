@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 
@@ -72,33 +73,18 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void login(String email, String password) {
-        global.getAuth().signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Auth", "signInWithEmail:onComplete:" + task.isSuccessful());
+    private void login(final String email, final String password) {
 
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Log.w("Auth", "signInWithEmail", task.getException());
-                            onToast("Login failed");
-                        } else {
-                            onToast("Login successfully.");
-                            onMainActivity();
-                            finish();
-                        }
+        AccountManager accountManager = new AccountManager(getBaseContext());
+        boolean isComplete = accountManager.login(email, password);
 
-                        // ...
-                    }
-                }).addOnFailureListener(this, new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                onToast("Login failed");
-            }
-        });
+        if (isComplete) {
+            onToast("Login successfully.");
+            onMainActivity();
+            finish();
+        } else {
+            onToast("Login failed.");
+        }
     }
 
     private void onMainActivity() {
