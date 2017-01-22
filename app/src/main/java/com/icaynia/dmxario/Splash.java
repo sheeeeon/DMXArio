@@ -30,8 +30,6 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                AccountManager accountManager = new AccountManager(getBaseContext());
-                //accountManager.logout();
                 if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                     onLoginButton();
                 } else {

@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 
@@ -23,30 +25,33 @@ import com.icaynia.dmxario.R;
 
 public class SignupActivity extends AppCompatActivity {
     Global global;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        global = (Global) getApplicationContext();
+        global = (Global) this.getApplication();
         TextView signupText = (TextView) findViewById(R.id.signupText);
         signupText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText email, pw1, pw2;
+                EditText email, pw1, pw2, name;
                 email = (EditText) findViewById(R.id.input_email);
                 pw1 = (EditText)findViewById(R.id.input_password);
                 pw2 = (EditText)findViewById(R.id.input_password_again);
-                if (email.getText().toString().isEmpty())
+                name = (EditText)findViewById(R.id.input_name);
+                if (name.getText().toString().isEmpty())
+                    onToast("이름을 입력하세요");
+                else if (email.getText().toString().isEmpty())
                     onToast("이메일을 입력하세요.");
                 else if (pw1.getText().toString().isEmpty())
                     onToast("비밀번호를 입력하세요.");
                 else if (!pw1.getText().toString().equals(pw2.getText().toString())) {
                     onToast("비밀번호가 일치하지 않습니다.");
                 } else {
-                    addUser(email.getText().toString(), pw1.getText().toString());
-                    onMainActivity();
+                    addUser(email.getText().toString(), pw1.getText().toString(), name.getText().toString());
                 }
             }
         });
@@ -59,26 +64,36 @@ public class SignupActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void addUser(String id, String pw) {
-        global.getAuth().createUserWithEmailAndPassword(id, pw)
+    private void addUser(final String id, final String pw, final String name) {
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuth.createUserWithEmailAndPassword(id, pw)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Authentication", "createUserWithEmail:onComplete:" + task.isSuccessful());
+                        Log.d("Auth", "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
-                            Toast.makeText(SignupActivity.this, "Authentication failed.",
+                            Toast.makeText(getBaseContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getBaseContext(), "Signed up successfully.",
+                                    Toast.LENGTH_SHORT).show();
+
+
+
+                            onMainActivity();
+                            finish();
                         }
 
                         // ...
                     }
                 });
 
-        }
+    }
     private void onToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

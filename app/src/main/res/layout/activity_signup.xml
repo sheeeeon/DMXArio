@@ -3,60 +3,88 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_login_inputform"
-        android:orientation="vertical"
-        android:padding="32dp">
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/input_email"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="사용할 이메일을 입력"
-            />
+            android:id="@+id/fragment_login_inputform"
+            android:orientation="vertical"
+            android:padding="32dp">
 
-        <EditText
-            android:id="@+id/input_password"
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="사용할 이름을 입력하세요"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:maxLines="1"
+                android:maxLength="30"/>
+
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="사용할 이메일을 입력하세요"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:maxLines="1"
+                android:maxLength="30"/>
+
+            <EditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="사용할 비밀번호를 입력하세요"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:password="true"
+                android:maxLines="1"
+                android:maxLength="20"/>
+
+            <EditText
+                android:id="@+id/input_password_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="비밀번호 재확인"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:password="true"
+                android:maxLines="1"
+                android:maxLength="20"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="비밀번호 입력"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:password="true"/>
+            android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/input_password_again"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="비밀번호 재확인"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:password="true"/>
-
+            <TextView
+                android:id="@+id/signupText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:singleLine="false"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal"
+                android:layout_margin="34dp"
+                android:background="#3a9669"/>
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-
-        <TextView
-            android:id="@+id/signupText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign up"
-            android:singleLine="false"
-            android:paddingBottom="20dp"
-            android:paddingTop="20dp"
-            android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:gravity="center_horizontal"
-            android:layout_margin="34dp"
-            android:background="#3a9669"/>
-    </LinearLayout>
+</ScrollView>
 
 </LinearLayout>

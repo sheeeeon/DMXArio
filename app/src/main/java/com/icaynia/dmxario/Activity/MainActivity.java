@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Fragment.ConnectFragment;
 import com.icaynia.dmxario.Fragment.DmxprofileFragment;
@@ -31,6 +32,7 @@ import com.icaynia.dmxario.Fragment.FriendsFragment;
 import com.icaynia.dmxario.Fragment.MessageFragment;
 import com.icaynia.dmxario.Fragment.ProjectFragment;
 import com.icaynia.dmxario.Fragment.SettingFragment;
+import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 
 import org.w3c.dom.Text;
@@ -42,12 +44,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView nameView;
     TextView emailView;
 
+    private Global global;
+
     private AccountManager accountManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        global = (Global) getApplicationContext();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,8 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         accountManager = new AccountManager(this);
-        setProfileInfo(accountManager.user.getDisplayName(), accountManager.user.getEmail());
+        setProfileInfo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), accountManager.user.getEmail());
         switchFragment(new ProjectFragment());
+
+        accountManager.setUserName("icaynia icaynia icaynia ");
     }
 
     @Override
