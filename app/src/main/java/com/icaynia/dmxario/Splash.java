@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.Data.AccountManager;
@@ -30,8 +31,8 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void run() {
                 AccountManager accountManager = new AccountManager(getBaseContext());
-                accountManager.logout();
-                if (accountManager.user == null) {
+                //accountManager.logout();
+                if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                     onLoginButton();
                 } else {
                     onMainActivity();

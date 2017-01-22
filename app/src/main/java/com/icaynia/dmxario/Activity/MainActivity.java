@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -18,8 +19,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Fragment.ConnectFragment;
 import com.icaynia.dmxario.Fragment.DmxprofileFragment;
 import com.icaynia.dmxario.Fragment.ForumFragment;
@@ -29,9 +33,17 @@ import com.icaynia.dmxario.Fragment.ProjectFragment;
 import com.icaynia.dmxario.Fragment.SettingFragment;
 import com.icaynia.dmxario.R;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    ImageView profileImageView;
+    TextView nameView;
+    TextView emailView;
+
+    private AccountManager accountManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +60,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         View hView = navigationView.getHeaderView(0);
         LinearLayout account = (LinearLayout) hView.findViewById(R.id.nav_account);
-
+        profileImageView = (ImageView) hView.findViewById(R.id.profileImage);
+        nameView = (TextView) hView.findViewById(R.id.name);
+        emailView = (TextView) hView.findViewById(R.id.email);
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
             }
         });
+
+        accountManager = new AccountManager(this);
+        setProfileInfo(accountManager.user.getDisplayName(), accountManager.user.getEmail());
+
 
         switchFragment(new ProjectFragment());
 
@@ -126,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             break;
                         case R.id.nav_manage: // 설정
                             switchFragment(new SettingFragment());
+                            Intent intent = new Intent(getBaseContext(), SettingActivity.class);
+                            startActivity(intent);
                             break;
                         case R.id.nav_view:
                             onProfileActivity();
@@ -151,6 +171,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void onProfileActivity() {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
+    }
+
+    public void setProfileImage() {
+
+    }
+
+    public void setProfileInfo(String name, String email) {
+        nameView.setText(name);
+        emailView.setText(email);
     }
 }
 

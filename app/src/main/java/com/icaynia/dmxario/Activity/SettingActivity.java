@@ -1,19 +1,24 @@
 package com.icaynia.dmxario.Activity;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.icaynia.dmxario.BluetoothSettingActivity;
+import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.R;
+import com.icaynia.dmxario.Splash;
 
 /**
  * Created by icaynia on 2016. 12. 14..
  */
 
-public class SettingActivity extends AppCompatActivity implements View.OnClickListener{
+public class SettingActivity extends PreferenceActivity implements Preference.OnPreferenceClickListener {
     /* 사용하지 않는 클래스 */
     private int[] menu_id = {
         R.id.menu_bluetooth
@@ -22,24 +27,24 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_setting_new);
+        addPreferencesFromResource(R.xml.preference);
 
-        for (int i = 0; i < menu_id.length; i++) {
-            LinearLayout v = (LinearLayout) findViewById(menu_id[i]);
-            v.setOnClickListener(this);
-
-        }
-
-        Intent intent = new Intent(this, BluetoothSettingActivity.class);
-        startActivity(intent);
-        finish();
+        Preference account_logout = (Preference)findPreference("account_logout");
+        account_logout.setOnPreferenceClickListener(this);
     }
 
     @Override
-    public void onClick(View v) {
-        switch(v.getId()) {
-            case R.id.menu_bluetooth:
-                break;
+    public boolean onPreferenceClick(Preference preference)
+    {
+        // 로그아웃
+        if(preference.getKey().equals("account_logout"))
+        {
+            AccountManager accountManager = new AccountManager(this);
+            accountManager.logout();
+            Intent intent = new Intent(this, Splash.class);
+            startActivity(intent);
+            finish();
         }
+        return false;
     }
 }

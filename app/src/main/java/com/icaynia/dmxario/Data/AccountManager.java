@@ -1,6 +1,7 @@
 package com.icaynia.dmxario.Data;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class AccountManager {
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    public boolean login(final String email, final String password) {
+    public void login(final String email, final String password) {
         global = (Global) context.getApplicationContext();
         global.getAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -40,13 +41,6 @@ public class AccountManager {
 
             }
         });
-
-        FirebaseUser user = global.getAuth().getInstance().getCurrentUser();
-        if (user != null) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public void logout() {

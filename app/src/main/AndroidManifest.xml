@@ -39,7 +39,7 @@
         </activity>
 
         <activity android:name=".Activity.SettingActivity"
-            android:screenOrientation="landscape">
+                  android:screenOrientation="portrait">
         </activity>
 
         <!-- test -->
@@ -63,7 +63,7 @@
         </activity>
 
         <activity android:name=".SettingActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>

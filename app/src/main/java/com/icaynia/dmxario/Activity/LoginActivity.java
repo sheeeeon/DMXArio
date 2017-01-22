@@ -76,15 +76,15 @@ public class LoginActivity extends AppCompatActivity {
     private void login(final String email, final String password) {
 
         AccountManager accountManager = new AccountManager(getBaseContext());
-        boolean isComplete = accountManager.login(email, password);
-
-        if (isComplete) {
-            onToast("Login successfully.");
-            onMainActivity();
-            finish();
-        } else {
-            onToast("Login failed.");
-        }
+        global.getAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.e("Authentication", "Logged in as "+ email);
+                onToast("Login successfully.");
+                onMainActivity();
+                finish();
+            }
+        });
     }
 
     private void onMainActivity() {
