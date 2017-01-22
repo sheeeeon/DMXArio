@@ -73,10 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         accountManager = new AccountManager(this);
         setProfileInfo(accountManager.user.getDisplayName(), accountManager.user.getEmail());
-
-
         switchFragment(new ProjectFragment());
-
     }
 
     @Override
