@@ -12,7 +12,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DatabaseManager {
     private Context context;
     public DatabaseManager(Context context) {
+        this.context = context;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
+        myRef.child("sub1").child("sub2").setValue("ttt!!");
+
+    }
+
+    public void writeToDatabase() {
+
     }
 }

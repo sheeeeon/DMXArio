@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
+import com.icaynia.dmxario.Data.DatabaseManager;
 import com.icaynia.dmxario.Fragment.ConnectFragment;
 import com.icaynia.dmxario.Fragment.DmxprofileFragment;
 import com.icaynia.dmxario.Fragment.ForumFragment;
@@ -81,6 +82,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switchFragment(new ProjectFragment());
 
         accountManager.setUserName("icaynia icaynia icaynia ");
+
+        DatabaseManager databaseManager = new DatabaseManager(this);
+        databaseManager.writeToDatabase();
     }
 
     @Override
