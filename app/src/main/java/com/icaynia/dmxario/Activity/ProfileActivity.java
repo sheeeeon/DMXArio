@@ -110,7 +110,7 @@ public class ProfileActivity extends AppCompatActivity {
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override
             public void onCompleteGetProfile(Profile profile) {
-
+                Log.e("Tagggggg", profile.name);
             }
         });
         pm.getProfile("uid");
