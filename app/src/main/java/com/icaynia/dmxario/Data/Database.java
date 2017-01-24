@@ -102,9 +102,19 @@ public class Database {
             userRef.child("follower").child(anotherUid).setValue("");
         }
 
+        public void deleteFollower(String anotherUid) {
+            userRef.child("follower").child(anotherUid).removeValue();
+        }
+
         public void setFollowing(String anotherUid) {
             userRef.child("following").child(anotherUid).setValue("");
         }
+
+        public void deleteFollowing(String anotherUid) {
+            userRef.child("following").child(anotherUid).removeValue();
+        }
+
+
     }
 
     public interface LoadCompleteListener {

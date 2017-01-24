@@ -121,10 +121,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void dataInitialize() {
         accountManager = new AccountManager(this);
-
+        String myUid = accountManager.mAuth.getCurrentUser().getUid();
         FollowManager followManager = new FollowManager();
-        followManager.addFollowing(accountManager.mAuth.getCurrentUser().getUid(), "uid-12ijkefbwjhfb11");
-
+        followManager.deleteFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
         pm = new ProfileManager(this);
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override
