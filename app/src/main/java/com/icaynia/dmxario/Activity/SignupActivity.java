@@ -1,5 +1,6 @@
 package com.icaynia.dmxario.Activity;
 
+import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -84,6 +85,9 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
 
 
+
+                            AccountManager accountManager = new AccountManager(getBaseContext());
+                            accountManager.newAccount(mAuth.getCurrentUser().getUid(), name);
 
                             onMainActivity();
                             finish();

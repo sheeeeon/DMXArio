@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
+import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.BlueButton;
 
@@ -111,6 +112,11 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCompleteGetProfile(Profile profile) {
                 Log.e("Tagggggg", profile.name);
+            }
+
+            @Override
+            public void onCompleteGetProject(Project project) {
+
             }
         });
         pm.getProfile("uid");

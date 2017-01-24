@@ -26,6 +26,7 @@ import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Fragment.*;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.Model.Profile;
+import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         accountManager = new AccountManager(this);
-        setProfileInfo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), accountManager.user.getEmail());
         switchFragment(new ProjectFragment());
 
         /* profile 내용 모두 받아왔을때 */
@@ -77,8 +77,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onCompleteGetProfile(Profile profile) {
                 Log.e("user", profile.name);
+                setProfileInfo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), accountManager.user.getEmail());
+
+            }
+
+            @Override
+            public void onCompleteGetProject(Project project) {
+
             }
         });
+        profileManager.getProfile(accountManager.mAuth.getCurrentUser().getUid());
 
     }
 
@@ -174,10 +182,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void onProfileActivity() {
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
-    }
-
-    public void setProfileImage() {
-
     }
 
     public void setProfileInfo(String name, String email) {

@@ -59,6 +59,11 @@ public class Database {
             return this;
         }
 
+        public USER setProfileData(Profile profile) {
+            userRef.child("profile").setValue(profile);
+            return this;
+        }
+
         public USER addProjectData(Project project) {
             String key = userRef.child("project").push().getKey();
             project.uid = key;
@@ -81,5 +86,6 @@ public class Database {
 
     public interface LoadCompleteListener {
         void onCompleteGetProfile(Profile profile);
+        void onCompleteGetProject(Project project);
     }
 }

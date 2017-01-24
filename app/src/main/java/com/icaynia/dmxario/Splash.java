@@ -20,11 +20,14 @@ import com.icaynia.dmxario.Data.AccountManager;
  */
 
 public class Splash extends AppCompatActivity implements View.OnClickListener {
+    // Splash 액티비티에서 로그인 관련 대부분의 로딩을 함.
+    private Global global;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         viewInitialize();
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -33,12 +36,17 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
                 if (FirebaseAuth.getInstance().getCurrentUser() == null) {
                     onLoginButton();
                 } else {
+                    globalInitialize();
                     onMainActivity();
                     finish();
                 }
             }
-        }, 3000);
+        }, 2000);
 
+    }
+
+    public void globalInitialize() {
+        global = (Global) getApplicationContext();
     }
 
     public void onMainActivity() {

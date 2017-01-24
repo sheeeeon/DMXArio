@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     private void login(final String email, final String password) {
 
         AccountManager accountManager = new AccountManager(getBaseContext());
-        global.getAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        accountManager.mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Log.e("Authentication", "Logged in as "+ email);

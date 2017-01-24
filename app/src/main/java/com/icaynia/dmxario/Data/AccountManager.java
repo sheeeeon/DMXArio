@@ -14,32 +14,25 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.icaynia.dmxario.Global;
+import com.icaynia.dmxario.Model.Profile;
+
+import static com.google.android.gms.internal.zzs.TAG;
 
 /**
  * Created by icaynia on 22/01/2017.
  */
 
 public class AccountManager {
-    //로그인이나 회원가입, 로그인 정보를 불러오는 역할을 한다.
-    public Global global;
     private Context context;
 
     public FirebaseUser user;
-
+    public FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     public AccountManager(Context context) {
         this.context = context;
         user = FirebaseAuth.getInstance().getCurrentUser();
-    }
-
-    public void login(final String email, final String password) {
-        global = (Global) context.getApplicationContext();
-        global.getAuth().signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                Log.e("Authentication", "Logged in as "+ email);
-            }
-        });
+        firebaseInit();
     }
 
     public void logout() {
@@ -60,5 +53,33 @@ public class AccountManager {
                         }
                     }
                 });
+    }
+
+    private void firebaseInit() {
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // ...
+            }
+        };
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    public void newAccount(String uid, String name) {
+        ProfileManager profileManager = new ProfileManager(context);
+        Profile profile = new Profile();
+        profile.name = name;
+        profile.uid = uid;
+        profileManager.setProfile(uid, profile);
+
     }
 }
