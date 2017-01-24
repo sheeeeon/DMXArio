@@ -23,7 +23,7 @@ import java.util.Map;
 public class Database {
     private FirebaseDatabase _DATABASE;
     public LoadCompleteListener listener;
-    public LoadFollowerCompleteListener loadFollowerListener;
+    public LoadFollowCompleteListener loadFollowListener;
 
     public Database() {
         _DATABASE = FirebaseDatabase.getInstance();
@@ -114,15 +114,19 @@ public class Database {
             userRef.child("following").child(anotherUid).removeValue();
         }
 
+        public void LoadFollow() {
+            loadFollowListener.onComplete(null); // require to fix.
+        }
+
 
     }
 
     public interface LoadCompleteListener {
         void onCompleteGetProfile(Profile profile);
-        void onCompleteGetProject(Project project);
+        void onCompleteGetProject(Project project); // require to fix
     }
 
-    public interface LoadFollowerCompleteListener {
-        void onComplete(ArrayList<String> FollowerUID);
+    public interface LoadFollowCompleteListener {
+        void onComplete(ArrayList<String> followerList);
     }
 }

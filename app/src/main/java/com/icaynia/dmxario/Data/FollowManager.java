@@ -2,6 +2,8 @@ package com.icaynia.dmxario.Data;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+
 /**
  * Created by icaynia on 25/01/2017.
  */
@@ -10,10 +12,16 @@ public class FollowManager {
     private Database database;
     private Context context;
 
+    public ArrayList<String> followerList;
+    public ArrayList<String> followingList;
+
     public FollowManager() {
         database = new Database();
     }
 
+    public void setLoadFollowCompleteListener(Database.LoadFollowCompleteListener listener) {
+        database.loadFollowListener = listener;
+    }
 //    나를 팔로우 하는 사람 get Follower.
     public void getFollower() {
 
@@ -22,6 +30,7 @@ public class FollowManager {
     public int getFollowerRows() {
         return 50;
     }
+
 
 //    내가 팔로우 하는 사람
     public void getFollowing() {

@@ -21,6 +21,8 @@ import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.BlueButton;
 
+import java.util.ArrayList;
+
 /**
  * Created by icaynia on 2017. 1. 3..
  * facebook hashkey = z/g+u/WxhnOced+q50cI1j6N2gs= // 지우기
@@ -123,7 +125,14 @@ public class ProfileActivity extends AppCompatActivity {
         accountManager = new AccountManager(this);
         String myUid = accountManager.mAuth.getCurrentUser().getUid();
         FollowManager followManager = new FollowManager();
-        followManager.deleteFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
+        followManager.addFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
+        followManager.setLoadFollowCompleteListener(new Database.LoadFollowCompleteListener() {
+            @Override
+            public void onComplete(ArrayList<String> followerList) {
+
+            }
+        });
+
         pm = new ProfileManager(this);
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override
