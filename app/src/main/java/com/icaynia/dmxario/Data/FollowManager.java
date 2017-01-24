@@ -15,7 +15,7 @@ public class FollowManager {
     }
 
     public int getFollowerRows() {
-
+        return 50;
     }
 
 //    내가 팔로우 하는 사람
