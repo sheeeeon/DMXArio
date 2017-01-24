@@ -4,12 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,18 +20,10 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
-import com.icaynia.dmxario.Data.DatabaseManager;
-import com.icaynia.dmxario.Fragment.ConnectFragment;
-import com.icaynia.dmxario.Fragment.DmxprofileFragment;
-import com.icaynia.dmxario.Fragment.ForumFragment;
-import com.icaynia.dmxario.Fragment.FriendsFragment;
-import com.icaynia.dmxario.Fragment.MessageFragment;
-import com.icaynia.dmxario.Fragment.ProjectFragment;
-import com.icaynia.dmxario.Fragment.SettingFragment;
+import com.icaynia.dmxario.Data.Database;
+import com.icaynia.dmxario.Fragment.*;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
-
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -83,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         accountManager.setUserName("icaynia icaynia icaynia ");
 
-        DatabaseManager databaseManager = new DatabaseManager(this);
-        databaseManager.writeToDatabase();
+        Database database = new Database(this);
+        database.writeToDatabase();
     }
 
     @Override
