@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
@@ -30,11 +32,16 @@ public class ProfileActivity extends AppCompatActivity {
     public Profile profile = new Profile();
 
     private ProfileManager pm;
+    private AccountManager accountManager;
 
     /* view */
     private LinearLayout btnMenu;
     private BlueButton btnFollow;
     private LinearLayout btnMenuTrigger;
+
+    private TextView nameView;
+    private TextView emailView;
+    private TextView bioView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,10 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.e("button", "Button was clicked.");
             }
         });
+
+        nameView = (TextView) findViewById(R.id.name);
+        emailView = (TextView) findViewById(R.id.email);
+        bioView = (TextView) findViewById(R.id.bio);
     }
 
     private void onMenu(View v) {
@@ -107,11 +118,16 @@ public class ProfileActivity extends AppCompatActivity {
     };
 
     private void dataInitialize() {
+        accountManager = new AccountManager(this);
         pm = new ProfileManager(this);
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override
             public void onCompleteGetProfile(Profile profile) {
                 Log.e("Tagggggg", profile.name);
+
+                nameView.setText(profile.name);
+                emailView.setText(accountManager.mAuth.getCurrentUser().getEmail());
+                bioView.setText(profile.bio);
             }
 
             @Override
@@ -119,7 +135,9 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-        pm.getProfile("uid");
+        AccountManager accountManager = new AccountManager(this);
+
+        pm.getProfile(accountManager.mAuth.getCurrentUser().getUid());
 
         /* follow check */
 

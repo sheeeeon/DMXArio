@@ -8,6 +8,7 @@ public class Profile {
     public String uid;
     public String name;
     public String email;
+    public String bio;
 
     public Profile() {
         this.name = "No name";

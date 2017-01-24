@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onCompleteGetProfile(Profile profile) {
                 Log.e("user", profile.name);
-                setProfileInfo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), accountManager.user.getEmail());
-
+                setProfileInfo(profile.name, accountManager.user.getEmail());
             }
 
             @Override
