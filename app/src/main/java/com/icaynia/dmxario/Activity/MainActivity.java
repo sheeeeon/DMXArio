@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,8 +22,10 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
+import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Fragment.*;
 import com.icaynia.dmxario.Global;
+import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,10 +71,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setProfileInfo(FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), accountManager.user.getEmail());
         switchFragment(new ProjectFragment());
 
-        accountManager.setUserName("icaynia icaynia icaynia ");
+        /* profile 내용 모두 받아왔을때 */
+        ProfileManager profileManager = new ProfileManager(this);
+        profileManager.setLoadCompleteListener(new Database.LoadCompleteListener() {
+            @Override
+            public void onCompleteGetProfile(Profile profile) {
+                Log.e("user", profile.name);
+            }
+        });
 
-        Database database = new Database(this);
-        database.writeToDatabase();
     }
 
     @Override

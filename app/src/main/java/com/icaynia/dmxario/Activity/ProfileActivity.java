@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.R;
@@ -80,18 +81,9 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void onMenu(View v) {
-        PopupMenu popup= new PopupMenu(this, v);//v는 클릭된 뷰를 의미
-
-        //Popup Menu에 들어갈 MenuItem 추가.
-        //이전 포스트의 컨텍스트 메뉴(Context menu)처럼 xml 메뉴 리소스 사용
-        //첫번재 파라미터 : res폴더>>menu폴더>>mainmenu.xml파일 리소스
-        //두번재 파라미터 : Menu 객체->Popup Menu 객체로 부터 Menu 객체 얻어오기
+        PopupMenu popup= new PopupMenu(this, v);
         getMenuInflater().inflate(R.menu.main, popup.getMenu());
-
-        //Popup Menu의 MenuItem을 클릭하는 것을 감지하는 listener 설정
-        //popup.setOnMenuItemClickListener(listener);
-
-        popup.show();//Popup Menu 보이기
+        popup.show();
     }
 
     PopupMenu.OnMenuItemClickListener listener= new PopupMenu.OnMenuItemClickListener() {
@@ -115,7 +107,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void dataInitialize() {
         pm = new ProfileManager(this);
-        profile = pm.getProfile(PROFILE_NUMBER);
+        pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
+            @Override
+            public void onCompleteGetProfile(Profile profile) {
+
+            }
+        });
+        pm.getProfile("uid");
 
         /* follow check */
 

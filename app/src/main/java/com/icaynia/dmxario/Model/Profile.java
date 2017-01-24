@@ -5,10 +5,8 @@ package com.icaynia.dmxario.Model;
  */
 
 public class Profile {
-    private int id;
-    private int id_facebook;
-
-    private String name;
+    private int uid;
+    public String name;
     private String email;
 
     public Profile() {
@@ -17,12 +15,12 @@ public class Profile {
     }
 
     public int getId() {
-        return id;
+        return uid;
 
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.uid = id;
     }
 
 

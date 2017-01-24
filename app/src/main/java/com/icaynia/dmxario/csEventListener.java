@@ -6,4 +6,5 @@ package com.icaynia.dmxario;
 public interface csEventListener {
     void onMyEvent(int i);
     void onMyLongEvent(int i);
+
 }

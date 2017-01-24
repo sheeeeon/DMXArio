@@ -17,20 +17,19 @@ import com.icaynia.dmxario.Model.Profile;
  */
 
 public class ProfileManager {
-    private Context context;
-
+    private Database database;
 
     public ProfileManager (Context context) {
-        this.context = context;
-
-    }
-
-    public Profile getProfile(int id) {
-        // 인터넷 연결 후 계정 정보 가져오기.
-        Profile profile = new Profile();
-        return profile;
+        database = new Database();
     }
 
 
+    public void setLoadCompleteListener(Database.LoadCompleteListener listener) {
+        database.listener = listener;
+    }
+
+    public void getProfile(String uid) {
+        database.getProfile(uid).LoadStart();
+    }
 
 }
