@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
+import com.icaynia.dmxario.Data.FollowManager;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
@@ -90,7 +91,8 @@ public class ProfileActivity extends AppCompatActivity {
         nameView = (TextView) findViewById(R.id.name);
         emailView = (TextView) findViewById(R.id.email);
         bioView = (TextView) findViewById(R.id.bio);
-    }
+
+        }
 
     private void onMenu(View v) {
         PopupMenu popup= new PopupMenu(this, v);
@@ -119,6 +121,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void dataInitialize() {
         accountManager = new AccountManager(this);
+
+        FollowManager followManager = new FollowManager();
+        followManager.addFollowing(accountManager.mAuth.getCurrentUser().getUid(), "uid-12ijkefbwjhfb11");
+
         pm = new ProfileManager(this);
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override

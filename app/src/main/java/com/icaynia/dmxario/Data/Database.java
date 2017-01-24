@@ -11,6 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import java.util.Map;
 public class Database {
     private FirebaseDatabase _DATABASE;
     public LoadCompleteListener listener;
+    public LoadFollowerCompleteListener loadFollowerListener;
 
     public Database() {
         _DATABASE = FirebaseDatabase.getInstance();
@@ -84,8 +86,33 @@ public class Database {
 
     }
 
+    public FOLLOW getFollow(String uid) {
+        return new FOLLOW(uid);
+    }
+
+    public class FOLLOW{
+        private String uid;
+        private DatabaseReference userRef;
+        public FOLLOW(String uid) {
+            this.uid = uid;
+            userRef = _DATABASE.getReference("user").child(uid);
+        }
+
+        public void setFollower(String anotherUid) {
+            userRef.child("follower").child(anotherUid).setValue("");
+        }
+
+        public void setFollowing(String anotherUid) {
+            userRef.child("following").child(anotherUid).setValue("");
+        }
+    }
+
     public interface LoadCompleteListener {
         void onCompleteGetProfile(Profile profile);
         void onCompleteGetProject(Project project);
+    }
+
+    public interface LoadFollowerCompleteListener {
+        void onComplete(ArrayList<String> FollowerUID);
     }
 }

@@ -39,22 +39,6 @@ public class AccountManager {
         FirebaseAuth.getInstance().signOut();
     }
 
-    public void setUserName(final String name) {
-        UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(name)
-                .build();
-
-        AccountManager accountManager = new AccountManager(context);
-        accountManager.user.updateProfile(profileChangeRequest)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("userprofile", "updated to "+ name);
-                        }
-                    }
-                });
-    }
-
     private void firebaseInit() {
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
