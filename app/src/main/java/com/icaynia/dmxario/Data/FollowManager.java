@@ -41,6 +41,10 @@ public class FollowManager {
         return 50;
     }
 
+    public void loadFollowData(String myUid) {
+        database.getFollow(myUid).LoadStart();
+    }
+
 //    내가 팔로우하는 사람 설정
     public void addFollowing(String myUid, String anotherUid) {
         if (myUid != anotherUid) { // 자기 자신은 팔로우할 수 없음

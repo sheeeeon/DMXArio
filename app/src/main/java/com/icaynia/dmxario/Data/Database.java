@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.icaynia.dmxario.Model.Follow;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 
@@ -96,6 +97,16 @@ public class Database {
         public FOLLOW(String uid) {
             this.uid = uid;
             userRef = _DATABASE.getReference("user").child(uid);
+
+            Follow followData = new Follow();
+            followData.follower.add("uid!!-follower1");
+            followData.follower.add("uid!!-follower2");
+            setFollow(followData);
+
+        }
+
+        public void setFollow(Follow followData) {
+            userRef.child("follow").setValue(followData);
         }
 
         public void setFollower(String anotherUid) {
@@ -114,8 +125,19 @@ public class Database {
             userRef.child("following").child(anotherUid).removeValue();
         }
 
-        public void LoadFollow() {
-            loadFollowListener.onComplete(null); // require to fix.
+        public void LoadStart() { // require to fix.userRef.child("profile").addListenerForSingleValueEvent(
+            userRef.child("follower").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Follow followData = dataSnapshot.getValue(Follow.class);
+                    loadFollowListener.onFollowComplete(followData);
+                    Log.e("tag", "ㅅㅁㅎ");
+                    }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    Log.w("TAG", "getUser:onCancelled", databaseError.toException());
+                }
+            });
         }
 
 
@@ -127,6 +149,6 @@ public class Database {
     }
 
     public interface LoadFollowCompleteListener {
-        void onComplete(ArrayList<String> followerList);
+        void onFollowComplete(Follow followData);
     }
 }

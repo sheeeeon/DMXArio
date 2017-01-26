@@ -16,12 +16,15 @@ import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.FollowManager;
 import com.icaynia.dmxario.Data.ProfileManager;
+import com.icaynia.dmxario.Model.Follow;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.BlueButton;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Created by icaynia on 2017. 1. 3..
@@ -46,11 +49,15 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView emailView;
     private TextView bioView;
 
+    private TextView followerView;
+    private TextView followingView;
+
+    public Follow FollowData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
 
         viewInitialize();
         dataInitialize();
@@ -124,14 +131,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void dataInitialize() {
         accountManager = new AccountManager(this);
         String myUid = accountManager.mAuth.getCurrentUser().getUid();
-        FollowManager followManager = new FollowManager();
-        followManager.addFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
-        followManager.setLoadFollowCompleteListener(new Database.LoadFollowCompleteListener() {
-            @Override
-            public void onComplete(ArrayList<String> followerList) {
 
-            }
-        });
 
         pm = new ProfileManager(this);
         pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
@@ -153,9 +153,27 @@ public class ProfileActivity extends AppCompatActivity {
 
         pm.getProfile(accountManager.mAuth.getCurrentUser().getUid());
 
-        /* follow check */
+        /* Follow check */
 
-        if (getFollowState()) {
+        FollowManager followManager = new FollowManager();
+        followManager.addFollowing("3O9i7fJsbtUjPFpb8hbIOCD6DWi2", myUid );
+        followManager.setLoadFollowCompleteListener(new Database.LoadFollowCompleteListener() {
+            @Override
+            public void onFollowComplete(Follow followData) {
+                FollowData = followData;
+
+                attachFollowData(followData.follower.size(), followData.following.size(), getFollowState(followData));
+            }
+        });
+        followManager.loadFollowData(myUid);
+
+    }
+
+    private void attachFollowData(int followerSize, int followingSize, boolean isFollowing) {
+        followerView.setText(followerSize+"");
+        followingView.setText(followingSize+"");
+
+        if (isFollowing) {
             btnFollow.setMode(BlueButton.Theme.FOLLOWED);
             btnFollow.setText("팔로우 중");
         } else {
@@ -164,7 +182,11 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    private boolean getFollowState() {
+    private boolean getFollowState(Follow followData) {
+        // user의 follower list에 자신의 uid가 있다면 팔로잉하는 상태.
+
+        for (int i = 0; i < followData.follower.size(); i++) {
+        }
         return true; // followed
     }
 
