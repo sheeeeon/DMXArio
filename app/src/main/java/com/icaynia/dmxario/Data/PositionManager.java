@@ -2,13 +2,8 @@ package com.icaynia.dmxario.Data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.Nullable;
 
 import com.icaynia.dmxario.Model.Position;
-import com.icaynia.dmxario.ObjectFileManager;
-
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by icaynia on 2016. 12. 16..

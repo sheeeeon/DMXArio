@@ -2,7 +2,6 @@ package com.icaynia.dmxario.Activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,18 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.icaynia.dmxario.ColorPicker01;
 import com.icaynia.dmxario.Data.ViewID;
-import com.icaynia.dmxario.Model.Position;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.Scene;
-import com.icaynia.dmxario.ScenePackage;
-import com.icaynia.dmxario.SlutPicker;
 import com.icaynia.dmxario.View.PositionButton;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by icaynia on 2016. 12. 14..

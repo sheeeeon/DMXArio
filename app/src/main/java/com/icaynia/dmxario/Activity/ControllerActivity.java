@@ -16,11 +16,7 @@ import com.icaynia.dmxario.Data.PositionManager;
 import com.icaynia.dmxario.Data.ViewID;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.Model.Position;
-import com.icaynia.dmxario.ObjectFileManager;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.Scene;
-import com.icaynia.dmxario.ScenePackage;
-import com.icaynia.dmxario.VerticalSeekBar;
 import com.icaynia.dmxario.View.ControllerDisplayView;
 import com.icaynia.dmxario.View.PositionButton;
 
@@ -596,7 +592,7 @@ public class ControllerActivity extends AppCompatActivity {
 
     public void saveScene(String ScenePackageName, Scene scn, int slut)
     {
-        ObjectFileManager mObjFileMgr = new ObjectFileManager(this);
+        MainFragment.ObjectFileManager mObjFileMgr = new MainFragment.ObjectFileManager(this);
         ScenePackage scnPack = new ScenePackage(this);      //new
         if (mObjFileMgr.isAvailable("Scene/"+ScenePackageName)) {
             Log.e("ControllerFragment", ScenePackageName +" is available!");

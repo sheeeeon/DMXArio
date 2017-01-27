@@ -42,33 +42,8 @@
 
         <!-- test -->
 
-        <activity android:name=".MainActivity_no"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity android:name=".ControllerActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".ScenePlayActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".SettingActivity"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name=".BluetoothSettingActivity"
-            android:screenOrientation="landscape">
+                  android:screenOrientation="landscape">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
