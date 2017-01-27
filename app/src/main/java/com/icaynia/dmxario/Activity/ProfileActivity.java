@@ -101,6 +101,11 @@ public class ProfileActivity extends AppCompatActivity {
         emailView = (TextView) findViewById(R.id.email);
         bioView = (TextView) findViewById(R.id.bio);
 
+        followerView = (TextView) findViewById(R.id.follower);
+        followingView = (TextView) findViewById(R.id.following);
+
+
+
         }
 
     private void onMenu(View v) {
@@ -156,15 +161,17 @@ public class ProfileActivity extends AppCompatActivity {
         /* Follow check */
 
         FollowManager followManager = new FollowManager();
-        followManager.addFollowing("3O9i7fJsbtUjPFpb8hbIOCD6DWi2", myUid );
+        followManager.addFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
         followManager.setLoadFollowCompleteListener(new Database.LoadFollowCompleteListener() {
             @Override
             public void onFollowComplete(Follow followData) {
                 FollowData = followData;
-
-                attachFollowData(followData.follower.size(), followData.following.size(), getFollowState(followData));
+                if (FollowData != null) {
+                    attachFollowData(followData.follower.size(), followData.following.size(), getFollowState(followData));
+                }
             }
         });
+
         followManager.loadFollowData(myUid);
 
     }

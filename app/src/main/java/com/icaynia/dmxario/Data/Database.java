@@ -57,34 +57,10 @@ public class Database {
                     });
         }
 
-        public USER setProfileData(String name, String value) {
-            userRef.child("profile").child(name).setValue(value);
-            return this;
-        }
-
         public USER setProfileData(Profile profile) {
             userRef.child("profile").setValue(profile);
             return this;
         }
-
-        public USER addProjectData(Project project) {
-            String key = userRef.child("project").push().getKey();
-            project.uid = key;
-            userRef.child("project").child(key).setValue(project);
-            return this;
-        }
-
-        public USER updateProjectData(Project project) {
-            String key = project.uid;
-            project.uid = key;
-            userRef.child("project").child(key).setValue(project);
-            return this;
-        }
-
-        public void removeProjectData(String key) {
-            userRef.child("project").child(key).setValue(null);
-        }
-
     }
 
     public FOLLOW getFollow(String uid) {
@@ -97,12 +73,6 @@ public class Database {
         public FOLLOW(String uid) {
             this.uid = uid;
             userRef = _DATABASE.getReference("user").child(uid);
-
-            Follow followData = new Follow();
-            followData.follower.add("uid!!-follower1");
-            followData.follower.add("uid!!-follower2");
-            setFollow(followData);
-
         }
 
         public void setFollow(Follow followData) {
