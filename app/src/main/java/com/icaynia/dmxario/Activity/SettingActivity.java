@@ -1,18 +1,12 @@
 package com.icaynia.dmxario.Activity;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.LinearLayout;
 
-import com.icaynia.dmxario.BluetoothSettingActivity;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.Splash;
 
 /**
  * Created by icaynia on 2016. 12. 14..

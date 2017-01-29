@@ -1,4 +1,4 @@
-package com.icaynia.dmxario;
+package com.icaynia.dmxario.Activity;
 
 import android.accounts.Account;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Activity.LoginActivity;
 import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.Data.AccountManager;
+import com.icaynia.dmxario.Global;
+import com.icaynia.dmxario.R;
 
 /**
  * Created by icaynia on 2016. 12. 14..
