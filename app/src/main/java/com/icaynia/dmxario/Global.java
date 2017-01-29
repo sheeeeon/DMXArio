@@ -17,11 +17,7 @@ import static com.google.android.gms.internal.zzs.TAG;
  * Created by icaynia on 2016. 11. 5..
  */
 public class Global extends Application {
-    public BluetoothSettingActivity.SocketThread mSocketThread;
-    public Bluetooth bluetooth;
-
     public AccountManager accountManager;
-    public ProfileManager profileManager;
 
     @Override
     public void onCreate() {

@@ -35,16 +35,9 @@
 
         <!-- test -->
 
-        <activity android:name=".BluetoothSettingActivity"
-                  android:screenOrientation="landscape">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
         <activity android:name=".Activity.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme">
+                  android:label="@string/title_activity_main"
+                  android:theme="@style/AppTheme">
 
 
 
