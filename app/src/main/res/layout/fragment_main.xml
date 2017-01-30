@@ -93,7 +93,6 @@ android:weightSum="1">
                 android:layout_height="match_parent"
                 android:text="Controller"
                 android:textSize="15sp"
-                android:textColor="@color/colorMenuTextDisabled"
                 android:paddingTop="10dp"
                 android:layout_weight="1" />
 
@@ -103,7 +102,6 @@ android:weightSum="1">
                 android:layout_height="match_parent"
                 android:text="Scene"
                 android:textSize="15sp"
-                android:textColor="@color/colorMenuTextDisabled"
                 android:paddingTop="10dp"
                 android:layout_weight="1" />
 
@@ -113,7 +111,6 @@ android:weightSum="1">
                 android:layout_height="match_parent"
                 android:text="Settings"
                 android:textSize="15sp"
-                android:textColor="@color/colorMenuTextDisabled"
                 android:paddingTop="10dp"
                 android:layout_weight="1" />
         </LinearLayout>
