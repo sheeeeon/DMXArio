@@ -36,7 +36,6 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
         viewInitialize();
 
         // image fadein anim
-
         icon = (ImageView) findViewById(R.id.splash_icon);
         ani = AnimationUtils.loadAnimation(this, R.anim.splash_icon_zoom_out);
         icon.startAnimation(ani);
