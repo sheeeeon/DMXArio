@@ -16,8 +16,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:minHeight="300dp"
+            android:layout_height="200dp"
+            android:minHeight="200dp"
             android:id="@+id/card_box">
 
             <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#888"
-                android:padding="16dp"
+                android:padding="12dp"
                 android:orientation="vertical"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:text="Title goes here"
                         android:textColor="#FFF"
-                        android:textSize="24dp"/>
+                        android:textSize="18dp"/>
 
                 </LinearLayout>
 
@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:text="Subtitle here"
                         android:textColor="#FFF"
-                        android:textSize="14dp"/>
+                        android:textSize="12dp"/>
 
                 </LinearLayout>
 
@@ -86,7 +86,7 @@
                         android:layout_height="wrap_content"
                         android:text="Action 1"
                         android:textColor="#FFF"
-                        android:textSize="16dp"
+                        android:textSize="12dp"
                         android:paddingRight="12dp"
                         android:textAllCaps="true"
                         android:textStyle="bold"/>
@@ -97,7 +97,7 @@
                         android:layout_height="wrap_content"
                         android:text="Action 2"
                         android:textColor="#FFF"
-                        android:textSize="16dp"
+                        android:textSize="12dp"
                         android:paddingLeft="12dp"
                         android:paddingRight="12dp"
                         android:textAllCaps="true"

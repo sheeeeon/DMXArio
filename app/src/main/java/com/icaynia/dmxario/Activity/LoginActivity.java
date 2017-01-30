@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (email.getText().toString().isEmpty()) {
-                    onToast("이메일을 입력하세요");
+                    onToast("이메일 입력하세요");
                 } else if (pw.getText().toString().isEmpty()) {
                     onToast("비밀번호를 입력하세요");
                 } else {

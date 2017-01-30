@@ -1,6 +1,5 @@
 package com.icaynia.dmxario.Activity;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -14,9 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.icaynia.dmxario.Activity.LoginActivity;
-import com.icaynia.dmxario.Activity.MainActivity;
-import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 
@@ -63,6 +59,7 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
     public void onMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.anim_slide_in_bottom, R.anim.anim_slide_out_top);
         finish();
     }
 
