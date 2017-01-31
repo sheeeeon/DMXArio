@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
     public void switchFragment(Fragment fragment) {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
