@@ -66,6 +66,8 @@ public class ConnectFragment extends Fragment
     {
         messageText = (TextView) v.findViewById(R.id.messageText);
         messageButton = (TextView) v.findViewById(R.id.messageButton);
+        pairedListView = (ListView) v.findViewById(R.id.pairedList);
+        scanListView = (ListView) v.findViewById(R.id.scanList);
     }
 
     private void setMessage(String message, String button, View.OnClickListener onClickListener)
