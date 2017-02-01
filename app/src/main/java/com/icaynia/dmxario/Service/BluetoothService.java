@@ -37,6 +37,7 @@ public class BluetoothService
     private ConnectedThread mConnectedThread;
     private int mState;
 
+    private static final int ACTION_ENABLE_BT = 101;
     private static final int STATE_NONE = 0;
     private static final int STATE_LISTEN = 1;
     private static final int STATE_CONNECTING = 2;
@@ -44,6 +45,7 @@ public class BluetoothService
 
     public BluetoothService(Context context)
     {
+        this.context = context;
         btAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
@@ -84,11 +86,11 @@ public class BluetoothService
         else
         {
             Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            context.startActivity(intent);
+            ((MainActivity)context).startActivityForResult(intent, ACTION_ENABLE_BT);
         }
     }
 
-    public Set<BluetoothDevice> getDeviceList()
+    public Set<BluetoothDevice> getPairedDeviceList()
     {
         Set<BluetoothDevice> devices = btAdapter.getBondedDevices();
 
@@ -161,11 +163,13 @@ public class BluetoothService
         mConnectedThread.start();
         setState(STATE_CONNECTED);
     }
+
     private class ConnectedThread extends Thread
     {
         private final BluetoothSocket mmSocket;
         private final InputStream mmInStream;
         private final OutputStream mmOutStream;
+
         public ConnectedThread(BluetoothSocket socket)
         {
             Log.d(TAG, "create ConnectedThread");
