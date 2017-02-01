@@ -3,6 +3,7 @@ package com.icaynia.dmxario.Fragment;
 import android.app.Fragment;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,11 @@ import android.widget.TextView;
 import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Service.BluetoothService;
+import com.icaynia.dmxario.View.BluetoothListAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -32,14 +36,13 @@ public class ConnectFragment extends Fragment
     private TextView messageButton;
 
     private ListView pairedListView;
-    private ArrayList<String> pairedList = new ArrayList<String>();
     private ListView scanListView;
-    private ArrayList<String> scanList = new ArrayList<String>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         v = inflater.inflate(R.layout.fragment_connect, container, false);
+
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("연결");
         initializeView();
 
@@ -80,8 +83,8 @@ public class ConnectFragment extends Fragment
         messageButton = (TextView) v.findViewById(R.id.messageButton);
         pairedListView = (ListView) v.findViewById(R.id.pairedList);
         scanListView = (ListView) v.findViewById(R.id.scanList);
-        ArrayAdapter<String> pairedListAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, pairedList);
-        ArrayAdapter<String> scanListAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, scanList);
+        BluetoothListAdapter pairedListAdapter = new BluetoothListAdapter();
+        BluetoothListAdapter scanListAdapter = new BluetoothListAdapter();
 
         pairedListView.setAdapter(pairedListAdapter);
         scanListView.setAdapter(scanListAdapter);
@@ -128,7 +131,7 @@ public class ConnectFragment extends Fragment
 
         for (BluetoothDevice device : devices )
         {
-            addDeviceToPairedList(device.getName());
+            addDeviceToPairedList(device.getName(), device.getAddress());
         }
     }
 
@@ -137,20 +140,18 @@ public class ConnectFragment extends Fragment
         bluetoothService.scanDevice();
     }
 
-    private void addDeviceToPairedList(String name)
+    private void addDeviceToPairedList(String name, String address)
     {
-        pairedList.add(name);
-
-        ArrayAdapter adapter = (ArrayAdapter) pairedListView.getAdapter();
+        BluetoothListAdapter adapter = (BluetoothListAdapter) pairedListView.getAdapter();
+        adapter.addItem(name, address);
         adapter.notifyDataSetChanged();
         setListViewHeightBasedOnChildren(pairedListView);
     }
 
-    private void addDeviceToScanList(String name)
+    private void addDeviceToScanList(String name, String address)
     {
-        scanList.add(name);
-
-        ArrayAdapter adapter = (ArrayAdapter) scanListView.getAdapter();
+        BluetoothListAdapter adapter = (BluetoothListAdapter) scanListView.getAdapter();
+        adapter.addItem(name, address);
         adapter.notifyDataSetChanged();
 
         setListViewHeightBasedOnChildren(scanListView);
@@ -158,7 +159,7 @@ public class ConnectFragment extends Fragment
 
     public static void setListViewHeightBasedOnChildren(ListView listView)
     {
-        ArrayAdapter listAdapter = (ArrayAdapter) listView.getAdapter();
+        BluetoothListAdapter listAdapter = (BluetoothListAdapter) listView.getAdapter();
         if (listAdapter == null)
         {
             return;
@@ -171,7 +172,7 @@ public class ConnectFragment extends Fragment
         {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-            totalHeight += 100;
+            totalHeight += 140;
         }
         Log.e("Bluetooth", listView.getCount()+"");
 
