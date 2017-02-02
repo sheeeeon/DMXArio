@@ -45,40 +45,8 @@
         </LinearLayout>
     </ScrollView>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#0eaaf4"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:id="@+id/messageText"
-            android:text=""
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textColor="#fff"
-            android:paddingLeft="20dp"/>
-
-        <TextView
-            android:id="@+id/messageButton"
-            android:text="확인"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_gravity="right"
-            android:textColor="#fff"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-
-    </LinearLayout>
+    <com.icaynia.dmxario.View.SnackBar
+        android:layout_height="70dp"
+        android:layout_width="match_parent" />
 
 </RelativeLayout>
