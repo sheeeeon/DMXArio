@@ -17,6 +17,7 @@ import com.icaynia.dmxario.Activity.MainActivity;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Service.BluetoothService;
 import com.icaynia.dmxario.View.BluetoothListAdapter;
+import com.icaynia.dmxario.View.SnackBar;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,6 +38,7 @@ public class ConnectFragment extends Fragment
 
     private ListView pairedListView;
     private ListView scanListView;
+    private SnackBar snackBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -49,19 +51,19 @@ public class ConnectFragment extends Fragment
         bluetoothService = new BluetoothService(getActivity());
         if (!bluetoothService.getDeviceState())
         {
-            setMessage("블루투스 미지원 단말입니다.", "", null);
+            snackBar.setMessage("블루투스 미지원 단말입니다.", "", null);
         }
         else
         {
             if (!bluetoothService.getBluetoothState())
             {
-                setMessage("블루투스가 꺼져 있습니다. 연결할까요?", "연결", new View.OnClickListener()
+                snackBar.setMessage("블루투스가 꺼져 있습니다. 연결할까요?", "연결", new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
                     {
                         bluetoothService.enableBluetooth();
-                        setMessage("블루투스가 연결되었습니다.", "", null);
+                        snackBar.setMessage("블루투스가 연결되었습니다.", "", null);
                         getBluetoothPairedList();
                         bluetoothScanStart();
                     }
@@ -79,8 +81,8 @@ public class ConnectFragment extends Fragment
 
     private void initializeView()
     {
-        messageText = (TextView) v.findViewById(R.id.messageText);
-        messageButton = (TextView) v.findViewById(R.id.messageButton);
+        snackBar = (SnackBar) v.findViewById(R.id.snackbar);
+
         pairedListView = (ListView) v.findViewById(R.id.pairedList);
         scanListView = (ListView) v.findViewById(R.id.scanList);
         BluetoothListAdapter pairedListAdapter = new BluetoothListAdapter();
@@ -88,7 +90,6 @@ public class ConnectFragment extends Fragment
 
         pairedListView.setAdapter(pairedListAdapter);
         scanListView.setAdapter(scanListAdapter);
-
 
         pairedListView.setOnItemClickListener(pairedListOnClickListener);
         scanListView.setOnItemClickListener(scanListOnClickListener);
@@ -109,17 +110,6 @@ public class ConnectFragment extends Fragment
 
         }
     };
-
-    private void setMessage(String message, String button, View.OnClickListener onClickListener)
-    {
-        messageText.setText(message);
-        messageButton.setText(button);
-        if (onClickListener != null)
-        {
-            messageButton.setOnClickListener(onClickListener);
-        }
-    }
-
     private void hideMessageBox()
     {
 
@@ -172,7 +162,7 @@ public class ConnectFragment extends Fragment
         {
             View listItem = listAdapter.getView(i, null, listView);
             listItem.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
-            totalHeight += 140;
+            totalHeight += 120;
         }
         Log.e("Bluetooth", listView.getCount()+"");
 

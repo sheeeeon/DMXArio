@@ -51,6 +51,7 @@ public class SnackBar extends LinearLayout
     {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mainView = inflater.inflate(R.layout.view_snackbar, this, false);
+        addView(mainView);
         messageBox = (LinearLayout) mainView.findViewById(R.id.messageBox);
         message = (TextView) mainView.findViewById(R.id.messageText);
         button = (TextView) mainView.findViewById(R.id.messageButton);
@@ -61,14 +62,18 @@ public class SnackBar extends LinearLayout
         outAnim = AnimationUtils.loadAnimation(getContext(), R.anim.anim_snackbar_out);
     }
 
-    private void setMessage(String message, String button, View.OnClickListener listener)
+    public void setMessage(String message, String button, View.OnClickListener listener)
     {
         this.message.setText(message);
         this.button.setText(button);
         this.button.setOnClickListener(listener);
 
         if (showState == false) {
-            showBar(3000);
+            if (button.isEmpty()) {
+                showBar(3000);
+            } else {
+                showBar();
+            }
         }
     }
 

@@ -28,7 +28,7 @@ public class ProjectFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_project, container, false);
         LinearLayout parent = (LinearLayout)v.findViewById(R.id.parentBox);
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("프로젝트");
-        /* cardview example */
+        /* cardview example
         for (int count = 0; count <= 4; count++) {
             ProjectCardView projectCardView = new ProjectCardView(getActivity());
             projectCardView.setSubtitleText("this is subtitle.");
@@ -36,7 +36,7 @@ public class ProjectFragment extends Fragment {
             projectCardView.setPositiveButtonText("Action 2");
             projectCardView.setTitleText("Title "+count+" change");
             parent.addView(projectCardView);
-        }
+        }*/
         return v;
     }
 }

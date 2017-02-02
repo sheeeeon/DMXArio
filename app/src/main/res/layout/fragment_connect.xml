@@ -46,7 +46,11 @@
     </ScrollView>
 
     <com.icaynia.dmxario.View.SnackBar
-        android:layout_height="70dp"
-        android:layout_width="match_parent" />
+        android:id="@+id/snackbar"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
