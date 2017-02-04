@@ -42,9 +42,6 @@
         <activity android:name=".Activity.ProfileActivity"
                   android:theme="@style/AppTheme"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".Activity.BluetoothConnectActivity"
-                  android:theme="@style/AppTheme"
-                  android:screenOrientation="portrait"/>
         <activity android:name=".Activity.LoginActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                   android:screenOrientation="portrait"/>

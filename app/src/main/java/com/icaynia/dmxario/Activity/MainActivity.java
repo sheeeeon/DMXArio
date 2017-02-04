@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         profileManager.setLoadCompleteListener(new Database.LoadCompleteListener() {
             @Override
             public void onCompleteGetProfile(Profile profile) {
-                //Log.e("user", profile.name);
                 setProfileInfo(profile.name, accountManager.user.getEmail());
             }
 

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.icaynia.dmxario.Model.Bluetooth;
@@ -42,7 +40,7 @@ public class BluetoothListAdapter extends BaseAdapter
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.view_bluetoothpicker, parent, false);
+            convertView = inflater.inflate(R.layout.item_bluetooth_device, parent, false);
         }
 
         TextView titleTextView = (TextView) convertView.findViewById(R.id.name);
