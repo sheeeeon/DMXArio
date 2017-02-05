@@ -153,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             break;
                         case R.id.nav_manage: // 설정
                             switchFragment(new SettingFragment());
-                            Intent intent = new Intent(getBaseContext(), SettingActivity.class);
-                            startActivity(intent);
+                            //Intent intent = new Intent(getBaseContext(), SettingActivity.class);
+                            //startActivity(intent);
                             break;
                         case R.id.nav_view:
                             onProfileActivity();
