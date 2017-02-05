@@ -23,10 +23,6 @@
 
         </activity>
 
-        <activity android:name=".Activity.SettingActivity"
-                  android:screenOrientation="portrait">
-        </activity>
-
         <!-- test -->
 
         <activity android:name=".Activity.MainActivity"
