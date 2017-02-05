@@ -57,7 +57,7 @@ public class ConnectFragment extends Fragment
         {
             if (!bluetoothService.getBluetoothState())
             {
-                snackBar.setMessage("블루투스가 꺼져 있습니다. 연결할까요?", "연결", new View.OnClickListener()
+                snackBar.setMessage("블루투스가 꺼져 있습니다.", "켜기", new View.OnClickListener()
                 {
                     @Override
                     public void onClick(View v)
@@ -110,6 +110,7 @@ public class ConnectFragment extends Fragment
 
         }
     };
+
     private void hideMessageBox()
     {
 
