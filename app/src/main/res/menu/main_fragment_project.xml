@@ -3,9 +3,11 @@
       xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/add_project"
+        android:id="@+id/action_add_project"
         android:orderInCategory="100"
         android:icon="@drawable/ic_add"
         android:title="프로젝트"
-        app:showAsAction="always"/>
+        app:showAsAction="always">
+    </item>
+
 </menu>

@@ -1,12 +1,17 @@
 package com.icaynia.dmxario.Fragment;
 
 import android.app.Fragment;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 
@@ -32,15 +37,19 @@ public class ProjectFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("프로젝트");
 
         setHasOptionsMenu(true);
-        /* cardview example
-        for (int count = 0; count <= 4; count++) {
+
+
+        for (int count = 0; count <= 4; count++)
+        {
             ProjectCardView projectCardView = new ProjectCardView(getActivity());
             projectCardView.setSubtitleText("this is subtitle.");
             projectCardView.setNegativeButtonText("Action 1");
             projectCardView.setPositiveButtonText("Action 2");
-            projectCardView.setTitleText("Title "+count+" change");
+            projectCardView.setTitleText("Title " + count + " change");
             parent.addView(projectCardView);
-        }*/
+        }
+
+
         return v;
     }
 
@@ -48,4 +57,17 @@ public class ProjectFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.main_fragment_project, menu);  // Use filter.xml from step 1
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_add_project) {
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
