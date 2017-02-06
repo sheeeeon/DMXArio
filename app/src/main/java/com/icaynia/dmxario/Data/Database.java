@@ -23,6 +23,8 @@ import java.util.Map;
 
 public class Database {
     private FirebaseDatabase _DATABASE;
+    public LoadCompleteListener listener;
+
     public Database() {
         _DATABASE = FirebaseDatabase.getInstance();
     }
@@ -30,6 +32,7 @@ public class Database {
     public USER getProfile(String uid) {
         return new USER(uid);
     }
+
     public class USER {
         public String uid;
         public DatabaseReference userRef;
@@ -38,10 +41,29 @@ public class Database {
             userRef = _DATABASE.getReference("user").child(uid);
         }
 
+        public void LoadStart() {
+            userRef.child("profile").addListenerForSingleValueEvent(
+                    new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Profile user = dataSnapshot.getValue(Profile.class);
+                            listener.onCompleteGetProfile(user);
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w("TAG", "getUser:onCancelled", databaseError.toException());
+                        }
+                    });
+        }
+
         public USER setProfileData(Profile profile) {
             userRef.child("profile").setValue(profile);
             return this;
         }
     }
 
+    public interface LoadCompleteListener {
+        void onCompleteGetProfile(Profile profile);
+        void onCompleteGetProject(Project project); // require to fix
+    }
 }

@@ -20,7 +20,8 @@ public class Friend
 
     }
 
-    public boolean isFriend() {
-
+    public boolean isFriend()
+    {
+        return true;
     }
 }
