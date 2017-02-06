@@ -11,6 +11,8 @@ import com.icaynia.dmxario.Model.Friend;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 
+import java.util.HashMap;
+
 
 /**
  * Created by icaynia on 24/01/2017.
@@ -38,8 +40,26 @@ public class Database {
             friendRef = _DATABASE.getReference("user").child(targetUid).child("friend");
         }
 
-        public void set(Friend friend) {
-            friendRef.setValue(friend);
+        public void add(String userUid, String state) {
+            friendRef.child("list").child(userUid).setValue(state);
+        }
+
+        public void getList() {
+            friendRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot)
+                {
+                    Friend friendList = dataSnapshot.getValue(Friend.class);
+                    listener.onCompleteGetFriendList(friendList); /** <l- error */
+                    Log.e("receive", friendList.list.toString());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError)
+                {
+
+                }
+            });
         }
     }
 
@@ -74,6 +94,7 @@ public class Database {
 
     public interface LoadCompleteListener {
         void onCompleteGetProfile(Profile profile);
-        void onCompleteGetProject(Project project); // require to fix
+        void onCompleteGetFriendList(Friend friend);
+        void onCompleteGetProject(Project project); // require to fi
     }
 }

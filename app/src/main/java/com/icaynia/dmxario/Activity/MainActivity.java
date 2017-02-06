@@ -28,6 +28,7 @@ import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Fragment.*;
 import com.icaynia.dmxario.Global;
+import com.icaynia.dmxario.Model.Friend;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
@@ -85,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onCompleteGetProfile(Profile profile) {
                 setProfileInfo(profile.name, accountManager.user.getEmail());
+            }
+
+            @Override
+            public void onCompleteGetFriendList(Friend friend) {
+
             }
 
             @Override

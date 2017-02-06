@@ -15,6 +15,7 @@ import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
 import com.icaynia.dmxario.Data.FriendManager;
 import com.icaynia.dmxario.Data.ProfileManager;
+import com.icaynia.dmxario.Model.Friend;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
@@ -132,6 +133,11 @@ public class ProfileActivity extends AppCompatActivity {
                 nameView.setText(profile.name);
                 emailView.setText(accountManager.mAuth.getCurrentUser().getEmail());
                 bioView.setText(profile.bio);
+            }
+
+            @Override
+            public void onCompleteGetFriendList(Friend friend) {
+
             }
 
             @Override

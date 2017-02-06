@@ -27,7 +27,8 @@ public class Global extends Application {
         accountManager = new AccountManager(this);
 
         FriendManager fm = new FriendManager();
-        fm.sendFriendRequest("FriendUIDskdfowseihfoweihf");
+        fm.sendFriendRequest("3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
+        fm.getFriendList("3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
     }
 
     @Override
