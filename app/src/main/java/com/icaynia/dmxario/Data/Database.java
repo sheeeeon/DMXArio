@@ -23,9 +23,6 @@ import java.util.Map;
 
 public class Database {
     private FirebaseDatabase _DATABASE;
-    public LoadCompleteListener listener;
-    public LoadFollowCompleteListener loadFollowListener;
-
     public Database() {
         _DATABASE = FirebaseDatabase.getInstance();
     }
@@ -33,7 +30,6 @@ public class Database {
     public USER getProfile(String uid) {
         return new USER(uid);
     }
-
     public class USER {
         public String uid;
         public DatabaseReference userRef;
@@ -42,83 +38,10 @@ public class Database {
             userRef = _DATABASE.getReference("user").child(uid);
         }
 
-        public void LoadStart() {
-            userRef.child("profile").addListenerForSingleValueEvent(
-                    new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            Profile user = dataSnapshot.getValue(Profile.class);
-                            listener.onCompleteGetProfile(user);
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Log.w("TAG", "getUser:onCancelled", databaseError.toException());
-                        }
-                    });
-        }
-
         public USER setProfileData(Profile profile) {
             userRef.child("profile").setValue(profile);
             return this;
         }
     }
 
-    public FOLLOW getFollow(String uid) {
-        return new FOLLOW(uid);
-    }
-
-    public class FOLLOW{
-        private String uid;
-        private DatabaseReference userRef;
-        public FOLLOW(String uid) {
-            this.uid = uid;
-            userRef = _DATABASE.getReference("user").child(uid);
-        }
-
-        public void setFollow(Follow followData) {
-            userRef.child("follow").setValue(followData);
-        }
-
-        public void setFollower(String anotherUid) {
-            userRef.child("follower").child(anotherUid).setValue("");
-        }
-
-        public void deleteFollower(String anotherUid) {
-            userRef.child("follower").child(anotherUid).removeValue();
-        }
-
-        public void setFollowing(String anotherUid) {
-            userRef.child("following").child(anotherUid).setValue("");
-        }
-
-        public void deleteFollowing(String anotherUid) {
-            userRef.child("following").child(anotherUid).removeValue();
-        }
-
-        public void LoadStart() { // require to fix.userRef.child("profile").addListenerForSingleValueEvent(
-            userRef.child("follower").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Follow followData = dataSnapshot.getValue(Follow.class);
-                    loadFollowListener.onFollowComplete(followData);
-                    Log.e("tag", "ㅅㅁㅎ");
-                    }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                    Log.w("TAG", "getUser:onCancelled", databaseError.toException());
-                }
-            });
-        }
-
-
-    }
-
-    public interface LoadCompleteListener {
-        void onCompleteGetProfile(Profile profile);
-        void onCompleteGetProject(Project project); // require to fix
-    }
-
-    public interface LoadFollowCompleteListener {
-        void onFollowComplete(Follow followData);
-    }
 }

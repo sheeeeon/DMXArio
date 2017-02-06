@@ -18,14 +18,11 @@ import static com.google.android.gms.internal.zzs.TAG;
  * Created by icaynia on 2016. 11. 5..
  */
 public class Global extends Application {
-    public Profile loggedInProfile;
-
     public AccountManager accountManager;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         accountManager = new AccountManager(this);
     }
 

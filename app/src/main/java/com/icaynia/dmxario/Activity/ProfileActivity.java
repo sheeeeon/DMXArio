@@ -9,22 +9,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
-import com.icaynia.dmxario.Data.FollowManager;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Follow;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.View.BlueButton;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * Created by icaynia on 2017. 1. 3..
@@ -34,8 +28,6 @@ import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
     private int PROFILE_NUMBER = 0;
-
-    public Profile profile = new Profile();
 
     private ProfileManager pm;
     private AccountManager accountManager;
@@ -60,7 +52,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         viewInitialize();
-        dataInitialize();
+        //dataInitialize();
+
+
     }
 
     @Override
@@ -103,10 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         followerView = (TextView) findViewById(R.id.follower);
         followingView = (TextView) findViewById(R.id.following);
-
-
-
-        }
+    }
 
     private void onMenu(View v) {
         PopupMenu popup= new PopupMenu(this, v);
@@ -155,25 +146,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         AccountManager accountManager = new AccountManager(this);
-
         pm.getProfile(accountManager.mAuth.getCurrentUser().getUid());
-
-        /* Follow check */
-
-        FollowManager followManager = new FollowManager();
-        followManager.addFollowing(myUid, "3O9i7fJsbtUjPFpb8hbIOCD6DWi2");
-        followManager.setLoadFollowCompleteListener(new Database.LoadFollowCompleteListener() {
-            @Override
-            public void onFollowComplete(Follow followData) {
-                FollowData = followData;
-                if (FollowData != null) {
-                    attachFollowData(followData.follower.size(), followData.following.size(), getFollowState(followData));
-                }
-            }
-        });
-
-        followManager.loadFollowData(myUid);
-
     }
 
     private void attachFollowData(int followerSize, int followingSize, boolean isFollowing) {

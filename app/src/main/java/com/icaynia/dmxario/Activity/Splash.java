@@ -54,6 +54,7 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
     public void globalInitialize()
     {
         global = (Global) getApplicationContext();
+
     }
 
     public void onMainActivity() {
