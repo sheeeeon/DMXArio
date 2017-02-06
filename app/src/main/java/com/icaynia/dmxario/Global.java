@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
 import com.icaynia.dmxario.Data.AccountManager;
+import com.icaynia.dmxario.Data.FriendManager;
 import com.icaynia.dmxario.Data.ProfileManager;
 import com.icaynia.dmxario.Model.Profile;
 
@@ -24,6 +25,9 @@ public class Global extends Application {
     public void onCreate() {
         super.onCreate();
         accountManager = new AccountManager(this);
+
+        FriendManager fm = new FriendManager();
+        fm.sendFriendRequest("FriendUIDskdfowseihfoweihf");
     }
 
     @Override

@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.Database;
+import com.icaynia.dmxario.Data.FriendManager;
 import com.icaynia.dmxario.Data.ProfileManager;
-import com.icaynia.dmxario.Model.Follow;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
@@ -44,8 +44,6 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView followerView;
     private TextView followingView;
 
-    public Follow FollowData;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +51,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         viewInitialize();
         //dataInitialize();
-
 
     }
 
@@ -94,9 +91,6 @@ public class ProfileActivity extends AppCompatActivity {
         nameView = (TextView) findViewById(R.id.name);
         emailView = (TextView) findViewById(R.id.email);
         bioView = (TextView) findViewById(R.id.bio);
-
-        followerView = (TextView) findViewById(R.id.follower);
-        followingView = (TextView) findViewById(R.id.following);
     }
 
     private void onMenu(View v) {
@@ -147,31 +141,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
         AccountManager accountManager = new AccountManager(this);
         pm.getProfile(accountManager.mAuth.getCurrentUser().getUid());
-    }
-
-    private void attachFollowData(int followerSize, int followingSize, boolean isFollowing) {
-        followerView.setText(followerSize+"");
-        followingView.setText(followingSize+"");
-
-        if (isFollowing) {
-            btnFollow.setMode(BlueButton.Theme.FOLLOWED);
-            btnFollow.setText("팔로우 중");
-        } else {
-            btnFollow.setMode(BlueButton.Theme.FOLLOW);
-            btnFollow.setText("팔로우");
-        }
-    }
-
-    private boolean getFollowState(Follow followData) {
-        // user의 follower list에 자신의 uid가 있다면 팔로잉하는 상태.
-
-        for (int i = 0; i < followData.follower.size(); i++) {
-        }
-        return true; // followed
-    }
-
-    private void getProfile() {
-        // [Needs] Connect to Profile Manager, and It will get the Profile that required id.
     }
 
 }

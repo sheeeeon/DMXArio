@@ -20,8 +20,16 @@ public class Friend
 
     }
 
-    public boolean isFriend()
+    public void add(String uid, String state) {
+        list.put(uid, state);
+    }
+
+    public boolean isFriend(String uid)
     {
-        return true;
+        String state = list.get(uid);
+        if (state == "friend") {
+            return true;
+        }
+        return false;
     }
 }

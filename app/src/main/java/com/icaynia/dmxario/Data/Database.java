@@ -1,6 +1,5 @@
 package com.icaynia.dmxario.Data;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
@@ -8,13 +7,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.icaynia.dmxario.Model.Follow;
+import com.icaynia.dmxario.Model.Friend;
 import com.icaynia.dmxario.Model.Profile;
 import com.icaynia.dmxario.Model.Project;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 /**
@@ -31,6 +26,21 @@ public class Database {
 
     public USER getProfile(String uid) {
         return new USER(uid);
+    }
+
+    public FriendDatabase getFriendDatabase(String targetUid) {
+        return new FriendDatabase(targetUid);
+    }
+
+    public class FriendDatabase{
+        public DatabaseReference friendRef;
+        public FriendDatabase(String targetUid) {
+            friendRef = _DATABASE.getReference("user").child(targetUid).child("friend");
+        }
+
+        public void set(Friend friend) {
+            friendRef.setValue(friend);
+        }
     }
 
     public class USER {
