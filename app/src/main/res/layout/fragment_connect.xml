@@ -4,50 +4,56 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="#fff">
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="50dp">
-        <LinearLayout
+        android:layout_height="match_parent">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
-            <TextView
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="페어링된 디바이스"
-                android:padding="8dp"
-                android:textStyle="bold" />
-            <ListView
-                android:id="@+id/pairedList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingBottom="50dp">
 
-            </ListView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="페어링된 디바이스"
+                    android:padding="8dp"
+                    android:textStyle="bold" />
+                <ListView
+                    android:id="@+id/pairedList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="검색 중"
-                android:padding="8dp"
-                android:textStyle="bold" />
-            <ListView
-                android:id="@+id/scanList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                </ListView>
 
-            </ListView>
-        </LinearLayout>
-    </ScrollView>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="검색 중"
+                    android:padding="8dp"
+                    android:textStyle="bold" />
+                <ListView
+                    android:id="@+id/scanList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
     <com.icaynia.dmxario.View.SnackBar
         android:id="@+id/snackbar"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

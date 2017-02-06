@@ -80,12 +80,13 @@ public class SnackBar extends LinearLayout
 
     public void showBar()
     {
+        messageBox.setVisibility(View.VISIBLE);
         messageBox.startAnimation(inAnim);
     }
 
     public void showBar(int time)
     {
-        messageBox.startAnimation(inAnim);
+        this.showBar();
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -99,6 +100,14 @@ public class SnackBar extends LinearLayout
     private void hideBar()
     {
         messageBox.startAnimation(outAnim);
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run()
+            {
+                messageBox.setVisibility(View.GONE);
+            }
+        }, 500);
     }
 
 

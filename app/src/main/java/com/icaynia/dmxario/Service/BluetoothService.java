@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.icaynia.dmxario.Activity.MainActivity;

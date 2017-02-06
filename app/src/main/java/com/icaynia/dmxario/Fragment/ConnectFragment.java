@@ -47,7 +47,11 @@ public class ConnectFragment extends Fragment
 
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("연결");
         initializeView();
+        bluetooth();
+        return v;
+    }
 
+    private void bluetooth() {
         bluetoothService = new BluetoothService(getActivity());
         if (!bluetoothService.getDeviceState())
         {
@@ -63,7 +67,7 @@ public class ConnectFragment extends Fragment
                     public void onClick(View v)
                     {
                         bluetoothService.enableBluetooth();
-                        snackBar.setMessage("블루투스가 연결되었습니다.", "", null);
+                        snackBar.setMessage("블루투스가 권한이 요청되었습니다.", "", null);
                         getBluetoothPairedList();
                         bluetoothScanStart();
                     }
@@ -75,8 +79,6 @@ public class ConnectFragment extends Fragment
                 bluetoothScanStart();
             }
         }
-
-        return v;
     }
 
     private void initializeView()
