@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.icaynia.dmxario.Bluetooth.Bluetooth;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Data.ProfileManager;
+import com.icaynia.dmxario.Model.Profile;
 
 import static com.google.android.gms.internal.zzs.TAG;
 
@@ -17,6 +18,8 @@ import static com.google.android.gms.internal.zzs.TAG;
  * Created by icaynia on 2016. 11. 5..
  */
 public class Global extends Application {
+    public Profile loggedInProfile;
+
     public AccountManager accountManager;
 
     @Override

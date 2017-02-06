@@ -6,7 +6,7 @@ package com.icaynia.dmxario.Model;
 
 public class Project {
     public String uid = "";
-    public String Title = "New project";
+    public String Title = "New main_fragment_project";
     public String Subtitle = "Subtitle";
 
     public Project() {
