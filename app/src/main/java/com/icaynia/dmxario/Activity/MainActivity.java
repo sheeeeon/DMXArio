@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AccountManager accountManager;
 
+    private static final int REQUEST_CONNECT_DEVICE = 1;
+    private static final int REQUEST_ENABLE_BT = 2;
+
+    private Fragment tmpFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +125,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        Log.d("MainActivity", "onActivityResult " + resultCode);
+        switch (requestCode)
+        {
+            /** 추가된 부분 시작
+            case REQUEST_CONNECT_DEVICE:
+                // When DeviceListActivity returns with a device to connect
+                if (resultCode == RESULT_OK)
+                {
+                    btService.getDeviceInfo(data);
+                }
+                break;**/
+            case 101:
+                if (resultCode == RESULT_OK)
+                {
+                    Log.d("MainActivity", "WOOOOOW LOL!");
+                    tmpFragment = new ConnectFragment();
+                    switchFragment(tmpFragment);
+                }
+                else
+                {
+                    Log.d("MainActivity", "Bluetooth is not enabled");
+                }
+                break;
+        }
+    }
+
+
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -149,7 +186,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             switchFragment(new FriendsFragment());
                             break;
                         case R.id.nav_connect:
-                            switchFragment(new ConnectFragment());
+                            tmpFragment = new ConnectFragment();
+                            switchFragment(tmpFragment);
                             break;
                         case R.id.nav_manage: // 설정
                             switchFragment(new SettingFragment());
