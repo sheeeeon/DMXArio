@@ -53,6 +53,13 @@ public class ProjectCardView extends LinearLayout {
 
     }
 
+    public void setButtonVisibility(int visibility) {
+        TextView PositiveButton = (TextView) mainView.findViewById(R.id.action2_text);
+        TextView NegativeButton = (TextView) mainView.findViewById(R.id.action1_text);
+        PositiveButton.setVisibility(visibility);
+        NegativeButton.setVisibility(visibility);
+    }
+
     /* private methods */
     private void viewInitialize() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);

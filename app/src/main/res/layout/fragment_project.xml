@@ -18,9 +18,11 @@
             android:paddingBottom="16dp">
 
             <LinearLayout
+                android:id="@+id/favoriteView"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="#0eaaf4">
+                android:layout_height="248dp"
+                android:background="#0eaaf4"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"

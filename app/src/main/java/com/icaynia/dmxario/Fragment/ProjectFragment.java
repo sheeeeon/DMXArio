@@ -38,13 +38,18 @@ public class ProjectFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
+        LinearLayout favoriteView = (LinearLayout)v.findViewById(R.id.favoriteView);
+
+        ProjectCardView projectCardView = new ProjectCardView(getActivity());
+        projectCardView.setTitleText("favorite title");
+        projectCardView.setSubtitleText("this is subtitle.");
+        favoriteView.addView(projectCardView);
 
         for (int count = 0; count <= 4; count++)
         {
-            ProjectCardView projectCardView = new ProjectCardView(getActivity());
+            projectCardView = new ProjectCardView(getActivity());
             projectCardView.setSubtitleText("this is subtitle.");
-            projectCardView.setNegativeButtonText("Action 1");
-            projectCardView.setPositiveButtonText("Action 2");
+            projectCardView.setButtonVisibility(View.GONE);
             projectCardView.setTitleText("Title " + count + " change");
             parent.addView(projectCardView);
         }
