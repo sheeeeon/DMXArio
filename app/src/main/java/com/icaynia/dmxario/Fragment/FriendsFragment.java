@@ -2,6 +2,7 @@ package com.icaynia.dmxario.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,9 +29,10 @@ public class FriendsFragment extends Fragment {
             @Override
             public void onComplete(Global global)
             {
-
+                Log.e("friendFragment", global.USER_FRIEND.list.get("useruid_test"));
             }
         });
+        global.refresh();
 
 
         return v;

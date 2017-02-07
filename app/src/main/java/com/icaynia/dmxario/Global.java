@@ -47,17 +47,19 @@ public class Global extends Application {
             public void onLoadComplete(Friend friend)
             {
                 USER_FRIEND = friend;
+                if (userDataState() == true)
+                {
+                    LoadListener.onComplete(Global.this);
+                }
             }
         });
         fm.getFriendList(FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        t
     }
 
     public boolean userDataState()
     {
         if (USER_FRIEND == null) return false;
-        if (USER_PROFILE == null) return false;
+        //if (USER_PROFILE == null) return false;
 
         return true;
     }
