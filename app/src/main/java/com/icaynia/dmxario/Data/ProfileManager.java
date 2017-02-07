@@ -23,10 +23,6 @@ public class ProfileManager {
         database = new Database();
     }
 
-    public void setLoadCompleteListener(Database.LoadCompleteListener listener) {
-        database.listener = listener;
-    }
-
     public void getProfile(String uid) {
         database.getProfile(uid).LoadStart();
     }

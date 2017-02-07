@@ -20,7 +20,10 @@ import java.util.HashMap;
 
 public class Database {
     private FirebaseDatabase _DATABASE;
-    public LoadCompleteListener listener;
+
+    /** For preload friend data */
+    public FriendManager.LoadCompleteListener preloadFriendDataListener;
+
 
     public Database() {
         _DATABASE = FirebaseDatabase.getInstance();
@@ -49,8 +52,14 @@ public class Database {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot)
                 {
-                    Friend friendList = dataSnapshot.getValue(Friend.class);
-                    listener.onCompleteGetFriendList(friendList); /** <l- error */
+                    Friend friendList = new Friend();
+                    friendList.list = dataSnapshot.getValue(Friend.class).list;
+                    if (preloadFriendDataListener == null) {
+                        Log.e("Database", "Load finished but LoadCompleteListener is not connected.");
+                        return;
+                    } else {
+                        preloadFriendDataListener.onLoadComplete(friendList);
+                    }
                     Log.e("receive", friendList.list.toString());
                 }
 
@@ -77,7 +86,6 @@ public class Database {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             Profile user = dataSnapshot.getValue(Profile.class);
-                            listener.onCompleteGetProfile(user);
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -90,11 +98,5 @@ public class Database {
             userRef.child("profile").setValue(profile);
             return this;
         }
-    }
-
-    public interface LoadCompleteListener {
-        void onCompleteGetProfile(Profile profile);
-        void onCompleteGetFriendList(Friend friend);
-        void onCompleteGetProject(Project project); // require to fi
     }
 }

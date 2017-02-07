@@ -36,6 +36,8 @@ public class Splash extends AppCompatActivity implements View.OnClickListener {
         ani = AnimationUtils.loadAnimation(this, R.anim.splash_icon_zoom_out);
         icon.startAnimation(ani);
 
+        // data pre load
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

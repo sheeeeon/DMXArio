@@ -125,26 +125,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         pm = new ProfileManager(this);
-        pm.setLoadCompleteListener(new Database.LoadCompleteListener() {
-            @Override
-            public void onCompleteGetProfile(Profile profile) {
-                Log.e("Tagggggg", profile.name);
-
-                nameView.setText(profile.name);
-                emailView.setText(accountManager.mAuth.getCurrentUser().getEmail());
-                bioView.setText(profile.bio);
-            }
-
-            @Override
-            public void onCompleteGetFriendList(Friend friend) {
-
-            }
-
-            @Override
-            public void onCompleteGetProject(Project project) {
-
-            }
-        });
         AccountManager accountManager = new AccountManager(this);
         pm.getProfile(accountManager.mAuth.getCurrentUser().getUid());
     }

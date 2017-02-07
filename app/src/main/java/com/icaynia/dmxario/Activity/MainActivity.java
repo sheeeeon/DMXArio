@@ -80,26 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         accountManager = new AccountManager(this);
         switchFragment(new ProjectFragment());
 
-        /* profile 내용 모두 받아왔을때 */
-        ProfileManager profileManager = new ProfileManager(this);
-        profileManager.setLoadCompleteListener(new Database.LoadCompleteListener() {
-            @Override
-            public void onCompleteGetProfile(Profile profile) {
-                setProfileInfo(profile.name, accountManager.user.getEmail());
-            }
-
-            @Override
-            public void onCompleteGetFriendList(Friend friend) {
-
-            }
-
-            @Override
-            public void onCompleteGetProject(Project project) {
-
-            }
-        });
-        profileManager.getProfile(accountManager.mAuth.getCurrentUser().getUid());
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
