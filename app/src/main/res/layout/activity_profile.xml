@@ -145,7 +145,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp">
 
-                <com.icaynia.dmxario.View.BlueButton
+                <com.icaynia.dmxario.Layout.View.BlueButton
                     android:id="@+id/button_follow"
                     android:layout_width="match_parent"
                     android:layout_height="45dp" />

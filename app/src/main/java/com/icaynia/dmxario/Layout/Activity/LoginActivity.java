@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Activity;
+package com.icaynia.dmxario.Layout.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,15 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by icaynia on 19/01/2017.

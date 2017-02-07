@@ -51,7 +51,7 @@
         </ScrollView>
     </LinearLayout>
 
-    <com.icaynia.dmxario.View.SnackBar
+    <com.icaynia.dmxario.Layout.View.SnackBar
         android:id="@+id/snackbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"

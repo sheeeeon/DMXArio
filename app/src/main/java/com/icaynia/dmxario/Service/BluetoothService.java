@@ -7,11 +7,9 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.icaynia.dmxario.Activity.MainActivity;
-import com.icaynia.dmxario.Bluetooth.Bluetooth;
+import com.icaynia.dmxario.Layout.Activity.MainActivity;
 
 import java.io.IOException;
 import java.io.InputStream;

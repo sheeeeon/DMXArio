@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.View;
+package com.icaynia.dmxario.Layout.View;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,8 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.icaynia.dmxario.R;
-
-import static com.icaynia.dmxario.View.BlueButton.Theme.FOLLOW;
 
 /**
  * Created by icaynia on 18/01/2017.

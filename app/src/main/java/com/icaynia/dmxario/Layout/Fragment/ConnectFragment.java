@@ -1,27 +1,22 @@
-package com.icaynia.dmxario.Fragment;
+package com.icaynia.dmxario.Layout.Fragment;
 
 import android.app.Fragment;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.icaynia.dmxario.Activity.MainActivity;
+import com.icaynia.dmxario.Layout.Activity.MainActivity;
 import com.icaynia.dmxario.R;
 import com.icaynia.dmxario.Service.BluetoothService;
-import com.icaynia.dmxario.View.BluetoothListAdapter;
-import com.icaynia.dmxario.View.SnackBar;
+import com.icaynia.dmxario.Layout.View.BluetoothListAdapter;
+import com.icaynia.dmxario.Layout.View.SnackBar;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 /**

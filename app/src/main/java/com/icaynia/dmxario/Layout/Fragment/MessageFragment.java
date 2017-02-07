@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Fragment;
+package com.icaynia.dmxario.Layout.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.icaynia.dmxario.Activity.MainActivity;
+import com.icaynia.dmxario.Layout.Activity.MainActivity;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.View.MessageCardView;
+import com.icaynia.dmxario.Layout.View.MessageCardView;
 
 /**
  * Created by icaynia on 2017. 1. 13..

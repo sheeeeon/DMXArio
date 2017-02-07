@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Fragment;
+package com.icaynia.dmxario.Layout.Fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.icaynia.dmxario.Activity.MainActivity;
+import com.icaynia.dmxario.Layout.Activity.MainActivity;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;
 

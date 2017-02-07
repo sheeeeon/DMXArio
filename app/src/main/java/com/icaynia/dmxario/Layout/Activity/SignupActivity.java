@@ -1,6 +1,5 @@
-package com.icaynia.dmxario.Activity;
+package com.icaynia.dmxario.Layout.Activity;
 
-import android.accounts.Account;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.icaynia.dmxario.Data.AccountManager;
 import com.icaynia.dmxario.Global;
 import com.icaynia.dmxario.R;

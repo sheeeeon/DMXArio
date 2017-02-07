@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Activity;
+package com.icaynia.dmxario.Layout.Activity;
 
 import android.content.Intent;
 import android.net.ConnectivityManager;

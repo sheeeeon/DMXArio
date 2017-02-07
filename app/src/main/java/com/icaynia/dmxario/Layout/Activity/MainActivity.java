@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Activity;
+package com.icaynia.dmxario.Layout.Activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -22,15 +22,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.icaynia.dmxario.Data.AccountManager;
-import com.icaynia.dmxario.Data.Database;
-import com.icaynia.dmxario.Data.ProfileManager;
-import com.icaynia.dmxario.Fragment.*;
+import com.icaynia.dmxario.Layout.Fragment.*;
 import com.icaynia.dmxario.Global;
-import com.icaynia.dmxario.Model.Friend;
-import com.icaynia.dmxario.Model.Profile;
-import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

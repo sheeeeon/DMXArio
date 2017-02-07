@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.Activity;
+package com.icaynia.dmxario.Layout.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +12,9 @@ import android.widget.TextView;
 
 
 import com.icaynia.dmxario.Data.AccountManager;
-import com.icaynia.dmxario.Data.Database;
-import com.icaynia.dmxario.Data.FriendManager;
 import com.icaynia.dmxario.Data.ProfileManager;
-import com.icaynia.dmxario.Model.Friend;
-import com.icaynia.dmxario.Model.Profile;
-import com.icaynia.dmxario.Model.Project;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.View.BlueButton;
+import com.icaynia.dmxario.Layout.View.BlueButton;
 
 /**
  * Created by icaynia on 2017. 1. 3..

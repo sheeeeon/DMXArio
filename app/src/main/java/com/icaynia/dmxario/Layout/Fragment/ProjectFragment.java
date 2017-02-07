@@ -1,8 +1,6 @@
-package com.icaynia.dmxario.Fragment;
+package com.icaynia.dmxario.Layout.Fragment;
 
 import android.app.Fragment;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,14 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 
-import com.icaynia.dmxario.Activity.MainActivity;
+import com.icaynia.dmxario.Layout.Activity.MainActivity;
 import com.icaynia.dmxario.R;
-import com.icaynia.dmxario.View.ProjectCardView;
+import com.icaynia.dmxario.Layout.View.ProjectCardView;
 
 /**
  * Created by icaynia on 2017. 1. 3..

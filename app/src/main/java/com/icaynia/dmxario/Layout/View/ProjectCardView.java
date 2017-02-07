@@ -1,4 +1,4 @@
-package com.icaynia.dmxario.View;
+package com.icaynia.dmxario.Layout.View;
 
 import android.content.Context;
 import android.util.AttributeSet;
