@@ -1,6 +1,6 @@
 # DMXArio
 
-DMXArio is DMX Controller Application.
+stable 버전 브랜치입니다. 플레이 스토어에 등록되어 있는 소스입니다.
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/LEnUN-5gwjY/0.jpg)](https://www.youtube.com/watch?v=LEnUN-5gwjY)
 https://www.youtube.com/watch?v=LEnUN-5gwjY
